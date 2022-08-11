@@ -11,10 +11,10 @@ namespace AVG.Runtime.Element
         event Action<string> OnElementAdd;
         event Action<string> OnElementRemove;
 
-        bool HaveElement(string actorId);
-        IElement GetElement(string actorId);
+        bool HaveElement(string elementId);
+        IElement GetElement(string elementId);
 
-        void RemoveElement(string actorId);
+        void RemoveElement(string elementId);
         void ClearElement();
     }
 
