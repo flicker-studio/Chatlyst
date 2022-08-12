@@ -11,6 +11,7 @@ namespace AVG.Runtime.Element
         float Scale { get; set; }
         bool Visible { get; set; }
 
+        Task InitializeAsync();
         Task ChangePositionAsync(Vector3 targetPosition, float endTime);
         Task ChangeRotationAsync(Vector3 targetRotation, float endTime);
         Task ChangeScaleAsync(float targetScale, float endTime);

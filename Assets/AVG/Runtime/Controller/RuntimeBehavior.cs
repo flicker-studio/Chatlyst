@@ -12,15 +12,19 @@ namespace AVG.Runtime.Controller
         private GameObject _behaviourGameObject;
         private RuntimeBehavior _runtimeBehavior;
 
-        //TODO:link this to game start
-        public static RuntimeBehavior Initialize()
+        /// <summary>
+        /// Initialize called when play
+        /// </summary>
+        [RuntimeInitializeOnLoadMethod]
+        public static void Initialize()
         {
             var rb = new GameObject("[RuntimeBehavior]");
             DontDestroyOnLoad(rb);
             var runtimeBehaviorComponent = rb.AddComponent<RuntimeBehavior>();
             runtimeBehaviorComponent._behaviourGameObject = rb;
             runtimeBehaviorComponent._runtimeBehavior = runtimeBehaviorComponent;
-            return runtimeBehaviorComponent;
+
+            //  new ViewManager().InitializeAsync(_runtimeBehavior).Start();
         }
 
         public GameObject GetRoot() => _behaviourGameObject;

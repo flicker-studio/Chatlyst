@@ -12,14 +12,20 @@ namespace AVG.Runtime.Element.View
         public bool Visible { get; set; }
         public GameObject Plane { get; set; }
 
-        //TODO:update algorithm
+
+        public async Task InitializeAsync()
+        {
+            //TODO:init the view element
+        }
+
         public async Task ChangePositionAsync(Vector3 targetPosition, float endTime)
         {
+            //TODO:update algorithm
             while (Position.z < 100)
             {
                 Position += new Vector3(0, 0, 1f);
                 Plane.transform.position = Position;
-                await Task.Yield(); 
+                await Task.Yield();
             }
         }
 

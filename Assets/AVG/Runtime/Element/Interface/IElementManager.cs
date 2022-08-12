@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AVG.Runtime.Controller;
 
 namespace AVG.Runtime.Element
@@ -12,7 +14,12 @@ namespace AVG.Runtime.Element
         event Action<string> OnElementRemove;
 
         bool HaveElement(string elementId);
+
+        Task<IElement> AddElementAsync(string elementId);
+
         IElement GetElement(string elementId);
+
+        IReadOnlyCollection<IElement> ReturnElements();
 
         void RemoveElement(string elementId);
         void ClearElement();
@@ -22,9 +29,11 @@ namespace AVG.Runtime.Element
     ///  element management interface：generics
     /// </summary>
     /// <typeparam name="TElement"> specific element type</typeparam>
-    public interface IElementManager<out TElement> : IElementManager
+    public interface IElementManager<TElement> : IElementManager
         where TElement : IElement
     {
+        new Task<TElement> AddElementAsync(string elementId);
         new TElement GetElement(string elementId);
+        new IReadOnlyCollection<TElement> ReturnElements();
     }
 }
