@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace AVG.Runtime.Element.View
 {
@@ -8,19 +7,13 @@ namespace AVG.Runtime.Element.View
     {
         public event Action<string> OnElementAdd;
         public event Action<string> OnElementRemove;
-        public ViewElement ve;
 
+        //TODO:link the initialize to [Runtime]
         public Task InitializeAsync()
         {
-            var view = new GameObject("Test");
-
-            ve = new ViewElement
-            {
-                Position = view.transform.position,
-                Plane = view
-            };
             return Task.CompletedTask;
         }
+
 
         public void Destroy()
         {

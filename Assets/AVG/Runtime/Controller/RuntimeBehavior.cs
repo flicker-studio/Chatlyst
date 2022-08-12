@@ -1,27 +1,33 @@
 ﻿using System;
-using AVG.Runtime.Element.View;
 using UnityEngine;
 
 namespace AVG.Runtime.Controller
 {
     public class RuntimeBehavior : MonoBehaviour
     {
-        public event Action OnAwake;
         public event Action OnStart;
         public event Action OnUpdate;
         public event Action OnDestroyed;
 
-        public RuntimeBehavior behavior;
-        private ViewManager _viewManager;
+        private GameObject _behaviourGameObject;
+        private RuntimeBehavior _runtimeBehavior;
 
-        private void Awake()
+        //TODO:link this to game start
+        public static RuntimeBehavior Initialize()
         {
-            var vm = new GameObject("RuntimeBehavior");
-            DontDestroyOnLoad(vm);
-            behavior = this;
-            _viewManager = new ViewManager();
-            _viewManager.InitializeAsync();
-            _viewManager.ve.ChangePositionAsync(new Vector3(0, 0, 100), 100);
+            var rb = new GameObject("[RuntimeBehavior]");
+            DontDestroyOnLoad(rb);
+            var runtimeBehaviorComponent = rb.AddComponent<RuntimeBehavior>();
+            runtimeBehaviorComponent._behaviourGameObject = rb;
+            runtimeBehaviorComponent._runtimeBehavior = runtimeBehaviorComponent;
+            return runtimeBehaviorComponent;
+        }
+
+        public GameObject GetRoot() => _behaviourGameObject;
+
+        public void SetRootGameObject(GameObject child)
+        {
+            child.transform.SetParent(transform);
         }
 
         private void Start()
