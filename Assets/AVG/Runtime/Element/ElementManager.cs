@@ -15,7 +15,7 @@ namespace AVG.Runtime.Element
     {
         public event Action<string> OnElementAdd;
         public event Action<string> OnElementRemove;
-
+        
         private Dictionary<string, TElement> _managedElementsList;
         private readonly Dictionary<string, TaskCompletionSource<TElement>> _addTasksCache;
 
@@ -43,7 +43,7 @@ namespace AVG.Runtime.Element
 
             _addTasksCache[elementId] = new TaskCompletionSource<TElement>();
 
-            var newElement = await ConstructActorAsync(elementId);
+            var newElement = await ConstructElementAsync(elementId);
             _managedElementsList.Add(elementId, newElement);
 
             _addTasksCache[elementId].TrySetResult(newElement);
@@ -101,7 +101,7 @@ namespace AVG.Runtime.Element
             ClearElement();
         }
 
-        private async Task<TElement> ConstructActorAsync(string actorId)
+        private async Task<TElement> ConstructElementAsync(string elementId)
         {
             //TODO:turn config to element
             var newElement = default(TElement);

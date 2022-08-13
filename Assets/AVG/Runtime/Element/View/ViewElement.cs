@@ -16,6 +16,7 @@ namespace AVG.Runtime.Element.View
         public async Task InitializeAsync()
         {
             //TODO:init the view element
+            await Task.CompletedTask;
         }
 
         public async Task ChangePositionAsync(Vector3 targetPosition, float endTime)
