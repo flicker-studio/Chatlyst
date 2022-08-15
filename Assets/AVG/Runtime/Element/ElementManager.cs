@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AVG.Runtime.Configuration;
 using UnityEngine;
 
 namespace AVG.Runtime.Element
@@ -15,18 +16,24 @@ namespace AVG.Runtime.Element
     {
         public event Action<string> OnElementAdd;
         public event Action<string> OnElementRemove;
-        
-        private Dictionary<string, TElement> _managedElementsList;
+
+        private readonly Dictionary<string, TElement> m_ManagedElementsList;
         private readonly Dictionary<string, TaskCompletionSource<TElement>> _addTasksCache;
 
-        public Task InitializeAsync()
+        public virtual Task InitializeAsync()
         {
             //TODO:init action
             return Task.CompletedTask;
         }
 
+        protected ElementManager(Config config)
+        {
+            m_ManagedElementsList = new Dictionary<string, TElement>(StringComparer.Ordinal);
+            _addTasksCache = new Dictionary<string, TaskCompletionSource<TElement>>();
+        }
+
         public bool HaveElement(string elementId) =>
-            !string.IsNullOrEmpty(elementId) && _managedElementsList.ContainsKey(elementId);
+            !string.IsNullOrEmpty(elementId) && m_ManagedElementsList.ContainsKey(elementId);
 
         public async Task<TElement> AddElementAsync(string elementId)
         {
@@ -44,7 +51,7 @@ namespace AVG.Runtime.Element
             _addTasksCache[elementId] = new TaskCompletionSource<TElement>();
 
             var newElement = await ConstructElementAsync(elementId);
-            _managedElementsList.Add(elementId, newElement);
+            m_ManagedElementsList.Add(elementId, newElement);
 
             _addTasksCache[elementId].TrySetResult(newElement);
 
@@ -61,14 +68,14 @@ namespace AVG.Runtime.Element
             if (!HaveElement(elementId))
                 throw new Exception($"Can't find '{elementId}' element.");
 
-            return _managedElementsList[elementId];
+            return m_ManagedElementsList[elementId];
         }
 
         IElement IElementManager.GetElement(string elementId) =>
             GetElement(elementId);
 
         public IReadOnlyCollection<TElement> ReturnElements() =>
-            _managedElementsList?.Values;
+            m_ManagedElementsList?.Values;
 
         IReadOnlyCollection<IElement> IElementManager.ReturnElements() =>
             ReturnElements().Cast<IElement>().ToArray();
@@ -78,7 +85,7 @@ namespace AVG.Runtime.Element
             if (!HaveElement(elementId)) return;
 
             var element = GetElement(elementId);
-            _managedElementsList.Remove(element.Id);
+            m_ManagedElementsList.Remove(element.Id);
             //GC code:not using
             //(element as IDisposable)?.Dispose();
 
@@ -87,13 +94,13 @@ namespace AVG.Runtime.Element
 
         public void ClearElement()
         {
-            if (_managedElementsList.Count == 0) return;
+            if (m_ManagedElementsList.Count == 0) return;
             TElement[] managedElements = ReturnElements().ToArray();
 
             foreach (var element in managedElements)
                 RemoveElement(element.Id);
 
-            _managedElementsList.Clear();
+            m_ManagedElementsList.Clear();
         }
 
         public void Destroy()
