@@ -9,25 +9,22 @@ namespace AVG.Runtime.Controller
         public event Action OnUpdate;
         public event Action OnDestroyed;
 
-        private GameObject _behaviourGameObject;
-        private RuntimeBehavior _runtimeBehavior;
+        private GameObject m_BehaviourGameObject;
+        private RuntimeBehavior m_RuntimeBehavior;
 
         /// <summary>
-        /// Initialize called when play
+        /// Initialize root GameObject
         /// </summary>
-        [RuntimeInitializeOnLoadMethod]
         public static void Initialize()
         {
             var rb = new GameObject("[RuntimeBehavior]");
             DontDestroyOnLoad(rb);
             var runtimeBehaviorComponent = rb.AddComponent<RuntimeBehavior>();
-            runtimeBehaviorComponent._behaviourGameObject = rb;
-            runtimeBehaviorComponent._runtimeBehavior = runtimeBehaviorComponent;
-
-            //  new ViewManager().InitializeAsync(_runtimeBehavior).Start();
+            runtimeBehaviorComponent.m_BehaviourGameObject = rb;
+            runtimeBehaviorComponent.m_RuntimeBehavior = runtimeBehaviorComponent;
         }
 
-        public GameObject GetRoot() => _behaviourGameObject;
+        public GameObject GetRoot() => m_BehaviourGameObject;
 
         public void SetRootGameObject(GameObject child)
         {
