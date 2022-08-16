@@ -15,13 +15,14 @@ namespace AVG.Runtime.Controller
         /// <summary>
         /// Initialize root GameObject
         /// </summary>
-        public static void Initialize()
+        public static RuntimeBehavior Initialize()
         {
             var rb = new GameObject("[RuntimeBehavior]");
             DontDestroyOnLoad(rb);
             var runtimeBehaviorComponent = rb.AddComponent<RuntimeBehavior>();
             runtimeBehaviorComponent.m_BehaviourGameObject = rb;
             runtimeBehaviorComponent.m_RuntimeBehavior = runtimeBehaviorComponent;
+            return runtimeBehaviorComponent;
         }
 
         public GameObject GetRoot() => m_BehaviourGameObject;
