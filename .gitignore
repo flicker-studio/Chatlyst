@@ -39,7 +39,7 @@
 ExportedObj/
 .consulo/
 *.csproj
-*.csproj.DotSettings
+*.DotSettings
 *.unityproj
 *.sln
 *.suo
