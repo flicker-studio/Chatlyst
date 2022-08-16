@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace AVG.Runtime.Element
@@ -11,9 +11,9 @@ namespace AVG.Runtime.Element
         float Scale { get; set; }
         bool Visible { get; set; }
 
-        Task InitializeAsync();
-        Task ChangePositionAsync(Vector3 targetPosition, float endTime);
-        Task ChangeRotationAsync(Vector3 targetRotation, float endTime);
-        Task ChangeScaleAsync(float targetScale, float endTime);
+        UniTask InitializeAsync();
+        UniTask ChangePositionAsync(Vector3 targetPosition, float endTime);
+        UniTask ChangeRotationAsync(Vector3 targetRotation, float endTime);
+        UniTask ChangeScaleAsync(float targetScale, float endTime);
     }
 }

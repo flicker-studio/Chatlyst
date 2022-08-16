@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AVG.Runtime.Configuration;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace AVG.Runtime.Element
@@ -18,24 +18,24 @@ namespace AVG.Runtime.Element
         public event Action<string> OnElementRemove;
 
         private readonly Dictionary<string, TElement> m_ManagedElementsList;
-        private readonly Dictionary<string, TaskCompletionSource<TElement>> _addTasksCache;
+        private readonly Dictionary<string, UniTaskCompletionSource<TElement>> m_AddTasksCache;
 
-        public virtual Task InitializeAsync()
+        public virtual UniTask InitializeAsync()
         {
             //TODO:init action
-            return Task.CompletedTask;
+            return UniTask.CompletedTask;
         }
 
         protected ElementManager(Config config)
         {
             m_ManagedElementsList = new Dictionary<string, TElement>(StringComparer.Ordinal);
-            _addTasksCache = new Dictionary<string, TaskCompletionSource<TElement>>();
+            m_AddTasksCache = new Dictionary<string, UniTaskCompletionSource<TElement>>();
         }
 
         public bool HaveElement(string elementId) =>
             !string.IsNullOrEmpty(elementId) && m_ManagedElementsList.ContainsKey(elementId);
 
-        public async Task<TElement> AddElementAsync(string elementId)
+        public async UniTask<TElement> AddElementAsync(string elementId)
         {
             //element already exists in list
             if (HaveElement(elementId))
@@ -45,22 +45,22 @@ namespace AVG.Runtime.Element
             }
 
             //element already exists in Cache
-            if (_addTasksCache.ContainsKey(elementId))
-                return await _addTasksCache[elementId].Task;
+            if (m_AddTasksCache.ContainsKey(elementId))
+                return await m_AddTasksCache[elementId].Task;
 
-            _addTasksCache[elementId] = new TaskCompletionSource<TElement>();
+            m_AddTasksCache[elementId] = new UniTaskCompletionSource<TElement>();
 
             var newElement = await ConstructElementAsync(elementId);
             m_ManagedElementsList.Add(elementId, newElement);
 
-            _addTasksCache[elementId].TrySetResult(newElement);
+            m_AddTasksCache[elementId].TrySetResult(newElement);
 
-            _addTasksCache.Remove(elementId);
+            m_AddTasksCache.Remove(elementId);
             OnElementAdd?.Invoke(elementId);
             return newElement;
         }
 
-        async Task<IElement> IElementManager.AddElementAsync(string elementId) =>
+        async UniTask<IElement> IElementManager.AddElementAsync(string elementId) =>
             await AddElementAsync(elementId);
 
         public TElement GetElement(string elementId)
@@ -108,11 +108,11 @@ namespace AVG.Runtime.Element
             ClearElement();
         }
 
-        private async Task<TElement> ConstructElementAsync(string elementId)
+        private async UniTask<TElement> ConstructElementAsync(string elementId)
         {
             //TODO:turn config to element
             var newElement = default(TElement);
-            await newElement?.InitializeAsync();
+            await newElement.InitializeAsync();
             return newElement;
         }
     }

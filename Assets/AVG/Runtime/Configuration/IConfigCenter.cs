@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-using AVG.Runtime.Element;
+﻿using AVG.Runtime.Element;
+using Cysharp.Threading.Tasks;
 
 namespace AVG.Runtime.Configuration
 {
     public interface IConfigCenter
     {
-        Task InitializeAsync(Config config);
+        UniTask InitializeAsync(Config config);
 
         IElement InstanceConfig(Config config);
     }

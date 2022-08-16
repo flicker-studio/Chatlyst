@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
-//TODO:Replace Task to UniTask
 namespace AVG.Runtime.Controller
 {
     /// <summary>
@@ -33,18 +32,18 @@ namespace AVG.Runtime.Controller
         /// <summary>
         /// Whether the engine is initialized and ready
         /// </summary>
-        public static bool initialized => _initializeTcs != null && _initializeTcs.Task.IsCompleted;
+        public static bool initialized => _initializeTcs != null && _initializeTcs.Task.Status.IsCompleted();
         /// <summary>
         /// Whether the engine is currently being initialized
         /// </summary>
-        public static bool initializing => _initializeTcs != null && !_initializeTcs.Task.IsCompleted;
+        public static bool initializing => _initializeTcs != null && !_initializeTcs.Task.Status.IsCompleted();
 
-        private static TaskCompletionSource<bool> _initializeTcs;
+        private static UniTaskCompletionSource _initializeTcs;
         private static CancellationTokenSource _destroyCts;
-        private static readonly List<Func<Task>> PreInitializationTasks = new List<Func<Task>>();
-        private static readonly List<Func<Task>> PostInitializationTasks = new List<Func<Task>>();
+        private static readonly List<Func<UniTask>> PreInitializationTasks = new List<Func<UniTask>>();
+        private static readonly List<Func<UniTask>> PostInitializationTasks = new List<Func<UniTask>>();
 
-        public static async Task InitializeAsync()
+        public static async UniTask InitializeAsync()
         {
             //Make sure the engine is initialized only once
             if (initialized) return;
@@ -55,7 +54,7 @@ namespace AVG.Runtime.Controller
             }
 
             //Initialize asynchronous configuration
-            _initializeTcs = new TaskCompletionSource<bool>();
+            _initializeTcs = new UniTaskCompletionSource();
             _destroyCts = new CancellationTokenSource();
 
             //Execute pre-initialization tasks
@@ -79,7 +78,7 @@ namespace AVG.Runtime.Controller
             }
 
 
-            _initializeTcs?.TrySetResult(new bool());
+            _initializeTcs?.TrySetResult();
             OnInitializationEnds?.Invoke();
         }
 

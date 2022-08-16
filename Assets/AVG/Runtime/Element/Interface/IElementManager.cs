@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using AVG.Runtime.Controller;
+using Cysharp.Threading.Tasks;
 
 namespace AVG.Runtime.Element
 {
@@ -15,7 +15,7 @@ namespace AVG.Runtime.Element
 
         bool HaveElement(string elementId);
 
-        Task<IElement> AddElementAsync(string elementId);
+        UniTask<IElement> AddElementAsync(string elementId);
 
         IElement GetElement(string elementId);
 
@@ -32,7 +32,7 @@ namespace AVG.Runtime.Element
     public interface IElementManager<TElement> : IElementManager
         where TElement : IElement
     {
-        new Task<TElement> AddElementAsync(string elementId);
+        new UniTask<TElement> AddElementAsync(string elementId);
         new TElement GetElement(string elementId);
         new IReadOnlyCollection<TElement> ReturnElements();
     }

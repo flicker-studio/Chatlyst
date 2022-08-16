@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace AVG.Runtime.Element.View
@@ -13,29 +13,29 @@ namespace AVG.Runtime.Element.View
         public GameObject Plane { get; set; }
 
 
-        public async Task InitializeAsync()
+        public async UniTask InitializeAsync()
         {
             //TODO:init the view element
-            await Task.CompletedTask;
+            await UniTask.CompletedTask;
         }
 
-        public async Task ChangePositionAsync(Vector3 targetPosition, float endTime)
+        public async UniTask ChangePositionAsync(Vector3 targetPosition, float endTime)
         {
             //TODO:update algorithm
             while (Position.z < 100)
             {
                 Position += new Vector3(0, 0, 1f);
                 Plane.transform.position = Position;
-                await Task.Yield();
+                await UniTask.Yield();
             }
         }
 
-        public Task ChangeRotationAsync(Vector3 targetRotation, float endTime)
+        public UniTask ChangeRotationAsync(Vector3 targetRotation, float endTime)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task ChangeScaleAsync(float targetScale, float endTime)
+        public UniTask ChangeScaleAsync(float targetScale, float endTime)
         {
             throw new System.NotImplementedException();
         }

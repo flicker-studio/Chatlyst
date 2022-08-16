@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 namespace AVG.Runtime.Controller
 {
@@ -7,7 +7,7 @@ namespace AVG.Runtime.Controller
     /// </summary>
     public interface IBasicService
     {
-        Task InitializeAsync();
+        UniTask InitializeAsync();
         void Destroy();
     }
 }
