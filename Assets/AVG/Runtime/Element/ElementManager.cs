@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AVG.Runtime.Configuration;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -26,7 +25,7 @@ namespace AVG.Runtime.Element
             return UniTask.CompletedTask;
         }
 
-        protected ElementManager(Config config)
+        protected ElementManager()
         {
             m_ManagedElementsList = new Dictionary<string, TElement>(StringComparer.Ordinal);
             m_AddTasksCache = new Dictionary<string, UniTaskCompletionSource<TElement>>();
@@ -74,8 +73,11 @@ namespace AVG.Runtime.Element
         IElement IElementManager.GetElement(string elementId) =>
             GetElement(elementId);
 
-        public IReadOnlyCollection<TElement> ReturnElements() =>
-            m_ManagedElementsList?.Values;
+        public IReadOnlyCollection<TElement> ReturnElements()
+        {
+            return m_ManagedElementsList?.Values;
+        }
+
 
         IReadOnlyCollection<IElement> IElementManager.ReturnElements() =>
             ReturnElements().Cast<IElement>().ToArray();
@@ -110,10 +112,8 @@ namespace AVG.Runtime.Element
 
         private async UniTask<TElement> ConstructElementAsync(string elementId)
         {
-            //TODO:turn config to element
-            var newElement = default(TElement);
-            await newElement.InitializeAsync();
-            return newElement;
+            //TODO：managed element
+            throw new NotImplementedException();
         }
     }
 }

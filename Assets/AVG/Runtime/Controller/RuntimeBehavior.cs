@@ -5,17 +5,17 @@ namespace AVG.Runtime.Controller
 {
     public class RuntimeBehavior : MonoBehaviour
     {
-        public event Action OnStart;
-        public event Action OnUpdate;
-        public event Action OnDestroyed;
+        public event Action OnMonoStart;
+        public event Action OnMonoUpdate;
+        public event Action OnMonoDestroyed;
 
         private GameObject m_BehaviourGameObject;
         private RuntimeBehavior m_RuntimeBehavior;
 
         /// <summary>
-        /// Initialize root GameObject
+        /// Construction root GameObject
         /// </summary>
-        public static RuntimeBehavior Initialize()
+        public static RuntimeBehavior Construction()
         {
             var rb = new GameObject("[RuntimeBehavior]");
             DontDestroyOnLoad(rb);
@@ -25,26 +25,32 @@ namespace AVG.Runtime.Controller
             return runtimeBehaviorComponent;
         }
 
-        public GameObject GetRoot() => m_BehaviourGameObject;
+        public void Destructor()
+        {
+            if (m_RuntimeBehavior && m_RuntimeBehavior.gameObject)
+                Destroy(m_RuntimeBehavior.gameObject);
+        }
 
         public void SetRootGameObject(GameObject child)
         {
             child.transform.SetParent(transform);
         }
 
+
+        //Unity event function
         private void Start()
         {
-            OnStart?.Invoke();
+            OnMonoStart?.Invoke();
         }
 
         private void Update()
         {
-            OnUpdate?.Invoke();
+            OnMonoUpdate?.Invoke();
         }
 
         private void OnDestroy()
         {
-            OnDestroyed?.Invoke();
+            OnMonoDestroyed?.Invoke();
         }
     }
 }

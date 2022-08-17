@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using AVG.Runtime.Element;
 using Cysharp.Threading.Tasks;
 
 namespace AVG.Runtime.Controller
@@ -28,7 +29,10 @@ namespace AVG.Runtime.Controller
         /// Invoked when the engine is destroyed.
         /// </summary>
         public static event Action OnDestroyed;
-
+        /// <summary>
+        /// Proxy MonoBehaviour
+        /// </summary>
+        public static RuntimeBehavior runtimeBehavior { get; private set; }
         /// <summary>
         /// Whether the engine is initialized and ready
         /// </summary>
@@ -42,8 +46,10 @@ namespace AVG.Runtime.Controller
         private static CancellationTokenSource _destroyCts;
         private static readonly List<Func<UniTask>> PreInitializationTasks = new List<Func<UniTask>>();
         private static readonly List<Func<UniTask>> PostInitializationTasks = new List<Func<UniTask>>();
+        private static readonly List<IElementManager> Services = new List<IElementManager>();
 
-        public static async UniTask InitializeAsync()
+        public static async UniTask InitializeAsync(RuntimeBehavior proxyBehavior,
+            List<IElementManager> elementManagers)
         {
             //Make sure the engine is initialized only once
             if (initialized) return;
@@ -53,9 +59,10 @@ namespace AVG.Runtime.Controller
                 return;
             }
 
-            //Initialize asynchronous configuration
+            //Construction asynchronous configuration
             _initializeTcs = new UniTaskCompletionSource();
             _destroyCts = new CancellationTokenSource();
+            OnInitializationBegins?.Invoke();
 
             //Execute pre-initialization tasks
             for (var i = PreInitializationTasks.Count - 1; i >= 0; i--)
@@ -65,8 +72,19 @@ namespace AVG.Runtime.Controller
                 if (!initializing) return; // In case initialization process was terminated (eg: exited playmode).
             }
 
-            OnInitializationBegins?.Invoke();
+            //set mono behavior proxy
+            runtimeBehavior = proxyBehavior;
+            runtimeBehavior.OnMonoDestroyed += Destroy;
 
+            Services.Clear();
+            Services.AddRange(Services);
+
+            for (var i = 0; i < Services.Count; i++)
+            {
+                OnInitializationProgress?.Invoke(.25f + .5f * (i / (float)Services.Count));
+                await Services[i].InitializeAsync();
+                if (!initializing) return;
+            }
             //TODO：initialization
 
             //Execute post-initialization tasks
@@ -74,7 +92,8 @@ namespace AVG.Runtime.Controller
             {
                 OnInitializationProgress?.Invoke(.75f + .25f * (1 - i / (float)PostInitializationTasks.Count));
                 await PostInitializationTasks[i]();
-                if (!initialized) return; // In case initialization process was terminated (eg,:exited playmode).
+                // In case initialization process was terminated (eg:exited playmode).
+                if (!initialized) return;
             }
 
 
@@ -90,9 +109,18 @@ namespace AVG.Runtime.Controller
             _initializeTcs = null;
             //TODO:Uninstall all the engine services and stops the behaviour
 
+            //remove runtime behavior
+            if (runtimeBehavior != null)
+            {
+                runtimeBehavior.OnMonoDestroyed -= Destroy;
+                runtimeBehavior.Destructor();
+                runtimeBehavior = null;
+            }
 
+            //Invoke destroy event
             OnDestroyed?.Invoke();
 
+            //stop all tasks
             _destroyCts?.Cancel();
             _destroyCts?.Dispose();
             _destroyCts = null;

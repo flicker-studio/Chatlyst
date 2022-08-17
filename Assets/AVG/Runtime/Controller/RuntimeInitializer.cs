@@ -1,4 +1,7 @@
-﻿using AVG.Runtime.Configuration;
+﻿using System.Collections.Generic;
+using AVG.Runtime.Configuration;
+using AVG.Runtime.Element;
+using AVG.Runtime.Element.View;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -7,6 +10,8 @@ namespace AVG.Runtime.Controller
     public class RuntimeInitializer : MonoBehaviour
     {
         private static UniTaskCompletionSource _initializeTcs;
+        [SerializeField]
+        private bool initOnAwake = true;
 
         /// <summary>
         /// AVG Framework entrance
@@ -21,26 +26,22 @@ namespace AVG.Runtime.Controller
                 return;
             }
 
-#if UNITY_EDITOR
-            Debug.Log("InitializeAsync Start");
-#endif
             _initializeTcs = new UniTaskCompletionSource();
             configDistribution ??= new ConfigDistribution();
 
-            var behaviour = RuntimeBehavior.Initialize();
+            var runtimeBehavior = RuntimeBehavior.Construction();
+            var manager = new List<IElementManager>
+            {
+                new ViewManager()
+            };
 
-
-            await EngineCore.InitializeAsync();
+            await EngineCore.InitializeAsync(runtimeBehavior, manager);
             // In case terminated in the midst of initialization.
             if (!EngineCore.initialized)
             {
                 DisposeTcs();
                 return;
             }
-
-#if UNITY_EDITOR
-            Debug.Log("InitializeAsync End");
-#endif
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -48,9 +49,14 @@ namespace AVG.Runtime.Controller
         {
             _initializeTcs?.TrySetResult();
             _initializeTcs = null;
-#if UNITY_EDITOR
-            Debug.Log("InitializeAsync Stop");
-#endif
+        }
+
+        private void Awake()
+        {
+            if (initOnAwake)
+            {
+                InitializeAsync().Forget();
+            }
         }
     }
 }
