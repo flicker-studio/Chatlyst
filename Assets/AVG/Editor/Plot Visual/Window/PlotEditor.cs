@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace AVG.Editor.VisualGraph
+namespace AVG.Editor.Plot_Visual
 {
     [CustomEditor(typeof(PlotSo))]
     public class StoryObjectEditor : UnityEditor.Editor
@@ -12,9 +12,9 @@ namespace AVG.Editor.VisualGraph
 
             EditorGUILayout.Space(40);
 
-            if (GUILayout.Button("Edit", GUILayout.Height(40)))
+            if (GUILayout.Button("Edit", GUILayout.Height(20)))
             {
-                PlotEditorWindow.Edit();
+                PlotEditorWindow.Edit(target as PlotSo);
             }
         }
     }

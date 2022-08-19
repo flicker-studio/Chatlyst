@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed5fcfdf21d4c3bad2cf8cce2e6eca5, type: 3}
   m_Name: New Plot
   m_EditorClassIdentifier: 
-  links: []
-  nodes: []
+  links:
+  - guid: 50422511-207e-4e1d-9b80-69836ec0e4c2
+    nextGuid: 62975d54-464d-4ef8-b458-3d5f976ae24a
+    portId: 0
+  nodes:
+  - guid: 50422511-207e-4e1d-9b80-69836ec0e4c2
+    characterName: '?'
+    dialogueText: 
+  - guid: 62975d54-464d-4ef8-b458-3d5f976ae24a
+    characterName: 
+    dialogueText: 
