@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using AVG.Runtime.Plot;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -40,18 +39,18 @@ namespace AVG.Editor.Plot_Visual
 
             #region Redraw the plot tree
 
-            foreach (var data in m_PlotSo.nodes)
+            foreach (var data in m_PlotSo.nodes.ToList().Where(data => data != null))
             {
                 m_GraphView.RedrawNode(data);
             }
 
             var listDictionary = m_PlotSo.links.ToDictionary(link => link.guid);
             var nodeList = m_GraphView.nodes.ToList().Cast<SectionNode>().ToList();
-            var nodeDictionary = nodeList.ToDictionary(node => node.SectionData.guid);
+            var nodeDictionary = nodeList.ToDictionary(node => node.SectionData.Guid);
 
             foreach (var temp in from node in m_GraphView.nodes.ToList().Cast<SectionNode>().ToList()
-                     where listDictionary.ContainsKey(node.SectionData.guid)
-                     let link = listDictionary[node.SectionData.guid]
+                     where listDictionary.ContainsKey(node.SectionData.Guid)
+                     let link = listDictionary[node.SectionData.Guid]
                      let targetNode = nodeDictionary[link.nextGuid]
                      select new Edge
                      {
@@ -86,7 +85,8 @@ namespace AVG.Editor.Plot_Visual
 
             foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<SectionNode>())
             {
-                m_PlotSo.nodes.Add(new SectionData(sectionNode.SectionData, sectionNode.GetPosition()));
+                sectionNode.SectionData.nodePos = sectionNode.GetPosition();
+                m_PlotSo.nodes.Add(sectionNode.SectionData);
             }
 
             var edgeList = m_GraphView.edges.ToList();
@@ -98,8 +98,8 @@ namespace AVG.Editor.Plot_Visual
 
                 m_PlotSo.links.Add(new NodeLink()
                 {
-                    guid = output?.SectionData.guid,
-                    nextGuid = input?.SectionData.guid,
+                    guid = output?.SectionData.Guid,
+                    nextGuid = input?.SectionData.Guid,
                     portId = i
                 });
             }
@@ -109,7 +109,7 @@ namespace AVG.Editor.Plot_Visual
 
         private void OnInspectorUpdate()
         {
-            titleContent.text = m_Title;
+            if (titleContent.text != m_Title) titleContent.text = m_Title;
         }
     }
 }

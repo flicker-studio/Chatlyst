@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using AVG.Runtime.Plot;
+using AVG.Runtime.PlotTree;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -19,6 +19,7 @@ namespace AVG.Editor.Plot_Visual
             Insert(0, grid);
             grid.StretchToParentSize();
         }
+
         public void AddNode(Vector2 mousePos)
         {
             var node = new SectionNode();
@@ -45,7 +46,7 @@ namespace AVG.Editor.Plot_Visual
 
         public void RedrawNode(SectionData data)
         {
-            var node = new SectionNode();
+            var node = new SectionNode(data);
             node.SetPosition(new Rect(
                 (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
                 (data.nodePos.position * (1 / scale)), Vector2.one));

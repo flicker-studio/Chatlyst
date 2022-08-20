@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using AVG.Runtime.Plot;
+using AVG.Runtime.PlotTree;
 using UnityEngine;
 
 //TODO:Decouple editor and runtime
@@ -8,9 +8,9 @@ namespace AVG.Editor.Plot_Visual
     [CreateAssetMenu(fileName = "New Plot", menuName = "AVG/Creat Plot")]
     public class PlotSo : ScriptableObject
     {
-        [HideInInspector] public List<NodeLink> links;
+        public List<NodeLink> links;
 
-        [HideInInspector] public List<SectionData> nodes;
+        public List<SectionData> nodes;
 
 
         public void ResetPlot()

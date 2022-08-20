@@ -1,9 +1,10 @@
 ﻿using System;
-using AVG.Runtime.Plot;
+using AVG.Runtime.PlotTree;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
+//TODO:Replace the uxml 
 namespace AVG.Editor.Plot_Visual
 {
     public class SectionNode : Node
@@ -13,7 +14,7 @@ namespace AVG.Editor.Plot_Visual
 
         public SectionNode(SectionData baseData = null)
         {
-            SectionData = baseData ?? new SectionData();
+            SectionData = new SectionData(baseData);
             var visualAsset = EditorGUIUtility.Load("GraphNode.uxml") as VisualTreeAsset;
             PlotVisualElement = new PlotVisualElement(this, visualAsset);
         }
