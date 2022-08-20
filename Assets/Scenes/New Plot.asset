@@ -9,17 +9,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed5fcfdf21d4c3bad2cf8cce2e6eca5, type: 3}
+  m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
   m_Name: New Plot
   m_EditorClassIdentifier: 
-  links:
-  - guid: 50422511-207e-4e1d-9b80-69836ec0e4c2
-    nextGuid: 62975d54-464d-4ef8-b458-3d5f976ae24a
-    portId: 0
+  links: []
   nodes:
-  - guid: 50422511-207e-4e1d-9b80-69836ec0e4c2
-    characterName: '?'
-    dialogueText: 
-  - guid: 62975d54-464d-4ef8-b458-3d5f976ae24a
+  - guid: 426acb89-c283-4a7a-bfe1-22b21aee19e4
     characterName: 
     dialogueText: 
+    nodePos:
+      serializedVersion: 2
+      x: 154
+      y: 166
+      width: 175
+      height: 117
+  - guid: 9352a06f-9704-4f34-ba85-6f4c5427bfd9
+    characterName: 
+    dialogueText: 
+    nodePos:
+      serializedVersion: 2
+      x: 462
+      y: 177
+      width: 175
+      height: 117
+  - guid: 7c84b998-3213-4d0a-ae5a-6a5a53ea4c43
+    characterName: 
+    dialogueText: 
+    nodePos:
+      serializedVersion: 2
+      x: 743
+      y: 152
+      width: 175
+      height: 117
+  - guid: 047a2dea-6bce-4433-8aa7-6db307cc03a6
+    characterName: 
+    dialogueText: 
+    nodePos:
+      serializedVersion: 2
+      x: 665
+      y: 387
+      width: 175
+      height: 117

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace AVG.Runtime.Plot
 {
@@ -9,16 +10,19 @@ namespace AVG.Runtime.Plot
         public string characterName;
         public string dialogueText;
 
+        public Rect nodePos;
+
         public SectionData()
         {
             guid = Guid.NewGuid().ToString();
         }
 
-        public SectionData(SectionData originData)
+        public SectionData(SectionData originData, Rect editorPos)
         {
             guid = originData.guid;
             characterName = originData.characterName;
             dialogueText = originData.dialogueText;
+            nodePos = editorPos;
         }
     }
 }

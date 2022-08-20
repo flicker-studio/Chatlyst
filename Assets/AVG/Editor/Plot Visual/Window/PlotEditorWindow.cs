@@ -21,10 +21,16 @@ namespace AVG.Editor.Plot_Visual
 
         private void GraphViewInitialize()
         {
-            m_GraphView = new PlotGraphView();
+            m_GraphView ??= new PlotGraphView();
             m_GraphView.RegisterCallback<KeyDownEvent>(SpaceKeyMenu);
             m_GraphView.StretchToParentSize();
             rootVisualElement.Add(m_GraphView);
+
+            if (m_PlotSo.nodes == null) return;
+            foreach (var node in m_PlotSo.nodes.ToList())
+            {
+                m_GraphView.RedrawNode(node);
+            }
         }
 
         private void SpaceKeyMenu(KeyDownEvent keyDownEvent)
@@ -48,7 +54,7 @@ namespace AVG.Editor.Plot_Visual
             foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<SectionNode>())
             {
                 m_PlotSo.nodes.Add(
-                    new SectionData(sectionNode.SectionData));
+                    new SectionData(sectionNode.SectionData, sectionNode.GetPosition()));
             }
 
             var edges = m_GraphView.edges.ToList();

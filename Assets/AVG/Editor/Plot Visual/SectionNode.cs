@@ -8,7 +8,7 @@ namespace AVG.Editor.Plot_Visual
 {
     public class SectionNode : Node
     {
-        public readonly SectionData SectionData;
+        public SectionData SectionData;
         public readonly PlotVisualElement PlotVisualElement;
 
         public SectionNode(SectionData baseData = null)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AVG.Runtime.Plot;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -24,6 +25,31 @@ namespace AVG.Editor.Plot_Visual
             node.SetPosition(new Rect(
                 (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
                 (mousePos * (1 / scale)), Vector2.one));
+            node.mainContainer.Add(node.PlotVisualElement);
+
+
+            var inputPort =
+                node.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
+            inputPort.portName = "Input";
+            node.inputContainer.Add(inputPort);
+
+            var outputPort =
+                node.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
+            outputPort.portName = "Next";
+            node.outputContainer.Add(outputPort);
+
+            node.RefreshExpandedState();
+            node.RefreshPorts();
+            AddElement(node);
+        }
+
+        public void RedrawNode(SectionData data)
+        {
+            var node = new SectionNode();
+            node.SetPosition(new Rect(
+                (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
+                (data.nodePos.position * (1 / scale)), Vector2.one));
+            node.SectionData = data;
             node.mainContainer.Add(node.PlotVisualElement);
 
 
