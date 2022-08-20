@@ -14,39 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   links: []
   nodes:
-  - guid: 426acb89-c283-4a7a-bfe1-22b21aee19e4
-    characterName: 
-    dialogueText: 
-    nodePos:
-      serializedVersion: 2
-      x: 154
-      y: 166
-      width: 175
-      height: 117
   - guid: 9352a06f-9704-4f34-ba85-6f4c5427bfd9
     characterName: 
     dialogueText: 
     nodePos:
       serializedVersion: 2
-      x: 462
-      y: 177
-      width: 175
-      height: 117
+      x: 41
+      y: -2
+      width: 221
+      height: 158
   - guid: 7c84b998-3213-4d0a-ae5a-6a5a53ea4c43
     characterName: 
     dialogueText: 
     nodePos:
       serializedVersion: 2
-      x: 743
-      y: 152
-      width: 175
-      height: 117
-  - guid: 047a2dea-6bce-4433-8aa7-6db307cc03a6
-    characterName: 
-    dialogueText: 
-    nodePos:
-      serializedVersion: 2
-      x: 665
-      y: 387
-      width: 175
-      height: 117
+      x: 41
+      y: 174
+      width: 221
+      height: 158

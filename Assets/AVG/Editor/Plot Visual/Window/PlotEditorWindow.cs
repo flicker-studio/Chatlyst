@@ -1,16 +1,17 @@
 ﻿using System.Linq;
 using AVG.Runtime.Plot;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-//TODO:Editor Open Show
 namespace AVG.Editor.Plot_Visual
 {
     public class PlotEditorWindow : EditorWindow
     {
         private PlotGraphView m_GraphView;
         private PlotSo m_PlotSo;
+        private string m_Title = "Plot Editor";
 
         public static void Edit(PlotSo targetPlot)
         {
@@ -25,12 +26,45 @@ namespace AVG.Editor.Plot_Visual
             m_GraphView.RegisterCallback<KeyDownEvent>(SpaceKeyMenu);
             m_GraphView.StretchToParentSize();
             rootVisualElement.Add(m_GraphView);
-
-            if (m_PlotSo.nodes == null) return;
-            foreach (var node in m_PlotSo.nodes.ToList())
+            m_GraphView.graphViewChanged += (_ =>
             {
-                m_GraphView.RedrawNode(node);
+                m_Title = "Plot Editor(Unsaved)";
+                return default;
+            });
+
+            if (m_PlotSo.nodes == null)
+            {
+                m_PlotSo.ResetPlot();
+                return;
             }
+
+            #region Redraw the plot tree
+
+            foreach (var data in m_PlotSo.nodes)
+            {
+                m_GraphView.RedrawNode(data);
+            }
+
+            var listDictionary = m_PlotSo.links.ToDictionary(link => link.guid);
+            var nodeList = m_GraphView.nodes.ToList().Cast<SectionNode>().ToList();
+            var nodeDictionary = nodeList.ToDictionary(node => node.SectionData.guid);
+
+            foreach (var temp in from node in m_GraphView.nodes.ToList().Cast<SectionNode>().ToList()
+                     where listDictionary.ContainsKey(node.SectionData.guid)
+                     let link = listDictionary[node.SectionData.guid]
+                     let targetNode = nodeDictionary[link.nextGuid]
+                     select new Edge
+                     {
+                         output = node.outputContainer[0].Q<Port>(),
+                         input = targetNode.inputContainer[0].Q<Port>(),
+                     })
+            {
+                temp.input.Connect(temp);
+                temp.output.Connect(temp);
+                m_GraphView.Add(temp);
+            }
+
+            #endregion
         }
 
         private void SpaceKeyMenu(KeyDownEvent keyDownEvent)
@@ -45,7 +79,6 @@ namespace AVG.Editor.Plot_Visual
             menu.ShowAsContext();
         }
 
-
         private void DataSave()
         {
             EditorUtility.SetDirty(m_PlotSo);
@@ -53,15 +86,15 @@ namespace AVG.Editor.Plot_Visual
 
             foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<SectionNode>())
             {
-                m_PlotSo.nodes.Add(
-                    new SectionData(sectionNode.SectionData, sectionNode.GetPosition()));
+                m_PlotSo.nodes.Add(new SectionData(sectionNode.SectionData, sectionNode.GetPosition()));
             }
 
-            var edges = m_GraphView.edges.ToList();
-            for (var i = 0; i < edges.Count; i++)
+            var edgeList = m_GraphView.edges.ToList();
+            for (var i = 0; i < edgeList.Count; i++)
             {
-                var output = edges[i].output.node as SectionNode;
-                var input = edges[i].input.node as SectionNode;
+                var output = edgeList[i].output.node as SectionNode;
+                var input = edgeList[i].input.node as SectionNode;
+
 
                 m_PlotSo.links.Add(new NodeLink()
                 {
@@ -70,6 +103,13 @@ namespace AVG.Editor.Plot_Visual
                     portId = i
                 });
             }
+
+            m_Title = "Plot Editor";
+        }
+
+        private void OnInspectorUpdate()
+        {
+            titleContent.text = m_Title;
         }
     }
 }

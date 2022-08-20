@@ -8,9 +8,10 @@ namespace AVG.Editor.Plot_Visual
     [CreateAssetMenu(fileName = "New Plot", menuName = "AVG/Creat Plot")]
     public class PlotSo : ScriptableObject
     {
-        public List<NodeLink> links;
+        [HideInInspector] public List<NodeLink> links;
 
-        public List<SectionData> nodes;
+        [HideInInspector] public List<SectionData> nodes;
+
 
         public void ResetPlot()
         {
