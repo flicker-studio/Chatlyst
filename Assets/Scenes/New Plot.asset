@@ -12,23 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
   m_Name: New Plot
   m_EditorClassIdentifier: 
-  links: []
+  links:
+  - guid: ce7e7358-1a59-4fef-8c04-74151d4d927d
+    nextGuid: f4995fa5-15bc-42d6-b72b-9a3742cb64c9
+    portId: 0
   nodes:
-  - guid: 9352a06f-9704-4f34-ba85-6f4c5427bfd9
+  - Guid: ce7e7358-1a59-4fef-8c04-74151d4d927d
     characterName: 
     dialogueText: 
     nodePos:
       serializedVersion: 2
-      x: 41
-      y: -2
-      width: 221
-      height: 158
-  - guid: 7c84b998-3213-4d0a-ae5a-6a5a53ea4c43
+      x: 107
+      y: 123
+      width: 356
+      height: 142
+  - Guid: f4995fa5-15bc-42d6-b72b-9a3742cb64c9
     characterName: 
     dialogueText: 
     nodePos:
       serializedVersion: 2
-      x: 41
-      y: 174
-      width: 221
-      height: 158
+      x: 535
+      y: 123
+      width: 356
+      height: 142

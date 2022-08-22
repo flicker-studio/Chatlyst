@@ -1,15 +1,10 @@
 ﻿namespace AVG.Runtime.PlotTree
 {
-    public class Section
+    public interface ISection
     {
-        public string Guid;
-
-        protected Section(bool dataNull)
-        {
-            if (dataNull)
-            {
-                Guid = System.Guid.NewGuid().ToString();
-            }
-        }
+        public string guid { get; set; }
+        public string nextGuid { get; set; }
+        //public ISection NextSection();
+        //public ISection CurrentSection();
     }
 }
