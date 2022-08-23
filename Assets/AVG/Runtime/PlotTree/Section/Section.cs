@@ -1,10 +1,17 @@
-﻿namespace AVG.Runtime.PlotTree
+﻿using System;
+
+namespace AVG.Runtime.PlotTree
 {
-    public interface ISection
+    [Serializable]
+    public class Section
     {
         public string guid { get; set; }
         public string nextGuid { get; set; }
-        //public ISection NextSection();
-        //public ISection CurrentSection();
+
+        public Section()
+        {
+            guid = Guid.NewGuid().ToString();
+            nextGuid = null;
+        }
     }
 }

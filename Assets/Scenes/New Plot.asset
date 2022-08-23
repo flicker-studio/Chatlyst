@@ -13,25 +13,8 @@ MonoBehaviour:
   m_Name: New Plot
   m_EditorClassIdentifier: 
   links:
-  - guid: ce7e7358-1a59-4fef-8c04-74151d4d927d
-    nextGuid: f4995fa5-15bc-42d6-b72b-9a3742cb64c9
-    portId: 0
-  nodes:
-  - Guid: ce7e7358-1a59-4fef-8c04-74151d4d927d
-    characterName: 
-    dialogueText: 
-    nodePos:
-      serializedVersion: 2
-      x: 107
-      y: 123
-      width: 356
-      height: 142
-  - Guid: f4995fa5-15bc-42d6-b72b-9a3742cb64c9
-    characterName: 
-    dialogueText: 
-    nodePos:
-      serializedVersion: 2
-      x: 535
-      y: 123
-      width: 356
-      height: 142
+  - guid: 737ab418-8106-4ab1-b872-1c82bd02db24
+    nextGuid: 49a9226b-80cb-4e45-809e-b09b16234a37
+  - guid: c19ce6d2-ca9c-43ba-a16b-642288a9a09c
+    nextGuid: 49a9226b-80cb-4e45-809e-b09b16234a37
+  nodes: []

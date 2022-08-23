@@ -22,11 +22,12 @@ namespace AVG.Editor.Plot_Visual
 
         public void AddNode(Vector2 mousePos)
         {
-            var node = new SectionNode();
+            var node = new DialogueNode();
+            Debug.Log("?");
             node.SetPosition(new Rect(
                 (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
                 (mousePos * (1 / scale)), Vector2.one));
-            node.mainContainer.Add(node.PlotVisualElement);
+            node.mainContainer.Add(node.visual);
 
 
             var inputPort =
@@ -44,14 +45,14 @@ namespace AVG.Editor.Plot_Visual
             AddElement(node);
         }
 
-        public void RedrawNode(SectionData data)
+        public void RedrawNode(DialogueSection section)
         {
-            var node = new SectionNode(data);
+            var node = new DialogueNode(section);
             node.SetPosition(new Rect(
                 (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
-                (data.nodePos.position * (1 / scale)), Vector2.one));
-            node.SectionData = data;
-            node.mainContainer.Add(node.PlotVisualElement);
+                (section.nodePos.position * (1 / scale)), Vector2.one));
+            node.DialogueSection = section;
+            node.mainContainer.Add(node.visual);
 
 
             var inputPort =

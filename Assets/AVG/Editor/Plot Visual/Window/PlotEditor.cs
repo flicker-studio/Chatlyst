@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AVG.Runtime.PlotTree;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -42,16 +43,16 @@ namespace AVG.Editor.Plot_Visual
 
             foreach (var data in m_PlotSo.nodes.ToList().Where(data => data != null))
             {
-                m_GraphView.RedrawNode(data);
+                m_GraphView.RedrawNode(data as DialogueSection);
             }
 
             var listDictionary = m_PlotSo.links.ToDictionary(link => link.guid);
-            var nodeList = m_GraphView.nodes.ToList().Cast<SectionNode>().ToList();
-            var nodeDictionary = nodeList.ToDictionary(node => node.SectionData.guid);
+            var nodeList = m_GraphView.nodes.ToList().Cast<DialogueNode>().ToList();
+            var nodeDictionary = nodeList.ToDictionary(node => node.DialogueSection.guid);
 
-            foreach (var temp in from node in m_GraphView.nodes.ToList().Cast<SectionNode>().ToList()
-                     where listDictionary.ContainsKey(node.SectionData.guid)
-                     let link = listDictionary[node.SectionData.guid]
+            foreach (var temp in from node in m_GraphView.nodes.ToList().Cast<DialogueNode>().ToList()
+                     where listDictionary.ContainsKey(node.DialogueSection.guid)
+                     let link = listDictionary[node.DialogueSection.guid]
                      let targetNode = nodeDictionary[link.nextGuid]
                      select new Edge
                      {
@@ -84,24 +85,23 @@ namespace AVG.Editor.Plot_Visual
             EditorUtility.SetDirty(m_PlotSo);
             m_PlotSo.ResetPlot();
 
-            foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<SectionNode>())
+            foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<DialogueNode>())
             {
-                sectionNode.SectionData.nodePos = sectionNode.GetPosition();
-                m_PlotSo.nodes.Add(sectionNode.SectionData);
+                sectionNode.DialogueSection.nodePos = sectionNode.GetPosition();
+                m_PlotSo.nodes.Add(sectionNode.DialogueSection);
             }
 
             var edgeList = m_GraphView.edges.ToList();
-            for (var i = 0; i < edgeList.Count; i++)
+            foreach (var edge in edgeList)
             {
-                var output = edgeList[i].output.node as SectionNode;
-                var input = edgeList[i].input.node as SectionNode;
+                var output = edge.output.node as DialogueNode;
+                var input = edge.input.node as DialogueNode;
 
 
                 m_PlotSo.links.Add(new NodeLink()
                 {
-                    guid = output?.SectionData.guid,
-                    nextGuid = input?.SectionData.guid,
-                    portId = i
+                    guid = output?.DialogueSection.guid,
+                    nextGuid = input?.DialogueSection.guid,
                 });
             }
 

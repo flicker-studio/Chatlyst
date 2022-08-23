@@ -2,8 +2,8 @@
 {
     public interface IPlotTree
     {
-        public ISection startSection { get; set; }
-        public ISection GetNextSection(string guid);
-        public ISection GetSection(string guid);
+        public Section startSection { get; }
+        public Section GetNextSection(string guid);
+        public Section GetSection(string guid);
     }
 }

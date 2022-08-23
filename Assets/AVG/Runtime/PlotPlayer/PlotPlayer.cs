@@ -7,9 +7,9 @@ namespace AVG.Runtime.PlotPlayer
     public class PlotPlayer : IPlotPlayer
     {
         public IPlotTree PlotTree;
-        public Dictionary<string, ISection> sectionsList { get; set; }
-        public ISection currentSection { get; set; }
-        public ISection GetSection(string guid) => sectionsList[guid];
+        public Dictionary<string, Section> sectionsList { get; set; }
+        public Section currentSection { get; set; }
+        public Section GetSection(string guid) => sectionsList[guid];
 
 
         public UniTask InitializeAsync()
