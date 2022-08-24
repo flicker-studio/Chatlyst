@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using AVG.Runtime.Element;
 using Cysharp.Threading.Tasks;
 
 namespace AVG.Runtime.Controller
@@ -12,7 +11,6 @@ namespace AVG.Runtime.Controller
     public static class EngineCore
     {
         //Subscribable engine events
-
         /// <summary>
         /// Invoked when engine initialization begins
         /// </summary>
@@ -46,10 +44,10 @@ namespace AVG.Runtime.Controller
         private static CancellationTokenSource _destroyCts;
         private static readonly List<Func<UniTask>> PreInitializationTasks = new List<Func<UniTask>>();
         private static readonly List<Func<UniTask>> PostInitializationTasks = new List<Func<UniTask>>();
-        private static readonly List<IElementManager> Services = new List<IElementManager>();
+        private static readonly List<IBasicService> Services = new List<IBasicService>();
 
         public static async UniTask InitializeAsync(RuntimeBehavior proxyBehavior,
-            List<IElementManager> elementManagers)
+            List<IBasicService> services)
         {
             //Make sure the engine is initialized only once
             if (initialized) return;
@@ -76,8 +74,9 @@ namespace AVG.Runtime.Controller
             runtimeBehavior = proxyBehavior;
             runtimeBehavior.OnMonoDestroyed += Destroy;
 
+            //set services
             Services.Clear();
-            Services.AddRange(Services);
+            Services.AddRange(services);
 
             for (var i = 0; i < Services.Count; i++)
             {

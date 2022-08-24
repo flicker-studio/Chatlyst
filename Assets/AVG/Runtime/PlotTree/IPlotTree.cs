@@ -1,9 +1,12 @@
-﻿namespace AVG.Runtime.PlotTree
+﻿using System.Collections.Generic;
+
+namespace AVG.Runtime.PlotTree
 {
     public interface IPlotTree
     {
-        public Section startSection { get; }
-        public Section GetNextSection(string guid);
-        public Section GetSection(string guid);
+        public Dictionary<string, ISection> plot { get; set; }
+        public ISection startSection { get; }
+        public ISection GetNextSection(string guid);
+        public ISection GetSection(string guid);
     }
 }

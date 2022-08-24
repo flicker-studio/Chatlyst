@@ -17,6 +17,8 @@ namespace AVG.Editor.Plot_Visual
             {
                 PlotEditor.DataEdit(target as PlotSo);
             }
+            
+            
         }
     }
 }

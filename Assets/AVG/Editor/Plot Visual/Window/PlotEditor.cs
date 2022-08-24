@@ -33,7 +33,7 @@ namespace AVG.Editor.Plot_Visual
                 return default;
             });
 
-            if (m_PlotSo.nodes == null)
+            if (m_PlotSo.dialogueSections == null)
             {
                 m_PlotSo.ResetPlot();
                 return;
@@ -41,14 +41,15 @@ namespace AVG.Editor.Plot_Visual
 
             #region Redraw the plot tree
 
-            foreach (var data in m_PlotSo.nodes.ToList().Where(data => data != null))
+            foreach (var dialogue in m_PlotSo.dialogueSections.ToList().Where(dialogue => dialogue != null))
             {
-                m_GraphView.RedrawNode(data as DialogueSection);
+                m_GraphView.RedrawNode(dialogue);
             }
 
             var listDictionary = m_PlotSo.links.ToDictionary(link => link.guid);
             var nodeList = m_GraphView.nodes.ToList().Cast<DialogueNode>().ToList();
             var nodeDictionary = nodeList.ToDictionary(node => node.DialogueSection.guid);
+
 
             foreach (var temp in from node in m_GraphView.nodes.ToList().Cast<DialogueNode>().ToList()
                      where listDictionary.ContainsKey(node.DialogueSection.guid)
@@ -84,14 +85,15 @@ namespace AVG.Editor.Plot_Visual
         {
             EditorUtility.SetDirty(m_PlotSo);
             m_PlotSo.ResetPlot();
+            var edgeList = m_GraphView.edges.ToList();
 
             foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<DialogueNode>())
             {
                 sectionNode.DialogueSection.nodePos = sectionNode.GetPosition();
-                m_PlotSo.nodes.Add(sectionNode.DialogueSection);
+                m_PlotSo.dialogueSections.Add(sectionNode.DialogueSection);
             }
 
-            var edgeList = m_GraphView.edges.ToList();
+            //TODO:remove link data
             foreach (var edge in edgeList)
             {
                 var output = edge.output.node as DialogueNode;

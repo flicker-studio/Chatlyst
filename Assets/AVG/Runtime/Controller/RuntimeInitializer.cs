@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using AVG.Runtime.Configuration;
-using AVG.Runtime.Element;
 using AVG.Runtime.Element.View;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -30,9 +29,9 @@ namespace AVG.Runtime.Controller
             configDistribution ??= new ConfigDistribution();
 
             var runtimeBehavior = RuntimeBehavior.Construction();
-            var manager = new List<IElementManager>
+            var manager = new List<IBasicService>
             {
-                new ViewManager()
+                new ViewManager(), new PlotPlayer.PlotPlayer()
             };
 
             await EngineCore.InitializeAsync(runtimeBehavior, manager);

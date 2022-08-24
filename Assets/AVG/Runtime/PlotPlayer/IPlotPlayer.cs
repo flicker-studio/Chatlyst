@@ -6,8 +6,8 @@ namespace AVG.Runtime.PlotPlayer
 {
     public interface IPlotPlayer : IBasicService
     {
-        Dictionary<string, Section> sectionsList { get; set; }
-        Section currentSection { get; set; }
-        public Section GetSection(string guid);
+        public Dictionary<string, ISection> sectionsList { get; }
+        public ISection currentSection { get; set; }
+        public ISection GetSection(string guid);
     }
 }

@@ -1,17 +1,26 @@
 ﻿using System;
+using UnityEngine;
 
 namespace AVG.Runtime.PlotTree
 {
-    [Serializable]
-    public class Section
+    public interface ISection
     {
         public string guid { get; set; }
         public string nextGuid { get; set; }
+        public Rect nodePos { get; set; }
+    }
 
-        public Section()
+    public abstract class Section : ISection
+    {
+        public string guid { get; set; }
+        public string nextGuid { get; set; }
+        public Rect nodePos { get; set; }
+
+        protected Section()
         {
             guid = Guid.NewGuid().ToString();
             nextGuid = null;
+            nodePos = new Rect();
         }
     }
 }

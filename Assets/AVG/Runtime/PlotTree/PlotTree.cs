@@ -1,21 +1,24 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace AVG.Runtime.PlotTree
 {
     public class PlotTree : IPlotTree
     {
-        private Dictionary<string, Section> m_Plot;
-        public Section startSection { get; }
+        public Dictionary<string, ISection> plot { get; set; }
+        public ISection startSection { get; }
 
-        //Load ScriptableObject to Dictionary
         public PlotTree(PlotSo so)
         {
-            m_Plot = so.nodes.ToDictionary(data => data.guid);
-            startSection = GetSection(so.startGuid);
+            startSection = so.StartSection;
+            plot = new Dictionary<string, ISection>();
+            plot.Clear();
+            foreach (var dialogue in so.dialogueSections)
+            {
+                plot.Add(dialogue.guid, dialogue);
+            }
         }
 
-        public Section GetNextSection(string guid) => m_Plot[GetSection(guid).nextGuid];
-        public Section GetSection(string guid) => m_Plot[guid];
+        public ISection GetNextSection(string guid) => plot[GetSection(guid).nextGuid];
+        public ISection GetSection(string guid) => plot[guid];
     }
 }
