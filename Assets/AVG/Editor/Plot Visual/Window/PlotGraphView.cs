@@ -46,7 +46,10 @@ namespace AVG.Editor.Plot_Visual
 
         public void RedrawNode(DialogueSection section)
         {
-            var node = new DialogueNode(section);
+            var node = new DialogueNode
+            {
+                Section = section
+            };
             var pos = section.nodePos;
             node.SetPosition(new Rect(
                 (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +

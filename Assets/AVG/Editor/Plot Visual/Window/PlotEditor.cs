@@ -48,12 +48,12 @@ namespace AVG.Editor.Plot_Visual
 
             var listDictionary = m_PlotSo.links.ToDictionary(link => link.guid);
             var nodeList = m_GraphView.nodes.ToList().Cast<DialogueNode>().ToList();
-            var nodeDictionary = nodeList.ToDictionary(node => node.DialogueSection.guid);
+            var nodeDictionary = nodeList.ToDictionary(node => node.Section.guid);
 
 
             foreach (var temp in from node in m_GraphView.nodes.ToList().Cast<DialogueNode>().ToList()
-                     where listDictionary.ContainsKey(node.DialogueSection.guid)
-                     let link = listDictionary[node.DialogueSection.guid]
+                     where listDictionary.ContainsKey(node.Section.guid)
+                     let link = listDictionary[node.Section.guid]
                      let targetNode = nodeDictionary[link.nextGuid]
                      select new Edge
                      {
@@ -89,8 +89,8 @@ namespace AVG.Editor.Plot_Visual
 
             foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<DialogueNode>())
             {
-                sectionNode.DialogueSection.nodePos = sectionNode.GetPosition();
-                m_PlotSo.dialogueSections.Add(sectionNode.DialogueSection);
+                sectionNode.Section.nodePos = sectionNode.GetPosition();
+                m_PlotSo.dialogueSections.Add(sectionNode.Section);
             }
 
             //TODO:remove link data
@@ -102,8 +102,8 @@ namespace AVG.Editor.Plot_Visual
 
                 m_PlotSo.links.Add(new NodeLink()
                 {
-                    guid = output?.DialogueSection.guid,
-                    nextGuid = input?.DialogueSection.guid,
+                    guid = output?.Section.guid,
+                    nextGuid = input?.Section.guid,
                 });
             }
 

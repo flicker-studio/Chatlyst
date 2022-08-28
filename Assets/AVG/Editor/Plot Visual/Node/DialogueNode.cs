@@ -5,14 +5,11 @@ using UnityEngine.UIElements;
 //TODO:Replace the uxml 
 namespace AVG.Editor.Plot_Visual
 {
-    public class DialogueNode : GraphNode<DialogueSection>
+    public sealed class DialogueNode : GraphNode<DialogueSection>
     {
-        public readonly DialogueSection DialogueSection;
-        public readonly VisualElement VisualElement;
-
-        public DialogueNode(DialogueSection baseSection = null)
+        public DialogueNode()
         {
-            DialogueSection = baseSection ?? new DialogueSection();
+            //Section = baseSection ?? new DialogueSection();
             var visualAsset = EditorGUIUtility.Load("GraphNode.uxml") as VisualTreeAsset;
             VisualElement = CreatVisual(visualAsset);
         }
@@ -23,15 +20,15 @@ namespace AVG.Editor.Plot_Visual
 
             TextField characterName = visualElement.Query<TextField>("CharacterName");
 
-            characterName.value = DialogueSection?.characterName;
+            characterName.value = Section?.characterName;
             characterName.RegisterValueChangedCallback(
-                _ => { DialogueSection.characterName = characterName.value; }
+                _ => { Section.characterName = characterName.value; }
             );
 
             TextField dialogueText = visualElement.Query<TextField>("DialogueText");
-            dialogueText.value = DialogueSection?.dialogueText;
+            dialogueText.value = Section?.dialogueText;
             dialogueText.RegisterValueChangedCallback(
-                _ => { DialogueSection.dialogueText = dialogueText.value; }
+                _ => { Section.dialogueText = dialogueText.value; }
             );
             return visualElement;
         }

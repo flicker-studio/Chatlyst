@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
+  m_Name: TestPlot
+  m_EditorClassIdentifier: 
+  links:
+  - guid: 833c919a-55c2-469f-b65a-d726d729c90d
+    nextGuid: 7ec5b0e4-2c7b-47f3-aea4-9cc9f74eb75c
+  dialogueSections:
+  - characterName: aa
+    dialogueText: ss
+  - characterName: ss
+    dialogueText: e
