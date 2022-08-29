@@ -15,7 +15,7 @@ namespace AVG.Runtime.PlotTree
     {
         [Header("Dialogue")]
         // private List<Dialogue> dialogues ;
-        public string characterName;
-        public string dialogueText;
+        [DisplayOnly] public string characterName;
+        [DisplayOnly] public string dialogueText;
     }
 }

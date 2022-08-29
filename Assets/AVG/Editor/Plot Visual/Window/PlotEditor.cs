@@ -13,6 +13,7 @@ namespace AVG.Editor.Plot_Visual
         private PlotSo m_PlotSo;
         private string m_Title = "Plot Editor";
         private const KeyCode MenuKey = KeyCode.Space;
+        private bool m_HasStartNode = false;
 
         public static void DataEdit(PlotSo targetPlot)
         {
@@ -76,6 +77,8 @@ namespace AVG.Editor.Plot_Visual
             var menu = new GenericMenu();
             menu.AddItem(new GUIContent("Add Node"), false,
                 () => { m_GraphView.AddNode(currentMousePosition); });
+            // menu.AddItem(new GUIContent("Add Start"), false,
+            //     () => { StartNode.AddNode(m_GraphView, currentMousePosition); });
             menu.AddItem(new GUIContent("Save"), false,
                 DataSave);
             menu.ShowAsContext();
@@ -83,28 +86,55 @@ namespace AVG.Editor.Plot_Visual
 
         private void DataSave()
         {
+            m_HasStartNode = false;
             EditorUtility.SetDirty(m_PlotSo);
             m_PlotSo.ResetPlot();
             var edgeList = m_GraphView.edges.ToList();
+            var nodeList = m_GraphView.nodes.Cast<GraphNode>().ToList();
 
-            foreach (var sectionNode in m_GraphView.nodes.ToList().Cast<DialogueNode>())
+            // var nodesDictionary = graphNodes.ToDictionary(node => node.guid);
+            // var nodeDictionary = graphNodes.ToDictionary(node => node.guid);
+            foreach (var sectionNode in nodeList)
             {
-                sectionNode.Section.nodePos = sectionNode.GetPosition();
-                m_PlotSo.dialogueSections.Add(sectionNode.Section);
+                switch (sectionNode)
+                {
+                    case DialogueNode dialogueNode:
+                        dialogueNode.Section.pos = dialogueNode.GetPosition();
+                        m_PlotSo.dialogueSections.Add(dialogueNode.Section);
+                        break;
+                    case StartNode startNode:
+                        if (m_HasStartNode)
+                        {
+                            Debug.Log("One more Start Node");
+                        }
+                        else
+                        {
+                            m_PlotSo.startGuid = startNode.Guid;
+                            m_HasStartNode = true;
+                        }
+
+                        break;
+                    default:
+                        Debug.Log("Unknown Node");
+                        break;
+                }
+            }
+
+            for (var index = 0; index < m_PlotSo.seLength; index++)
+            {
+                var section = m_PlotSo.dialogueSections[index];
+                m_PlotSo.DialogueSectionDictionary.Add(section.guid, index);
             }
 
             //TODO:remove link data
             foreach (var edge in edgeList)
             {
-                var output = edge.output.node as DialogueNode;
-                var input = edge.input.node as DialogueNode;
-
-
-                m_PlotSo.links.Add(new NodeLink()
-                {
-                    guid = output?.Section.guid,
-                    nextGuid = input?.Section.guid,
-                });
+                if (edge.output.node is not GraphNode output || edge.input.node is not GraphNode input)
+                    continue;
+                var currentId = output.Guid;
+                var nextId = input.Guid;
+                var index = m_PlotSo.DialogueSectionDictionary[currentId];
+                m_PlotSo.dialogueSections[index].next = nextId;
             }
 
             m_Title = "Plot Editor";

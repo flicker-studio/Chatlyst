@@ -5,20 +5,33 @@ namespace AVG.Runtime.PlotTree
 {
     public interface ISection
     {
-        public string guid { get; set; }
-        public string nextGuid { get; set; }
-        public Rect nodePos { get; set; }
+        public string guid { get; }
+        public string next { get; }
+        public Rect pos { get; set; }
     }
 
+    [Serializable]
     public abstract class Section : ISection
     {
-        public string guid { get; set; }
-        public string nextGuid { get; set; }
-        public Rect nodePos { get; set; }
+        public string guid => currentGuid;
+        public string next
+        {
+            get => nextGuid;
+            set => nextGuid = value;
+        }
+        public Rect pos
+        {
+            get => nodePos;
+            set => nodePos = value;
+        }
+
+        [SerializeField] [HideInInspector] private string currentGuid;
+        [SerializeField] [HideInInspector] private string nextGuid;
+        [SerializeField] [HideInInspector] private Rect nodePos;
 
         protected Section()
         {
-            guid = Guid.NewGuid().ToString();
+            currentGuid = Guid.NewGuid().ToString();
             nextGuid = null;
             nodePos = new Rect();
         }

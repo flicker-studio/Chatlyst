@@ -1,20 +1,19 @@
-﻿using System;
-using AVG.Runtime.PlotTree;
-using UnityEditor.Experimental.GraphView;
+﻿using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
 namespace AVG.Editor.Plot_Visual
 {
-    public interface IGraphNode<T>
-        where T : ISection
+    public interface IGraphNode
+        // where T : ISection
     {
-        public Type type => typeof(T);
+        //public Type type => typeof(T);
+        public void NodeVisual();
     }
 
-    public abstract class GraphNode<T> : Node, IGraphNode<T>
-        where T : ISection
+    public abstract class GraphNode : Node, IGraphNode
+        // where T : ISection
     {
-        public T Section;
+        public string Guid;
         public VisualElement VisualElement;
 
         /// <summary>
@@ -28,5 +27,7 @@ namespace AVG.Editor.Plot_Visual
             uxml.CloneTree(visualElement);
             return visualElement;
         }
+
+        public abstract void NodeVisual();
     }
 }

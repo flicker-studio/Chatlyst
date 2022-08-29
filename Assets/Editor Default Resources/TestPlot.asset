@@ -13,10 +13,38 @@ MonoBehaviour:
   m_Name: TestPlot
   m_EditorClassIdentifier: 
   links:
-  - guid: 833c919a-55c2-469f-b65a-d726d729c90d
-    nextGuid: 7ec5b0e4-2c7b-47f3-aea4-9cc9f74eb75c
+  - guid: 34da1672-29fd-4778-98c6-882da27c8bf1
+    nextGuid: 62427e1c-6624-4480-933c-026fa22fd7e9
+  - guid: 8597ebf7-bf48-485c-8c20-32cefe438c10
+    nextGuid: 62427e1c-6624-4480-933c-026fa22fd7e9
   dialogueSections:
-  - characterName: aa
+  - currentGuid: 62427e1c-6624-4480-933c-026fa22fd7e9
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 611
+      y: 124
+      width: 356
+      height: 142
+    characterName: aa
     dialogueText: ss
-  - characterName: ss
+  - currentGuid: 34da1672-29fd-4778-98c6-882da27c8bf1
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 212
+      y: 124
+      width: 356
+      height: 142
+    characterName: ss
     dialogueText: e
+  - currentGuid: 8597ebf7-bf48-485c-8c20-32cefe438c10
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 212
+      y: 291
+      width: 356
+      height: 142
+    characterName: 
+    dialogueText: 

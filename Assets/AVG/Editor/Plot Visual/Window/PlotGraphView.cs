@@ -27,49 +27,20 @@ namespace AVG.Editor.Plot_Visual
                 (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
                 (mousePos * (1 / scale)), Vector2.one));
             node.mainContainer.Add(node.VisualElement);
-
-
-            var inputPort =
-                node.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
-            inputPort.portName = "Input";
-            node.inputContainer.Add(inputPort);
-
-            var outputPort =
-                node.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
-            outputPort.portName = "Next";
-            node.outputContainer.Add(outputPort);
-
-            node.RefreshExpandedState();
-            node.RefreshPorts();
+            node.NodeVisual();
             AddElement(node);
         }
 
         public void RedrawNode(DialogueSection section)
         {
-            var node = new DialogueNode
-            {
-                Section = section
-            };
-            var pos = section.nodePos;
+            var node = new DialogueNode(section);
+            var pos = section.pos;
             node.SetPosition(new Rect(
                 (new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
                 (pos.position * (1 / scale)), Vector2.one));
 
             node.mainContainer.Add(node.VisualElement);
-
-
-            var inputPort =
-                node.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
-            inputPort.portName = "Input";
-            node.inputContainer.Add(inputPort);
-
-            var outputPort =
-                node.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
-            outputPort.portName = "Next";
-            node.outputContainer.Add(outputPort);
-
-            node.RefreshExpandedState();
-            node.RefreshPorts();
+            node.NodeVisual();
             AddElement(node);
         }
 

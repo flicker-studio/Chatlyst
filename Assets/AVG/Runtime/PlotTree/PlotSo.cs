@@ -16,17 +16,17 @@ namespace AVG.Runtime.PlotTree
     public class PlotSo : ScriptableObject
     {
         public List<NodeLink> links;
-        public StartSection StartSection;
-
         public List<DialogueSection> dialogueSections;
 
-        public string seLength => dialogueSections.Count.ToString();
-        public string startGuid => StartSection.guid;
+        public readonly Dictionary<string, int> DialogueSectionDictionary = new();
+        public int seLength => dialogueSections.Count;
+        public string startGuid;
 
 
         public void ResetPlot()
         {
             links?.Clear();
+            DialogueSectionDictionary?.Clear();
             dialogueSections?.Clear();
         }
     }
