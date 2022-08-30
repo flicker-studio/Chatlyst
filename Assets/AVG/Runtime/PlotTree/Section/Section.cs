@@ -25,8 +25,8 @@ namespace AVG.Runtime.PlotTree
             set => nodePos = value;
         }
 
-        [SerializeField] [HideInInspector] private string currentGuid;
-        [SerializeField] [HideInInspector] private string nextGuid;
+        [SerializeField] private string currentGuid;
+        [SerializeField] private string nextGuid;
         [SerializeField] [HideInInspector] private Rect nodePos;
 
         protected Section()

@@ -1,10 +1,9 @@
-﻿namespace AVG.Runtime.PlotTree
+﻿using System;
+
+namespace AVG.Runtime.PlotTree
 {
+    [Serializable]
     public class StartSection : Section
     {
-        public StartSection() : base()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

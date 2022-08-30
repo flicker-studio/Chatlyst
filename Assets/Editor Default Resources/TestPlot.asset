@@ -12,39 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
   m_Name: TestPlot
   m_EditorClassIdentifier: 
-  links:
-  - guid: 34da1672-29fd-4778-98c6-882da27c8bf1
-    nextGuid: 62427e1c-6624-4480-933c-026fa22fd7e9
-  - guid: 8597ebf7-bf48-485c-8c20-32cefe438c10
-    nextGuid: 62427e1c-6624-4480-933c-026fa22fd7e9
+  links: []
+  StartSection:
+    currentGuid: b9abe853-5b83-4a20-9d24-20191f0fb5ba
+    nextGuid: 4df73af3-21ef-42c0-bbf2-a7f477fafe20
+    nodePos:
+      serializedVersion: 2
+      x: 171
+      y: 122
+      width: 108
+      height: 177
   dialogueSections:
-  - currentGuid: 62427e1c-6624-4480-933c-026fa22fd7e9
-    nextGuid: 
+  - currentGuid: 4df73af3-21ef-42c0-bbf2-a7f477fafe20
+    nextGuid: f601f250-6a2e-4ed1-883d-c96a2fa305ed
     nodePos:
       serializedVersion: 2
-      x: 611
-      y: 124
-      width: 356
-      height: 142
-    characterName: aa
-    dialogueText: ss
-  - currentGuid: 34da1672-29fd-4778-98c6-882da27c8bf1
-    nextGuid: 
-    nodePos:
-      serializedVersion: 2
-      x: 212
-      y: 124
-      width: 356
-      height: 142
-    characterName: ss
-    dialogueText: e
-  - currentGuid: 8597ebf7-bf48-485c-8c20-32cefe438c10
-    nextGuid: 
-    nodePos:
-      serializedVersion: 2
-      x: 212
-      y: 291
+      x: 333
+      y: 122
       width: 356
       height: 142
     characterName: 
     dialogueText: 
+  - currentGuid: f601f250-6a2e-4ed1-883d-c96a2fa305ed
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 333
+      y: 311
+      width: 356
+      height: 142
+    characterName: 
+    dialogueText: 
+  startGuid: 

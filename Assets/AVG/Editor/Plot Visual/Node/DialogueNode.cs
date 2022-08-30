@@ -6,14 +6,11 @@ using UnityEngine.UIElements;
 //TODO:Replace the uxml 
 namespace AVG.Editor.Plot_Visual
 {
-    public sealed class DialogueNode : GraphNode //<DialogueSection>
+    public sealed class DialogueNode : GraphNode<DialogueSection>
     {
-        public readonly DialogueSection Section;
-
-        public DialogueNode(DialogueSection baseSection = null)
+        public DialogueNode()
         {
-            Section = baseSection ?? new DialogueSection();
-            Guid = Section.guid;
+            Section = new DialogueSection();
             var visualAsset = EditorGUIUtility.Load("GraphNode.uxml") as VisualTreeAsset;
             VisualElement = CreatVisual(visualAsset);
         }

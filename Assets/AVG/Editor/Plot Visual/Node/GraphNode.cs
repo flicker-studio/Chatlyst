@@ -1,20 +1,20 @@
-﻿using UnityEditor.Experimental.GraphView;
+﻿using AVG.Runtime.PlotTree;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace AVG.Editor.Plot_Visual
 {
     public interface IGraphNode
-        // where T : ISection
     {
-        //public Type type => typeof(T);
         public void NodeVisual();
     }
 
-    public abstract class GraphNode : Node, IGraphNode
-        // where T : ISection
+    public abstract class GraphNode<T> : Node, IGraphNode
+        where T : Section
     {
-        public string Guid;
-        public VisualElement VisualElement;
+        public T Section;
+        protected VisualElement VisualElement;
 
         /// <summary>
         /// create a visual node base on .uxml
@@ -29,5 +29,25 @@ namespace AVG.Editor.Plot_Visual
         }
 
         public abstract void NodeVisual();
+
+        public static void NodeAdd(PlotGraphView graphView, Vector2 mousePos, GraphNode<T> node)
+        {
+            var rect = graphView.ToNodePosition(mousePos);
+            node.SetPosition(rect);
+            node.mainContainer.Add(node.VisualElement);
+            node.NodeVisual();
+            graphView.AddElement(node);
+        }
+
+        public static GraphNode<T> NodeRedraw(PlotGraphView graphView, T section, GraphNode<T> node)
+        {
+            node.Section = section;
+            var rect = graphView.ToNodePosition(section.pos.position);
+            node.SetPosition(rect);
+            node.mainContainer.Add(node.VisualElement);
+            node.NodeVisual();
+            graphView.AddElement(node);
+            return node;
+        }
     }
 }

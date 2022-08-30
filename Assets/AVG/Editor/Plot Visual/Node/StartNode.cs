@@ -1,13 +1,15 @@
-﻿using UnityEditor;
+﻿using AVG.Runtime.PlotTree;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
 namespace AVG.Editor.Plot_Visual
 {
-    public sealed class StartNode : GraphNode //<StartSection>
+    public sealed class StartNode : GraphNode<StartSection>
     {
         public StartNode()
         {
+            Section = new StartSection();
             var visualAsset = EditorGUIUtility.Load("StartNode.uxml") as VisualTreeAsset;
             VisualElement = CreatVisual(visualAsset);
         }
