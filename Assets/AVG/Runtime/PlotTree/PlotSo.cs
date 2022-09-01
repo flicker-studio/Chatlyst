@@ -9,15 +9,25 @@ namespace AVG.Runtime.PlotTree
     {
         public StartSection startSection;
         public List<DialogueSection> dialogueSections;
-
-        public readonly Dictionary<string, int> DialogueSectionDictionary = new();
         public int seLength => dialogueSections.Count;
 
-        public void ResetPlot()
+        //reset
+        public void Reset()
         {
             startSection = null;
             dialogueSections?.Clear();
-            DialogueSectionDictionary?.Clear();
+        }
+
+        public Dictionary<string, ISection> ToDictionary()
+        {
+            var dic = new Dictionary<string, ISection>();
+            foreach (var dialogue in dialogueSections)
+            {
+                dic.Add(dialogue.guid, dialogue);
+            }
+
+            dic.Add(startSection.guid, startSection);
+            return dic;
         }
     }
 }

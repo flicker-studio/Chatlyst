@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace AVG.Editor.Plot_Visual
 {
-    public class PlotGraphView : GraphView
+    internal class PlotGraphView : GraphView
     {
         public PlotGraphView()
         {
@@ -30,10 +30,5 @@ namespace AVG.Editor.Plot_Visual
 
             return compatiblePorts;
         }
-
-
-        public Rect ToNodePosition(Vector2 current) =>
-            new((new Vector2(viewTransform.position.x, viewTransform.position.y) * -(1 / scale)) +
-                (current * (1 / scale)), Vector2.one);
     }
 }

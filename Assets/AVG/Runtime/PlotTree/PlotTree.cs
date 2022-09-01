@@ -10,12 +10,7 @@ namespace AVG.Runtime.PlotTree
         public PlotTree(PlotSo so)
         {
             startSection = so.startSection;
-            plot = new Dictionary<string, ISection>();
-            plot.Clear();
-            foreach (var dialogue in so.dialogueSections)
-            {
-                plot.Add(dialogue.guid, dialogue);
-            }
+            plot = so.ToDictionary();
         }
 
         public ISection GetNextSection(string guid) => plot[GetSection(guid).next];

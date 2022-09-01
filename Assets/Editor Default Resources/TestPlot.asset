@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
   m_Name: TestPlot
   m_EditorClassIdentifier: 
-  links: []
-  StartSection:
-    currentGuid: b9abe853-5b83-4a20-9d24-20191f0fb5ba
+  startSection:
+    currentGuid: eef56b70-aafc-4548-bf33-f56aa2dff3f6
     nextGuid: 4df73af3-21ef-42c0-bbf2-a7f477fafe20
     nodePos:
       serializedVersion: 2
-      x: 171
+      x: 160
       y: 122
       width: 108
       height: 177
@@ -34,7 +33,7 @@ MonoBehaviour:
     characterName: 
     dialogueText: 
   - currentGuid: f601f250-6a2e-4ed1-883d-c96a2fa305ed
-    nextGuid: 
+    nextGuid: ccae5446-063d-4122-808f-0537e8aa14d4
     nodePos:
       serializedVersion: 2
       x: 333
@@ -43,4 +42,13 @@ MonoBehaviour:
       height: 142
     characterName: 
     dialogueText: 
-  startGuid: 
+  - currentGuid: ccae5446-063d-4122-808f-0537e8aa14d4
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 760
+      y: 311
+      width: 356
+      height: 142
+    characterName: 
+    dialogueText: 

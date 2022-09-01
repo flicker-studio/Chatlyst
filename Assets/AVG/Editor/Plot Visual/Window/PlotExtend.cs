@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AVG.Editor.Plot_Visual
 {
     [CustomEditor(typeof(PlotSo))]
-    public class PlotExtend : UnityEditor.Editor
+    internal class PlotExtend : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

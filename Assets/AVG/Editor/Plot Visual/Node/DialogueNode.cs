@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 //TODO:Replace the uxml 
 namespace AVG.Editor.Plot_Visual
 {
-    public sealed class DialogueNode : GraphNode<DialogueSection>
+    internal sealed class DialogueNode : GraphNode<DialogueSection>
     {
         public DialogueNode()
         {
@@ -15,7 +15,7 @@ namespace AVG.Editor.Plot_Visual
             VisualElement = CreatVisual(visualAsset);
         }
 
-        protected override VisualElement CreatVisual(VisualTreeAsset uxml)
+        private protected override VisualElement CreatVisual(VisualTreeAsset uxml)
         {
             var visualElement = base.CreatVisual(uxml);
 

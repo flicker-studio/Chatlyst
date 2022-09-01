@@ -6,68 +6,60 @@ using UnityEngine.UIElements;
 
 namespace AVG.Editor.Plot_Visual
 {
-    public class PlotEditor : EditorWindow
+    internal class PlotEditor : EditorWindow
     {
-        private PlotSo m_PlotSo;
-        private bool m_HasStartNode;
-        private PlotGraphView m_GraphView;
-        private string m_Title = "Plot Editor";
+        private PlotSo _plotSo;
+        private bool _hasStartNode;
+        private PlotGraphView _graphView;
+        private string _title = "Plot Editor";
         private const KeyCode MenuKey = KeyCode.Space;
 
 
         public static void DataEdit(PlotSo targetPlot)
         {
             var window = GetWindow<PlotEditor>("Plot Editor");
-            window.m_PlotSo = targetPlot;
+            window._plotSo = targetPlot;
             window.GraphViewInitialize();
         }
 
         private void GraphViewInitialize()
         {
-            m_GraphView ??= new PlotGraphView();
-            m_GraphView.RegisterCallback<KeyDownEvent>(MenuTrigger);
-            m_GraphView.StretchToParentSize();
-            rootVisualElement.Add(m_GraphView);
-            m_GraphView.graphViewChanged += (_ =>
+            _graphView ??= new PlotGraphView();
+            _graphView.RegisterCallback<KeyDownEvent>(MenuTrigger);
+            _graphView.StretchToParentSize();
+            rootVisualElement.Add(_graphView);
+            _graphView.graphViewChanged += (_ =>
             {
-                m_Title = "Plot Editor(Unsaved)";
+                _title = "Plot Editor(Unsaved)";
                 return default;
             });
 
-            if (m_PlotSo.dialogueSections == null || m_PlotSo.startSection == null)
+            if (_plotSo.dialogueSections == null || _plotSo.startSection == null)
             {
-                m_PlotSo.ResetPlot();
+                _plotSo.Reset();
                 return;
             }
 
             #region Re-draw the plot tree
 
-            m_PlotSo.DialogueSectionDictionary.Clear();
-            for (var index = 0; index < m_PlotSo.seLength; index++)
-            {
-                var section = m_PlotSo.dialogueSections[index];
-
-                m_PlotSo.DialogueSectionDictionary.Add(section.guid, index);
-            }
-
+            var sectionDictionary = _plotSo.ToDictionary();
             var temp = new Edge();
-
-            var startNode = StartNode.NodeRedraw(m_GraphView, m_PlotSo.startSection, new StartNode());
-            var next = m_PlotSo.startSection.next;
+            var startNode = StartNode.NodeRedraw(_graphView, _plotSo.startSection, new StartNode());
+            var next = _plotSo.startSection.next;
             temp.output = startNode.outputContainer[0].Q<Port>();
 
             for (;;)
             {
                 if (string.IsNullOrEmpty(next)) break;
 
-                var targetDialogue = m_PlotSo.dialogueSections[m_PlotSo.DialogueSectionDictionary[next]];
-                var nextNode = (DialogueNode)DialogueNode.NodeRedraw(m_GraphView, targetDialogue, new DialogueNode());
+                var targetDialogue = sectionDictionary[next] as DialogueSection;
+                var nextNode = (DialogueNode)DialogueNode.NodeRedraw(_graphView, targetDialogue, new DialogueNode());
 
                 temp.input = nextNode.inputContainer[0].Q<Port>();
 
                 temp.input.Connect(temp);
                 temp.output.Connect(temp);
-                m_GraphView.Add(temp);
+                _graphView.Add(temp);
 
                 next = nextNode.Section.next;
                 temp = new Edge
@@ -86,9 +78,9 @@ namespace AVG.Editor.Plot_Visual
             var currentMousePosition = Event.current.mousePosition;
             var menu = new GenericMenu();
             menu.AddItem(new GUIContent("Add Node"), false,
-                () => { DialogueNode.NodeAdd(m_GraphView, currentMousePosition, new DialogueNode()); });
+                () => { DialogueNode.NodeAdd(_graphView, currentMousePosition, new DialogueNode()); });
             menu.AddItem(new GUIContent("Add Start"), false,
-                () => { StartNode.NodeAdd(m_GraphView, currentMousePosition, new StartNode()); });
+                () => { StartNode.NodeAdd(_graphView, currentMousePosition, new StartNode()); });
             menu.AddItem(new GUIContent("Save"), false,
                 DataSave);
             menu.ShowAsContext();
@@ -96,11 +88,11 @@ namespace AVG.Editor.Plot_Visual
 
         private void DataSave()
         {
-            m_HasStartNode = false;
-            EditorUtility.SetDirty(m_PlotSo);
-            m_PlotSo.ResetPlot();
-            var edgeList = m_GraphView.edges.ToList();
-            var nodeList = m_GraphView.nodes.ToList();
+            _hasStartNode = false;
+            EditorUtility.SetDirty(_plotSo);
+            _plotSo.Reset();
+            var edgeList = _graphView.edges.ToList();
+            var nodeList = _graphView.nodes.ToList();
 
             #region Node Save
 
@@ -110,18 +102,18 @@ namespace AVG.Editor.Plot_Visual
                 {
                     case DialogueNode dialogueNode:
                         dialogueNode.Section.pos = dialogueNode.GetPosition();
-                        m_PlotSo.dialogueSections.Add(dialogueNode.Section);
+                        _plotSo.dialogueSections.Add(dialogueNode.Section);
                         break;
                     case StartNode startNode:
-                        if (m_HasStartNode)
+                        if (_hasStartNode)
                         {
                             Debug.Log("One more Start Node");
                         }
                         else
                         {
-                            m_PlotSo.startSection = startNode.Section;
-                            m_PlotSo.startSection.pos = startNode.GetPosition();
-                            m_HasStartNode = true;
+                            startNode.Section.pos = startNode.GetPosition();
+                            _plotSo.startSection = startNode.Section;
+                            _hasStartNode = true;
                         }
 
                         break;
@@ -131,16 +123,11 @@ namespace AVG.Editor.Plot_Visual
                 }
             }
 
-            for (var index = 0; index < m_PlotSo.seLength; index++)
-            {
-                var section = m_PlotSo.dialogueSections[index];
-                m_PlotSo.DialogueSectionDictionary.Add(section.guid, index);
-            }
-
             #endregion
 
-            #region Link Sace
+            #region Link Save
 
+            var sectionDictionary = _plotSo.ToDictionary();
             foreach (var edge in edgeList)
             {
                 var outputNode = edge.output.node;
@@ -153,8 +140,8 @@ namespace AVG.Editor.Plot_Visual
                         if (nextNode is DialogueNode dialogueNode)
                         {
                             var nextGuid = dialogueNode.Section.guid;
-                            var index = m_PlotSo.DialogueSectionDictionary[thisGuid];
-                            m_PlotSo.dialogueSections[index].next = nextGuid;
+                            var index = sectionDictionary[thisGuid];
+                            //TODO:Add nextGuid
                         }
                         else
                         {
@@ -168,7 +155,7 @@ namespace AVG.Editor.Plot_Visual
                         {
                             Debug.Log("StartNode");
                             var nextGuid = dialogueNodes.Section.guid;
-                            m_PlotSo.startSection.next = nextGuid;
+                            _plotSo.startSection.next = nextGuid;
                         }
 
                         break;
@@ -180,12 +167,12 @@ namespace AVG.Editor.Plot_Visual
 
             #endregion
 
-            m_Title = "Plot Editor";
+            _title = "Plot Editor";
         }
 
         private void OnInspectorUpdate()
         {
-            if (titleContent.text != m_Title) titleContent.text = m_Title;
+            if (titleContent.text != _title) titleContent.text = _title;
         }
     }
 }

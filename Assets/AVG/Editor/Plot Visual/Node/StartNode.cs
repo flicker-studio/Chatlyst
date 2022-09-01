@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace AVG.Editor.Plot_Visual
 {
-    public sealed class StartNode : GraphNode<StartSection>
+    internal sealed class StartNode : GraphNode<StartSection>
     {
         public StartNode()
         {
