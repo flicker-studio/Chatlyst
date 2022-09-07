@@ -1,4 +1,5 @@
-﻿using AVG.Runtime.PlotTree;
+﻿using System.Collections.Generic;
+using AVG.Runtime.PlotTree;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace AVG.Editor.Plot_Visual
     internal class PlotEditor : EditorWindow
     {
         private PlotSo _plotSo;
-        private bool _hasStartNode;
         private PlotGraphView _graphView;
         private string _title = "Plot Editor";
         private const KeyCode MenuKey = KeyCode.Space;
@@ -34,39 +34,43 @@ namespace AVG.Editor.Plot_Visual
                 return default;
             });
 
-            if (_plotSo.dialogueSections == null || _plotSo.startSection == null)
-            {
-                _plotSo.Reset();
-                return;
-            }
-
             #region Re-draw the plot tree
 
-            var sectionDictionary = _plotSo.ToDictionary();
-            var temp = new Edge();
-            var startNode = StartNode.NodeRedraw(_graphView, _plotSo.startSection, new StartNode());
-            var next = _plotSo.startSection.next;
-            temp.output = startNode.outputContainer[0].Q<Port>();
+            var sectionDictionary = _plotSo.sectionCollection.ToDictionary();
+            var nodeDictionary = new Dictionary<string, Node>();
 
-            for (;;)
+            foreach (var section in sectionDictionary.Values)
             {
-                if (string.IsNullOrEmpty(next)) break;
-
-                var targetDialogue = sectionDictionary[next] as DialogueSection;
-                var nextNode = (DialogueNode)DialogueNode.NodeRedraw(_graphView, targetDialogue, new DialogueNode());
-
-                temp.input = nextNode.inputContainer[0].Q<Port>();
-
-                temp.input.Connect(temp);
-                temp.output.Connect(temp);
-                _graphView.Add(temp);
-
-                next = nextNode.Section.next;
-                temp = new Edge
+                Node node;
+                switch (section)
                 {
-                    input = nextNode.inputContainer[0].Q<Port>(),
-                    output = nextNode.outputContainer[0].Q<Port>()
-                };
+                    case StartSection startSection:
+                        node = (StartNode)StartNode.NodeRedraw(_graphView, new StartNode(startSection));
+                        nodeDictionary.Add(section.Guid, node);
+                        break;
+                    case DialogueSection dialogueSection:
+                        node = (DialogueNode)DialogueNode.NodeRedraw(_graphView, new DialogueNode(dialogueSection));
+                        nodeDictionary.Add(section.Guid, node);
+                        break;
+                    default:
+                        Debug.Log("Unknown Section");
+                        break;
+                }
+            }
+
+            foreach (var section in sectionDictionary.Values)
+            {
+                if (!string.IsNullOrEmpty(section.Next))
+                {
+                    var edge = new Edge
+                    {
+                        output = nodeDictionary[section.Guid].outputContainer[0].Q<Port>(),
+                        input = nodeDictionary[section.Next].inputContainer[0].Q<Port>()
+                    };
+                    edge.input.Connect(edge);
+                    edge.output.Connect(edge);
+                    _graphView.AddElement(edge);
+                }
             }
 
             #endregion
@@ -88,9 +92,10 @@ namespace AVG.Editor.Plot_Visual
 
         private void DataSave()
         {
-            _hasStartNode = false;
             EditorUtility.SetDirty(_plotSo);
-            _plotSo.Reset();
+
+            var collection = new SectionCollection();
+
             var edgeList = _graphView.edges.ToList();
             var nodeList = _graphView.nodes.ToList();
 
@@ -101,21 +106,12 @@ namespace AVG.Editor.Plot_Visual
                 switch (sectionNode)
                 {
                     case DialogueNode dialogueNode:
-                        dialogueNode.Section.pos = dialogueNode.GetPosition();
-                        _plotSo.dialogueSections.Add(dialogueNode.Section);
+                        dialogueNode.Section.Pos = dialogueNode.GetPosition();
+                        collection.dialogueSections.Add(dialogueNode.Section);
                         break;
                     case StartNode startNode:
-                        if (_hasStartNode)
-                        {
-                            Debug.Log("One more Start Node");
-                        }
-                        else
-                        {
-                            startNode.Section.pos = startNode.GetPosition();
-                            _plotSo.startSection = startNode.Section;
-                            _hasStartNode = true;
-                        }
-
+                        startNode.Section.Pos = startNode.GetPosition();
+                        collection.startSections.Add(startNode.Section);
                         break;
                     default:
                         Debug.Log("Unknown Node");
@@ -127,43 +123,20 @@ namespace AVG.Editor.Plot_Visual
 
             #region Link Save
 
-            var sectionDictionary = _plotSo.ToDictionary();
+            var sectionDictionary = collection.ToDictionary();
             foreach (var edge in edgeList)
             {
                 var outputNode = edge.output.node;
-
-                switch (outputNode)
+                var inputNode = edge.input.node;
+                if (outputNode is IGraphNode current && inputNode is IGraphNode next)
                 {
-                    case DialogueNode current:
-                        var thisGuid = current.Section.guid;
-                        var nextNode = edge.input.node;
-                        if (nextNode is DialogueNode dialogueNode)
-                        {
-                            var nextGuid = dialogueNode.Section.guid;
-                            var index = sectionDictionary[thisGuid];
-                            //TODO:Add nextGuid
-                        }
-                        else
-                        {
-                            Debug.Log("DialogueNode");
-                        }
-
-                        break;
-                    case StartNode:
-                        var nextNodes = edge.input.node;
-                        if (nextNodes is StartNode dialogueNodes)
-                        {
-                            Debug.Log("StartNode");
-                            var nextGuid = dialogueNodes.Section.guid;
-                            _plotSo.startSection.next = nextGuid;
-                        }
-
-                        break;
-                    default:
-                        Debug.Log("Unknown Node");
-                        break;
+                    var thisGuid = current.Guid;
+                    var nextGuid = next.Guid;
+                    sectionDictionary[thisGuid].Next = nextGuid;
                 }
             }
+
+            _plotSo.sectionCollection = new SectionCollection(sectionDictionary);
 
             #endregion
 

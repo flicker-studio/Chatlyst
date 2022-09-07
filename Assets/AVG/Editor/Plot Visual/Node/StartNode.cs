@@ -7,14 +7,14 @@ namespace AVG.Editor.Plot_Visual
 {
     internal sealed class StartNode : GraphNode<StartSection>
     {
-        public StartNode()
+        public StartNode(StartSection section = null)
         {
-            Section = new StartSection();
+            Section = section ?? new StartSection();
             var visualAsset = EditorGUIUtility.Load("StartNode.uxml") as VisualTreeAsset;
             VisualElement = CreatVisual(visualAsset);
         }
 
-        public override void NodeVisual()
+        protected override void NodeVisual()
         {
             var outputPort =
                 InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));

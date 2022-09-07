@@ -1,19 +1,21 @@
 ﻿using AVG.Runtime.ExtensionMethod;
-using UnityEditor.Experimental.GraphView;
 using AVG.Runtime.PlotTree;
-using UnityEngine.UIElements;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace AVG.Editor.Plot_Visual
 {
     internal interface IGraphNode
     {
+        public string Guid { get; }
     }
 
     internal abstract class GraphNode<T> : Node, IGraphNode
         where T : Section
     {
         public T Section;
+        public string Guid => Section.Guid;
         protected VisualElement VisualElement;
 
         /// <summary>
@@ -28,7 +30,7 @@ namespace AVG.Editor.Plot_Visual
             return visualElement;
         }
 
-        public abstract void NodeVisual();
+        protected abstract void NodeVisual();
 
         public static void NodeAdd(PlotGraphView graphView, Vector2 mousePos, GraphNode<T> node)
         {
@@ -39,10 +41,10 @@ namespace AVG.Editor.Plot_Visual
             graphView.AddElement(node);
         }
 
-        public static GraphNode<T> NodeRedraw(PlotGraphView graphView, T section, GraphNode<T> node)
+        public static GraphNode<T> NodeRedraw(PlotGraphView graphView, GraphNode<T> node)
         {
-            node.Section = section;
-            var rect = section.pos.position.ToNodePosition(graphView);
+            //node.Section = section;
+            var rect = node.Section.Pos.position.ToNodePosition(graphView);
             node.SetPosition(rect);
             node.mainContainer.Add(node.VisualElement);
             node.NodeVisual();

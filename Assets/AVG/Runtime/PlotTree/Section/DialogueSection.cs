@@ -6,8 +6,8 @@ namespace AVG.Runtime.PlotTree
     [Serializable]
     public struct Dialogue
     {
-        public string name;
-        public string text;
+        [DisplayOnly] public string name;
+        [DisplayOnly] public string text;
     }
 
     [Serializable]

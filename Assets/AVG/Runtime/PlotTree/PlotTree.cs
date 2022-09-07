@@ -9,11 +9,10 @@ namespace AVG.Runtime.PlotTree
 
         public PlotTree(PlotSo so)
         {
-            startSection = so.startSection;
-            plot = so.ToDictionary();
+            plot = so.sectionCollection.ToDictionary();
         }
 
-        public ISection GetNextSection(string guid) => plot[GetSection(guid).next];
+        public ISection GetNextSection(string guid) => plot[GetSection(guid).Next];
         public ISection GetSection(string guid) => plot[guid];
     }
 }

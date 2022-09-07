@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 //TODO:Decouple editor and runtime
 namespace AVG.Runtime.PlotTree
 {
-    [CreateAssetMenu(fileName = "New Plot", menuName = "AVG/Creat Plot")]
-    public class PlotSo : ScriptableObject
+    [Serializable]
+    public class SectionCollection
     {
-        public StartSection startSection;
-        public List<DialogueSection> dialogueSections;
-        public int seLength => dialogueSections.Count;
+        public List<StartSection> startSections = new List<StartSection>();
+        public List<DialogueSection> dialogueSections = new List<DialogueSection>();
 
-        //reset
         public void Reset()
         {
-            startSection = null;
+            startSections?.Clear();
             dialogueSections?.Clear();
         }
 
@@ -23,11 +22,44 @@ namespace AVG.Runtime.PlotTree
             var dic = new Dictionary<string, ISection>();
             foreach (var dialogue in dialogueSections)
             {
-                dic.Add(dialogue.guid, dialogue);
+                dic.Add(dialogue.Guid, dialogue);
             }
 
-            dic.Add(startSection.guid, startSection);
+            foreach (var start in startSections)
+            {
+                dic.Add(start.Guid, start);
+            }
+
             return dic;
         }
+
+        public SectionCollection(Dictionary<string, ISection> dictionary)
+        {
+            foreach (var section in dictionary.Values)
+            {
+                switch (section)
+                {
+                    case StartSection start:
+                        if (!startSections.Contains(start)) startSections.Add(start);
+                        break;
+                    case DialogueSection dialogue:
+                        if (!dialogueSections.Contains(dialogue)) dialogueSections.Add(dialogue);
+                        break;
+                    default:
+                        Debug.Log("Unknown Section");
+                        break;
+                }
+            }
+        }
+
+        public SectionCollection()
+        {
+        }
+    }
+
+    [CreateAssetMenu(fileName = "New Plot", menuName = "AVG/Creat Plot")]
+    public class PlotSo : ScriptableObject
+    {
+        public SectionCollection sectionCollection;
     }
 }
