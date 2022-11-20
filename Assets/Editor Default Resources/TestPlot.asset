@@ -13,35 +13,45 @@ MonoBehaviour:
   m_Name: TestPlot
   m_EditorClassIdentifier: 
   sectionCollection:
-    startSections: []
-    dialogueSections:
-    - currentGuid: 34c55782-4477-40fb-a852-e6eff0e4b1c6
-      nextGuid: bceb8b3c-7716-4284-ae50-507737741206
+    startSections:
+    - currentGuid: a5ef4632-41d5-4094-9d70-e3ca9b4e76b2
+      nextGuid: e8df84a5-0c11-4c67-be27-5a478a68977c
       nodePos:
         serializedVersion: 2
-        x: 477
-        y: 184
-        width: 356
-        height: 181
-      characterName: 'sds '
-      dialogueText: 
+        x: -195
+        y: 114
+        width: 108
+        height: 177
+    dialogueSections:
     - currentGuid: e8df84a5-0c11-4c67-be27-5a478a68977c
       nextGuid: 34c55782-4477-40fb-a852-e6eff0e4b1c6
       nodePos:
         serializedVersion: 2
-        x: -1
-        y: 184
-        width: 356
-        height: 181
-      characterName: test
-      dialogueText: 
+        x: -17
+        y: 114
+        width: 698
+        height: 160
+      characterName: ' '
+      dialogueText: Two milleniums ago, there was a war between the human world and
+        the other, the Underworld.
+    - currentGuid: 34c55782-4477-40fb-a852-e6eff0e4b1c6
+      nextGuid: bceb8b3c-7716-4284-ae50-507737741206
+      nodePos:
+        serializedVersion: 2
+        x: -17
+        y: 300
+        width: 693
+        height: 160
+      characterName: 
+      dialogueText: But somebody from the Underworld woke up to justice and stood
+        up against this legion, alone.
     - currentGuid: bceb8b3c-7716-4284-ae50-507737741206
       nextGuid: 
       nodePos:
         serializedVersion: 2
-        x: 477
-        y: 386
-        width: 356
-        height: 181
+        x: -17
+        y: 477
+        width: 296
+        height: 160
       characterName: 
-      dialogueText: 
+      dialogueText: His name was Sparda.

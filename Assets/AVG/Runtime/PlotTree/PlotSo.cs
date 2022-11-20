@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //TODO:Decouple editor and runtime
@@ -19,11 +20,8 @@ namespace AVG.Runtime.PlotTree
 
         public Dictionary<string, ISection> ToDictionary()
         {
-            var dic = new Dictionary<string, ISection>();
-            foreach (var dialogue in dialogueSections)
-            {
-                dic.Add(dialogue.Guid, dialogue);
-            }
+            var dic = dialogueSections.ToDictionary<DialogueSection, string, ISection>(
+                dialogue => dialogue.Guid, dialogue => dialogue);
 
             foreach (var start in startSections)
             {

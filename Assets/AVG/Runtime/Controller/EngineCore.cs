@@ -45,6 +45,7 @@ namespace AVG.Runtime.Controller
         private static readonly List<Func<UniTask>> PreInitializationTasks = new List<Func<UniTask>>();
         private static readonly List<Func<UniTask>> PostInitializationTasks = new List<Func<UniTask>>();
         private static readonly List<IBasicService> Services = new List<IBasicService>();
+        public static PlotPlayer.PlotPlayer Player;
 
         public static async UniTask InitializeAsync(RuntimeBehavior proxyBehavior,
             List<IBasicService> services)

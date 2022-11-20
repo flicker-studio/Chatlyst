@@ -8,31 +8,34 @@ using UnityEngine;
 //TODO:Editor only references
 namespace AVG.Runtime.PlotPlayer
 {
-    public class PlotPlayer : IPlotPlayer
+    public class PlotPlayer : IBasicService
     {
-        public IPlotTree PlotTree;
-        public Dictionary<string, ISection> sectionsList => PlotTree.plot;
-        public ISection currentSection { get; set; }
-        public ISection GetSection(string guid) => sectionsList[guid];
-
+        public Dictionary<string, ISection> sections;
+        public ISection StartSection { get; set; }
+        public ISection currentSection;
+        public ISection GetNextSection => sections[currentSection.Next];
+        public ISection GetSection(string guid) => sections[guid];
 
         public UniTask InitializeAsync()
         {
-            var plotSo = EditorGUIUtility.Load("TestPlot.asset") as PlotSo;
-            PlotTree = new PlotTree.PlotTree(plotSo);
-            EngineCore.runtimeBehavior.OnMonoStart += Show;
+            var plotSo = AssetDatabase.LoadAssetAtPath<PlotSo>("Assets/Editor Default Resources/TestPlot.asset");
+            sections = plotSo.sectionCollection.ToDictionary();
+            StartSection = plotSo.sectionCollection.startSections[0];
+            currentSection = GetSection(StartSection.Next);
+            EngineCore.Player = this;
             return UniTask.CompletedTask;
         }
 
-        public void Show()
-        {
-            DialogueSection value;
 
-            foreach (var section in sectionsList)
-            {
-                value = section.Value as DialogueSection;
-                Debug.Log(value?.characterName + ":" + value?.dialogueText);
-            }
+        public void UpdateThis()
+        {
+            currentSection = GetNextSection;
+        }
+
+        public void info(out string name, out string text)
+        {
+            name = ((DialogueSection)currentSection).characterName;
+            text = ((DialogueSection)currentSection).dialogueText;
         }
 
         public void Destroy()
