@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Foldout text="Foldout" value="true" tabindex="3" focusable="false" usage-hints="DynamicTransform" name="Fold" style="flex-shrink: initial; opacity: 1; overflow: visible; align-items: flex-start;">
+        <ui:VisualElement name="Base" style="flex-direction: row; height: 64px; width: auto; align-items: center; flex-shrink: initial;">
+            <ui:TextField picking-mode="Ignore" label="Character Name" value="filler text" text="filler text" name="CharacterName" style="align-items: auto; flex-direction: row; justify-content: flex-start; width: auto; height: auto; opacity: 1; overflow: hidden;" />
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" />
+        </ui:VisualElement>
+        <ui:Label text="Name" display-tooltip-when-elided="true" name="Name" />
+        <ui:Label text="Dialogue" display-tooltip-when-elided="true" name="Dialogue" />
+        <ui:TextField label="Dialogue Text" value="filler text" text="filler text" name="DialogueText" readonly="false" is-delayed="false" multiline="true" style="align-items: center; height: auto; width: auto; position: relative; justify-content: flex-start; flex-direction: row; overflow: hidden; visibility: visible; margin-left: 3%; margin-right: 3%; margin-top: 1%; margin-bottom: 1%; flex-shrink: initial; flex-grow: initial; flex-basis: auto; padding-left: 5px;" />
+    </ui:Foldout>
+    <ui:Button text="Add New Dialogue" display-tooltip-when-elided="true" name="Add" />
+    <ui:Button text="Button" display-tooltip-when-elided="true" />
+    <uie:TagField value="Player" />
+    <uie:EnumField label="Enum" value="Center" />
+</ui:UXML>
