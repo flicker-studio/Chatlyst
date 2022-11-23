@@ -20,8 +20,8 @@ MonoBehaviour:
         serializedVersion: 2
         x: -195
         y: 114
-        width: 108
-        height: 177
+        width: 65
+        height: 100
     dialogueSections:
     - currentGuid: e8df84a5-0c11-4c67-be27-5a478a68977c
       nextGuid: 34c55782-4477-40fb-a852-e6eff0e4b1c6
@@ -29,29 +29,39 @@ MonoBehaviour:
         serializedVersion: 2
         x: -17
         y: 114
-        width: 698
-        height: 160
+        width: 852
+        height: 276
       characterName: ' '
       dialogueText: Two milleniums ago, there was a war between the human world and
-        the other, the Underworld.
+        the other, the Underworld .
+    - currentGuid: d6c9c93c-411c-4566-af1c-8dd9cbc4aae9
+      nextGuid: 
+      nodePos:
+        serializedVersion: 2
+        x: 945
+        y: 666
+        width: 364
+        height: 276
+      characterName: 
+      dialogueText: That  is
+    - currentGuid: bceb8b3c-7716-4284-ae50-507737741206
+      nextGuid: d6c9c93c-411c-4566-af1c-8dd9cbc4aae9
+      nodePos:
+        serializedVersion: 2
+        x: 182
+        y: 894
+        width: 447
+        height: 276
+      characterName: 
+      dialogueText: His name was Sparda.
     - currentGuid: 34c55782-4477-40fb-a852-e6eff0e4b1c6
       nextGuid: bceb8b3c-7716-4284-ae50-507737741206
       nodePos:
         serializedVersion: 2
-        x: -17
-        y: 300
-        width: 693
-        height: 160
-      characterName: 
+        x: -242
+        y: 420
+        width: 1077
+        height: 276
+      characterName: dsasaaaaaadaaaaaaaaaaaaaaaaaaaaaaa
       dialogueText: But somebody from the Underworld woke up to justice and stood
         up against this legion, alone.
-    - currentGuid: bceb8b3c-7716-4284-ae50-507737741206
-      nextGuid: 
-      nodePos:
-        serializedVersion: 2
-        x: -17
-        y: 477
-        width: 296
-        height: 160
-      characterName: 
-      dialogueText: His name was Sparda.

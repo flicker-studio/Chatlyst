@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AVG.Runtime.PlotTree
+namespace AVG.Runtime
 {
     public interface ISection
     {
@@ -11,7 +11,7 @@ namespace AVG.Runtime.PlotTree
     }
 
     [Serializable]
-    public abstract class Section : ISection
+    public abstract class BaseSection
     {
         public string Guid => currentGuid;
         public string Next
@@ -29,7 +29,7 @@ namespace AVG.Runtime.PlotTree
         [SerializeField] [HideInInspector] private string nextGuid;
         [SerializeField] [HideInInspector] private Rect nodePos;
 
-        protected Section()
+        protected BaseSection()
         {
             currentGuid = System.Guid.NewGuid().ToString();
             nextGuid = null;

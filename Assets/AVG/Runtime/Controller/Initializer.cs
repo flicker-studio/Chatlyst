@@ -1,24 +1,28 @@
 ﻿using System.Collections.Generic;
 using AVG.Runtime.Configuration;
-using AVG.Runtime.Element.View;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace AVG.Runtime.Controller
+namespace AVG.Runtime
 {
-    public class RuntimeInitializer : MonoBehaviour
+    public class Initializer : MonoBehaviour
     {
         private static UniTaskCompletionSource _initializeTcs;
         [SerializeField]
         private bool initOnAwake = true;
 
+        private void Awake()
+        {
+            if (initOnAwake) InitializeAsync().Forget();
+        }
+
         /// <summary>
         /// AVG Framework entrance
         /// </summary>
         /// <param name="configDistribution">engine configuration file</param>
-        public static async UniTask InitializeAsync(IConfigDistribution configDistribution = null)
+        private static async UniTask InitializeAsync(IConfigDistribution configDistribution = null)
         {
-            if (EngineCore.initialized) return;
+            if (Engine.Initialized) return;
             if (_initializeTcs != null)
             {
                 await _initializeTcs.Task;
@@ -26,21 +30,17 @@ namespace AVG.Runtime.Controller
             }
 
             _initializeTcs = new UniTaskCompletionSource();
-            configDistribution ??= new ConfigDistribution();
 
             var runtimeBehavior = RuntimeBehavior.Construction();
             var manager = new List<IBasicService>
             {
-                new ViewManager(), new PlotPlayer.PlotPlayer()
+                new ViewManager(),
+                new PlotPlayer()
             };
 
-            await EngineCore.InitializeAsync(runtimeBehavior, manager);
+            await Engine.InitializeAsync(runtimeBehavior, manager);
             // In case terminated in the midst of initialization.
-            if (!EngineCore.initialized)
-            {
-                DisposeTcs();
-                return;
-            }
+            if (!Engine.Initialized) DisposeTcs();
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -48,14 +48,6 @@ namespace AVG.Runtime.Controller
         {
             _initializeTcs?.TrySetResult();
             _initializeTcs = null;
-        }
-
-        private void Awake()
-        {
-            if (initOnAwake)
-            {
-                InitializeAsync().Forget();
-            }
         }
     }
 }

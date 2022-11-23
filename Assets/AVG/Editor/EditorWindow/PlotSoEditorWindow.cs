@@ -1,34 +1,34 @@
 ﻿using System.Collections.Generic;
-using AVG.Runtime.PlotTree;
+using AVG.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace AVG.Editor.Plot_Visual
+namespace AVG.Editor
 {
-    internal class PlotEditor : EditorWindow
+    internal class PlotSoEditorWindow : EditorWindow
     {
         private PlotSo _plotSo;
-        private PlotGraphView _graphView;
+        private PlotSoGraphView _soGraphView;
         private string _title = "Plot Editor";
         private const KeyCode MenuKey = KeyCode.Space;
 
 
         public static void DataEdit(PlotSo targetPlot)
         {
-            var window = GetWindow<PlotEditor>("Plot Editor");
+            var window = GetWindow<PlotSoEditorWindow>("Plot Editor");
             window._plotSo = targetPlot;
             window.GraphViewInitialize();
         }
 
         private void GraphViewInitialize()
         {
-            _graphView ??= new PlotGraphView();
-            _graphView.RegisterCallback<KeyDownEvent>(MenuTrigger);
-            _graphView.StretchToParentSize();
-            rootVisualElement.Add(_graphView);
-            _graphView.graphViewChanged += (_ =>
+            _soGraphView ??= new PlotSoGraphView();
+            _soGraphView.RegisterCallback<KeyDownEvent>(MenuTrigger);
+            _soGraphView.StretchToParentSize();
+            rootVisualElement.Add(_soGraphView);
+            _soGraphView.graphViewChanged += (_ =>
             {
                 _title = "Plot Editor(Unsaved)";
                 return default;
@@ -36,7 +36,7 @@ namespace AVG.Editor.Plot_Visual
 
             #region Re-draw the plot tree
 
-            var sectionDictionary = _plotSo.sectionCollection.ToDictionary();
+            var sectionDictionary = _plotSo.BaseSectionDic;
             var nodeDictionary = new Dictionary<string, Node>();
 
             foreach (var section in sectionDictionary.Values)
@@ -45,15 +45,15 @@ namespace AVG.Editor.Plot_Visual
                 switch (section)
                 {
                     case StartSection startSection:
-                        node = (StartNode)StartNode.NodeRedraw(_graphView, new StartNode(startSection));
+                        node = (StartNode)StartNode.NodeRedraw(_soGraphView, new StartNode(startSection));
                         nodeDictionary.Add(section.Guid, node);
                         break;
                     case DialogueSection dialogueSection:
-                        node = (DialogueNode)DialogueNode.NodeRedraw(_graphView, new DialogueNode(dialogueSection));
+                        node = (DialogueNode)DialogueNode.NodeRedraw(_soGraphView, new DialogueNode(dialogueSection));
                         nodeDictionary.Add(section.Guid, node);
                         break;
                     default:
-                        Debug.Log("Unknown Section");
+                        Debug.Log("Unknown BaseSection");
                         break;
                 }
             }
@@ -69,7 +69,7 @@ namespace AVG.Editor.Plot_Visual
                     };
                     edge.input.Connect(edge);
                     edge.output.Connect(edge);
-                    _graphView.AddElement(edge);
+                    _soGraphView.AddElement(edge);
                 }
             }
 
@@ -82,9 +82,9 @@ namespace AVG.Editor.Plot_Visual
             var currentMousePosition = Event.current.mousePosition;
             var menu = new GenericMenu();
             menu.AddItem(new GUIContent("Add Node"), false,
-                () => { DialogueNode.NodeAdd(_graphView, currentMousePosition, new DialogueNode()); });
+                () => { DialogueNode.NodeAdd(_soGraphView, currentMousePosition, new DialogueNode()); });
             menu.AddItem(new GUIContent("Add Start"), false,
-                () => { StartNode.NodeAdd(_graphView, currentMousePosition, new StartNode()); });
+                () => { StartNode.NodeAdd(_soGraphView, currentMousePosition, new StartNode()); });
             menu.AddItem(new GUIContent("Save"), false,
                 DataSave);
             menu.ShowAsContext();
@@ -96,8 +96,8 @@ namespace AVG.Editor.Plot_Visual
 
             var collection = new SectionCollection();
 
-            var edgeList = _graphView.edges.ToList();
-            var nodeList = _graphView.nodes.ToList();
+            var edgeList = _soGraphView.edges.ToList();
+            var nodeList = _soGraphView.nodes.ToList();
 
             #region Node Save
 
@@ -136,7 +136,7 @@ namespace AVG.Editor.Plot_Visual
                 }
             }
 
-            _plotSo.sectionCollection = new SectionCollection(sectionDictionary);
+            _plotSo.SectionCollect(sectionDictionary);
 
             #endregion
 

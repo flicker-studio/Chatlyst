@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace AVG.Runtime.Element.View
+namespace AVG.Runtime
 {
     public class ViewElement : IViewElement
     {

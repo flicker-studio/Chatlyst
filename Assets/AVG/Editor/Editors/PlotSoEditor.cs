@@ -1,11 +1,11 @@
-﻿using AVG.Runtime.PlotTree;
+﻿using AVG.Runtime;
 using UnityEditor;
 using UnityEngine;
 
-namespace AVG.Editor.Plot_Visual
+namespace AVG.Editor
 {
     [CustomEditor(typeof(PlotSo))]
-    internal class PlotExtend : UnityEditor.Editor
+    internal class PlotSoEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -15,7 +15,7 @@ namespace AVG.Editor.Plot_Visual
 
             if (GUILayout.Button("DataEdit", GUILayout.Height(20)))
             {
-                PlotEditor.DataEdit(target as PlotSo);
+                PlotSoEditorWindow.DataEdit(target as PlotSo);
             }
             
             

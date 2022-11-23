@@ -1,28 +1,25 @@
 ﻿using System.Collections.Generic;
 using AVG.Runtime.Controller;
-using AVG.Runtime.PlotTree;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
-using UnityEngine;
 
 //TODO:Editor only references
-namespace AVG.Runtime.PlotPlayer
+namespace AVG.Runtime
 {
     public class PlotPlayer : IBasicService
     {
-        public Dictionary<string, ISection> sections;
-        public ISection StartSection { get; set; }
-        public ISection currentSection;
-        public ISection GetNextSection => sections[currentSection.Next];
-        public ISection GetSection(string guid) => sections[guid];
+        public Dictionary<string, BaseSection> sections;
+        public BaseSection StartSection { get; set; }
+        public BaseSection currentSection;
+        public BaseSection GetNextSection => sections[currentSection.Next];
+        public BaseSection GetSection(string guid) => sections[guid];
 
         public UniTask InitializeAsync()
         {
             var plotSo = AssetDatabase.LoadAssetAtPath<PlotSo>("Assets/Editor Default Resources/TestPlot.asset");
-            sections = plotSo.sectionCollection.ToDictionary();
-            StartSection = plotSo.sectionCollection.startSections[0];
+            sections = plotSo.BaseSectionDic;
+            StartSection = plotSo.startSections[0];
             currentSection = GetSection(StartSection.Next);
-            EngineCore.Player = this;
             return UniTask.CompletedTask;
         }
 

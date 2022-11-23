@@ -1,9 +1,9 @@
-﻿using AVG.Runtime.PlotTree;
+﻿using AVG.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
-namespace AVG.Editor.Plot_Visual
+namespace AVG.Editor
 {
     internal sealed class StartNode : GraphNode<StartSection>
     {

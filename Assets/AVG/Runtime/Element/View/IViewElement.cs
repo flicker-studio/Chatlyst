@@ -1,4 +1,4 @@
-﻿namespace AVG.Runtime.Element.View
+﻿namespace AVG.Runtime
 {
     public interface IViewElement : IElement
     {

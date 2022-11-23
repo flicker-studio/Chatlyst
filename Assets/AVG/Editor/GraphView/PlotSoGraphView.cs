@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace AVG.Editor.Plot_Visual
+namespace AVG.Editor
 {
-    internal class PlotGraphView : GraphView
+    internal class PlotSoGraphView : GraphView
     {
-        public PlotGraphView()
+        public PlotSoGraphView()
         {
             SetupZoom(.01f, 5f);
             this.AddManipulator(new ContentDragger());

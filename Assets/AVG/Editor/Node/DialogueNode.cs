@@ -1,10 +1,10 @@
-﻿using AVG.Runtime.PlotTree;
+﻿using AVG.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
 //TODO:Replace the uxml 
-namespace AVG.Editor.Plot_Visual
+namespace AVG.Editor
 {
     internal sealed class DialogueNode : GraphNode<DialogueSection>
     {

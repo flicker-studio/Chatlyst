@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using AVG.Runtime.Controller;
-using AVG.Runtime.PlotTree;
 
-namespace AVG.Runtime.PlotPlayer
+namespace AVG.Runtime
 {
     public interface IPlotPlayer : IBasicService
     {

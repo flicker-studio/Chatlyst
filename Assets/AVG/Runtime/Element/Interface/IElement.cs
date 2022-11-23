@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace AVG.Runtime.Element
+namespace AVG.Runtime
 {
     public interface IElement
     {

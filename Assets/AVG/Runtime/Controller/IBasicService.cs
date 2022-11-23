@@ -1,13 +1,13 @@
 ﻿using Cysharp.Threading.Tasks;
 
-namespace AVG.Runtime.Controller
+namespace AVG.Runtime
 {
     /// <summary>
     ///provide basic services
     /// </summary>
     public interface IBasicService
     {
-        UniTask InitializeAsync();
-        void Destroy();
+        public UniTask InitializeAsync();
+        public void Destroy();
     }
 }

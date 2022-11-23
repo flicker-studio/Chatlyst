@@ -1,4 +1,4 @@
-﻿namespace AVG.Runtime.Element.View
+﻿namespace AVG.Runtime
 {
     //TODO:wait to be implemented
     public interface IViewManager : IElementManager<IViewElement>

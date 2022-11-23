@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AVG.Runtime.PlotTree
+namespace AVG.Runtime
 {
     [Serializable]
     public struct Dialogue
@@ -11,7 +11,7 @@ namespace AVG.Runtime.PlotTree
     }
 
     [Serializable]
-    public class DialogueSection : Section
+    public class DialogueSection : BaseSection
     {
         [Header("Dialogue")]
         // private List<Dialogue> dialogues ;

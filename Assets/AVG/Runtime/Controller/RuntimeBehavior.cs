@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AVG.Runtime.Controller
+namespace AVG.Runtime
 {
     public class RuntimeBehavior : MonoBehaviour
     {
@@ -9,8 +9,6 @@ namespace AVG.Runtime.Controller
         public event Action OnMonoUpdate;
         public event Action OnMonoDestroyed;
 
-        private GameObject m_BehaviourGameObject;
-        private RuntimeBehavior m_RuntimeBehavior;
 
         /// <summary>
         /// Construction root GameObject
@@ -20,37 +18,22 @@ namespace AVG.Runtime.Controller
             var rb = new GameObject("[RuntimeBehavior]");
             DontDestroyOnLoad(rb);
             var runtimeBehaviorComponent = rb.AddComponent<RuntimeBehavior>();
-            runtimeBehaviorComponent.m_BehaviourGameObject = rb;
-            runtimeBehaviorComponent.m_RuntimeBehavior = runtimeBehaviorComponent;
             return runtimeBehaviorComponent;
         }
 
-        public void Destructor()
-        {
-            if (m_RuntimeBehavior && m_RuntimeBehavior.gameObject)
-                Destroy(m_RuntimeBehavior.gameObject);
-        }
-
-        public void SetRootGameObject(GameObject child)
-        {
-            child.transform.SetParent(transform);
-        }
-
+        public void Destructor() =>
+            DestroyImmediate(gameObject);
 
         //Unity event function
-        private void Start()
-        {
+        private void Start() =>
             OnMonoStart?.Invoke();
-        }
 
-        private void Update()
-        {
+
+        private void Update() =>
             OnMonoUpdate?.Invoke();
-        }
 
-        private void OnDestroy()
-        {
+
+        private void OnDestroy() =>
             OnMonoDestroyed?.Invoke();
-        }
     }
 }

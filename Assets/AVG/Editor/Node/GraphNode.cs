@@ -1,10 +1,10 @@
-﻿using AVG.Runtime.ExtensionMethod;
-using AVG.Runtime.PlotTree;
+﻿using AVG.Runtime;
+using AVG.Runtime.ExtensionMethod;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace AVG.Editor.Plot_Visual
+namespace AVG.Editor
 {
     internal interface IGraphNode
     {
@@ -12,7 +12,7 @@ namespace AVG.Editor.Plot_Visual
     }
 
     internal abstract class GraphNode<T> : Node, IGraphNode
-        where T : Section
+        where T : BaseSection
     {
         public T Section;
         public string Guid => Section.Guid;
@@ -32,23 +32,23 @@ namespace AVG.Editor.Plot_Visual
 
         protected abstract void NodeVisual();
 
-        public static void NodeAdd(PlotGraphView graphView, Vector2 mousePos, GraphNode<T> node)
+        public static void NodeAdd(PlotSoGraphView soGraphView, Vector2 mousePos, GraphNode<T> node)
         {
-            var rect = mousePos.ToNodePosition(graphView);
+            var rect = mousePos.ToNodePosition(soGraphView);
             node.SetPosition(rect);
             node.mainContainer.Add(node.VisualElement);
             node.NodeVisual();
-            graphView.AddElement(node);
+            soGraphView.AddElement(node);
         }
 
-        public static GraphNode<T> NodeRedraw(PlotGraphView graphView, GraphNode<T> node)
+        public static GraphNode<T> NodeRedraw(PlotSoGraphView soGraphView, GraphNode<T> node)
         {
-            //node.Section = section;
-            var rect = node.Section.Pos.position.ToNodePosition(graphView);
+            //node.BaseSection = section;
+            var rect = node.Section.Pos.position.ToNodePosition(soGraphView);
             node.SetPosition(rect);
             node.mainContainer.Add(node.VisualElement);
             node.NodeVisual();
-            graphView.AddElement(node);
+            soGraphView.AddElement(node);
             return node;
         }
     }
