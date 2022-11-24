@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AVG.Runtime;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,27 +15,36 @@ namespace AVG.Editor
         private PlotSo _plotSo;
         private PlotSoGraphView _soGraphView;
         private string _title = "Plot Editor";
+        private static string _title2;
         private const KeyCode MenuKey = KeyCode.Space;
 
 
-        public static void DataEdit(PlotSo targetPlot)
+        [OnOpenAsset(1)]
+        public static bool OnOpenAssets(int id, int line)
         {
-            var window = GetWindow<PlotSoEditorWindow>("Plot Editor");
-            window._plotSo = targetPlot;
+            var window = GetWindow<PlotSoEditorWindow>();
+            if (EditorUtility.InstanceIDToObject(id) is not PlotSo tree) return false;
+            _title2 = $"{tree.name}";
+            window._plotSo = tree;
             window.GraphViewInitialize();
+            return true;
         }
 
         private void GraphViewInitialize()
         {
-            _soGraphView ??= new PlotSoGraphView();
+            var visualTree = EditorGUIUtility.Load("NodeEditorWindow.uxml") as VisualTreeAsset;
+            if (!visualTree) throw new Exception("Can not find EditorWindow.uxml");
+            visualTree.CloneTree(rootVisualElement);
+            _soGraphView = rootVisualElement.Q<PlotSoGraphView>("GraphView");
             _soGraphView.RegisterCallback<KeyDownEvent>(MenuTrigger);
-            _soGraphView.StretchToParentSize();
-            rootVisualElement.Add(_soGraphView);
             _soGraphView.graphViewChanged += (_ =>
             {
-                _title = "Plot Editor(Unsaved)";
+                _title = "Plot Editor(Unsaved) ";
                 return default;
             });
+
+            var toolbarButton = rootVisualElement.Q<ToolbarButton>("Save");
+            toolbarButton.clicked += DataSave;
 
             #region Re-draw the plot tree
 
@@ -79,21 +91,15 @@ namespace AVG.Editor
         private void MenuTrigger(KeyDownEvent keyDownEvent)
         {
             if (keyDownEvent.keyCode != MenuKey) return;
-            var currentMousePosition = Event.current.mousePosition;
-            var menu = new GenericMenu();
-            menu.AddItem(new GUIContent("Add Node"), false,
-                () => { DialogueNode.NodeAdd(_soGraphView, currentMousePosition, new DialogueNode()); });
-            menu.AddItem(new GUIContent("Add Start"), false,
-                () => { StartNode.NodeAdd(_soGraphView, currentMousePosition, new StartNode()); });
-            menu.AddItem(new GUIContent("Save"), false,
-                DataSave);
-            menu.ShowAsContext();
+            var worldMousePosition = Event.current.mousePosition;
+            var searchWindowProvider = CreateInstance<NodeSearchWindowProvider>();
+            searchWindowProvider.Info(_soGraphView);
+            var searchWindowContext = new SearchWindowContext(worldMousePosition);
+            SearchWindow.Open(searchWindowContext, searchWindowProvider);
         }
 
         private void DataSave()
         {
-            EditorUtility.SetDirty(_plotSo);
-
             var collection = new SectionCollection();
 
             var edgeList = _soGraphView.edges.ToList();
@@ -136,6 +142,7 @@ namespace AVG.Editor
                 }
             }
 
+            EditorUtility.SetDirty(_plotSo);
             _plotSo.SectionCollect(sectionDictionary);
 
             #endregion
@@ -145,7 +152,8 @@ namespace AVG.Editor
 
         private void OnInspectorUpdate()
         {
-            if (titleContent.text != _title) titleContent.text = _title;
+            if (titleContent.text != _title + _title2)
+                titleContent.text = _title + _title2;
         }
     }
 }

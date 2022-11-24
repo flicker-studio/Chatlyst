@@ -4,18 +4,19 @@ using UnityEngine.UIElements;
 
 namespace AVG.Editor
 {
-    internal class PlotSoGraphView : GraphView
+    public class PlotSoGraphView : GraphView
     {
+        public class Factory : UxmlFactory<PlotSoGraphView, UxmlTraits>
+        {
+        }
+
         public PlotSoGraphView()
         {
-            SetupZoom(.01f, 5f);
+            Insert(0, new GridBackground());
+            this.AddManipulator(new ContentZoomer());
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
-
-            var grid = new GridBackground();
-            Insert(0, grid);
-            grid.StretchToParentSize();
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)

@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <uie:Toolbar style="flex-direction: row-reverse;">
+        <uie:ToolbarButton text="Save" display-tooltip-when-elided="false" name="Save" enable-rich-text="false" focusable="false" style="border-left-width: 1px; -unity-text-align: middle-center; left: auto; visibility: visible; overflow: hidden; opacity: 1;" />
+        <uie:ToolbarToggle focusable="false" name="AutoAsve" view-data-key="AutoAsve" text="Auto Save" style="-unity-text-align: middle-center; border-right-width: 0;" />
+        <uie:ToolbarMenu display-tooltip-when-elided="true" style="-unity-text-align: middle-center;" />
+    </uie:Toolbar>
+    <AVG.Editor.HorizontalSplitView fixed-pane-initial-dimension="200">
+        <ui:IMGUIContainer name="Inspector" tooltip="Inspector" style="height: auto; width: auto; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
+        <ui:VisualElement style="width: 100%; max-width: none; min-width: auto; height: 100%;">
+            <AVG.Editor.PlotSoGraphView focusable="true" name="GraphView" style="width: 100%; height: 100%; visibility: visible;" />
+        </ui:VisualElement>
+    </AVG.Editor.HorizontalSplitView>
+    <uie:Toolbar style="border-bottom-width: 0; border-top-width: 1px; flex-direction: row-reverse;">
+        <ui:ProgressBar title="my-progress" />
+    </uie:Toolbar>
+</ui:UXML>

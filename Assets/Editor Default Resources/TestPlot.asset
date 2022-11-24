@@ -12,56 +12,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
   m_Name: TestPlot
   m_EditorClassIdentifier: 
-  sectionCollection:
-    startSections:
-    - currentGuid: a5ef4632-41d5-4094-9d70-e3ca9b4e76b2
-      nextGuid: e8df84a5-0c11-4c67-be27-5a478a68977c
-      nodePos:
-        serializedVersion: 2
-        x: -195
-        y: 114
-        width: 65
-        height: 100
-    dialogueSections:
-    - currentGuid: e8df84a5-0c11-4c67-be27-5a478a68977c
-      nextGuid: 34c55782-4477-40fb-a852-e6eff0e4b1c6
-      nodePos:
-        serializedVersion: 2
-        x: -17
-        y: 114
-        width: 852
-        height: 276
-      characterName: ' '
-      dialogueText: Two milleniums ago, there was a war between the human world and
-        the other, the Underworld .
-    - currentGuid: d6c9c93c-411c-4566-af1c-8dd9cbc4aae9
-      nextGuid: 
-      nodePos:
-        serializedVersion: 2
-        x: 945
-        y: 666
-        width: 364
-        height: 276
-      characterName: 
-      dialogueText: That  is
-    - currentGuid: bceb8b3c-7716-4284-ae50-507737741206
-      nextGuid: d6c9c93c-411c-4566-af1c-8dd9cbc4aae9
-      nodePos:
-        serializedVersion: 2
-        x: 182
-        y: 894
-        width: 447
-        height: 276
-      characterName: 
-      dialogueText: His name was Sparda.
-    - currentGuid: 34c55782-4477-40fb-a852-e6eff0e4b1c6
-      nextGuid: bceb8b3c-7716-4284-ae50-507737741206
-      nodePos:
-        serializedVersion: 2
-        x: -242
-        y: 420
-        width: 1077
-        height: 276
-      characterName: dsasaaaaaadaaaaaaaaaaaaaaaaaaaaaaa
-      dialogueText: But somebody from the Underworld woke up to justice and stood
-        up against this legion, alone.
+  startSections:
+  - currentGuid: 8f1a650a-87e9-4f4f-8e0e-e174f283c92c
+    nextGuid: 33fd1b80-01df-4477-9368-3ab4d72b530a
+    nodePos:
+      serializedVersion: 2
+      x: 295
+      y: 250
+      width: 65
+      height: 100
+  dialogueSections:
+  - currentGuid: 33fd1b80-01df-4477-9368-3ab4d72b530a
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 627
+      y: 440
+      width: 372
+      height: 294
+    characterName: 
+    dialogueText: 
+  - currentGuid: 31165bb8-ac8c-42e1-9e4f-d5244fce9e7f
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 601
+      y: -8
+      width: 372
+      height: 294
+    characterName: 
+    dialogueText: 
+  - currentGuid: 5d7cbaf7-f3b2-4ffd-b91c-340ca39e7491
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 63
+      y: -88
+      width: 372
+      height: 294
+    characterName: 
+    dialogueText: 
+  - currentGuid: a9803ce1-4de7-43a0-b2bf-dc3e514c2f18
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: -393
+      y: -198
+      width: 372
+      height: 294
+    characterName: 
+    dialogueText: 
+  - currentGuid: d7ec1d96-3821-483f-8ca3-7768f5adade4
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: -393
+      y: 115
+      width: 372
+      height: 294
+    characterName: 
+    dialogueText: 
+  - currentGuid: 85f1d83d-30db-4c89-ae18-8f31c633e061
+    nextGuid: 
+    nodePos:
+      serializedVersion: 2
+      x: 93
+      y: 440
+      width: 372
+      height: 294
+    characterName: 
+    dialogueText: 

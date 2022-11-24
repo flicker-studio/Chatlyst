@@ -44,7 +44,7 @@ namespace AVG.Editor
         public static GraphNode<T> NodeRedraw(PlotSoGraphView soGraphView, GraphNode<T> node)
         {
             //node.BaseSection = section;
-            var rect = node.Section.Pos.position.ToNodePosition(soGraphView);
+            var rect = new Rect(node.Section.Pos); //node.Section.Pos.position.ToNodePosition(soGraphView));
             node.SetPosition(rect);
             node.mainContainer.Add(node.VisualElement);
             node.NodeVisual();

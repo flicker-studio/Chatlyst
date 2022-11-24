@@ -1,12 +1,12 @@
-﻿using AVG.Runtime;
-using TMPro;
+﻿using TMPro;
+using AVG.Runtime;
 using UnityEngine;
-using AVG.Runtime.Controller;
 
 public class Test : MonoBehaviour
 {
     public TMP_Text charName;
     public TMP_Text text;
+
 
     public void Next()
     {

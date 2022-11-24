@@ -10,7 +10,7 @@ namespace AVG.Runtime
     {
         public List<StartSection> startSections = new List<StartSection>();
         public List<DialogueSection> dialogueSections = new List<DialogueSection>();
-
+      
         public void ResetData()
         {
             startSections?.Clear();
