@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace NexusVisual.Runtime
 {
@@ -11,7 +12,7 @@ namespace NexusVisual.Runtime
     }
 
     [Serializable]
-    public abstract class BaseSection
+    public abstract class BaseSection : ScriptableObject
     {
         public string Guid => currentGuid;
         public string Next
@@ -25,9 +26,9 @@ namespace NexusVisual.Runtime
             set => nodePos = value;
         }
 
-        [SerializeField] [HideInInspector] private string currentGuid;
-        [SerializeField] [HideInInspector] private string nextGuid;
-        [SerializeField] [HideInInspector] private Rect nodePos;
+        [SerializeField] [DisplayOnly] private string currentGuid;
+        [SerializeField] [DisplayOnly] private string nextGuid;
+        [SerializeField] [DisplayOnly] private Rect nodePos;
 
         protected BaseSection()
         {

@@ -14,19 +14,19 @@ namespace NexusVisual.Editor
     {
         private PlotSo _plotSo;
         private PlotSoGraphView _soGraphView;
-        private string _title = "Plot Editor";
+        private string _title = "Plot Editor-";
         private static string _title2;
         private const KeyCode MenuKey = KeyCode.Space;
-        private static PlotSoEditorWindow window;
+        private static PlotSoEditorWindow _window;
 
         [OnOpenAsset(1)]
         public static bool OnOpenAssets(int id, int line)
         {
-            window = GetWindow<PlotSoEditorWindow>();
+            _window = GetWindow<PlotSoEditorWindow>();
             if (EditorUtility.InstanceIDToObject(id) is not PlotSo tree) return false;
             _title2 = $"{tree.name}";
-            window._plotSo = tree;
-            window.GraphViewInitialize();
+            _window._plotSo = tree;
+            _window.GraphViewInitialize();
             return true;
         }
 
@@ -39,7 +39,7 @@ namespace NexusVisual.Editor
             _soGraphView.RegisterCallback<KeyDownEvent>(MenuTrigger);
             _soGraphView.graphViewChanged += (_ =>
             {
-                _title = "Plot Editor(Unsaved) ";
+                _title = "Plot Editor(Unsaved)-";
                 return default;
             });
 
@@ -48,6 +48,7 @@ namespace NexusVisual.Editor
 
             #region Re-draw the plot tree
 
+            //Todo:Use cache
             var sectionDictionary = _plotSo.BaseSectionDic;
             var nodeDictionary = new Dictionary<string, Node>();
 
@@ -57,11 +58,13 @@ namespace NexusVisual.Editor
                 switch (section)
                 {
                     case StartSection startSection:
-                        node = (StartNode)StartNode.NodeRedraw(_soGraphView, new StartNode(startSection));
+                        node = new StartNode(startSection);
+                        _soGraphView.AddElement(node);
                         nodeDictionary.Add(section.Guid, node);
                         break;
                     case DialogueSection dialogueSection:
-                        node = (DialogueNode)DialogueNode.NodeRedraw(_soGraphView, new DialogueNode(dialogueSection));
+                        node = new DialogueNode(dialogueSection);
+                        _soGraphView.AddElement(node);
                         nodeDictionary.Add(section.Guid, node);
                         break;
                     default:
@@ -92,7 +95,7 @@ namespace NexusVisual.Editor
         {
             if (keyDownEvent.keyCode != MenuKey) return;
             //window left-top position + mouse relative position base on window left-top position
-            var worldMousePosition = window.position.position + keyDownEvent.originalMousePosition;
+            var worldMousePosition = _window.position.position + keyDownEvent.originalMousePosition;
             var searchWindowContext = new SearchWindowContext(worldMousePosition);
             var searchWindowProvider = CreateInstance<NodeSearchWindowProvider>();
             searchWindowProvider.Info(_soGraphView);
@@ -101,24 +104,23 @@ namespace NexusVisual.Editor
 
         private void DataSave()
         {
-            var collection = new SectionCollection();
-
+            var collection = CreateInstance<PlotSo>();
             var edgeList = _soGraphView.edges.ToList();
             var nodeList = _soGraphView.nodes.ToList();
 
-            #region Node Save
+            #region Node
 
             foreach (var sectionNode in nodeList)
             {
                 switch (sectionNode)
                 {
                     case DialogueNode dialogueNode:
-                        dialogueNode.Section.Pos = dialogueNode.GetPosition();
-                        collection.dialogueSections.Add(dialogueNode.Section);
+                        dialogueNode.data.Pos = dialogueNode.GetPosition();
+                        collection.dialogueSections.Add(dialogueNode.data);
                         break;
                     case StartNode startNode:
-                        startNode.Section.Pos = startNode.GetPosition();
-                        collection.startSections.Add(startNode.Section);
+                        startNode.data.Pos = startNode.GetPosition();
+                        collection.startSections.Add(startNode.data);
                         break;
                     default:
                         Debug.Log("Unknown Node");
@@ -128,24 +130,24 @@ namespace NexusVisual.Editor
 
             #endregion
 
-            #region Link Save
+            #region Link
 
-            var sectionDictionary = collection.ToDictionary();
+            var sectionDictionary = collection.BaseSectionDic;
             foreach (var edge in edgeList)
             {
                 var outputNode = edge.output.node;
                 var inputNode = edge.input.node;
-
-                if (outputNode is BaseNvNode<BaseSection> current && inputNode is BaseNvNode<BaseSection> next)
-                {
-                    var thisGuid = current.Guid;
-                    var nextGuid = next.Guid;
-                    sectionDictionary[thisGuid].Next = nextGuid;
-                }
+                if (
+                    outputNode.userData is not BaseSection current ||
+                    inputNode.userData is not BaseSection next
+                ) continue;
+                var thisGuid = current.Guid;
+                var nextGuid = next.Guid;
+                sectionDictionary[thisGuid].Next = nextGuid;
             }
 
-            EditorUtility.SetDirty(_plotSo);
             _plotSo.SectionCollect(sectionDictionary);
+            EditorUtility.SetDirty(_plotSo);
 
             #endregion
 

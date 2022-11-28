@@ -1,31 +1,28 @@
 ﻿using NexusVisual.Runtime;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 
 namespace NexusVisual.Editor
 {
     internal sealed class StartNode : BaseNvNode<StartSection>, IVisible
     {
-        private const string UxmlPath = "StartNode.uxml";
-
-        public StartNode()
+        public StartNode(StartSection nodeData = null, Rect targetPos = new Rect())
         {
-            Section = new StartSection();
-            CreatVisual(UxmlPath);
+            uxmlPath = "StartNode.uxml";
+            Construction(nodeData, targetPos);
         }
 
-        public StartNode(StartSection section)
+        private protected override void DataBind()
         {
-            Section = section;
-            CreatVisual(UxmlPath);
         }
 
-        protected override void NodeVisual()
+        private protected override void Visualization()
         {
+            base.Visualization();
             var outputPort =
                 InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             outputPort.portName = "Next";
             outputContainer.Add(outputPort);
-
             RefreshExpandedState();
             RefreshPorts();
         }

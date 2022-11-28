@@ -19,8 +19,6 @@ namespace NexusVisual.Editor
 
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
-            //反射获取所有继承了IGraphNode接口的类
-            //IGraphNode，作用就是标记这个节点是否需要提供创建按钮
             var types = typeof(BaseNvNode<>).Assembly.GetTypes();
             _nodeTypes = types.Where(a => a.GetInterfaces().Contains(typeof(IVisible))).ToArray();
             var tree = new List<SearchTreeEntry>
@@ -30,7 +28,7 @@ namespace NexusVisual.Editor
             };
 
             if (_nodeTypes is not { Length: > 0 }) return tree;
-            //根据所有继承了INode接口的类，创建对应的按钮
+            //根据所有继承了IVisible接口的类，创建对应的按钮
             tree.AddRange(_nodeTypes.Select(t =>
             {
                 var entry = new SearchTreeEntry(new GUIContent(t.Name))
@@ -49,24 +47,29 @@ namespace NexusVisual.Editor
         {
             var graphMousePosition = _plotSoGraphView.LocalToWorld(Event.current.mousePosition);
 
-            //根据类名创建节点
             var editorAssembly = typeof(BaseNvNode<>).Assembly;
             var typeName = (string)searchTreeEntry.userData;
             switch (typeName)
             {
                 case "StartNode":
-                    new StartNode().NodeAdd(_plotSoGraphView, graphMousePosition, new StartNode());
+                    var a = new StartNode(targetPos: new Rect(graphMousePosition, Vector2.one));
+                    _plotSoGraphView.AddElement(a);
+                    break;
+                case "DialogueNode":
+                    var node = new DialogueNode(targetPos: new Rect(graphMousePosition, Vector2.one));
+                    _plotSoGraphView.AddElement(node);
                     break;
                 default:
                     break;
             }
-
+/*
 
             var newNode = editorAssembly.CreateInstance(typeName);
             if (newNode == null) return false;
             var nodeType = newNode.GetType();
             nodeType.GetMethod("NodeAdd")
-                ?.Invoke(newNode, new[] { _plotSoGraphView, graphMousePosition, newNode });
+                ?.Invoke(newNode, new[] { _plotSoGraphView, graphMousePosition, newNode });*/
+
             return true;
         }
     }

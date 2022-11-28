@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NexusVisual.Runtime.Configuration
+namespace NexusVisual.Runtime
 {
     public abstract class Config : ScriptableObject
 

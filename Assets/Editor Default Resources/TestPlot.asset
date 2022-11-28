@@ -12,45 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
   m_Name: TestPlot
   m_EditorClassIdentifier: 
-  startSections:
-  - currentGuid: a9d4f37d-8e19-4518-9a27-974052c585e8
-    nextGuid: 
-    nodePos:
-      serializedVersion: 2
-      x: 117
-      y: 24
-      width: 71
-      height: 108
-  - currentGuid: 68229b62-be21-4ea6-9c84-75f56f5ca0ad
-    nextGuid: 
-    nodePos:
-      serializedVersion: 2
-      x: -102
-      y: -20
-      width: 71
-      height: 108
-  - currentGuid: ca6133bb-1b11-4ffb-ae73-a73156dca783
-    nextGuid: 
-    nodePos:
-      serializedVersion: 2
-      x: -106
-      y: -9
-      width: 71
-      height: 108
-  - currentGuid: 5d1fbbca-3811-4c22-90cc-ec2f0e161728
-    nextGuid: 
-    nodePos:
-      serializedVersion: 2
-      x: -106
-      y: -9
-      width: 71
-      height: 108
-  - currentGuid: 94ccda94-ac23-49ca-a3b7-15a2a5d41aca
-    nextGuid: 
-    nodePos:
-      serializedVersion: 2
-      x: -106
-      y: -9
-      width: 71
-      height: 108
-  dialogueSections: []
+  startSections: []
+  dialogueSections:
+  - {fileID: 0}

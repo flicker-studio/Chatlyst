@@ -1,6 +1,8 @@
 ﻿using NexusVisual.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 //TODO:Replace the uxml 
@@ -8,42 +10,15 @@ namespace NexusVisual.Editor
 {
     internal sealed class DialogueNode : BaseNvNode<DialogueSection>, IVisible
     {
-        private const string UxmlPath = "BaseNvNode.uxml";
-
-        public DialogueNode(DialogueSection section = null)
+        public DialogueNode(DialogueSection nodeData = null, Rect targetPos = new Rect())
         {
-            Section = section ?? new DialogueSection();
-            CreatVisual(UxmlPath);
+            uxmlPath = "BaseNvNode.uxml";
+            Construction(nodeData, targetPos);
         }
-
-        private protected override void CreatVisual(string uxmlPath)
+        
+        private protected override void Visualization()
         {
-            Foldout foldout = VisualElement.Query<Foldout>("Fold");
-            Button addButton = VisualElement.Query<Button>("Add");
-            VisualElement dialogue = VisualElement.Query<VisualElement>("Base");
-            TextField characterName = VisualElement.Query<TextField>("CharacterName");
-            characterName.value = Section?.characterName;
-            characterName.RegisterValueChangedCallback(
-                _ => { Section.characterName = characterName.value; }
-            );
-
-            TextField dialogueText = VisualElement.Query<TextField>("DialogueText");
-            dialogueText.value = Section?.dialogueText;
-            dialogueText.RegisterValueChangedCallback(
-                _ => { Section.dialogueText = dialogueText.value; }
-            );
-            foldout.Add(dialogue);
-            addButton.clicked += () =>
-            {
-                var element = new VisualElement();
-                element.Add(new TextField("Name"));
-                element.Add(new TextField("Dialogue"));
-                foldout.Add(element);
-            };
-        }
-
-        protected override void NodeVisual()
-        {
+            base.Visualization();
             var inputPort =
                 InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
             inputPort.portName = "Input";
@@ -56,6 +31,37 @@ namespace NexusVisual.Editor
 
             RefreshExpandedState();
             RefreshPorts();
+        }
+
+        private protected override void DataBind()
+        {
+            Foldout foldout = visualElement.Query<Foldout>("Fold");
+            Button addButton = visualElement.Query<Button>("Add");
+            VisualElement dialogue = visualElement.Query<VisualElement>("Base");
+            TextField characterName = visualElement.Query<TextField>("CharacterName");
+            TextField dialogueText = visualElement.Query<TextField>("DialogueText");
+
+            //Serialized object bind
+            var s = new SerializedObject(data);
+            characterName.BindProperty(s.FindProperty("characterName"));
+            dialogueText.BindProperty(s.FindProperty("dialogueText"));
+            /*  characterName.value = data?.characterName;
+              characterName.RegisterValueChangedCallback(
+                  _ => { data.characterName = characterName.value; }
+              );
+            dialogueText.value = data?.dialogueText;
+            dialogueText.RegisterValueChangedCallback(
+                _ => { data.dialogueText = dialogueText.value; }
+            );
+             */
+            foldout.Add(dialogue);
+            addButton.clicked += () =>
+            {
+                var element = new VisualElement();
+                element.Add(new TextField("Name"));
+                element.Add(new TextField("Dialogue"));
+                foldout.Add(element);
+            };
         }
     }
 }
