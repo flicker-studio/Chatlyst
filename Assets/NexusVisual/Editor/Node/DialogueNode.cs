@@ -1,4 +1,7 @@
-﻿using NexusVisual.Runtime;
+﻿using System;
+using System.Collections.Generic;
+using NexusVisual.Runtime;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -33,7 +36,23 @@ namespace NexusVisual.Editor
         {
             //Serialized object bind
             mainElement.Q<TextField>("CharacterName").BindProperty(serializedObject.FindProperty("characterName"));
-            mainElement.Q<TextField>("DialogueText").BindProperty(serializedObject.FindProperty("dialogueText"));
+            //   mainElement.Q<TextField>("DialogueText").BindProperty(serializedObject.FindProperty("dialogueText"));
+            var basicSentence = mainElement.Q<VisualElement>("Sentence");
+            var data = userData as DialogueSection;
+
+
+            if (!data) throw new Exception("Can't bind dialogue node");
+
+            var a = new Dialogue
+            {
+                text = "?",
+                name = "?"
+            };
+            data.dialogues.Add(a);
+
+            basicSentence.Q<Label>("Text").text = data.dialogues[0].text;
+
+
             /*
             Foldout foldout = this.Query<Foldout>("Fold");
             Button addButton = this.Query<Button>("Add");

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NexusVisual.Runtime
@@ -14,7 +15,7 @@ namespace NexusVisual.Runtime
     public class DialogueSection : BaseSection
     {
         [Header("Dialogue")]
-        // private List<Dialogue> dialogues ;
+        public List<Dialogue> dialogues = new List<Dialogue>();
         [DisplayOnly] public string characterName;
         [DisplayOnly] public string dialogueText;
     }

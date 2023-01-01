@@ -1,40 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace NexusVisual.Editor
 {
     public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider
     {
-        private Type[] _nodeTypes;
         private PlotSoGraphView _plotSoGraphView;
+        private EditorWindow _window;
 
-        public void Info(PlotSoGraphView graphView)
+        public void Init(PlotSoGraphView graphView, EditorWindow window)
         {
             _plotSoGraphView = graphView;
+            _window = window;
         }
 
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
             var types = typeof(BaseNvNode<>).Assembly.GetTypes();
-            _nodeTypes = types.Where(a => a.GetInterfaces().Contains(typeof(IVisible))).ToArray();
+            var nodeTypes = types.Where(a => a.GetInterfaces().Contains(typeof(IVisible))).ToArray();
+
             var tree = new List<SearchTreeEntry>
             {
-                new SearchTreeGroupEntry(new GUIContent("Create Node"), 0),
+                new SearchTreeGroupEntry(new GUIContent("Create Node")),
                 new SearchTreeGroupEntry(new GUIContent("Nodes"), 1),
             };
 
-            if (_nodeTypes is not { Length: > 0 }) return tree;
-            //根据所有继承了IVisible接口的类，创建对应的按钮
-            tree.AddRange(_nodeTypes.Select(t =>
+            if (nodeTypes is not { Length: > 0 }) return tree;
+            //Create corresponding buttons based on all classes that inherit IVisible interface
+            tree.AddRange(nodeTypes.Select(t =>
             {
                 var entry = new SearchTreeEntry(new GUIContent(t.Name))
                 {
                     level = 2,
-                    userData = t.Name
+                    userData = t.FullName
                 };
                 return entry;
             }));
@@ -45,30 +47,13 @@ namespace NexusVisual.Editor
 
         public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)
         {
-            var graphMousePosition = _plotSoGraphView.WorldToLocal(context.screenMousePosition);
+            var nodeRect = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
             var editorAssembly = typeof(BaseNvNode<>).Assembly;
             var typeName = (string)searchTreeEntry.userData;
-            switch (typeName)
-            {
-                case "StartNode":
-                    var a = new StartNode(targetPos: new Rect(graphMousePosition, Vector2.one));
-                    _plotSoGraphView.AddElement(a);
-                    break;
-                case "DialogueNode":
-                    var node = new DialogueNode(targetPos: new Rect(graphMousePosition, Vector2.one));
-                    _plotSoGraphView.AddElement(node);
-                    break;
-                default:
-                    break;
-            }
-/*
-
-            var newNode = editorAssembly.CreateInstance(typeName);
-            if (newNode == null) return false;
-            var nodeType = newNode.GetType();
-            nodeType.GetMethod("NodeAdd")
-                ?.Invoke(newNode, new[] { _plotSoGraphView, graphMousePosition, newNode });*/
-
+            //Use C# Reflection to creat the node 
+            if (editorAssembly.CreateInstance(typeName, false, BindingFlags.CreateInstance, null,
+                    new object[] { null, nodeRect }, null, null) is not Node newNode) return false;
+            _plotSoGraphView.AddElement(newNode);
             return true;
         }
     }

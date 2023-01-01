@@ -15,8 +15,6 @@ namespace NexusVisual.Editor
     {
         //Data and config
         private PlotSo _plotSo;
-        private string _title = "Plot Editor";
-        private static string _title2;
         private const KeyCode MenuKey = KeyCode.Space;
 
         //Basic element
@@ -36,6 +34,8 @@ namespace NexusVisual.Editor
             var visualTree = EditorGUIUtility.Load("NodeEditorWindow.uxml") as VisualTreeAsset;
             if (!visualTree) throw new Exception("Can not find EditorWindow.uxml");
             visualTree.CloneTree(rootVisualElement);
+            saveChangesMessage = "未保存的更改!\n您是否要保存？";
+            titleContent.text = $"{_plotSo.name}";
 
             //Get element
             _soGraphView = rootVisualElement.Q<PlotSoGraphView>("GraphView");
@@ -49,11 +49,11 @@ namespace NexusVisual.Editor
             _soGraphView.RegisterCallback<KeyDownEvent>(KeyDownMenuTrigger);
             _soGraphView.graphViewChanged += (_ =>
             {
-                _title = "Plot Editor(Unsaved)";
+                hasUnsavedChanges = true;
                 return default;
             });
-
-            _save.clicked += DataSave;
+            _save.clicked += SaveChanges;
+            ToolBarMenuAction();
 
             #region Re-draw the plot tree
 
@@ -171,24 +171,23 @@ namespace NexusVisual.Editor
             EditorUtility.SetDirty(_plotSo);
 
             #endregion
-
-            _title = "Plot Editor";
         }
 
         private void KeyDownMenuTrigger(KeyDownEvent keyDownEvent)
         {
             if (keyDownEvent.keyCode != MenuKey) return;
             //create a search windows under the cursor
-            var worldMousePosition = Event.current.mousePosition;
+            var worldMousePosition = _window.position.position + Event.current.mousePosition;
             var searchWindowContext = new SearchWindowContext(worldMousePosition);
             var searchWindowProvider = CreateInstance<NodeSearchWindowProvider>();
-            searchWindowProvider.Info(_soGraphView);
+            searchWindowProvider.Init(_soGraphView, _window);
             SearchWindow.Open(searchWindowContext, searchWindowProvider);
         }
 
 
         private void ToolBarMenuAction()
         {
+            _toolbarMenu.menu.AppendAction("Test", _ => { Debug.Log("Test Successful"); });
         }
 
         #region Event function
@@ -196,20 +195,34 @@ namespace NexusVisual.Editor
         [OnOpenAsset(1)]
         public static bool OnOpenAssets(int id, int line)
         {
+            if (!_window)
+            {
+                _window.Show();
+                return true;
+            }
             _window = GetWindow<PlotSoEditorWindow>();
             if (EditorUtility.InstanceIDToObject(id) is not PlotSo tree) return false;
-            _title2 = $"-{tree.name}";
             _window._plotSo = tree;
             _window.WindowInitialize();
+            _window.Show();
             return true;
+        }
+
+        public override void SaveChanges()
+        {
+            base.SaveChanges();
+            DataSave();
         }
 
         private void OnInspectorUpdate()
         {
-            if (titleContent.text != _title + _title2)
-                titleContent.text = _title + _title2;
-
             _soGraphView.Inspector.visible = _inspectorToggle.value;
+            _soGraphView.Inspector.Inspector();
+        }
+
+        private void OnDestroy()
+        {
+            if (_autoSaveToggle.value) DataSave();
         }
 
         #endregion

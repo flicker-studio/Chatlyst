@@ -6,7 +6,7 @@ namespace NexusVisual.Editor
 {
     public class PlotSoGraphView : GraphView
     {
-        public readonly Blackboard Inspector = new InspectorBlackboard();
+        public readonly InspectorBlackboard Inspector = new InspectorBlackboard();
 
         public class Factory : UxmlFactory<PlotSoGraphView, UxmlTraits>
         {

@@ -12,6 +12,12 @@ namespace NexusVisual.Editor
             Construction(nodeData, targetPos);
         }
 
+        public StartNode()
+        {
+            visualTree = CustomSettingProvider.GetSettings().nodeSetting.startNode;
+            Construction(null, targetPos: new Rect());
+        }
+
         private protected override void DataBind()
         {
         }
