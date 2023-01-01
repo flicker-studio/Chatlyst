@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
   m_Name: TestPlot
   m_EditorClassIdentifier: 
-  startSections: []
+  startSections:
+  - {fileID: 0}
   dialogueSections:
   - {fileID: 0}

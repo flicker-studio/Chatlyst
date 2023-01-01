@@ -1,24 +1,23 @@
 ﻿using NexusVisual.Runtime;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-//TODO:Replace the uxml 
 namespace NexusVisual.Editor
 {
     internal sealed class DialogueNode : BaseNvNode<DialogueSection>, IVisible
     {
         public DialogueNode(DialogueSection nodeData = null, Rect targetPos = new Rect())
         {
-            uxmlPath = "BaseNvNode.uxml";
+            visualTree = CustomSettingProvider.GetSettings().nodeSetting.dialogueNode;
             Construction(nodeData, targetPos);
         }
-        
+
         private protected override void Visualization()
         {
             base.Visualization();
+            title = "Dialogue Group";
             var inputPort =
                 InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
             inputPort.portName = "Input";
@@ -28,33 +27,31 @@ namespace NexusVisual.Editor
                 typeof(float));
             outputPort.portName = "Next";
             outputContainer.Add(outputPort);
-
-            RefreshExpandedState();
-            RefreshPorts();
         }
 
         private protected override void DataBind()
         {
-            Foldout foldout = visualElement.Query<Foldout>("Fold");
-            Button addButton = visualElement.Query<Button>("Add");
-            VisualElement dialogue = visualElement.Query<VisualElement>("Base");
-            TextField characterName = visualElement.Query<TextField>("CharacterName");
-            TextField dialogueText = visualElement.Query<TextField>("DialogueText");
-
             //Serialized object bind
-            var s = new SerializedObject(data);
-            characterName.BindProperty(s.FindProperty("characterName"));
+            mainElement.Q<TextField>("CharacterName").BindProperty(serializedObject.FindProperty("characterName"));
+            mainElement.Q<TextField>("DialogueText").BindProperty(serializedObject.FindProperty("dialogueText"));
+            /*
+            Foldout foldout = this.Query<Foldout>("Fold");
+            Button addButton = this.Query<Button>("Add");
+            VisualElement dialogue = this.Query<VisualElement>("Base");
+
+            characterNameText.BindProperty(s.FindProperty("characterName"));
             dialogueText.BindProperty(s.FindProperty("dialogueText"));
-            /*  characterName.value = data?.characterName;
-              characterName.RegisterValueChangedCallback(
-                  _ => { data.characterName = characterName.value; }
-              );
+            characterName.value = data?.characterName;
+            characterName.RegisterValueChangedCallback(
+                _ => { data.characterName = characterName.value; }
+            );
             dialogueText.value = data?.dialogueText;
             dialogueText.RegisterValueChangedCallback(
                 _ => { data.dialogueText = dialogueText.value; }
             );
-             */
+
             foldout.Add(dialogue);
+
             addButton.clicked += () =>
             {
                 var element = new VisualElement();
@@ -62,6 +59,7 @@ namespace NexusVisual.Editor
                 element.Add(new TextField("Dialogue"));
                 foldout.Add(element);
             };
+            */
         }
     }
 }

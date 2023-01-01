@@ -1,5 +1,5 @@
 ﻿using System;
-using NexusVisual.Runtime.ExtensionMethod;
+using JetBrains.Annotations;
 using NexusVisual.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -22,56 +22,43 @@ namespace NexusVisual.Editor
     internal abstract class BaseNvNode<T> : Node
         where T : BaseSection
     {
-        public T data;
-        public string Guid => data.Guid;
-        protected VisualElement visualElement;
-        protected string uxmlPath = "BaseNvNode.uxml";
+        protected readonly VisualElement mainElement = new VisualElement();
+        protected VisualTreeAsset visualTree;
+        protected SerializedObject serializedObject;
 
-
-        protected virtual void Construction(T nodeData, Rect targetPos)
+        protected virtual void Construction([CanBeNull] T nodeData, Rect targetPos)
         {
             Visualization();
-            data = nodeData ? nodeData : ScriptableObject.CreateInstance<T>();
-            userData = data;
-            SetPosition(nodeData == null ? targetPos : nodeData.Pos);
-            mainContainer.Add(visualElement);
+            //if node data is null means need creat a new node
+            //else we need copy the old 
+            if (nodeData == null)
+            {
+                nodeData = ScriptableObject.CreateInstance<T>();
+                SetPosition(targetPos);
+            }
+            else
+            {
+                SetPosition(nodeData.Pos);
+            }
+
+            userData = nodeData;
+            serializedObject = new SerializedObject(nodeData);
+            viewDataKey = nodeData.Guid;
+            mainContainer.Add(mainElement);
+            RefreshPorts();
             DataBind();
         }
-
 
         /// <summary>
         /// Visual this node base on .uxml file
         /// </summary>
         private protected virtual void Visualization()
         {
-            var uxml = EditorGUIUtility.Load(uxmlPath) as VisualTreeAsset;
-            if (uxml == null)
-                throw new NullReferenceException($"Can't find the {uxmlPath}");
-            visualElement = new VisualElement();
-            uxml.CloneTree(visualElement);
+            if (visualTree == null)
+                throw new NullReferenceException($"Can't find the {visualTree}");
+            visualTree.CloneTree(mainElement);
         }
 
         private protected abstract void DataBind();
-
-        [Obsolete]
-        public void NodeAdd(PlotSoGraphView soGraphView, Vector2 mousePos, BaseNvNode<T> node)
-        {
-            var rect = new Rect(mousePos, Vector2.one); // mousePos.ToNodePosition(soGraphView);
-            node.SetPosition(rect);
-            node.mainContainer.Add(node.visualElement);
-            node.Visualization();
-            soGraphView.AddElement(node);
-        }
-
-        [Obsolete]
-        public static BaseNvNode<T> NodeRedraw(PlotSoGraphView soGraphView, BaseNvNode<T> node)
-        {
-            var rect = node.data.Pos;
-            node.SetPosition(rect);
-            node.mainContainer.Add(node.visualElement);
-            node.Visualization();
-            soGraphView.AddElement(node);
-            return node;
-        }
     }
 }

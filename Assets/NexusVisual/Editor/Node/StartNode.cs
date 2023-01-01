@@ -8,7 +8,7 @@ namespace NexusVisual.Editor
     {
         public StartNode(StartSection nodeData = null, Rect targetPos = new Rect())
         {
-            uxmlPath = "StartNode.uxml";
+            visualTree = CustomSettingProvider.GetSettings().nodeSetting.startNode;
             Construction(nodeData, targetPos);
         }
 
@@ -19,12 +19,11 @@ namespace NexusVisual.Editor
         private protected override void Visualization()
         {
             base.Visualization();
+            title = "Start";
             var outputPort =
                 InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             outputPort.portName = "Next";
             outputContainer.Add(outputPort);
-            RefreshExpandedState();
-            RefreshPorts();
         }
     }
 }

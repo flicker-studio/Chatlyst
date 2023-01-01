@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
-using UnityEngine;
-using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace NexusVisual.Editor
@@ -45,8 +45,7 @@ namespace NexusVisual.Editor
 
         public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)
         {
-            var graphMousePosition = _plotSoGraphView.LocalToWorld(Event.current.mousePosition);
-
+            var graphMousePosition = _plotSoGraphView.WorldToLocal(context.screenMousePosition);
             var editorAssembly = typeof(BaseNvNode<>).Assembly;
             var typeName = (string)searchTreeEntry.userData;
             switch (typeName)

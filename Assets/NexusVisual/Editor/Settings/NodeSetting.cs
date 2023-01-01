@@ -7,5 +7,6 @@ namespace NexusVisual.Editor
     public class NodeSetting : ScriptableObject
     {
         [SerializeField] public VisualTreeAsset startNode;
+        [SerializeField] public VisualTreeAsset dialogueNode;
     }
 }

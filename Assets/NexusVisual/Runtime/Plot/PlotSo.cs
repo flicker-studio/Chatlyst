@@ -7,9 +7,8 @@ namespace NexusVisual.Runtime
     [CreateAssetMenu(fileName = "New Plot", menuName = "AVG/Creat Plot")]
     public class PlotSo : ScriptableObject
     {
-        [SerializeField, HideInInspector] public List<StartSection> startSections = new List<StartSection>();
-        [SerializeField, HideInInspector] public List<DialogueSection> dialogueSections = new List<DialogueSection>();
-
+        [SerializeField] public List<StartSection> startSections = new List<StartSection>();
+        [SerializeField] public List<DialogueSection> dialogueSections = new List<DialogueSection>();
         private void ResetData()
         {
             startSections?.Clear();

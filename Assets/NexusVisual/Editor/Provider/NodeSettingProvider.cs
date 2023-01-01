@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using NexusVisual.Runtime;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -23,11 +22,13 @@ namespace NexusVisual.Editor
         private class Styles
         {
             public static readonly GUIContent Start = new GUIContent("Start Node");
+            public static readonly GUIContent Dialogue = new GUIContent("Dialogue Node");
         }
 
         public override void OnGUI(string searchContext)
         {
             EditorGUILayout.PropertyField(_settings.FindProperty("startNode"), Styles.Start);
+            EditorGUILayout.PropertyField(_settings.FindProperty("dialogueNode"), Styles.Dialogue);
             _settings.ApplyModifiedPropertiesWithoutUndo();
         }
 

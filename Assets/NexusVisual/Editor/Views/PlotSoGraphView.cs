@@ -6,6 +6,8 @@ namespace NexusVisual.Editor
 {
     public class PlotSoGraphView : GraphView
     {
+        public readonly Blackboard Inspector = new InspectorBlackboard();
+
         public class Factory : UxmlFactory<PlotSoGraphView, UxmlTraits>
         {
         }
@@ -17,6 +19,7 @@ namespace NexusVisual.Editor
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
+            Add(Inspector);
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
