@@ -3,6 +3,6 @@
          noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:VisualElement style="width: 100%; height: 100%; align-items: center;">
         <ui:Label text="Label" display-tooltip-when-elided="true" name="Lables"
-                  style="-unity-text-align: middle-left; font-size: 18px; text-shadow: 0 0 0 rgb(0, 0, 0); -unity-text-outline-width: 0;"/>
+                  style="-unity-text-align: upper-left; font-size: 18px; text-shadow: 0 0 0 rgb(0, 0, 0); -unity-text-outline-width: 0; -unity-font: resource(&apos;Fonts/JetBrainsMono-1.0.3/ttf/JetBrainsMono-Medium&apos;);"/>
     </ui:VisualElement>
 </ui:UXML>

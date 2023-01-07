@@ -19,5 +19,6 @@ namespace NexusVisual.Runtime
     public class DialogueData : BaseData
     {
         public List<Dialogue> dialogueList = new List<Dialogue>();
+        public Dialogue[] test;
     }
 }

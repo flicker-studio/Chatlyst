@@ -4,18 +4,19 @@ using UnityEngine;
 
 namespace NexusVisual.Runtime
 {
-    [CreateAssetMenu(fileName = "New Plot", menuName = "AVG/Creat Plot")]
+    [CreateAssetMenu(fileName = "New Plot", menuName = "Nexus Visual/Creat Plot")]
     public class PlotSo : ScriptableObject
     {
-        [SerializeField] public List<StartData> startSections = new List<StartData>();
-        [SerializeField] public List<DialogueData> dialogueSections = new List<DialogueData>();
+        [SerializeField] [HideInInspector] public List<StartData> startSections = new List<StartData>();
+        [SerializeField] [HideInInspector] public List<DialogueData> dialogueSections = new List<DialogueData>();
+
         private void ResetData()
         {
             startSections?.Clear();
             dialogueSections?.Clear();
         }
 
-        public Dictionary<string, BaseData> BaseSectionDic
+        public Dictionary<string, BaseData> nodesData
         {
             get
             {
@@ -24,25 +25,23 @@ namespace NexusVisual.Runtime
                 sectionList.AddRange(dialogueSections);
                 return sectionList.ToDictionary(sec => sec.guid);
             }
-        }
-
-
-        public void SectionCollect(Dictionary<string, BaseData> dictionary)
-        {
-            ResetData();
-            foreach (var section in dictionary.Values)
+            set
             {
-                switch (section)
+                ResetData();
+                foreach (var section in value.Values)
                 {
-                    case StartData start:
-                        if (!startSections.Contains(start)) startSections.Add(start);
-                        break;
-                    case DialogueData dialogue:
-                        if (!dialogueSections.Contains(dialogue)) dialogueSections.Add(dialogue);
-                        break;
-                    default:
-                        Debug.Log("Unknown BaseData");
-                        break;
+                    switch (section)
+                    {
+                        case StartData start:
+                            if (!startSections.Contains(start)) startSections.Add(start);
+                            break;
+                        case DialogueData dialogue:
+                            if (!dialogueSections.Contains(dialogue)) dialogueSections.Add(dialogue);
+                            break;
+                        default:
+                            Debug.Log("Unknown BaseData");
+                            break;
+                    }
                 }
             }
         }

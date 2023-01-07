@@ -58,7 +58,7 @@ namespace NexusVisual.Editor
             #region Re-draw the plot tree
 
             //Todo:Use cache
-            var sectionDictionary = _plotSo.BaseSectionDic;
+            var sectionDictionary = _plotSo.nodesData;
             var nodeDictionary = new Dictionary<string, Node>();
 
             foreach (var section in sectionDictionary.Values)
@@ -159,7 +159,7 @@ namespace NexusVisual.Editor
 
             #region Link
 
-            var sectionDictionary = collection.BaseSectionDic;
+            var sectionDictionary = collection.nodesData;
             foreach (var edge in edgeList)
             {
                 var thisGuid = edge.output.node.viewDataKey;
@@ -167,7 +167,7 @@ namespace NexusVisual.Editor
                 sectionDictionary[thisGuid].nextGuid = nextGuid;
             }
 
-            _plotSo.SectionCollect(sectionDictionary);
+            _plotSo.nodesData = sectionDictionary;
             EditorUtility.SetDirty(_plotSo);
 
             #endregion
@@ -208,6 +208,7 @@ namespace NexusVisual.Editor
             _window.Show();
             return true;
         }
+
 
         public override void SaveChanges()
         {
