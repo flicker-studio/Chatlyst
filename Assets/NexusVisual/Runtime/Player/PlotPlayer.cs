@@ -1,43 +1,38 @@
-﻿using System.Collections.Generic;
-using NexusVisual.Runtime.Controller;
-using Cysharp.Threading.Tasks;
-using UnityEditor;
-
-//TODO:Editor only references
-namespace NexusVisual.Runtime
+﻿namespace NexusVisual.Runtime
 {
-    public class PlotPlayer : IBasicService
-    {
-        public Dictionary<string, BaseSection> sections;
-        public BaseSection StartSection { get; set; }
-        public BaseSection currentSection;
-        public BaseSection GetNextSection => sections[currentSection.Next];
-        public BaseSection GetSection(string guid) => sections[guid];
-
-        public UniTask InitializeAsync()
+    /*
+        public class PlotPlayer : IBasicService
         {
-            var plotSo = AssetDatabase.LoadAssetAtPath<PlotSo>("Assets/Editor Default Resources/TestPlot.asset");
-            sections = plotSo.BaseSectionDic;
-            StartSection = plotSo.startSections[0];
-            currentSection = GetSection(StartSection.Next);
-            return UniTask.CompletedTask;
-        }
-
-
-        public void UpdateThis()
-        {
-            currentSection = GetNextSection;
-        }
-
-        public void info(out string name, out string text)
-        {
-            name = ((DialogueSection)currentSection).characterName;
-            text = ((DialogueSection)currentSection).dialogueText;
-        }
-
-        public void Destroy()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
+            public Dictionary<string, BaseData> sections;
+            public BaseData startData { get; set; }
+            public BaseData CurrentData;
+            public BaseData getNextData => sections[CurrentData.Next];
+            public BaseData GetSection(string guid) => sections[guid];
+    
+            public UniTask InitializeAsync()
+            {
+                var plotSo = AssetDatabase.LoadAssetAtPath<PlotSo>("Assets/Editor Default Resources/TestPlot.asset");
+                sections = plotSo.BaseSectionDic;
+                startData = plotSo.startSections[0];
+                CurrentData = GetSection(startData.Next);
+                return UniTask.CompletedTask;
+            }
+    
+    
+            public void UpdateThis()
+            {
+                CurrentData = getNextData;
+            }
+    
+            public void info(out string name, out string text)
+            {
+                name = ((DialogueData)CurrentData).dialogueList .ToString();
+                text = ((DialogueData)CurrentData).
+            }
+    
+            public void Destroy()
+            {
+                throw new System.NotImplementedException();
+            }
+        }*/
 }

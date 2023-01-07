@@ -18,7 +18,7 @@ namespace NexusVisual.Editor
         private const KeyCode MenuKey = KeyCode.Space;
 
         //Basic element
-        private PlotSoGraphView _soGraphView;
+        private PlotSoGraphView _graphView;
         private static PlotSoEditorWindow _window;
 
         //Toolbar element
@@ -38,7 +38,7 @@ namespace NexusVisual.Editor
             titleContent.text = $"{_plotSo.name}";
 
             //Get element
-            _soGraphView = rootVisualElement.Q<PlotSoGraphView>("GraphView");
+            _graphView = rootVisualElement.Q<PlotSoGraphView>("GraphView");
             _toolbarMenu = rootVisualElement.Q<ToolbarMenu>("Menu");
             _inspectorToggle = rootVisualElement.Q<ToolbarToggle>("Inspector");
             _autoSaveToggle = rootVisualElement.Q<ToolbarToggle>("AutoSave");
@@ -46,8 +46,8 @@ namespace NexusVisual.Editor
 
 
             //Action bind
-            _soGraphView.RegisterCallback<KeyDownEvent>(KeyDownMenuTrigger);
-            _soGraphView.graphViewChanged += (_ =>
+            _graphView.RegisterCallback<KeyDownEvent>(KeyDownMenuTrigger);
+            _graphView.graphViewChanged += (_ =>
             {
                 hasUnsavedChanges = true;
                 return default;
@@ -66,34 +66,34 @@ namespace NexusVisual.Editor
                 Node node;
                 switch (section)
                 {
-                    case StartSection startSection:
+                    case StartData startSection:
                         node = new StartNode(startSection);
-                        _soGraphView.AddElement(node);
-                        nodeDictionary.Add(section.Guid, node);
+                        _graphView.AddElement(node);
+                        nodeDictionary.Add(section.guid, node);
                         break;
-                    case DialogueSection dialogueSection:
+                    case DialogueData dialogueSection:
                         node = new DialogueNode(dialogueSection);
-                        _soGraphView.AddElement(node);
-                        nodeDictionary.Add(section.Guid, node);
+                        _graphView.AddElement(node);
+                        nodeDictionary.Add(section.guid, node);
                         break;
                     default:
-                        Debug.Log("Unknown BaseSection");
+                        Debug.Log("Unknown BaseData");
                         break;
                 }
             }
 
             foreach (var section in sectionDictionary.Values)
             {
-                if (!string.IsNullOrEmpty(section.Next))
+                if (!string.IsNullOrEmpty(section.nextGuid))
                 {
                     var edge = new Edge
                     {
-                        output = nodeDictionary[section.Guid].outputContainer[0].Q<Port>(),
-                        input = nodeDictionary[section.Next].inputContainer[0].Q<Port>()
+                        output = nodeDictionary[section.guid].outputContainer[0].Q<Port>(),
+                        input = nodeDictionary[section.nextGuid].inputContainer[0].Q<Port>()
                     };
                     edge.input.Connect(edge);
                     edge.output.Connect(edge);
-                    _soGraphView.AddElement(edge);
+                    _graphView.AddElement(edge);
                 }
             }
 
@@ -103,17 +103,17 @@ namespace NexusVisual.Editor
         private void DataSave()
         {
             var collection = CreateInstance<PlotSo>();
-            var edgeList = _soGraphView.edges.ToList();
-            var nodeList = _soGraphView.graphElements;
+            var edgeList = _graphView.edges.ToList();
+            var nodeList = _graphView.graphElements;
             var dialogueNodeList = nodeList.Where(a => a is DialogueNode).Cast<DialogueNode>().ToList();
             var startNodeList = nodeList.Where(a => a is StartNode).Cast<StartNode>().ToList();
 
 
             foreach (var dialogueNode in dialogueNodeList)
             {
-                var data = dialogueNode.userData as DialogueSection;
+                var data = dialogueNode.userData as DialogueData;
                 if (data == null) return;
-                data.Pos = dialogueNode.GetPosition();
+                data.nodePos = dialogueNode.GetPosition();
                 //  dialogueNode.edge
                 collection.dialogueSections.Add(data);
             }
@@ -121,9 +121,9 @@ namespace NexusVisual.Editor
 
             foreach (var startNode in startNodeList)
             {
-                var data = startNode.userData as StartSection;
+                var data = startNode.userData as StartData;
                 if (data == null) return;
-                data.Pos = startNode.GetPosition();
+                data.nodePos = startNode.GetPosition();
                 //  dialogueNode.edge
                 collection.startSections.Add(data);
             }
@@ -142,7 +142,7 @@ namespace NexusVisual.Editor
                        case DialogueNode dialogueNode:
                            dialogueNode.userData.Pos = dialogueNode.GetPosition();
                            //  dialogueNode.edge
-                           collection.dialogueSections.Add(dialogueNode.userData as DialogueSection);
+                           collection.dialogueSections.Add(dialogueNode.userData as DialogueData);
                            break;
                        case StartNode startNode:
                            startNode.data.Pos = startNode.GetPosition();
@@ -164,7 +164,7 @@ namespace NexusVisual.Editor
             {
                 var thisGuid = edge.output.node.viewDataKey;
                 var nextGuid = edge.input.node.viewDataKey;
-                sectionDictionary[thisGuid].Next = nextGuid;
+                sectionDictionary[thisGuid].nextGuid = nextGuid;
             }
 
             _plotSo.SectionCollect(sectionDictionary);
@@ -180,7 +180,7 @@ namespace NexusVisual.Editor
             var worldMousePosition = _window.position.position + Event.current.mousePosition;
             var searchWindowContext = new SearchWindowContext(worldMousePosition);
             var searchWindowProvider = CreateInstance<NodeSearchWindowProvider>();
-            searchWindowProvider.Init(_soGraphView, _window);
+            searchWindowProvider.Init(_graphView, _window);
             SearchWindow.Open(searchWindowContext, searchWindowProvider);
         }
 
@@ -195,11 +195,12 @@ namespace NexusVisual.Editor
         [OnOpenAsset(1)]
         public static bool OnOpenAssets(int id, int line)
         {
-            if (!_window)
+            if (_window)
             {
                 _window.Show();
                 return true;
             }
+
             _window = GetWindow<PlotSoEditorWindow>();
             if (EditorUtility.InstanceIDToObject(id) is not PlotSo tree) return false;
             _window._plotSo = tree;
@@ -216,8 +217,8 @@ namespace NexusVisual.Editor
 
         private void OnInspectorUpdate()
         {
-            _soGraphView.Inspector.visible = _inspectorToggle.value;
-            _soGraphView.Inspector.Inspector();
+            _graphView.OnUpdate?.Invoke();
+            _graphView.GetBlackboard().visible = _inspectorToggle.value;
         }
 
         private void OnDestroy()

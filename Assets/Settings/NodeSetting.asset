@@ -16,3 +16,5 @@ MonoBehaviour:
     type: 3}
   dialogueNode: {fileID: 9197481963319205126, guid: d088a3d4c8ba31942badd8b6f84058a8,
     type: 3}
+  dialogueInspector: {fileID: 9197481963319205126, guid: 0282917e44587864ba58a699766e6784,
+    type: 3}

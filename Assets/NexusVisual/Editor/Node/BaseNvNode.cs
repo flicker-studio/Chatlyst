@@ -19,12 +19,12 @@ namespace NexusVisual.Editor
     /// Nv base class
     /// </summary>
     /// <typeparam name="T">Data type</typeparam>
-    internal abstract class BaseNvNode<T> : Node
-        where T : BaseSection
+    public abstract class BaseNvNode<T> : Node
+        where T : BaseData
     {
         protected readonly VisualElement mainElement = new VisualElement();
         protected VisualTreeAsset visualTree;
-        protected SerializedObject serializedObject;
+        public SerializedObject serializedObject;
 
         protected virtual void Construction([CanBeNull] T nodeData, Rect targetPos)
         {
@@ -38,12 +38,12 @@ namespace NexusVisual.Editor
             }
             else
             {
-                SetPosition(nodeData.Pos);
+                SetPosition(nodeData.nodePos);
             }
 
             userData = nodeData;
             serializedObject = new SerializedObject(nodeData);
-            viewDataKey = nodeData.Guid;
+            viewDataKey = nodeData.guid;
             mainContainer.Add(mainElement);
             RefreshPorts();
             DataBind();
@@ -59,6 +59,9 @@ namespace NexusVisual.Editor
             visualTree.CloneTree(mainElement);
         }
 
+        /// <summary>
+        /// Serialized object bind
+        /// </summary>
         private protected abstract void DataBind();
     }
 }

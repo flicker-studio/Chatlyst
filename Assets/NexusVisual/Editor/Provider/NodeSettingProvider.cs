@@ -23,12 +23,14 @@ namespace NexusVisual.Editor
         {
             public static readonly GUIContent Start = new GUIContent("Start Node");
             public static readonly GUIContent Dialogue = new GUIContent("Dialogue Node");
+            public static readonly GUIContent DialogueStyle = new GUIContent("Dialogue Style");
         }
 
         public override void OnGUI(string searchContext)
         {
             EditorGUILayout.PropertyField(_settings.FindProperty("startNode"), Styles.Start);
             EditorGUILayout.PropertyField(_settings.FindProperty("dialogueNode"), Styles.Dialogue);
+            EditorGUILayout.PropertyField(_settings.FindProperty("dialogueInspector"), Styles.DialogueStyle);
             _settings.ApplyModifiedPropertiesWithoutUndo();
         }
 

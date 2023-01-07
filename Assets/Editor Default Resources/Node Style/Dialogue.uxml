@@ -1,9 +1,8 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:VisualElement style="width: 100%; height: 100%; align-items: auto;">
-        <ui:VisualElement name="Sentence" style="width: 100%; flex-direction: row; -unity-text-align: upper-left; align-items: stretch; min-width: auto; min-height: auto; height: 80px;">
-            <uie:ObjectField name="Name" />
-            <ui:Label text="Label" display-tooltip-when-elided="true" name="Text" view-data-key="Text" style="width: 70%; height: 100%; flex-direction: row; -unity-text-align: middle-center;" />
-        </ui:VisualElement>
-        <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" name="CharacterName" style="width: 100%; height: auto;" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="width: 100%; height: 100%; align-items: center;">
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="Lables"
+                  style="-unity-text-align: middle-left; font-size: 18px; text-shadow: 0 0 0 rgb(0, 0, 0); -unity-text-outline-width: 0;"/>
     </ui:VisualElement>
 </ui:UXML>

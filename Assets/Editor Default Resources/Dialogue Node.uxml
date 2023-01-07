@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:ListView focusable="false" name="DialogueList" horizontal-scrolling="false" show-border="true"
+                 selection-type="Multiple" show-foldout-header="true" reorder-mode="Animated" reorderable="true"
+                 style="width: 100%; height: auto; align-items: stretch;"/>
+    <ui:VisualElement name="Dialogue"
+                      style="flex-direction: row; width: 100%; height: auto; justify-content: space-around; align-items: center;">
+        <uie:EnumField value="Center" name="Name" style="width: 20%; height: 100%;"/>
+        <ui:TextField picking-mode="Ignore" text="We are &lt;b&gt;&lt;i&gt;definitely not&lt;/i&gt;&lt;/b&gt; amused"
+                      name="Text" multiline="true" is-delayed="false" usage-hints="None"
+                      style="width: 75%; justify-content: space-between; overflow: hidden; align-items: center; height: 100%; font-size: 15px; -unity-text-align: middle-left; -unity-font-style: normal; white-space: normal;"/>
+    </ui:VisualElement>
+</ui:UXML>

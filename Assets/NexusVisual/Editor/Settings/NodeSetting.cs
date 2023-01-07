@@ -8,5 +8,7 @@ namespace NexusVisual.Editor
     {
         [SerializeField] public VisualTreeAsset startNode;
         [SerializeField] public VisualTreeAsset dialogueNode;
+
+        [SerializeField] public VisualTreeAsset dialogueInspector;
     }
 }

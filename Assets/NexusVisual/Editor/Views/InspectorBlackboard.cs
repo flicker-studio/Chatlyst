@@ -1,19 +1,26 @@
-﻿using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+﻿using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 
 namespace NexusVisual.Editor
 {
-    public class InspectorBlackboard : Blackboard
+    public sealed class InspectorBlackboard : Blackboard
     {
-        public void Inspector()
+        private readonly PropertyField _inspector = new PropertyField();
+        private ISelectable _currentNode;
+
+        public InspectorBlackboard()
         {
-            var nodes = graphView.selection;
-            foreach (var node in nodes)
+            contentContainer.Add(_inspector);
+        }
+
+        public void Inspector(ISelectable target)
+        {
+            if (_currentNode == target) return;
+            _currentNode = target;
+
+            if (_currentNode is DialogueNode dialogueNode)
             {
-                if (node is DialogueNode dialogueNode)
-                {
-                    title = dialogueNode.title;
-                }
+                _inspector.BindProperty(dialogueNode.serializedObject.FindProperty("dialogueList"));
             }
         }
     }

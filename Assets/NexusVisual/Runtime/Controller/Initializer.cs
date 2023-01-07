@@ -35,7 +35,7 @@ namespace NexusVisual.Runtime
             var manager = new List<IBasicService>
             {
                 new ViewManager(),
-                new PlotPlayer()
+                // new PlotPlayer()
             };
 
             await Engine.InitializeAsync(runtimeBehavior, manager);
