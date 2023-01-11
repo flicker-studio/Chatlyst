@@ -6,12 +6,12 @@ using UnityEngine.UIElements;
 
 namespace NexusVisual.Editor
 {
-    internal sealed class DialogueNode : BaseNvNode<DialogueData>, IVisible
+    internal sealed class DialogueNode : BaseNvNode<DialogueNvData>, IVisible
     {
-        public DialogueNode(DialogueData nodeData = null, Rect targetPos = new Rect())
+        public DialogueNode(DialogueNvData nodeNvData = null, Rect targetPos = new Rect())
         {
             visualTree = CustomSettingProvider.GetSettings().nodeSetting.dialogueNode;
-            Construction(nodeData, targetPos);
+            Construction(nodeNvData, targetPos);
         }
 
         private protected override void Visualization()
@@ -32,7 +32,7 @@ namespace NexusVisual.Editor
         private protected override void DataBind()
         {
             //Serialized object bind
-            var data = (DialogueData)userData;
+            var data = (DialogueNvData)userData;
             var a = data.dialogueList.Aggregate<Dialogue, string>(null, (current, dialogue) =>
                 current + (dialogue.ToSentence() + "\n"));
             mainContainer.Q<Label>("Lables").text = a;

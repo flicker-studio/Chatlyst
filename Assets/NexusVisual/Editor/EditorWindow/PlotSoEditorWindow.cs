@@ -30,23 +30,29 @@ namespace NexusVisual.Editor
 
         private void WindowInitialize()
         {
-            //Initialize editor window
+            #region Initialize editor window
+
             var visualTree = EditorGUIUtility.Load("NodeEditorWindow.uxml") as VisualTreeAsset;
             if (!visualTree) throw new Exception("Can not find EditorWindow.uxml");
             visualTree.CloneTree(rootVisualElement);
             saveChangesMessage = "未保存的更改!\n您是否要保存？";
             titleContent.text = $"{_plotSo.name}";
 
-            //Get element
+            #endregion
+
+            #region Get visual element
+
             _graphView = rootVisualElement.Q<PlotSoGraphView>("GraphView");
             _toolbarMenu = rootVisualElement.Q<ToolbarMenu>("Menu");
             _inspectorToggle = rootVisualElement.Q<ToolbarToggle>("Inspector");
             _autoSaveToggle = rootVisualElement.Q<ToolbarToggle>("AutoSave");
             _save = rootVisualElement.Q<ToolbarButton>("Save");
 
+            #endregion
 
-            //Action bind
-            _graphView.RegisterCallback<KeyDownEvent>(KeyDownMenuTrigger);
+            #region Action bind
+
+            _graphView.RegisterCallback<KeyDownEvent>(SearchTreeBuild);
             _graphView.graphViewChanged += (_ =>
             {
                 hasUnsavedChanges = true;
@@ -55,34 +61,39 @@ namespace NexusVisual.Editor
             _save.clicked += SaveChanges;
             ToolBarMenuAction();
 
-            #region Re-draw the plot tree
+            #endregion
 
-            //Todo:Use cache
-            var sectionDictionary = _plotSo.nodesData;
+            NodeRebuild();
+        }
+
+        //Todo:Use cache to rebuild faster
+        private void NodeRebuild()
+        {
+            var dataDictionary = _plotSo.nodesData;
+            if (dataDictionary == null) return;
             var nodeDictionary = new Dictionary<string, Node>();
-
-            foreach (var section in sectionDictionary.Values)
+            foreach (var section in dataDictionary.Values)
             {
                 Node node;
                 switch (section)
                 {
-                    case StartData startSection:
+                    case StartNvData startSection:
                         node = new StartNode(startSection);
                         _graphView.AddElement(node);
                         nodeDictionary.Add(section.guid, node);
                         break;
-                    case DialogueData dialogueSection:
+                    case DialogueNvData dialogueSection:
                         node = new DialogueNode(dialogueSection);
                         _graphView.AddElement(node);
                         nodeDictionary.Add(section.guid, node);
                         break;
                     default:
-                        Debug.Log("Unknown BaseData");
+                        Debug.Log("Unknown BaseNvData");
                         break;
                 }
             }
 
-            foreach (var section in sectionDictionary.Values)
+            foreach (var section in dataDictionary.Values)
             {
                 if (!string.IsNullOrEmpty(section.nextGuid))
                 {
@@ -96,84 +107,46 @@ namespace NexusVisual.Editor
                     _graphView.AddElement(edge);
                 }
             }
-
-            #endregion
         }
 
-        private void DataSave()
+        private void NodeDataSave()
         {
-            var collection = CreateInstance<PlotSo>();
-            var edgeList = _graphView.edges.ToList();
-            var nodeList = _graphView.graphElements;
-            var dialogueNodeList = nodeList.Where(a => a is DialogueNode).Cast<DialogueNode>().ToList();
-            var startNodeList = nodeList.Where(a => a is StartNode).Cast<StartNode>().ToList();
+            var graphEdges = _graphView.edges.ToList();
+            var graphNodes = _graphView.graphElements;
+            var dialogueNodeList = graphNodes.Where(a => a is DialogueNode).Cast<DialogueNode>().ToList();
+            var startNodeList = graphNodes.Where(a => a is StartNode).Cast<StartNode>().ToList();
 
+            var collection = new List<BaseNvData>();
 
             foreach (var dialogueNode in dialogueNodeList)
             {
-                var data = dialogueNode.userData as DialogueData;
-                if (data == null) return;
+                var data = dialogueNode.userData as DialogueNvData;
+                if (data == null) throw new Exception("Data type mismatch");
                 data.nodePos = dialogueNode.GetPosition();
-                //  dialogueNode.edge
-                collection.dialogueSections.Add(data);
+                collection.Add(data);
             }
-
 
             foreach (var startNode in startNodeList)
             {
-                var data = startNode.userData as StartData;
-                if (data == null) return;
+                var data = startNode.userData as StartNvData;
+                if (data == null) throw new Exception("Data type mismatch");
                 data.nodePos = startNode.GetPosition();
-                //  dialogueNode.edge
-                collection.startSections.Add(data);
+                collection.Add(data);
             }
 
-
-            #region Node
-
-/*
-            foreach (var sectionNode in nodeList)
-            {
-                var next = sectionNode.outputContainer.Q<Port>().connections.First().input;
-
-
-                /*   switch (sectionNode)
-                   {
-                       case DialogueNode dialogueNode:
-                           dialogueNode.userData.Pos = dialogueNode.GetPosition();
-                           //  dialogueNode.edge
-                           collection.dialogueSections.Add(dialogueNode.userData as DialogueData);
-                           break;
-                       case StartNode startNode:
-                           startNode.data.Pos = startNode.GetPosition();
-                           collection.startSections.Add(startNode.data);
-                           break;
-                       default:
-                           Debug.Log("Unknown Node");
-                           break;
-                   }
-        }
-        */
-
-            #endregion
-
-            #region Link
-
-            var sectionDictionary = collection.nodesData;
-            foreach (var edge in edgeList)
+            var dataDictionary = collection.ToDictionary(sec => sec.guid);
+            foreach (var edge in graphEdges)
             {
                 var thisGuid = edge.output.node.viewDataKey;
                 var nextGuid = edge.input.node.viewDataKey;
-                sectionDictionary[thisGuid].nextGuid = nextGuid;
+                dataDictionary[thisGuid].nextGuid = nextGuid;
             }
 
-            _plotSo.nodesData = sectionDictionary;
+            _plotSo.nodesData = dataDictionary;
             EditorUtility.SetDirty(_plotSo);
-
-            #endregion
         }
 
-        private void KeyDownMenuTrigger(KeyDownEvent keyDownEvent)
+        private void SearchTreeBuild(KeyDownEvent keyDownEvent)
         {
             if (keyDownEvent.keyCode != MenuKey) return;
             //create a search windows under the cursor
@@ -184,13 +157,16 @@ namespace NexusVisual.Editor
             SearchWindow.Open(searchWindowContext, searchWindowProvider);
         }
 
-
         private void ToolBarMenuAction()
         {
             _toolbarMenu.menu.AppendAction("Test", _ => { Debug.Log("Test Successful"); });
         }
 
-        #region Event function
+        public override void SaveChanges()
+        {
+            base.SaveChanges();
+            NodeDataSave();
+        }
 
         [OnOpenAsset(1)]
         public static bool OnOpenAssets(int id, int line)
@@ -209,13 +185,6 @@ namespace NexusVisual.Editor
             return true;
         }
 
-
-        public override void SaveChanges()
-        {
-            base.SaveChanges();
-            DataSave();
-        }
-
         private void OnInspectorUpdate()
         {
             _graphView.OnUpdate?.Invoke();
@@ -224,9 +193,7 @@ namespace NexusVisual.Editor
 
         private void OnDestroy()
         {
-            if (_autoSaveToggle.value) DataSave();
+            if (_autoSaveToggle.value) NodeDataSave();
         }
-
-        #endregion
     }
 }

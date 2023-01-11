@@ -20,7 +20,7 @@ namespace NexusVisual.Editor
     /// </summary>
     /// <typeparam name="T">Data type</typeparam>
     public abstract class BaseNvNode<T> : Node
-        where T : BaseData
+        where T : BaseNvData
     {
         protected readonly VisualElement mainElement = new VisualElement();
         protected VisualTreeAsset visualTree;

@@ -9,16 +9,12 @@ namespace NexusVisual.Runtime
         public CharacterName name;
         public string text;
 
-        public string ToSentence()
-        {
-            return name + ":" + text;
-        }
+        public string ToSentence() => name + ":" + text;
     }
 
     [Serializable]
-    public class DialogueData : BaseData
+    public class DialogueNvData : BaseNvData
     {
         public List<Dialogue> dialogueList = new List<Dialogue>();
-        public Dialogue[] test;
     }
 }

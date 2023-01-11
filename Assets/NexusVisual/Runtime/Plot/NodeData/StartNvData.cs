@@ -3,7 +3,7 @@
 namespace NexusVisual.Runtime
 {
     [Serializable]
-    public class StartData : BaseData
+    public class StartNvData : BaseNvData
     {
     }
 }

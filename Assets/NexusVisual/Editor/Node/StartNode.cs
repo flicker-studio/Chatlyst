@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace NexusVisual.Editor
 {
-    internal sealed class StartNode : BaseNvNode<StartData>, IVisible
+    internal sealed class StartNode : BaseNvNode<StartNvData>, IVisible
     {
-        public StartNode(StartData nodeData = null, Rect targetPos = new Rect())
+        public StartNode(StartNvData nodeNvData = null, Rect targetPos = new Rect())
         {
             visualTree = CustomSettingProvider.GetSettings().nodeSetting.startNode;
-            Construction(nodeData, targetPos);
+            Construction(nodeNvData, targetPos);
         }
 
         public StartNode()

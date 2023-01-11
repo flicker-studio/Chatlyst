@@ -3,17 +3,22 @@ using UnityEngine;
 
 namespace NexusVisual.Runtime
 {
+    /// <summary>
+    /// Used to provide the basic properties of the nvnode
+    /// </summary>
     [Serializable]
-    public class BaseData : ScriptableObject
+    public class BaseNvData : ScriptableObject
     {
+        /// <summary>
+        /// The guid of the current nvnode is globally unique and cannot be changed
+        /// </summary>
         public string guid => currentGuid;
 
-        //Data Field
         [SerializeField] private string currentGuid;
         [SerializeField] public string nextGuid;
         [SerializeField] public Rect nodePos;
 
-        protected BaseData()
+        protected BaseNvData()
         {
             currentGuid = Guid.NewGuid().ToString();
             nextGuid = null;
