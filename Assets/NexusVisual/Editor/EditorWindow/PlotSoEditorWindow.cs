@@ -93,26 +93,24 @@ namespace NexusVisual.Editor
                 }
             }
 
-            foreach (var section in dataDictionary.Values)
+            foreach (var edge in from section in dataDictionary.Values
+                     where !string.IsNullOrEmpty(section.nextGuid)
+                     select new Edge
+                     {
+                         output = nodeDictionary[section.guid].outputContainer[0].Q<Port>(),
+                         input = nodeDictionary[section.nextGuid].inputContainer[0].Q<Port>()
+                     })
             {
-                if (!string.IsNullOrEmpty(section.nextGuid))
-                {
-                    var edge = new Edge
-                    {
-                        output = nodeDictionary[section.guid].outputContainer[0].Q<Port>(),
-                        input = nodeDictionary[section.nextGuid].inputContainer[0].Q<Port>()
-                    };
-                    edge.input.Connect(edge);
-                    edge.output.Connect(edge);
-                    _graphView.AddElement(edge);
-                }
+                edge.input.Connect(edge);
+                edge.output.Connect(edge);
+                _graphView.AddElement(edge);
             }
         }
 
-        private void NodeDataSave()
+        private void PlotSave()
         {
-            var graphEdges = _graphView.edges.ToList();
             var graphNodes = _graphView.graphElements;
+
             var dialogueNodeList = graphNodes.Where(a => a is DialogueNode).Cast<DialogueNode>().ToList();
             var startNodeList = graphNodes.Where(a => a is StartNode).Cast<StartNode>().ToList();
 
@@ -120,30 +118,34 @@ namespace NexusVisual.Editor
 
             foreach (var dialogueNode in dialogueNodeList)
             {
-                var data = dialogueNode.userData as DialogueNvData;
-                if (data == null) throw new Exception("Data type mismatch");
-                data.nodePos = dialogueNode.GetPosition();
-                collection.Add(data);
+                NodeDataSave<DialogueNvData>(dialogueNode, ref collection);
             }
 
             foreach (var startNode in startNodeList)
             {
-                var data = startNode.userData as StartNvData;
-                if (data == null) throw new Exception("Data type mismatch");
-                data.nodePos = startNode.GetPosition();
-                collection.Add(data);
+                NodeDataSave<StartNvData>(startNode, ref collection);
             }
 
             var dataDictionary = collection.ToDictionary(sec => sec.guid);
-            foreach (var edge in graphEdges)
-            {
-                var thisGuid = edge.output.node.viewDataKey;
-                var nextGuid = edge.input.node.viewDataKey;
-                dataDictionary[thisGuid].nextGuid = nextGuid;
-            }
-
             _plotSo.nodesData = dataDictionary;
             EditorUtility.SetDirty(_plotSo);
+        }
+
+
+        private static void NodeDataSave<T>(Node targetNode, ref List<BaseNvData> collection)
+            where T : BaseNvData
+        {
+            var data = targetNode.userData as T;
+            if (data == null) throw new Exception("Data type mismatch");
+            data.nodePos = targetNode.GetPosition();
+            var nodeEdges = targetNode.outputContainer.Q<Port>().connections.ToList();
+            if (nodeEdges.Count > 0)
+            {
+                data.nextGuid = nodeEdges.First().input.node.viewDataKey;
+                //Todo:Choice node has many ports
+            }
+
+            collection.Add(data);
         }
 
         private void SearchTreeBuild(KeyDownEvent keyDownEvent)
@@ -165,7 +167,7 @@ namespace NexusVisual.Editor
         public override void SaveChanges()
         {
             base.SaveChanges();
-            NodeDataSave();
+            PlotSave();
         }
 
         [OnOpenAsset(1)]
@@ -193,7 +195,7 @@ namespace NexusVisual.Editor
 
         private void OnDestroy()
         {
-            if (_autoSaveToggle.value) NodeDataSave();
+            if (_autoSaveToggle.value) PlotSave();
         }
     }
 }

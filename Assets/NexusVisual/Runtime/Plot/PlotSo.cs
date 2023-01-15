@@ -32,7 +32,7 @@ namespace NexusVisual.Runtime
                 var dataList = new List<BaseNvData>();
                 dataList.AddRange(startDataList);
                 dataList.AddRange(dialogueDataList);
-                return dataList.Count > 0 ? dataList.ToDictionary(sec => sec.guid) : null;
+                return dataList.Count > 0 ? dataList.ToDictionary(sec => sec.guid) : new Dictionary<string, BaseNvData>();
             }
 
             set
