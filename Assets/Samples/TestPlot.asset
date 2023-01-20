@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c0a516dde864b4bb3ced5d95c97882f, type: 3}
-  m_Name: CustomSetting
+  m_Script: {fileID: 11500000, guid: a3b8932815bf13b41b2332ee8ad82248, type: 3}
+  m_Name: TestPlot
   m_EditorClassIdentifier: 
-  nodeSetting: {fileID: 11400000, guid: b7112725367c22a4f9f26a446ca0cfc9, type: 2}
+  startDataList: []
+  dialogueDataList: []
