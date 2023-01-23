@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using NexusVisual.Runtime;
 using UnityEditor;
-using UnityEditor.Callbacks;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -29,14 +25,15 @@ namespace NexusVisual.Editor
         private ToolbarButton _save;
 
 
-        private void WindowInitialize()
+        public void WindowInitialize()
         {
             #region Initialize editor window
 
-            var visualTree = EditorGUIUtility.Load("NodeEditorWindow.uxml") as VisualTreeAsset;
+            _window = this;
+            var visualTree = Resources.Load("UXML/NodeEditorWindow") as VisualTreeAsset;
             if (!visualTree) throw new Exception("Can not find EditorWindow.uxml");
             visualTree.CloneTree(rootVisualElement);
-            saveChangesMessage = "未保存的更改!\n您是否要保存？";
+            saveChangesMessage = "Unsaved changes!\nDo you want to save?";
             titleContent.text = $"{_nexusPlot}";
 
             #endregion
@@ -54,101 +51,36 @@ namespace NexusVisual.Editor
             #region Action bind
 
             _graphView.RegisterCallback<KeyDownEvent>(SearchTreeBuild);
-            _graphView.graphViewChanged += (_ =>
-            {
-                hasUnsavedChanges = true;
-                return default;
-            });
+            _graphView.graphViewChanged += OnGraphViewGraphViewChanged;
             _save.clicked += SaveChanges;
             ToolBarMenuAction();
 
             #endregion
 
+            #region NodeRebuild
+
             NodeRebuild();
+
+            #endregion
+        }
+
+        private GraphViewChange OnGraphViewGraphViewChanged(GraphViewChange _)
+        {
+            hasUnsavedChanges = true;
+            return default;
         }
 
         //Todo:Use cache to rebuild faster
         private void NodeRebuild()
         {
-            if (_nexusPlot.NodeData == null) return;
-            var dataDictionary = _nexusPlot.NodeData;
-            var nodeDictionary = new Dictionary<string, Node>();
-            foreach (var section in dataDictionary.Values)
-            {
-                Node node;
-                switch (section)
-                {
-                    case StartNvData startSection:
-                        node = new StartNode(startSection);
-                        _graphView.AddElement(node);
-                        nodeDictionary.Add(section.guid, node);
-                        break;
-                    case DialogueNvData dialogueSection:
-                        node = new DialogueNode(dialogueSection);
-                        _graphView.AddElement(node);
-                        nodeDictionary.Add(section.guid, node);
-                        break;
-                    default:
-                        Debug.Log("Unknown BaseNvData");
-                        break;
-                }
-            }
-
-            foreach (var edge in from section in dataDictionary.Values
-                     where !string.IsNullOrEmpty(section.nextGuid)
-                     select new Edge
-                     {
-                         output = nodeDictionary[section.guid].outputContainer[0].Q<Port>(),
-                         input = nodeDictionary[section.nextGuid].inputContainer[0].Q<Port>()
-                     })
-            {
-                edge.input.Connect(edge);
-                edge.output.Connect(edge);
-                _graphView.AddElement(edge);
-            }
+           
         }
 
         private void PlotSave()
         {
-            var graphNodes = _graphView.nodes;
-
-            var dialogueNodeList = graphNodes.Where(a => a is DialogueNode).Cast<DialogueNode>().ToList();
-            var startNodeList = graphNodes.Where(a => a is StartNode).Cast<StartNode>().ToList();
-
-            var collection = new List<BaseNvData>();
-
-            foreach (var dialogueNode in dialogueNodeList)
-            {
-                NodeDataSave<DialogueNvData>(dialogueNode, ref collection);
-            }
-
-            foreach (var startNode in startNodeList)
-            {
-                NodeDataSave<StartNvData>(startNode, ref collection);
-            }
-
-            var dataDictionary = collection.ToDictionary(sec => sec.guid);
-            _nexusPlot.NodeData = dataDictionary;
-            _nexusPlot.SavePlot();
+           
         }
-
-
-        private static void NodeDataSave<T>(Node targetNode, ref List<BaseNvData> collection)
-            where T : BaseNvData
-        {
-            var data = targetNode.userData as T;
-            if (data == null) throw new Exception("Data type mismatch");
-            data.nodePos = targetNode.GetPosition();
-            var nodeEdges = targetNode.outputContainer.Q<Port>().connections.ToList();
-            if (nodeEdges.Count > 0)
-            {
-                data.nextGuid = nodeEdges.First().input.node.viewDataKey;
-                //Todo:Choice node has many ports
-            }
-
-            collection.Add(data);
-        }
-
+        
         private void SearchTreeBuild(KeyDownEvent keyDownEvent)
         {
             if (keyDownEvent.keyCode != MenuKey) return;
@@ -170,39 +102,6 @@ namespace NexusVisual.Editor
             base.SaveChanges();
             PlotSave();
         }
-
-        [OnOpenAsset(2)]
-        public static bool OpenSo(int id, int line)
-        {
-            var filePath = AssetDatabase.GetAssetPath(EditorUtility.InstanceIDToObject(id));
-            var combinePath = Path.Combine(Directory.GetParent(Application.dataPath)?.ToString() ?? string.Empty, filePath);
-            // if (combinePath.EndsWith(".nvp"))
-            {
-                if (_window)
-                {
-                    _window.Show();
-                    return true;
-                }
-
-                _window = GetWindow<NexusPlotEditorWindow>();
-                _window._nexusPlot = new NexusPlot(combinePath);
-                _window.WindowInitialize();
-                _window.Show();
-                return true;
-            }
-
-            return false;
-        }
-
-        private void OnInspectorUpdate()
-        {
-            _graphView.OnUpdate?.Invoke();
-            _graphView.GetBlackboard().visible = _inspectorToggle.value;
-        }
-
-        private void OnDestroy()
-        {
-            if (_autoSaveToggle.value) PlotSave();
-        }
+        
     }
 }

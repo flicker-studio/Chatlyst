@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace NexusVisual.Editor
 {
@@ -13,6 +14,16 @@ namespace NexusVisual.Editor
             this.id = id;
             this.type = type;
             this.json = json;
+        }
+
+        public T ConvertToOrigin<T>()
+        {
+            if (typeof(T) != type)
+            {
+                throw new Exception("Mismatch type!");
+            }
+
+            return JsonConvert.DeserializeObject<T>(json);
         }
 
         private bool Equals(NexusJsonEntry other)
