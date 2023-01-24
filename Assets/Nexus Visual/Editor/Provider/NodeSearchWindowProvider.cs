@@ -9,10 +9,10 @@ namespace NexusVisual.Editor
 {
     public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider
     {
-        private PlotSoGraphView _plotSoGraphView;
+        private GraphView _plotSoGraphView;
         private EditorWindow _window;
 
-        public void Init(PlotSoGraphView graphView, EditorWindow window)
+        public void Init(GraphView graphView, EditorWindow window)
         {
             _plotSoGraphView = graphView;
             _window = window;
@@ -43,7 +43,6 @@ namespace NexusVisual.Editor
 
             return tree;
         }
-
 
         public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)
         {

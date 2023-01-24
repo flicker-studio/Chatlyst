@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using NexusVisual.Editor;
+using NexusVisual.Runtime;
 using NUnit.Framework;
+using UnityEngine;
 
 public class Serialization
 {
@@ -19,5 +21,14 @@ public class Serialization
         var jsonString = JsonConvert.SerializeObject(a);
         NexusJsonEntry entry = JsonConvert.DeserializeObject<NexusJsonEntry>(jsonString);
         Assert.AreEqual(entry, a);
+    }
+
+    [Test]
+    public void ConvertToEntry()
+    {
+        var b = ScriptableObject.CreateInstance<StartNvData>();
+        var entry = b.ConvertToEntry();
+        var o = entry.ConvertToOrigin<StartNvData>();
+        Assert.AreEqual(b, o);
     }
 }

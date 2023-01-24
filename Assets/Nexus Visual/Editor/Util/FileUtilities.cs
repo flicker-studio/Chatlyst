@@ -9,6 +9,7 @@ namespace NexusVisual.Editor
     {
         public static bool WriteToDisk(string path, string text)
         {
+            if (!PathValidCheck(path)) return false;
             while (true)
             {
                 try
@@ -46,22 +47,44 @@ namespace NexusVisual.Editor
             return true;
         }
 
-        public static string PathValidCheck(string path)
+        public static bool PathValidCheck(string path)
         {
             var fullPath = Path.GetFullPath(path);
             var fileName = Path.GetFileName(path);
+            return fileName.EndsWith(".nvp") && File.Exists(fullPath);
+            /*throw new Exception($"{Path.GetExtension(fileName)} is unsupported extension!");
+            throw new Exception($"{fullPath} is not exist!");*/
+        }
 
-            if (!fileName.EndsWith(".nvp"))
+        [MenuItem("Assets/Create/Nexus Visual/Create new plot")]
+        public static void AssetCreate()
+        {
+            var index = 0;
+            var path = "Assets";
+            const string ext = ".nvp";
+            foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
             {
-                throw new Exception($"{Path.GetExtension(fileName)} is unsupported extension!");
+                path = AssetDatabase.GetAssetPath(obj);
+                if (string.IsNullOrEmpty(path) || !File.Exists(path)) continue;
+                path = Path.GetDirectoryName(path);
+                break;
             }
 
-            if (!File.Exists(fullPath))
+            if (path == null) throw new Exception();
+            while (true)
             {
-                throw new Exception($"{fullPath} is not exist!");
-            }
+                var assetPath = path + "\\New Plot " + index + ext;
+                var fullPath = Path.GetFullPath(assetPath);
+                if (File.Exists(fullPath))
+                {
+                    ++index;
+                    continue;
+                }
 
-            return fullPath;
+                File.Create(fullPath).Close();
+                AssetDatabase.ImportAsset(assetPath);
+                return;
+            }
         }
     }
 }
