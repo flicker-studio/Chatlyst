@@ -1,11 +1,10 @@
-﻿using NexusVisual.Runtime;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace NexusVisual.Editor
 {
-    [CustomPropertyDrawer(typeof(DisplayOnly))]
-    public class ReadOnlyDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(DisplayOnlyAttribute))]
+    public class DisplayOnlyDrawer : PropertyDrawer
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {

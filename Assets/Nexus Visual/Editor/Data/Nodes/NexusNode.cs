@@ -1,18 +1,29 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace NexusVisual.Editor.Data
 {
-    public struct NexusNode
+    public class NexusNode
     {
-        public string guid { get; }
-        public string nextGuid { get; set; }
-        public Rect nodePos { get; set; }
+        [JsonProperty]
+        public readonly string Guid;
+        public string NextGuid;
+        public Rect NodePos;
 
-        public NexusNode(string guid, string nextGuid, Rect nodePos)
+        protected NexusNode()
         {
-            this.guid = guid;
-            this.nextGuid = nextGuid;
-            this.nodePos = nodePos;
+            Guid = System.Guid.NewGuid().ToString();
+            NextGuid = null;
+            NodePos = new Rect();
         }
+
+        private bool Equals(NexusNode other) =>
+            Guid == other.Guid && NextGuid == other.NextGuid && NodePos == other.NodePos;
+
+        public override bool Equals(object obj) =>
+            obj is NexusNode other && Equals(other);
+
+        public override int GetHashCode() =>
+            Guid.GetHashCode();
     }
 }

@@ -1,15 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace NexusVisual.Editor
+namespace NexusVisual.Editor.Views
 {
     public class NexusGraphView : GraphView
     {
         private const KeyCode MenuKey = KeyCode.Space;
         private EditorWindow _window;
+
+        public class Factory : UxmlFactory<NexusGraphView, UxmlTraits>
+        {
+        }
 
         public NexusGraphView()
         {
@@ -27,10 +32,6 @@ namespace NexusVisual.Editor
             RegisterCallback<KeyDownEvent>(SearchTreeBuild);
         }
 
-        public List<NexusJsonEntry> GraphJsonEntryList()
-        {
-            return new List<NexusJsonEntry>();
-        }
 
         private void SearchTreeBuild(KeyDownEvent keyDownEvent)
         {
@@ -43,9 +44,22 @@ namespace NexusVisual.Editor
             SearchWindow.Open(searchWindowContext, searchWindowProvider);
         }
 
-        public class Factory : UxmlFactory<NexusGraphView, UxmlTraits>
+
+        public List<NexusJsonEntry> NodeToEntryList()
         {
+            var list = new List<NexusJsonEntry>();
+            var nodeViewList = graphElements.Where(a => a is NexusNodeView).Cast<NexusNodeView>().ToList();
+            foreach (var view in nodeViewList)
+            {
+                view.DataRefresh();
+
+                list.Add(view.dataEntry);
+            }
+
+
+            return list;
         }
+
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {

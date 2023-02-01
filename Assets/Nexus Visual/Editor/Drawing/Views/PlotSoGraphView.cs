@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
-namespace NexusVisual.Editor
+namespace NexusVisual.Editor.Views
 {
     public class PlotSoGraphView : GraphView
     {

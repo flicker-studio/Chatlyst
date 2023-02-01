@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using NexusVisual.Editor.Views;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -60,6 +62,7 @@ namespace NexusVisual.Editor
 
         private bool GraphHasChangedSinceLastSerialization()
         {
+            //Todo:Performance must be optimized!
             var currentGraphJson = _graphView.ConvertToEntry();
             return !string.Equals(currentGraphJson.json, _jsonData, StringComparison.Ordinal);
         }
@@ -67,6 +70,7 @@ namespace NexusVisual.Editor
         public override void SaveChanges()
         {
             base.SaveChanges();
+            Debug.Log(_graphView.NodeToEntryList().First().json);
         }
     }
 }
