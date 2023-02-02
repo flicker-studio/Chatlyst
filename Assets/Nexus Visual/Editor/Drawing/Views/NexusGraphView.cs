@@ -32,7 +32,6 @@ namespace NexusVisual.Editor.Views
             RegisterCallback<KeyDownEvent>(SearchTreeBuild);
         }
 
-
         private void SearchTreeBuild(KeyDownEvent keyDownEvent)
         {
             if (keyDownEvent.keyCode != MenuKey) return;
@@ -44,22 +43,33 @@ namespace NexusVisual.Editor.Views
             SearchWindow.Open(searchWindowContext, searchWindowProvider);
         }
 
-
-        public List<NexusJsonEntry> NodeToEntryList()
+        public bool BuildFromEntries(List<NexusJsonEntity> list)
         {
-            var list = new List<NexusJsonEntry>();
+            foreach (var entity in list)
+            {
+                var viewTypeName = entity.userData;
+                var assembly = typeof(NexusNodeView).Assembly;
+                var instancedView = assembly.CreateInstance(viewTypeName);
+                var method = typeof(IVisible).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
+                if (instancedView is not NexusNodeView nodeView || method == null) return false;
+                method.Invoke(nodeView, new object[] { entity });
+            }
+
+            return true;
+        }
+
+        public IEnumerable<NexusJsonEntity> NodeEntity()
+        {
+            var list = new List<NexusJsonEntity>();
             var nodeViewList = graphElements.Where(a => a is NexusNodeView).Cast<NexusNodeView>().ToList();
             foreach (var view in nodeViewList)
             {
                 view.DataRefresh();
-
-                list.Add(view.dataEntry);
+                list.Add(view.dataEntity);
             }
-
 
             return list;
         }
-
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {

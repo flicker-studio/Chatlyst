@@ -53,8 +53,10 @@ namespace NexusVisual.Editor
             var editorAssembly = typeof(NexusNodeView).Assembly;
             var typeName = (string)searchTreeEntry.userData;
             //Use C# Reflection to creat the node 
-            if (editorAssembly.CreateInstance(typeName, false, BindingFlags.CreateInstance, null,
-                    new object[] { nodeRect }, null, null) is not Node newNode) return false;
+            var instance = editorAssembly.CreateInstance(typeName);
+            var method = typeof(IVisible).GetMethod("CreateInstance", new[] { typeof(Rect) });
+            if (method == null || instance is not NexusNodeView newNode) return false;
+            method.Invoke(newNode, new object[] { nodeRect });
             _graph.AddElement(newNode);
             return true;
         }

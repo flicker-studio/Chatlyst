@@ -8,14 +8,15 @@ namespace NexusVisual.Editor.Views
 {
     public abstract class NexusNodeView : Node
     {
-        public NexusJsonEntry dataEntry { get; private set; }
+        public virtual NexusJsonEntity dataEntity { get; private set; }
 
-        protected void Construction(string uxmlPath, NexusJsonEntry nodeEntry)
+        protected void Construction(string uxmlPath, NexusJsonEntity nodeEntity)
         {
             Visualization(uxmlPath);
-            dataEntry = nodeEntry;
+            dataEntity = nodeEntity;
             PortCreate();
             DataBind();
+            NexusPlotEditorWindow.GraphView.AddElement(this);
         }
 
         /// <summary>

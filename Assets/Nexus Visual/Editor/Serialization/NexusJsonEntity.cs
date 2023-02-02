@@ -3,17 +3,19 @@ using Newtonsoft.Json;
 
 namespace NexusVisual.Editor
 {
-    public struct NexusJsonEntry
+    public struct NexusJsonEntity
     {
         public string id { get; }
         public Type type { get; }
         public string json { get; }
+        public string userData { get; set; }
 
-        public NexusJsonEntry(Type type, string id, string json)
+        public NexusJsonEntity(Type type, string id, string json)
         {
             this.id = id;
             this.type = type;
             this.json = json;
+            userData = null;
         }
 
         public T ConvertToOrigin<T>()
@@ -26,14 +28,14 @@ namespace NexusVisual.Editor
             return JsonConvert.DeserializeObject<T>(json);
         }
 
-        private bool Equals(NexusJsonEntry other)
+        private bool Equals(NexusJsonEntity other)
         {
             return id == other.id && type == other.type && json == other.json;
         }
 
         public override bool Equals(object obj)
         {
-            return obj is NexusJsonEntry other && Equals(other);
+            return obj is NexusJsonEntity other && Equals(other);
         }
 
         public override int GetHashCode()

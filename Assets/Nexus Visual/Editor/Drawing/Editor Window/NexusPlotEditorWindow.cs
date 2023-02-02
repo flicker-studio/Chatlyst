@@ -16,13 +16,12 @@ namespace NexusVisual.Editor
         private string _assetGuid;
         private string _jsonData;
         //Basic element
-        private NexusGraphView _graphView;
+        public static NexusGraphView GraphView;
         //Toolbar element
         private ToolbarMenu _toolbarMenu;
         private ToolbarToggle _inspectorToggle;
         private ToolbarToggle _autoSaveToggle;
         private ToolbarButton _save;
-
 
         public void Initialize(string assetGuid)
         {
@@ -35,16 +34,17 @@ namespace NexusVisual.Editor
             if (!visualTree) throw new Exception("Can not find EditorWindow.uxml");
             visualTree.CloneTree(rootVisualElement);
 
-            _graphView = rootVisualElement.Q<NexusGraphView>("GraphView");
+            GraphView = rootVisualElement.Q<NexusGraphView>("GraphView");
             _toolbarMenu = rootVisualElement.Q<ToolbarMenu>("Menu");
             _inspectorToggle = rootVisualElement.Q<ToolbarToggle>("Inspector");
             _autoSaveToggle = rootVisualElement.Q<ToolbarToggle>("AutoSave");
             _save = rootVisualElement.Q<ToolbarButton>("Save");
 
-            _graphView.GraphInitialize(this);
+            GraphView.GraphInitialize(this);
             _save.clicked += SaveChanges;
 
-            TitleUpdate();
+            //TitleUpdate();
+            RebuildFromDisk();
         }
 
         private void TitleUpdate()
@@ -63,14 +63,26 @@ namespace NexusVisual.Editor
         private bool GraphHasChangedSinceLastSerialization()
         {
             //Todo:Performance must be optimized!
-            var currentGraphJson = _graphView.ConvertToEntry();
+            var currentGraphJson = GraphView.ConvertToEntity();
             return !string.Equals(currentGraphJson.json, _jsonData, StringComparison.Ordinal);
+        }
+
+        private bool RebuildFromDisk()
+        {
+            var entityIEnumerable = NexusJsonInternal.Deserialize(_jsonData);
+            if (entityIEnumerable == null) throw new Exception("Deserialize failed!");
+            var entityList = entityIEnumerable.ToList();
+            return GraphView.BuildFromEntries(entityList);
         }
 
         public override void SaveChanges()
         {
             base.SaveChanges();
-            Debug.Log(_graphView.NodeToEntryList().First().json);
+            var entityList = GraphView.NodeEntity().ToList();
+            var writeString = NexusJsonInternal.Serialize(entityList);
+            var assetPath = AssetDatabase.GUIDToAssetPath(_assetGuid);
+            var fullPath = Path.GetFullPath(assetPath);
+            FileUtilities.WriteToDisk(fullPath, writeString);
         }
     }
 }

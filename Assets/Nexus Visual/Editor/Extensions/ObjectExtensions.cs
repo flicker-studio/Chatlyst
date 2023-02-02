@@ -5,7 +5,7 @@ namespace NexusVisual.Editor
 {
     public static class ObjectExtensions
     {
-        public static NexusJsonEntry ConvertToEntry(this object target)
+        public static NexusJsonEntity ConvertToEntity(this object target)
         {
             var setting = new JsonSerializerSettings
             {
@@ -13,7 +13,7 @@ namespace NexusVisual.Editor
             };
             var jsonString = JsonConvert.SerializeObject(target, setting);
             var id = Guid.NewGuid().ToString();
-            return new NexusJsonEntry(target.GetType(), id, jsonString);
+            return new NexusJsonEntity(target.GetType(), id, jsonString);
         }
     }
 }

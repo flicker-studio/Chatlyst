@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -7,23 +8,22 @@ namespace NexusVisual.Editor
 {
     internal static class NexusJsonInternal
     {
-        public static List<NexusJsonEntry> Entries;
+        public static bool isSerializing { get; private set; }
+        public static bool isDeserializing { get; private set; }
 
-        public static bool IsSerializing;
-        public static bool IsDeserializing;
-
-        public static void Deserialize(String jsonText)
+        [CanBeNull]
+        public static IEnumerable<NexusJsonEntity> Deserialize(string jsonText)
         {
-            var entries = new List<NexusJsonEntry>();
-            if (IsDeserializing)
+            var entries = new List<NexusJsonEntity>();
+            if (isDeserializing)
             {
                 throw new InvalidOperationException("Nested deserialization is not supported.");
             }
 
             try
             {
-                IsDeserializing = true;
-                entries.AddRange(JsonConvert.DeserializeObject<List<NexusJsonEntry>>(jsonText));
+                isDeserializing = true;
+                entries.AddRange(JsonConvert.DeserializeObject<List<NexusJsonEntity>>(jsonText));
             }
             catch (Exception e)
             {
@@ -31,28 +31,28 @@ namespace NexusVisual.Editor
             }
             finally
             {
-                Entries = entries;
-                IsDeserializing = false;
+                isDeserializing = false;
             }
+
+            return entries;
         }
 
-        public static string Serialize(List<NexusJsonEntry> entries)
+        public static string Serialize(List<NexusJsonEntity> entries)
         {
-            if (IsSerializing)
+            if (isSerializing)
             {
                 throw new InvalidOperationException("Nested serialization is not supported.");
             }
 
             try
             {
-                IsSerializing = true;
+                isSerializing = true;
                 var jsonText = JsonConvert.SerializeObject(entries);
                 return jsonText;
             }
             finally
             {
-                IsSerializing = false;
-                Entries = entries;
+                isSerializing = false;
             }
         }
     }

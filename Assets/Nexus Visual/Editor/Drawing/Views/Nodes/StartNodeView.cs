@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using NexusVisual.Editor.Data;
 using UnityEngine;
 
 namespace NexusVisual.Editor.Views
@@ -7,19 +8,35 @@ namespace NexusVisual.Editor.Views
     public sealed class StartNodeView : NexusNodeView, IVisible
     {
         private const string UxmlPath = "UXML/Start";
-        [NotNull] private Data.StartNode _node;
-
-        public StartNodeView(Rect pos)
+        public override NexusJsonEntity dataEntity
         {
-            _node = new Data.StartNode("StartTest");
-            Construction(UxmlPath, _node.ConvertToEntry());
-            SetPosition(pos);
+            get
+            {
+                var entity = _node.ConvertToEntity();
+                entity.userData = GetType().FullName;
+                return entity;
+            }
+        }
+        [NotNull] private StartNode _node;
+
+        public StartNodeView()
+        {
+            _node = new StartNode("Default");
         }
 
-        public StartNodeView(NexusJsonEntry entry)
+        public void CreateInstance(Rect pos)
         {
-            _node = entry.ConvertToOrigin<Data.StartNode>();
-            Construction(UxmlPath, entry);
+            SetPosition(pos);
+            DataRefresh();
+            var entity = _node.ConvertToEntity();
+            entity.userData = GetType().FullName;
+            Construction(UxmlPath, entity);
+        }
+
+        public void RebuildInstance(NexusJsonEntity entity)
+        {
+            _node = entity.ConvertToOrigin<StartNode>();
+            Construction(UxmlPath, entity);
             SetPosition(_node.NodePos);
         }
 

@@ -1,5 +1,5 @@
-﻿using UnityEditor.Experimental.GraphView;
-using UnityEditor.UIElements;
+﻿using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
 //TODO:make dialogue list be reorderable
@@ -27,12 +27,9 @@ namespace NexusVisual.Editor.Views
         {
             if (_currentNode == target) return;
             _currentNode = target;
-
+            throw new NotImplementedException();
             switch (_currentNode)
             {
-                case DialogueNode dialogueNode:
-                    _inspector.BindProperty(dialogueNode.serializedObject.FindProperty("dialogueList"));
-                    break;
             }
         }
     }
