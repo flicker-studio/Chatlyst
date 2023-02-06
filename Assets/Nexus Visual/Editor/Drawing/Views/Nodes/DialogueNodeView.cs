@@ -1,11 +1,10 @@
-﻿using JetBrains.Annotations;
-using NexusVisual.Editor.Data;
+﻿using NexusVisual.Editor.Data;
 using UnityEngine;
 
 namespace NexusVisual.Editor.Views
 {
-    [SearchTreeName("开始节点"), NodePort(0, 1)]
-    public sealed class StartNodeView : NexusNodeView, IVisible
+    [SearchTreeName("对话节点"), NodePort(1, 1)]
+    public class DialogueNodeView : NexusNodeView, IVisible
     {
         private const string UxmlPath = "UXML/Start";
         public override NexusJsonEntity dataEntity
@@ -17,15 +16,16 @@ namespace NexusVisual.Editor.Views
                 return entity;
             }
         }
-        [NotNull] private StartNode _node;
+        public DialoguesNode _node;
 
-        public StartNodeView()
+        public override void DataRefresh()
         {
-            _node = new StartNode("Default");
+            _node.NodePos = GetPosition();
         }
 
         public void CreateInstance(Rect pos)
         {
+            _node = new DialoguesNode();
             SetPosition(pos);
             DataRefresh();
             var entity = _node.ConvertToEntity();
@@ -35,14 +35,9 @@ namespace NexusVisual.Editor.Views
 
         public void RebuildInstance(NexusJsonEntity entity)
         {
-            _node = entity.ConvertToOrigin<StartNode>();
+            _node = entity.ConvertToOrigin<DialoguesNode>();
             Construction(UxmlPath, entity);
             SetPosition(_node.NodePos);
-        }
-
-        public override void DataRefresh()
-        {
-            _node.NodePos = GetPosition();
         }
     }
 }

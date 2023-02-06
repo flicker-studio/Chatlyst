@@ -15,7 +15,6 @@ namespace NexusVisual.Editor.Views
             Visualization(uxmlPath);
             dataEntity = nodeEntity;
             PortCreate();
-            DataBind();
             NexusPlotEditorWindow.GraphView.AddElement(this);
         }
 
@@ -31,8 +30,7 @@ namespace NexusVisual.Editor.Views
         }
 
         public abstract void DataRefresh();
-        private protected abstract void DataBind();
-
+        
         private void PortCreate()
         {
             var portNumAttr = GetType().GetCustomAttribute<NodePortAttribute>();

@@ -9,5 +9,6 @@ namespace NexusVisual.Editor
     {
         public void CreateInstance(Rect pos);
         public void RebuildInstance(NexusJsonEntity entity);
+        
     }
 }

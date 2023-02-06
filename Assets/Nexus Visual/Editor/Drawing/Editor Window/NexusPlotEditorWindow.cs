@@ -16,6 +16,7 @@ namespace NexusVisual.Editor
         private string _assetGuid;
         private string _jsonData;
         //Basic element
+        public static NexusPlotEditorWindow EditorWindow;
         public static NexusGraphView GraphView;
         //Toolbar element
         private ToolbarMenu _toolbarMenu;
@@ -43,16 +44,16 @@ namespace NexusVisual.Editor
             GraphView.GraphInitialize(this);
             _save.clicked += SaveChanges;
 
-            //TitleUpdate();
+            TitleUpdate();
             RebuildFromDisk();
         }
 
         private void TitleUpdate()
         {
-            if (GraphHasChangedSinceLastSerialization())
-            {
-                hasUnsavedChanges = true;
-            }
+            // if (GraphHasChangedSinceLastSerialization())
+            // {
+            //     hasUnsavedChanges = true;
+            // }
 
             saveChangesMessage = "Unsaved changes!\nDo you want to save?";
             var assetPath = AssetDatabase.GUIDToAssetPath(_assetGuid);
@@ -63,8 +64,9 @@ namespace NexusVisual.Editor
         private bool GraphHasChangedSinceLastSerialization()
         {
             //Todo:Performance must be optimized!
-            var currentGraphJson = GraphView.ConvertToEntity();
-            return !string.Equals(currentGraphJson.json, _jsonData, StringComparison.Ordinal);
+            var entityList = GraphView.NodeEntity().ToList();
+            var writeString = NexusJsonInternal.Serialize(entityList);
+            return !string.Equals(writeString, _jsonData, StringComparison.Ordinal);
         }
 
         private bool RebuildFromDisk()
@@ -83,6 +85,31 @@ namespace NexusVisual.Editor
             var assetPath = AssetDatabase.GUIDToAssetPath(_assetGuid);
             var fullPath = Path.GetFullPath(assetPath);
             FileUtilities.WriteToDisk(fullPath, writeString);
+        }
+
+        public void Update()
+        {
+            GraphView.graphViewChanged += _ =>
+            {
+                hasUnsavedChanges = true;
+                return default;
+            };
+
+            if (GraphView == null)
+            {
+                if (_assetGuid != null)
+                {
+                    Initialize(_assetGuid);
+                }
+                else
+                {
+                    Close();
+                }
+            }
+            else
+            {
+                GraphView.InspectorNode();
+            }
         }
     }
 }

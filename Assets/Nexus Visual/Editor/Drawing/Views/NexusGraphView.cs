@@ -11,6 +11,7 @@ namespace NexusVisual.Editor.Views
     {
         private const KeyCode MenuKey = KeyCode.Space;
         private EditorWindow _window;
+        private readonly InspectorBlackboard _inspector;
 
         public class Factory : UxmlFactory<NexusGraphView, UxmlTraits>
         {
@@ -23,14 +24,23 @@ namespace NexusVisual.Editor.Views
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
+            _inspector = new InspectorBlackboard();
         }
 
         public void GraphInitialize(EditorWindow window)
         {
-            // Add(_inspector);
+            Add(_inspector);
             _window = window;
             RegisterCallback<KeyDownEvent>(SearchTreeBuild);
         }
+
+        public void InspectorNode()
+        {
+            _inspector.Inspector(selection.Count > 0 ? selection[0] : null);
+        }
+
+        public override Blackboard GetBlackboard() => _inspector;
+
 
         private void SearchTreeBuild(KeyDownEvent keyDownEvent)
         {

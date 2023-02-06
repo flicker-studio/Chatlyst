@@ -7,7 +7,9 @@ namespace NexusVisual.Editor.Data
     {
         [JsonProperty]
         public readonly string Guid;
+        [JsonProperty]
         public string NextGuid;
+        [JsonProperty]
         public Rect NodePos;
 
         protected NexusNode()

@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEditor.Experimental.GraphView;
+﻿using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 //TODO:make dialogue list be reorderable
@@ -7,7 +7,7 @@ namespace NexusVisual.Editor.Views
 {
     public sealed class InspectorBlackboard : Blackboard
     {
-        private ISelectable _currentNode;
+        private DialogueNodeView _currentNode;
         private readonly ListView _inspector = new ListView();
 
 
@@ -25,12 +25,20 @@ namespace NexusVisual.Editor.Views
 
         public void Inspector(ISelectable target)
         {
-            if (_currentNode == target) return;
-            _currentNode = target;
-            throw new NotImplementedException();
-            switch (_currentNode)
+            if (target == null)
             {
+                return;
             }
+
+            if (target is not DialogueNodeView node)
+            {
+                _inspector.visible = false;
+                return;
+            }
+
+            _inspector.visible = true;
+            _currentNode = node;
+            _inspector.BindProperty(_currentNode._node.getListProperty);
         }
     }
 }

@@ -1,28 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace NexusVisual.Editor.Data
 {
+    [Serializable]
     public struct Dialogue
     {
-        public string Name;
-        public string Talk;
+        [FormerlySerializedAs("Name")] public string name;
+        [FormerlySerializedAs("Talk")] public string talk;
 
         public Dialogue(string src)
         {
             var array = src.Split(":");
-            if (array.Length != 2)
-            {
-                throw new Exception("Src Error!");
-            }
-
-            Name = array[0];
-            Talk = array[1];
+            if (array.Length != 2) throw new Exception("Src Error!");
+            name = array[0];
+            talk = array[1];
         }
     }
 
+
     public class DialoguesNode : NexusNode
     {
-        public List<Dialogue> DialogueList = new List<Dialogue>();
+        [Serializable]
+        private class BindHelper : ScriptableObject
+        {
+            public List<Dialogue> dialogueList = new List<Dialogue>();
+        }
+
+        [JsonIgnore]
+        private readonly BindHelper _bindProxy;
+        [JsonProperty]
+        public List<Dialogue> dialogueList
+        {
+            get => _bindProxy.dialogueList;
+            set => _bindProxy.dialogueList = value;
+        }
+        [JsonIgnore]
+        public SerializedProperty getListProperty
+        {
+            get
+            {
+                var obj = new SerializedObject(_bindProxy);
+                return obj.FindProperty("dialogueList");
+            }
+        }
+
+        public DialoguesNode()
+        {
+            _bindProxy = ScriptableObject.CreateInstance<BindHelper>();
+        }
     }
 }
