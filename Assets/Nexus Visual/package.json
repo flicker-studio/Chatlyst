@@ -6,7 +6,7 @@
   "unity": "2021.3",
   "unityRelease": "6f1",
   "dependencies": {
-    "com.cysharp.unitask": "2.3.1",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git",
     "com.unity.nuget.newtonsoft-json": "3.0.2"
   }
 }
