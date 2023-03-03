@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using NexusVisual.Editor.Serialization;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -57,7 +58,7 @@ namespace NexusVisual.Editor.Views
         {
             foreach (var entity in list)
             {
-                var viewTypeName = entity.userData;
+                var viewTypeName = typeof(NexusNodeView).Name; //entity.userData;
                 var assembly = typeof(NexusNodeView).Assembly;
                 var instancedView = assembly.CreateInstance(viewTypeName);
                 var method = typeof(IVisible).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });

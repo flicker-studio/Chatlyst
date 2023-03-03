@@ -1,0 +1,12 @@
+﻿{
+  "name": "com.mors.nexus-visual",
+  "displayName": "Nexus Visual",
+  "description": "A simple conversation editor.",
+  "version": "0.2.0",
+  "unity": "2021.3",
+  "unityRelease": "6f1",
+  "dependencies": {
+    "com.cysharp.unitask": "2.3.1",
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  }
+}

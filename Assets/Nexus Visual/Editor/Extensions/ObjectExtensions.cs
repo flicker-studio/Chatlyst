@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using NexusVisual.Editor.Serialization;
 
 namespace NexusVisual.Editor
 {
@@ -7,13 +8,9 @@ namespace NexusVisual.Editor
     {
         public static NexusJsonEntity ConvertToEntity(this object target)
         {
-            var setting = new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            };
-            var jsonString = JsonConvert.SerializeObject(target, setting);
+            var jsonString = JsonConvert.SerializeObject(target, Formatting.Indented, NexusJsonUtility.IgnoreLoopSetting);
             var id = Guid.NewGuid().ToString();
-            return new NexusJsonEntity(target.GetType(), id, jsonString);
+            return new NexusJsonEntity();
         }
     }
 }

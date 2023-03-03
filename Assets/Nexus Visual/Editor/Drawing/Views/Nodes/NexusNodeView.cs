@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using NexusVisual.Editor.Serialization;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;

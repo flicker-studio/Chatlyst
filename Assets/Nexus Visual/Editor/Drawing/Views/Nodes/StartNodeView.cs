@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using NexusVisual.Editor.Data;
+using NexusVisual.Editor.Serialization;
 using UnityEngine;
 
 namespace NexusVisual.Editor.Views
@@ -13,7 +14,7 @@ namespace NexusVisual.Editor.Views
             get
             {
                 var entity = _node.ConvertToEntity();
-                entity.userData = GetType().FullName;
+                // entity.userData = GetType().FullName;
                 return entity;
             }
         }
@@ -29,7 +30,7 @@ namespace NexusVisual.Editor.Views
             SetPosition(pos);
             DataRefresh();
             var entity = _node.ConvertToEntity();
-            entity.userData = GetType().FullName;
+            //  entity.userData = GetType().FullName;
             Construction(UxmlPath, entity);
         }
 

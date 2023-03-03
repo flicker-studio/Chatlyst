@@ -20,6 +20,12 @@ namespace NexusVisual.Editor.Data
             name = array[0];
             talk = array[1];
         }
+
+        public override bool Equals(object obj) =>
+            obj is Dialogue d && d.name == name && d.talk == talk;
+
+        public override int GetHashCode() =>
+            HashCode.Combine(name, talk);
     }
 
 

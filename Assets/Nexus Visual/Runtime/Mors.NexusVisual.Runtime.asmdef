@@ -1,17 +1,15 @@
 {
-  "name": "NexusVisual.Editor",
-  "rootNamespace": "NexusVisual",
+  "name": "Mors.NexusVisual.Runtime",
+  "rootNamespace": "",
   "references": [
-    "GUID:144ebbaaf3d475b4e872d13f95be25bf"
+    "GUID:f51ebe6a0ceec4240a699833d6309b23"
   ],
-  "includePlatforms": [
-    "Editor"
-  ],
+  "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "overrideReferences": false,
   "precompiledReferences": [],
-    "autoReferenced": true,
+  "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false

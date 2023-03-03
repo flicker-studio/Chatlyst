@@ -1,0 +1,18 @@
+{
+  "name": "Mors.NexusVisual.Editor",
+  "rootNamespace": "NexusVisual",
+  "references": [
+    "GUID:144ebbaaf3d475b4e872d13f95be25bf"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

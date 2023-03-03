@@ -4,12 +4,12 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace NexusVisual.Editor.Serialization
 {
     internal static class NexusJsonInternal
     {
-        public static bool isSerializing { get; private set; }
-        public static bool isDeserializing { get; private set; }
+        private static bool isSerializing { get; set; }
+        private static bool isDeserializing { get; set; }
 
         [CanBeNull]
         public static IEnumerable<NexusJsonEntity> Deserialize(string jsonText)
@@ -47,7 +47,7 @@ namespace NexusVisual.Editor
             try
             {
                 isSerializing = true;
-                var jsonText = JsonConvert.SerializeObject(entries);
+                var jsonText = JsonConvert.SerializeObject(entries, Formatting.Indented);
                 return jsonText;
             }
             finally

@@ -1,4 +1,5 @@
-﻿using NexusVisual.Editor.Views;
+﻿using NexusVisual.Editor.Serialization;
+using NexusVisual.Editor.Views;
 
 namespace NexusVisual.Editor
 {
