@@ -1,0 +1,12 @@
+﻿{
+  "name": "com.mors.nexus",
+  "displayName": "Nexus",
+  "author": {"name": "Morsiusiurandum" },
+  "description": "A simple conversation editor.",
+  "version": "0.2.0-preview",
+  "license": "MIT",
+  "dependencies": {
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git#2.3.1",
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  }
+}
