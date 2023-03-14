@@ -4,7 +4,7 @@ Powerful and easy-to-use conversation editor for Unity
 
 - Developed based on UIToolkit which has good scalability.
 
-## Table of Contents {ignore=true}
+## Table of Contents
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
