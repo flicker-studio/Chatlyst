@@ -2,7 +2,7 @@ name: TOC Generator
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
     paths: ['README.md']
 
 jobs:
