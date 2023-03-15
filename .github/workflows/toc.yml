@@ -2,29 +2,18 @@ name: TOC Generator
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
     paths: ['README.md']
 
 jobs:
-  build:
+  generateTOC:
+    name: TOC Generator
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v3
-      - run: |
-          curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc -o gh-md-toc
-          chmod a+x gh-md-toc
-          ./gh-md-toc --insert --no-backup --hide-footer README.md
-          rm gh-md-toc
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v5
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_user_name: mors-bot
-          commit_user_email: morstemp@outlook.com
-          commit_options: '--signoff'
-          commit_message: Auto update markdown TOC
+      - uses: technote-space/toc-generator@v4
+        with: 
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          COMMIT_NAME: AvA
+          COMMIT_EMAIL: Morsiusiurandum@outlook.com
+          TOC_TITLE: "## Table of Contents"
+          SIGNOFF: true
