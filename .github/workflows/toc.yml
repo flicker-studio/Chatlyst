@@ -1,15 +1,19 @@
-name: TOC Generator
-
 on:
   push:
-    paths:
-      - 'README.md'
+    branches: [main]
+    paths: ['README.md']
 
 jobs:
-  generateTOC:
-    name: TOC Generator
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: technote-space/toc-generator@v2.4.0
+      - uses: actions/checkout@v2
+      - run: |
+          curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/0.8.0/gh-md-toc -o gh-md-toc
+          chmod a+x gh-md-toc
+          ./gh-md-toc --insert --no-backup --hide-footer foo.md
+          rm gh-md-toc
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          TOC_TITLE: "## Table of Contents"
+          commit_message: Auto update markdown TOC
