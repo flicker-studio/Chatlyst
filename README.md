@@ -18,7 +18,7 @@ If you want to set a target version,we use the `*.*.*`release tag so you can spe
 
 ## Contribution
 
-If you are going to contribute to this project please contact me first, we need to make sure we are not doing the same thing.
+If you are going to contribute to this project please contact us first, we need to make sure we are not doing the same thing.
 
 ## License
 
