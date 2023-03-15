@@ -2,7 +2,7 @@
 
 Powerful and easy-to-use conversation editor for Unity
 
-- Developed based on UIToolkit which has good scalability.
+- Developed based on UIToolkit which has good scalability
 
 <!--ts-->
 <!--te-->
