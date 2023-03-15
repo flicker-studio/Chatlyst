@@ -4,20 +4,8 @@ Powerful and easy-to-use conversation editor for Unity
 
 - Developed based on UIToolkit which has good scalability.
 
-## Table of Contents
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
-- [Getting started](#getting-started)
-- [Installation](#installation)
-  - [Install via git URL](#install-via-git-url)
-- [Contribution](#contribution)
-- [License](#license)
-
-<!-- /code_chunk_output -->
-
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ## Getting started
 
