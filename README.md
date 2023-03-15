@@ -5,6 +5,12 @@ Powerful and easy-to-use conversation editor for Unity
 - Developed based on UIToolkit which has good scalability
 
 <!--ts-->
+* [Nexus Visual](#nexus-visual)
+   * [Getting started](#getting-started)
+   * [Installation](#installation)
+      * [Install via git URL](#install-via-git-url)
+   * [Contribution](#contribution)
+   * [License](#license)
 <!--te-->
 
 ## Getting started
