@@ -13,5 +13,7 @@ jobs:
       - uses: technote-space/toc-generator@v4
         with: 
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          COMMIT_NAME: AvA
+          COMMIT_EMAIL: Morsiusiurandum@outlook.com
           TOC_TITLE: "## Table of Contents"
           SIGNOFF: true
