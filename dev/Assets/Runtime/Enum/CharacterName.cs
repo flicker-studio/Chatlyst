@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NexusVisual.Runtime
+namespace Chatlyst.Runtime
 {
     [Serializable]
     public enum CharacterName

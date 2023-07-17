@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using NexusVisual.Editor.Views;
+using Chatlyst.Editor.Views;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider
     {

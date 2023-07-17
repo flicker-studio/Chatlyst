@@ -1,4 +1,4 @@
-﻿namespace NexusVisual.Editor.Data
+﻿namespace Chatlyst.Editor.Data
 {
     public class StartNode : NexusNode
     {

@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace NexusVisual.Editor.Data
+namespace Chatlyst.Editor.Data
 {
     [Serializable]
     public struct Dialogue

@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     public class CustomSettingProvider : SettingsProvider
     {

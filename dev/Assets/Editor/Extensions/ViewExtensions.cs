@@ -1,7 +1,7 @@
-﻿using NexusVisual.Editor.Serialization;
-using NexusVisual.Editor.Views;
+﻿using Chatlyst.Editor.Serialization;
+using Chatlyst.Editor.Views;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     public static class ViewExtensions
     {

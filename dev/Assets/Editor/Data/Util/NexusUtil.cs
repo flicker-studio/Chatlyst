@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     internal static class NexusUtil
     {

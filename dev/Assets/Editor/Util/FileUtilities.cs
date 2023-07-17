@@ -3,7 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     public static class FileUtilities
     {

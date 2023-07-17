@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public class NodePortAttribute : Attribute

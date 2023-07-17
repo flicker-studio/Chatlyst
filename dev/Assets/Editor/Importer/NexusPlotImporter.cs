@@ -2,7 +2,7 @@
 using UnityEditor.AssetImporters;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     [ScriptedImporter(1, "nvp")]
     public class NexusPlotImporter : ScriptedImporter

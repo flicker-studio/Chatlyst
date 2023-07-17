@@ -1,4 +1,4 @@
-﻿namespace NexusVisual.Runtime
+﻿namespace Chatlyst.Runtime
 {
     public enum ElementType
     {

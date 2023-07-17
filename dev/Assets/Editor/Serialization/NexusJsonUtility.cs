@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace NexusVisual.Editor.Serialization
+namespace Chatlyst.Editor.Serialization
 {
     public static class NexusJsonUtility
     {

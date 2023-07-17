@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = false)]
     public class DisplayOnlyAttribute : PropertyAttribute

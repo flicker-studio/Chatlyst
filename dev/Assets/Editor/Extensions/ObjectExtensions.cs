@@ -1,8 +1,8 @@
 ﻿using System;
+using Chatlyst.Editor.Serialization;
 using Newtonsoft.Json;
-using NexusVisual.Editor.Serialization;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     public static class ObjectExtensions
     {

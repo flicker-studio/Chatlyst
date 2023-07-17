@@ -1,12 +1,15 @@
 ﻿{
-  "name": "com.mors.nexus",
-  "displayName": "Nexus",
-  "author": {"name": "Morsiusiurandum" },
-  "description": "A simple conversation editor.",
-  "version": "0.2.0-pre",
+  "name": "com.mors.chatlyst",
+  "displayName": "Chatlyst",
+  "unity": "2020.1",
+  "unityRelease": "0a10",
+  "description": "A simple and powerful chat editor.",
+  "version": "0.1.0-pre",
   "license": "MIT",
+  "author": {
+    "name": "Morsiusiurandum"
+  },
   "dependencies": {
-    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git#2.3.1",
-    "com.unity.nuget.newtonsoft-json": "3.2.1"
+    "com.unity.nuget.newtonsoft-json": "3.0.0"
   }
 }

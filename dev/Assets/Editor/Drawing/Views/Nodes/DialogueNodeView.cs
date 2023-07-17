@@ -1,8 +1,8 @@
-﻿using NexusVisual.Editor.Data;
-using NexusVisual.Editor.Serialization;
+﻿using Chatlyst.Editor.Data;
+using Chatlyst.Editor.Serialization;
 using UnityEngine;
 
-namespace NexusVisual.Editor.Views
+namespace Chatlyst.Editor.Views
 {
     [SearchTreeName("对话节点"), NodePort(1, 1)]
     public class DialogueNodeView : NexusNodeView, IVisible

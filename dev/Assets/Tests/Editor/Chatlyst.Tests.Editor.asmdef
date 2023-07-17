@@ -1,11 +1,11 @@
 {
-    "name": "Nexus.Tests.Editor",
+    "name": "Chatlyst.Tests.Editor",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Nexus.Editor",
-        "Nexus.Runtime"
+        "Chatlyst.Editor",
+        "Chatlyst.Runtime"
     ],
     "includePlatforms": [
         "Editor"

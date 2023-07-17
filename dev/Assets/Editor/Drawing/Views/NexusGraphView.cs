@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NexusVisual.Editor.Serialization;
+using Chatlyst.Editor.Serialization;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace NexusVisual.Editor.Views
+namespace Chatlyst.Editor.Views
 {
     public class NexusGraphView : GraphView
     {

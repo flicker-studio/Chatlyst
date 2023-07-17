@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Reflection;
-using NexusVisual.Editor.Serialization;
+using Chatlyst.Editor.Serialization;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace NexusVisual.Editor.Views
+namespace Chatlyst.Editor.Views
 {
     public abstract class NexusNodeView : Node
     {

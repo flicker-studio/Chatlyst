@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     [CreateAssetMenu(fileName = "CustomSetting", menuName = "Assets/CustomSetting")]
     public class CustomSetting : ScriptableObject

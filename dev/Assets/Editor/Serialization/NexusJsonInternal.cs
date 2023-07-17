@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace NexusVisual.Editor.Serialization
+namespace Chatlyst.Editor.Serialization
 {
     internal static class NexusJsonInternal
     {

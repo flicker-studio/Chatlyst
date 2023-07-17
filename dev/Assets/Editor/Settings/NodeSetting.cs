@@ -2,7 +2,7 @@
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     [CreateAssetMenu(fileName = "NodeSetting", menuName = "Assets/NodeSetting")]
     public class NodeSetting : ScriptableObject

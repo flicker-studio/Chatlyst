@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace NexusVisual.Editor.Serialization
+namespace Chatlyst.Editor.Serialization
 {
     public readonly struct NexusJsonEntity
     {

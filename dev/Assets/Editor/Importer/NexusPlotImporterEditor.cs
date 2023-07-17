@@ -2,7 +2,7 @@
 using UnityEditor.AssetImporters;
 using UnityEditor.Callbacks;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     [CustomEditor(typeof(NexusPlotImporter))]
     internal class NexusPlotImporterEditor : ScriptedImporterEditor

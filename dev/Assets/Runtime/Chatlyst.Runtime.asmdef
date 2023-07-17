@@ -1,12 +1,8 @@
 {
-    "name": "Nexus.Editor",
-    "rootNamespace": "Nexus.Editor",
-    "references": [
-        "GUID:144ebbaaf3d475b4e872d13f95be25bf"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "name": "Chatlyst.Runtime",
+    "rootNamespace": "Chatlyst.Runtime",
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

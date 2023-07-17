@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     [CustomPropertyDrawer(typeof(DisplayOnlyAttribute))]
     public class DisplayOnlyDrawer : PropertyDrawer

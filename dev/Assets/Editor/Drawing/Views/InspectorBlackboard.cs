@@ -3,7 +3,7 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 //TODO:make dialogue list be reorderable
-namespace NexusVisual.Editor.Views
+namespace Chatlyst.Editor.Views
 {
     public sealed class InspectorBlackboard : Blackboard
     {

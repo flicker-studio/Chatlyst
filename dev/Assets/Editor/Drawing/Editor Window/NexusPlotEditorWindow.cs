@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using NexusVisual.Editor.Serialization;
-using NexusVisual.Editor.Views;
+using Chatlyst.Editor.Serialization;
+using Chatlyst.Editor.Views;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Object = UnityEngine.Object;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     internal class NexusPlotEditorWindow : EditorWindow
     {

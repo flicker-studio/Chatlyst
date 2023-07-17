@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace NexusVisual.Editor.Serialization
+namespace Chatlyst.Editor.Serialization
 {
     internal readonly struct NexusJsonIndex
     {

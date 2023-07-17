@@ -1,7 +1,7 @@
-﻿using NexusVisual.Editor.Serialization;
+﻿using Chatlyst.Editor.Serialization;
 using UnityEngine;
 
-namespace NexusVisual.Editor
+namespace Chatlyst.Editor
 {
     ///<summary>
     /// The node needed to be visualization
