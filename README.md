@@ -1,5 +1,9 @@
 # Nexus Visual
 
+> **Warning**
+> 
+> This project is refactoring now!
+
 Powerful and easy-to-use conversation editor for Unity
 
 - Developed based on UIToolkit which has good scalability
