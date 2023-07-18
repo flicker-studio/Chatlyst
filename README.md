@@ -1,4 +1,4 @@
-# Nexus Visual
+# Chatlyst
 
 > **Warning**
 > 
