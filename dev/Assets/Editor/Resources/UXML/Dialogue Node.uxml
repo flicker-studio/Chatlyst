@@ -1,8 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns="UnityEngine.UIElements" ue="UnityEditor.UIElements" editor-extension-mode="True">
-    <ui:Box style="flex-direction: row; align-items: center;">
-        <uie:EnumField binding-path="name"
-                       style="width: 80px; -unity-text-align: middle-center; -unity-font-style: normal; flex-grow: 0; white-space: nowrap; height: 100%;"/>
-        <ui:TextField binding-path="talk" multiline="true" mask-character="A" is-delayed="false"
-                      style="flex-grow: 1; max-width: 100%; height: auto; width: 65%; -unity-font: resource(&apos;Fonts/JetBrainsMono-1.0.3/ttf/JetBrainsMono-Medium&apos;);"/>
-    </ui:Box>
-</ui:UXML>
