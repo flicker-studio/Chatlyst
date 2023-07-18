@@ -16,6 +16,7 @@ A simple and powerful chat editor in Unity
 - [Installation](#installation)
   - [Install via git URL](#install-via-git-url)
 - [Contribution](#contribution)
+- [Special thanks](#special-thanks)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
