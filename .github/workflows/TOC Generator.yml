@@ -23,9 +23,11 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           git_user_signingkey: true
           git_commit_gpgsign: true
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_user_name: mors-bot
-          commit_user_email: morstemp@outlook.com
-          commit_options: '--signoff'
-          commit_message: docs: auto update markdown TOC
+          git_config_global: true
+          git_tag_gpgsign: true
+      - name: Sign commit and push changes
+        run: |
+          echo foo > bar.txt
+          git add .
+          git commit -s -S -m "docs: auto update markdown TOC"
+          git push
