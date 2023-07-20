@@ -27,5 +27,6 @@ jobs:
         with:
           commit_user_name: mors-bot
           commit_user_email: morstemp@outlook.com
+          commit_author: mors-bot <127911884+mors-bot@users.noreply.github.com>
           commit_options: '--signoff'
           commit_message: 'docs: auto update markdown TOC'
