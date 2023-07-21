@@ -9,16 +9,14 @@ A simple and powerful chat editor in Unity
 - Developed based on UIToolkit which has good scalability
 
 <!--ts-->
-
-## Table of Contents
-
-- [Getting started](#getting-started)
-- [Installation](#installation)
-  - [Install via git URL](#install-via-git-url)
-- [Contribution](#contribution)
-- [Special thanks](#special-thanks)
-- [License](#license)
-
+* [Chatlyst](#chatlyst)
+   * [Table of Contents](#table-of-contents)
+   * [Getting started](#getting-started)
+   * [Installation](#installation)
+      * [Install via git URL](#install-via-git-url)
+   * [Contribution](#contribution)
+   * [Special thanks](#special-thanks)
+   * [License](#license)
 <!--te-->
 
 ## Getting started
