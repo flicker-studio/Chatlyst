@@ -1,27 +1,23 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using Chatlyst.Editor.Data;
-using Chatlyst.Editor.Serialization;
+using Chatlyst.Runtime;
 using NUnit.Framework;
 
 public class Serialization
 {
-    [Test]
-    public void A()
+    private static readonly Random Random = new Random();
+    private static string RandomString(int length)
     {
-        List<object> a = new List<object>();
-        for (int i = 0; i < 3; i++)
-        {
-            a.Add(new Dialogue(Guid.NewGuid().ToString() + ":" + "hh"));
-        }
+        const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return new string(Enumerable.Repeat(characters, length)
+            .Select(s => s[Random.Next(s.Length)]).ToArray());
+    }
 
-
-        var stringText = NexusJsonUtility.SerializeIEnumerable(a);
-        var abs = NexusJsonUtility.DeserializeIEnumerable<Dialogue>(stringText).ToList();
-        //   Debug.Log(NexusJsonUtility.Tests(a));
-
-
-        Assert.AreEqual(a, abs);
+    [Test]
+    public void MessageSerialize()
+    {
+        var message = new Message(RandomString(5), RandomString(8), RandomString(2));
+        var afterSerialize = message.Serialize().DeserializeToMessage();
+        Assert.AreEqual(message, afterSerialize);
     }
 }
