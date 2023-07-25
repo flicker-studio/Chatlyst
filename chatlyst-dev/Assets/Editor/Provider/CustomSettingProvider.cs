@@ -10,6 +10,7 @@ namespace Chatlyst.Editor
         private const string Path = "Assets/Settings/CustomSetting.asset";
         private static SerializedObject _settings;
 
+
         private CustomSettingProvider(string path, SettingsScope scopes, IEnumerable<string> keywords = null) : base(
             path, scopes, keywords)
         {
@@ -28,6 +29,7 @@ namespace Chatlyst.Editor
         public override void OnGUI(string searchContext)
         {
             EditorGUILayout.ObjectField(_settings.FindProperty("nodeSetting"), Styles.Start);
+            EditorGUILayout.PropertyField(_settings.FindProperty("list"), Styles.Start);
             _settings.ApplyModifiedPropertiesWithoutUndo();
         }
 

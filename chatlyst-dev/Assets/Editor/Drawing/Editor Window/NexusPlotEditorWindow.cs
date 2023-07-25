@@ -20,22 +20,23 @@ namespace Chatlyst.Editor
         public static NexusPlotEditorWindow EditorWindow;
         public static NexusGraphView GraphView;
         //Toolbar element
+        /*
         private ToolbarMenu _toolbarMenu;
         private ToolbarToggle _inspectorToggle;
         private ToolbarToggle _autoSaveToggle;
         private ToolbarButton _save;
-
+        */
         public void Initialize(string assetGuid)
         {
             _assetGuid = assetGuid;
             var assetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
             var asset = AssetDatabase.LoadAssetAtPath<Object>(AssetDatabase.GUIDToAssetPath(assetGuid));
             _jsonData = File.ReadAllText(Path.GetFullPath(assetPath));
-
+            /*
             var visualTree = Resources.Load("UXML/NodeEditorWindow") as VisualTreeAsset;
             if (!visualTree) throw new Exception("Can not find EditorWindow.uxml");
             visualTree.CloneTree(rootVisualElement);
-
+            
             GraphView = rootVisualElement.Q<NexusGraphView>("GraphView");
             _toolbarMenu = rootVisualElement.Q<ToolbarMenu>("Menu");
             _inspectorToggle = rootVisualElement.Q<ToolbarToggle>("Inspector");
@@ -44,9 +45,10 @@ namespace Chatlyst.Editor
 
             GraphView.GraphInitialize(this);
             _save.clicked += SaveChanges;
-
+            
             TitleUpdate();
             RebuildFromDisk();
+            */
         }
 
         private void TitleUpdate()
@@ -90,27 +92,27 @@ namespace Chatlyst.Editor
 
         public void Update()
         {
-            GraphView.graphViewChanged += _ =>
-            {
-                hasUnsavedChanges = true;
-                return default;
-            };
-
-            if (GraphView == null)
-            {
-                if (_assetGuid != null)
-                {
-                    Initialize(_assetGuid);
-                }
-                else
-                {
-                    Close();
-                }
-            }
-            else
-            {
-                GraphView.InspectorNode();
-            }
+            /*  GraphView.graphViewChanged += _ =>
+              {
+                  hasUnsavedChanges = true;
+                  return default;
+              };
+  
+              if (GraphView == null)
+              {
+                  if (_assetGuid != null)
+                  {
+                      Initialize(_assetGuid);
+                  }
+                  else
+                  {
+                      Close();
+                  }
+              }
+              else
+              {
+                  GraphView.InspectorNode();
+              }*/
         }
     }
 }

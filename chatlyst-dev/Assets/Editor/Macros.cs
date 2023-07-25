@@ -1,25 +1,23 @@
 ﻿using UnityEditor;
-using UnityEditor.AssetImporters;
 using UnityEditor.Callbacks;
 
 namespace Chatlyst.Editor
 {
-    [CustomEditor(typeof(NexusPlotImporter))]
-    internal class NexusPlotImporterEditor : ScriptedImporterEditor
+    internal static class Macros
     {
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
+        public const string FilenameExtension = "nvp";
 
-            EditorGUILayout.TagField("textHere");
-        }
+
 
         [OnOpenAsset(0)]
         public static bool OnOpenAsset(int id, int line)
         {
-            var filePath = AssetDatabase.GetAssetPath(EditorUtility.InstanceIDToObject(id));
+            var objectName = EditorUtility.InstanceIDToObject(id);
+            string filePath = AssetDatabase.GetAssetPath(objectName);
             if (!FileUtilities.PathValidCheck(filePath)) return false;
-            var assetGuid = AssetDatabase.AssetPathToGUID(filePath);
+
+            string assetGuid = AssetDatabase.AssetPathToGUID(filePath);
+
             if (NexusPlotEditorWindow.EditorWindow == null)
             {
                 NexusPlotEditorWindow.EditorWindow = EditorWindow.GetWindow<NexusPlotEditorWindow>();

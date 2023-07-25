@@ -1,5 +1,7 @@
+using System;
 namespace Chatlyst.Runtime
 {
+    [Serializable]
     public struct Message
     {
         public string name;

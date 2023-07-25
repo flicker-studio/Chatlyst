@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Chatlyst.Runtime;
+using UnityEngine;
 
 namespace Chatlyst.Editor
 {
@@ -6,5 +8,6 @@ namespace Chatlyst.Editor
     public class CustomSetting : ScriptableObject
     {
         [SerializeField] public NodeSetting nodeSetting;
+        [SerializeField] public List<string> list;
     }
 }
