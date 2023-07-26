@@ -3,22 +3,20 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 namespace Chatlyst.Runtime
 {
-    [Serializable]
     public class BaseNode
     {
         public Type NodeType;
         public string NodeJson;
 
-        [CanBeNull]
-        public bool TryToSource<T>(out T ans) where T : Node
+        public bool TryToSource<T>([CanBeNull] out T ans) where T : BasicNode
         {
+            ans = null;
             if (typeof(T) == NodeType)
             {
                 ans = JsonConvert.DeserializeObject<T>(NodeJson);
-                return true;
             }
-            ans = null;
-            return false;
+            return ans != null;
+
         }
 
         private bool Equals(BaseNode other) => NodeType == other.NodeType && NodeJson == other.NodeJson;

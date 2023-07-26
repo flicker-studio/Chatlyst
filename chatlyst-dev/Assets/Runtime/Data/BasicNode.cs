@@ -1,19 +1,16 @@
-﻿using System.Numerics;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Chatlyst.Runtime
 {
-    public abstract class Node
+    public abstract class BasicNode
     {
-    };
-    public abstract class BasicNode<T> : Node
-    {
-        public string Guid;
+        [JsonProperty]
+        public readonly string Guid;
         public NodeType NodeType;
         public string NextGuid;
         public Vector2 NodePos;
-        public T NodeData;
-        private readonly string _tag;
 
         protected BasicNode()
         {
@@ -21,20 +18,22 @@ namespace Chatlyst.Runtime
             NodeType = 0;
             NextGuid = null;
             NodePos = Vector2.Zero;
-
-            _tag = System.Guid.NewGuid().ToString();
         }
 
-        public string ToJson()
+        public void StoresLocation(Rect rect)
         {
-            return JsonConvert.SerializeObject(this);
+            NodePos.X = rect.position.x;
+            NodePos.Y = rect.position.y;
         }
 
         public abstract BaseNode ToBaseNode();
-        private bool Equals(BasicNode<T> other) => Guid == other.Guid;
 
-        public override bool Equals(object obj) => obj is BasicNode<T> other && Equals(other);
+        public string ToJson() => JsonConvert.SerializeObject(this);
 
-        public override int GetHashCode() => _tag.GetHashCode();
+        private bool Equals(BasicNode other) => Guid == other.Guid;
+
+        public override bool Equals(object obj) => obj is BasicNode other && Equals(other);
+
+        public override int GetHashCode() => Guid.GetHashCode();
     }
 }

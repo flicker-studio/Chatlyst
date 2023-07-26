@@ -1,19 +1,18 @@
 ﻿namespace Chatlyst.Runtime
 {
-    public class BeginNode : BasicNode<string>
+    public class BeginNode : BasicNode
     {
-        public string startLabel
-        {
-            get => NodeData;
-            private set => NodeData = value;
-        }
 
-        public BeginNode(string label) : base()
+        public string StartLabel;
+        public int Number;
+
+        public BeginNode(string label, int number) : base()
         {
             NodeType = NodeType.BEG;
-            startLabel = label;
+            StartLabel = label;
+            Number = number;
         }
-        
+
         public override BaseNode ToBaseNode() => new BaseNode
         {
             NodeType = typeof(BeginNode),
