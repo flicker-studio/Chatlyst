@@ -1,10 +1,7 @@
-﻿using System.IO;
-using UnityEditor.AssetImporters;
-using UnityEngine;
-
+﻿using UnityEditor.AssetImporters;
 namespace Chatlyst.Editor
 {
-    [ScriptedImporter(1, "nvp")]
+    [ScriptedImporter(0, NexusMacros.FilenameExtension)]
     public class NexusFileImporter : ScriptedImporter
     {
         public override void OnImportAsset(AssetImportContext ctx)

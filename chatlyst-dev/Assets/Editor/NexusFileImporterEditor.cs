@@ -9,15 +9,8 @@ namespace Chatlyst.Editor
     {
         public override void OnInspectorGUI()
         {
-
-
-            EditorGUILayout.Separator();
-            EditorGUILayout.BeginVertical();
-            EditorGUILayout.TagField("");
-            EditorGUILayout.EndHorizontal();
-            base.OnInspectorGUI();
+            //TODO:Add the description of .nvp file
+            ApplyRevertGUI();
         }
-
-
     }
 }

@@ -1,0 +1,60 @@
+﻿using System;
+using System.IO;
+using UnityEditor;
+using UnityEditor.Callbacks;
+namespace Chatlyst.Editor
+{
+    static class NexusMacros
+    {
+        public const string FilenameExtension = "nvp";
+        public const string FilenameExtensionWithPoint = ".nvp";
+
+        [MenuItem("Assets/Create/Chatlyst/Create new plot")]
+        public static void AssetCreate()
+        {
+            int index = 0;
+            string path = "Assets";
+            foreach (var obj in Selection.GetFiltered(typeof(object), SelectionMode.Assets))
+            {
+                path = AssetDatabase.GetAssetPath(obj);
+                if (string.IsNullOrEmpty(path) || !File.Exists(path)) continue;
+                path = Path.GetDirectoryName(path);
+                break;
+            }
+
+            if (path == null) throw new Exception();
+            while (true)
+            {
+                string assetPath = path + "\\New Plot " + index + FilenameExtensionWithPoint;
+                string fullPath = Path.GetFullPath(assetPath);
+                if (File.Exists(fullPath))
+                {
+                    ++index;
+                    continue;
+                }
+
+                File.Create(fullPath).Close();
+                AssetDatabase.ImportAsset(assetPath);
+                return;
+            }
+        }
+
+        [OnOpenAsset(0)]
+        public static bool OnOpenAsset(int id, int line)
+        {
+            var objectName = EditorUtility.InstanceIDToObject(id);
+            string filePath = AssetDatabase.GetAssetPath(objectName);
+            if (!FileUtilities.PathValidCheck(filePath)) return false;
+
+            string assetGuid = AssetDatabase.AssetPathToGUID(filePath);
+
+            if (NexusPlotEditorWindow.EditorWindow == null)
+            {
+                NexusPlotEditorWindow.EditorWindow = (NexusPlotEditorWindow)EditorWindow.GetWindow(typeof(NexusPlotEditorWindow));
+                NexusPlotEditorWindow.EditorWindow.Initialize(assetGuid);
+            }
+            NexusPlotEditorWindow.EditorWindow.Show();
+            return true;
+        }
+    }
+}

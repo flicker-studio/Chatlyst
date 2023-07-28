@@ -2,8 +2,8 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-
-namespace Chatlyst.Runtime.Util
+using Object = UnityEngine.Object;
+namespace Chatlyst.Editor
 {
     public static class FileUtilities
     {
@@ -24,14 +24,13 @@ namespace Chatlyst.Runtime.Util
                         if (EditorUtility.DisplayDialog("File is Read-Only", path, "Make Writeable", "Cancel Save"))
                         {
                             // make writeable and retry save
-                            FileInfo fileInfo = new FileInfo(path);
-                            fileInfo.IsReadOnly = false;
+                            var fileInfo = new FileInfo(path)
+                            {
+                                IsReadOnly = false
+                            };
                             continue;
                         }
-                        else
-                        {
-                            return false;
-                        }
+                        return false;
                     }
 
                     Debug.LogException(e);
@@ -43,49 +42,18 @@ namespace Chatlyst.Runtime.Util
 
                 break; // no exception, file save success!
             }
-
             return true;
         }
 
         public static bool PathValidCheck(string path)
         {
-            var fullPath = Path.GetFullPath(path);
-            var fileName = Path.GetFileName(path);
+            string fullPath = Path.GetFullPath(path);
+            string fileName = Path.GetFileName(path);
             return fileName.EndsWith(".nvp") && File.Exists(fullPath);
             /*throw new Exception($"{Path.GetExtension(fileName)} is unsupported extension!");
             throw new Exception($"{fullPath} is not exist!");*/
         }
 
-        [MenuItem("Assets/Create/Nexus Visual/Create new plot")]
-        public static void AssetCreate()
-        {
-            var index = 0;
-            var path = "Assets";
-            const string ext = ".nvp";
-            foreach (var obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
-            {
-                path = AssetDatabase.GetAssetPath(obj);
-                if (string.IsNullOrEmpty(path) || !File.Exists(path)) continue;
-                path = Path.GetDirectoryName(path);
-                break;
-            }
-
-            if (path == null) throw new Exception();
-            while (true)
-            {
-                var assetPath = path + "\\New Plot " + index + ext;
-                var fullPath = Path.GetFullPath(assetPath);
-                if (File.Exists(fullPath))
-                {
-                    ++index;
-                    continue;
-                }
-
-                File.Create(fullPath).Close();
-                AssetDatabase.ImportAsset(assetPath);
-                return;
-            }
-        }
- 
+       
     }
 }

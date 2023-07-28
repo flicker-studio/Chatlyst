@@ -11,9 +11,8 @@ namespace Chatlyst.Editor.Views
     public class NexusGraphView : GraphView
     {
         private const KeyCode MenuKey = KeyCode.Space;
-        private EditorWindow _window;
         private readonly InspectorBlackboard _inspector;
-
+        private UnityEditor.EditorWindow _window;
         public class Factory : UxmlFactory<NexusGraphView, UxmlTraits>
         {
         }
@@ -28,7 +27,7 @@ namespace Chatlyst.Editor.Views
             _inspector = new InspectorBlackboard();
         }
 
-        public void GraphInitialize(EditorWindow window)
+        public void GraphInitialize(UnityEditor.EditorWindow window)
         {
             Add(_inspector);
             _window = window;
@@ -40,9 +39,11 @@ namespace Chatlyst.Editor.Views
             _inspector.Inspector(selection.Count > 0 ? selection[0] : null);
         }
 
-        public override Blackboard GetBlackboard() => _inspector;
-
-
+        public override Blackboard GetBlackboard()
+        {
+            return _inspector;
+        }
+        
         private void SearchTreeBuild(KeyDownEvent keyDownEvent)
         {
             if (keyDownEvent.keyCode != MenuKey) return;
@@ -58,9 +59,9 @@ namespace Chatlyst.Editor.Views
         {
             foreach (var entity in list)
             {
-                var viewTypeName = typeof(NexusNodeView).Name; //entity.userData;
+                string viewTypeName = typeof(NexusNodeView).Name; //entity.userData;
                 var assembly = typeof(NexusNodeView).Assembly;
-                var instancedView = assembly.CreateInstance(viewTypeName);
+                object instancedView = assembly.CreateInstance(viewTypeName);
                 var method = typeof(IVisible).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
                 if (instancedView is not NexusNodeView nodeView || method == null) return false;
                 method.Invoke(nodeView, new object[] { entity });
