@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using Chatlyst.Runtime.Util;
+using UnityEditor;
 using UnityEditor.Callbacks;
 
 namespace Chatlyst.Editor
@@ -6,8 +7,6 @@ namespace Chatlyst.Editor
     internal static class Macros
     {
         public const string FilenameExtension = "nvp";
-
-
 
         [OnOpenAsset(0)]
         public static bool OnOpenAsset(int id, int line)

@@ -3,7 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Chatlyst.Editor
+namespace Chatlyst.Runtime.Util
 {
     public static class FileUtilities
     {
@@ -62,7 +62,7 @@ namespace Chatlyst.Editor
             var index = 0;
             var path = "Assets";
             const string ext = ".nvp";
-            foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
+            foreach (var obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
             {
                 path = AssetDatabase.GetAssetPath(obj);
                 if (string.IsNullOrEmpty(path) || !File.Exists(path)) continue;
@@ -86,5 +86,6 @@ namespace Chatlyst.Editor
                 return;
             }
         }
+ 
     }
 }
