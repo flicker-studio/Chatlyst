@@ -1,0 +1,33 @@
+name: TOC Generator
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [develop]
+    paths: ['README.md']
+
+jobs:
+  generateTOC:
+    name: TOC Generator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc -o gh-md-toc
+          chmod a+x gh-md-toc
+          ./gh-md-toc --insert --no-backup --hide-footer README.md
+          rm gh-md-toc
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_config_global: true
+          git_tag_gpgsign: true
+      - name: Sign commit and push changes
+        run: |
+          echo foo > bar.txt
+          git add .
+          git commit -s -S -m "docs: auto update markdown TOC"
+          git push
