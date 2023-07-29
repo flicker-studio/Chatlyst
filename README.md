@@ -1,8 +1,9 @@
 # Chatlyst
 
+
 [![Qodana](https://github.com/A-DreamSoul/Chatlyst/actions/workflows/code_quality.yml/badge.svg)](https://github.com/A-DreamSoul/Chatlyst/actions/workflows/code_quality.yml)
 
-> **Warning!**
+> **Warning**
 > 
 > This project is refactoring now!
 
