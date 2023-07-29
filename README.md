@@ -11,6 +11,7 @@
 - Developed based on UIToolkit which has good scalability
 
 ## Table of Contents
+
 <!--ts-->
 * [Chatlyst](#chatlyst)
    * [Getting started](#getting-started)
@@ -35,7 +36,6 @@ If you want to set a target version,we use the `*.*.*`release tag so you can spe
 ## Contribution
 
 If you are interested in contributing, you can create a new issue or discussion and we will respond within 36 hours.If you don't need to contact us, then once you're ready to make changes, just send a pull request. We will be very happy to see your contribution.
-
 
 ## Special thanks
 
