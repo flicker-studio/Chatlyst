@@ -16,7 +16,7 @@ namespace Chatlyst.Editor.Views
             Visualization(uxmlPath);
             dataEntity = nodeEntity;
             PortCreate();
-            NexusPlotEditorWindow.GraphView.AddElement(this);
+            ChatlystEditorWindow.GraphView.AddElement(this);
         }
 
         /// <summary>

@@ -48,12 +48,12 @@ namespace Chatlyst.Editor
 
             string assetGuid = AssetDatabase.AssetPathToGUID(filePath);
 
-            if (NexusPlotEditorWindow.EditorWindow == null)
+            if (ChatlystEditorWindow.EditorWindow == null)
             {
-                NexusPlotEditorWindow.EditorWindow = (NexusPlotEditorWindow)EditorWindow.GetWindow(typeof(NexusPlotEditorWindow));
-                NexusPlotEditorWindow.EditorWindow.Initialize(assetGuid);
+                ChatlystEditorWindow.EditorWindow = (ChatlystEditorWindow)EditorWindow.GetWindow(typeof(ChatlystEditorWindow));
+                ChatlystEditorWindow.EditorWindow.Initialize(assetGuid);
             }
-            NexusPlotEditorWindow.EditorWindow.Show();
+            ChatlystEditorWindow.EditorWindow.Show();
             return true;
         }
     }
