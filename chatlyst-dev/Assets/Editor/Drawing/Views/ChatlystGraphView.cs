@@ -1,23 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Chatlyst.Editor.Serialization;
+using Chatlyst.Editor.Views;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Chatlyst.Editor.Views
+namespace Chatlyst.Editor
 {
-    public class NexusGraphView : GraphView
+    public class ChatlystGraphView : GraphView
     {
-        private const KeyCode MenuKey = KeyCode.Space;
-        private readonly InspectorBlackboard _inspector;
-        private UnityEditor.EditorWindow _window;
-        public class Factory : UxmlFactory<NexusGraphView, UxmlTraits>
+        public class Factory : UxmlFactory<ChatlystGraphView, UxmlTraits>
         {
         }
 
-        public NexusGraphView()
+        private const    KeyCode             MenuKey = KeyCode.Space;
+        private readonly InspectorBlackboard _inspector;
+        private          EditorWindow        _window;
+
+        public ChatlystGraphView()
         {
             Insert(0, new GridBackground());
             this.AddManipulator(new ContentZoomer());
@@ -25,11 +27,11 @@ namespace Chatlyst.Editor.Views
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
             _inspector = new InspectorBlackboard();
+            Add(_inspector);
         }
 
-        public void GraphInitialize(UnityEditor.EditorWindow window)
+        public void GraphInitialize(EditorWindow window)
         {
-            Add(_inspector);
             _window = window;
             RegisterCallback<KeyDownEvent>(SearchTreeBuild);
         }
@@ -39,17 +41,13 @@ namespace Chatlyst.Editor.Views
             _inspector.Inspector(selection.Count > 0 ? selection[0] : null);
         }
 
-        public override Blackboard GetBlackboard()
-        {
-            return _inspector;
-        }
-        
+
         private void SearchTreeBuild(KeyDownEvent keyDownEvent)
         {
             if (keyDownEvent.keyCode != MenuKey) return;
             //create a search windows under the cursor
-            var worldMousePosition = _window.position.position + keyDownEvent.originalMousePosition;
-            var searchWindowContext = new SearchWindowContext(worldMousePosition);
+            var worldMousePosition   = _window.position.position + keyDownEvent.originalMousePosition;
+            var searchWindowContext  = new SearchWindowContext(worldMousePosition);
             var searchWindowProvider = ScriptableObject.CreateInstance<NodeSearchWindowProvider>();
             searchWindowProvider.Init(this, _window);
             SearchWindow.Open(searchWindowContext, searchWindowProvider);
@@ -59,10 +57,10 @@ namespace Chatlyst.Editor.Views
         {
             foreach (var entity in list)
             {
-                string viewTypeName = typeof(NexusNodeView).Name; //entity.userData;
-                var assembly = typeof(NexusNodeView).Assembly;
+                string viewTypeName  = typeof(NexusNodeView).Name; //entity.userData;
+                var    assembly      = typeof(NexusNodeView).Assembly;
                 object instancedView = assembly.CreateInstance(viewTypeName);
-                var method = typeof(IVisible).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
+                var    method        = typeof(IVisible).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
                 if (instancedView is not NexusNodeView nodeView || method == null) return false;
                 method.Invoke(nodeView, new object[] { entity });
             }
@@ -72,7 +70,7 @@ namespace Chatlyst.Editor.Views
 
         public IEnumerable<NexusJsonEntity> NodeEntity()
         {
-            var list = new List<NexusJsonEntity>();
+            var list         = new List<NexusJsonEntity>();
             var nodeViewList = graphElements.Where(a => a is NexusNodeView).Cast<NexusNodeView>().ToList();
             foreach (var view in nodeViewList)
             {
@@ -81,6 +79,12 @@ namespace Chatlyst.Editor.Views
             }
 
             return list;
+        }
+
+        #region Override
+        public override Blackboard GetBlackboard()
+        {
+            return _inspector;
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
@@ -94,5 +98,6 @@ namespace Chatlyst.Editor.Views
 
             return compatiblePorts;
         }
+        #endregion
     }
 }

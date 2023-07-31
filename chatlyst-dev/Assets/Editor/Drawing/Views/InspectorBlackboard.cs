@@ -1,25 +1,25 @@
-﻿using UnityEditor.Experimental.GraphView;
+﻿using Chatlyst.Editor.Views;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 //TODO:make dialogue list be reorderable
-namespace Chatlyst.Editor.Views
+namespace Chatlyst.Editor
 {
     public sealed class InspectorBlackboard : Blackboard
     {
-        private DialogueNodeView _currentNode;
-        private readonly ListView _inspector = new ListView();
-
+        private          DialogueNodeView _currentNode;
+        private readonly ListView         _inspector = new ListView();
 
         public InspectorBlackboard()
         {
             var mItemAsset = CustomSettingProvider.GetSettings().nodeSetting.dialogueInspector;
             _inspector.virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight;
-            _inspector.reorderMode = ListViewReorderMode.Simple;
-            _inspector.showAddRemoveFooter = true;
-            _inspector.showBorder = true;
-            _inspector.showFoldoutHeader = true;
-            _inspector.makeItem = mItemAsset.CloneTree;
+            _inspector.reorderMode          = ListViewReorderMode.Simple;
+            _inspector.showAddRemoveFooter  = true;
+            _inspector.showBorder           = true;
+            _inspector.showFoldoutHeader    = true;
+            _inspector.makeItem             = mItemAsset.CloneTree;
             contentContainer.Add(_inspector);
         }
 
@@ -37,7 +37,7 @@ namespace Chatlyst.Editor.Views
             }
 
             _inspector.visible = true;
-            _currentNode = node;
+            _currentNode       = node;
             _inspector.BindProperty(_currentNode._node.getListProperty);
         }
     }
