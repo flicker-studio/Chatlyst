@@ -2,18 +2,19 @@
 using System.IO;
 using UnityEditor;
 using UnityEditor.Callbacks;
+
 namespace Chatlyst.Editor
 {
     static class NexusMacros
     {
-        public const string FilenameExtension = "nvp";
+        public const string FilenameExtension          = "nvp";
         public const string FilenameExtensionWithPoint = ".nvp";
 
         [MenuItem("Assets/Create/Chatlyst/Create new plot")]
         public static void AssetCreate()
         {
-            int index = 0;
-            string path = "Assets";
+            int    index = 0;
+            string path  = "Assets";
             foreach (var obj in Selection.GetFiltered(typeof(object), SelectionMode.Assets))
             {
                 path = AssetDatabase.GetAssetPath(obj);
@@ -26,7 +27,7 @@ namespace Chatlyst.Editor
             while (true)
             {
                 string assetPath = path + "\\New Plot " + index + FilenameExtensionWithPoint;
-                string fullPath = Path.GetFullPath(assetPath);
+                string fullPath  = Path.GetFullPath(assetPath);
                 if (File.Exists(fullPath))
                 {
                     ++index;
@@ -42,18 +43,15 @@ namespace Chatlyst.Editor
         [OnOpenAsset(0)]
         public static bool OnOpenAsset(int id, int line)
         {
-            var objectName = EditorUtility.InstanceIDToObject(id);
-            string filePath = AssetDatabase.GetAssetPath(objectName);
+            var    objectName = EditorUtility.InstanceIDToObject(id);
+            string filePath   = AssetDatabase.GetAssetPath(objectName);
             if (!FileUtilities.PathValidCheck(filePath)) return false;
 
             string assetGuid = AssetDatabase.AssetPathToGUID(filePath);
-
-            if (ChatlystEditorWindow.EditorWindow == null)
-            {
-                ChatlystEditorWindow.EditorWindow = (ChatlystEditorWindow)EditorWindow.GetWindow(typeof(ChatlystEditorWindow));
-                ChatlystEditorWindow.EditorWindow.Initialize(assetGuid);
-            }
-            ChatlystEditorWindow.EditorWindow.Show();
+            ChatlystEditorWindow.EditorWindow = (ChatlystEditorWindow)EditorWindow.GetWindow(typeof(ChatlystEditorWindow));
+            ChatlystEditorWindow.EditorWindow.Initialize(assetGuid);
+            if (ChatlystEditorWindow.EditorWindow == null) throw new Exception("Can't init the window!");
+            ChatlystEditorWindow.EditorWindow.Show(true);
             return true;
         }
     }

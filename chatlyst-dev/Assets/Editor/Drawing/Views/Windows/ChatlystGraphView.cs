@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Chatlyst.Editor.Serialization;
-using Chatlyst.Editor.Views;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -57,11 +56,11 @@ namespace Chatlyst.Editor
         {
             foreach (var entity in list)
             {
-                string viewTypeName  = typeof(NexusNodeView).Name; //entity.userData;
-                var    assembly      = typeof(NexusNodeView).Assembly;
+                string viewTypeName  = typeof(NodeView).Name; //entity.userData;
+                var    assembly      = typeof(NodeView).Assembly;
                 object instancedView = assembly.CreateInstance(viewTypeName);
                 var    method        = typeof(IVisible).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
-                if (instancedView is not NexusNodeView nodeView || method == null) return false;
+                if (instancedView is not NodeView nodeView || method == null) return false;
                 method.Invoke(nodeView, new object[] { entity });
             }
 
@@ -71,11 +70,11 @@ namespace Chatlyst.Editor
         public IEnumerable<NexusJsonEntity> NodeEntity()
         {
             var list         = new List<NexusJsonEntity>();
-            var nodeViewList = graphElements.Where(a => a is NexusNodeView).Cast<NexusNodeView>().ToList();
+            var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
             foreach (var view in nodeViewList)
             {
-                view.DataRefresh();
-                list.Add(view.dataEntity);
+                /*view.DataRefresh();
+                list.Add(view.dataEntity);*/
             }
 
             return list;

@@ -1,5 +1,4 @@
-﻿using Chatlyst.Editor.Views;
-using UnityEditor.Experimental.GraphView;
+﻿using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 

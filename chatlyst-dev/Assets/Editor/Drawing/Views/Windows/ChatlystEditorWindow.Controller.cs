@@ -25,27 +25,9 @@ namespace Chatlyst.Editor
             return GraphView.BuildFromEntries(entityList);
         }
 
+
+        public void Update()    => _onUpdate?.Invoke();
         public void OnDestroy() => _onDestroy?.Invoke();
 
-        public void Update()
-        {
-            _onUpdate?.Invoke();
-
-            if (GraphView == null)
-            {
-                if (_assetGuid != null)
-                {
-                    Initialize(_assetGuid);
-                }
-                else
-                {
-                    Close();
-                }
-            }
-            else
-            {
-                GraphView.InspectorNode();
-            }
-        }
     }
 }

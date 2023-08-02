@@ -1,44 +1,31 @@
 ﻿using Chatlyst.Editor.Data;
 using Chatlyst.Editor.Serialization;
+using Chatlyst.Runtime;
 using UnityEngine;
 
-namespace Chatlyst.Editor.Views
+namespace Chatlyst.Editor
 {
     [SearchTreeName("对话节点"), NodePort(1, 1)]
-    public class DialogueNodeView : NexusNodeView, IVisible
+    public class DialogueNodeView : NodeView, IVisible
     {
         private const string UxmlPath = "UXML/Start";
-        public override NexusJsonEntity dataEntity
-        {
-            get
-            {
-                var entity = _node.ConvertToEntity();
-                // entity.userData = GetType().FullName;
-                return entity;
-            }
-        }
-        public DialoguesNode _node;
 
-        public override void DataRefresh()
-        {
-            _node.NodePos = GetPosition();
-        }
+        public DialoguesNode _node;
 
         public void CreateInstance(Rect pos)
         {
             _node = new DialoguesNode();
             SetPosition(pos);
-            DataRefresh();
-            var entity = _node.ConvertToEntity();
-            //  entity.userData = GetType().FullName;
-            Construction(UxmlPath, entity);
         }
 
-        public void RebuildInstance(NexusJsonEntity entity)
+        public void CreateNewInstance(Rect pos)
         {
-            _node = entity.ConvertToOrigin<DialoguesNode>();
-            Construction(UxmlPath, entity);
-            SetPosition(_node.NodePos);
+           
+        }
+
+        public void RebuildInstance(BasicNode nodeData)
+        {
+            
         }
     }
 }
