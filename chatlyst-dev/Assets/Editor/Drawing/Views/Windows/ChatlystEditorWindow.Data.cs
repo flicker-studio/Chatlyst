@@ -19,6 +19,10 @@ namespace Chatlyst.Editor
         private string _assetName;
         private string _assetFullPath;
 
+        /// <summary>
+        ///     Obtain asset information based on the asset GUID
+        /// </summary>
+        /// <param name="assetGuid">The guid of asset</param>
         private void GetAsset(string assetGuid)
         {
             _assetGuid     = assetGuid;
@@ -28,6 +32,10 @@ namespace Chatlyst.Editor
             _asset         = AssetDatabase.LoadAssetAtPath<Object>(_assetPath);
         }
 
+        /// <summary>
+        ///     Read data in the asset
+        /// </summary>
+        /// <param name="assetGuid">The guid of asset</param>
         private void DataLoader(string assetGuid)
         {
             GetAsset(assetGuid);

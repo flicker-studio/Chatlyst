@@ -1,17 +1,24 @@
-﻿using Chatlyst.Runtime;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Chatlyst.Runtime;
 using NUnit.Framework;
+using UnityEngine;
 
 public class NodeIndexTest
 {
     [Test]
-    public void Sample()
+    public void AutoAddNodeFunction()
     {
-        var begin = new BeginNode("Start Label", 2);
-        NodeIndex index = new NodeIndex();
-        index.BeginNodes.Add(begin);
-        var json = index.ToJson();
-        NodeIndex deserialize = JsonConvert.DeserializeObject<NodeIndex>(json);
+        var begins =
+            new List<BasicNode>
+            {
+                new BeginNode("Start Label", 2),
+                new BeginNode("Start Label", 3)
+            };
+        var index = new NodeIndex();
+        index.AutoAddNodes(begins);
+        string json = index.ToJson();
+        Debug.Log(json);
+        var deserialize = NodeIndex.DeserializeFromJson(json);
         Assert.AreEqual(index, deserialize);
     }
 }

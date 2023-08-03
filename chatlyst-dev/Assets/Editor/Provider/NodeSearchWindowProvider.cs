@@ -9,10 +9,10 @@ namespace Chatlyst.Editor
 {
     public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider
     {
-        private GraphView    _graph;
-        private EditorWindow _window;
+        private ChatlystGraphView _graph;
+        private EditorWindow      _window;
 
-        public void Init(GraphView graphView, EditorWindow window)
+        public void Init(ChatlystGraphView graphView, EditorWindow window)
         {
             _graph  = graphView;
             _window = window;
@@ -20,38 +20,43 @@ namespace Chatlyst.Editor
 
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
-            var types     = typeof(NodeView).Assembly.GetTypes();
-            var nodeTypes = types.Where(a => a.GetInterfaces().Contains(typeof(IVisible))).ToArray();
+            var assemblyTypes  = typeof(NodeView).Assembly.GetTypes();
+            var nodeTypesArray = assemblyTypes.Where(a => a.GetInterfaces().Contains(typeof(IVisible))).ToArray();
 
-            var tree = new List<SearchTreeEntry>
-                       {
-                           new SearchTreeGroupEntry(new GUIContent("Create Node")),
-                           new SearchTreeGroupEntry(new GUIContent("Nodes"), 1),
-                       };
+            var tree =
+                new List<SearchTreeEntry>
+                {
+                    new SearchTreeGroupEntry(new GUIContent("Create Node")),
+                    new SearchTreeGroupEntry(new GUIContent("Nodes"), 1)
+                };
 
-            if (nodeTypes is not { Length: > 0 }) return tree;
+            if (nodeTypesArray is not { Length: > 0 }) return tree;
             //Create corresponding buttons based on all classes that inherit IVisible interface
-            tree.AddRange(
-                          from type in nodeTypes
-                          let displayAttribute = type.GetCustomAttribute<SearchTreeNameAttribute>()
-                          where displayAttribute != null
-                          select new SearchTreeEntry(new GUIContent(displayAttribute.Name))
-                                 {
-                                     level    = 2,
-                                     userData = type.FullName
-                                 });
+            tree.AddRange
+                (
+                 from type in nodeTypesArray
+                 let nameAttribute = type.GetCustomAttribute<SearchTreeNameAttribute>()
+                 where nameAttribute != null
+                 select new SearchTreeEntry(new GUIContent(nameAttribute.Name))
+                        {
+                            level    = 2,
+                            userData = type.FullName
+                        }
+                );
 
             return tree;
         }
 
         public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)
         {
-            var nodeRect       = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
+            var    nodeRect = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
+            string typeName = (string)searchTreeEntry.userData;
+            return _graph.CreatNode(nodeRect, typeName);
+
             var editorAssembly = typeof(NodeView).Assembly;
-            var typeName       = (string)searchTreeEntry.userData;
             //Use C# Reflection to creat the node 
-            var instance = editorAssembly.CreateInstance(typeName);
-            var method   = typeof(IVisible).GetMethod("CreateInstance", new[] { typeof(Rect) });
+            object instance = editorAssembly.CreateInstance(typeName);
+            var    method   = typeof(IVisible).GetMethod("CreateInstance", new[] { typeof(Rect) });
             if (method == null || instance is not NodeView newNode) return false;
             method.Invoke(newNode, new object[] { nodeRect });
             _graph.AddElement(newNode);

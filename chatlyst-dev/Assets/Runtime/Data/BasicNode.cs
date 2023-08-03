@@ -26,8 +26,6 @@ namespace Chatlyst.Runtime
             NodePos.Y = rect.position.y;
         }
 
-        public abstract BaseNode ToBaseNode();
-
         public string ToJson() => JsonConvert.SerializeObject(this);
 
         private bool Equals(BasicNode other) => Guid == other.Guid;

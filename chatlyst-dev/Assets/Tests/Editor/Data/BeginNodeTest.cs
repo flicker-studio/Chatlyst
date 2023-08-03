@@ -30,14 +30,5 @@ namespace Tests.Editor.Data
             Debug.Log(ser);
             Assert.AreEqual(begin, ans);
         }
-
-        [Test]
-        public void ConversionToBase()
-        {
-            var begin = new BeginNode("Start Label", 1);
-            var bn = begin.ToBaseNode();
-            bn.TryToSource(out BeginNode ans);
-            Assert.AreEqual(begin, ans);
-        }
     }
 }

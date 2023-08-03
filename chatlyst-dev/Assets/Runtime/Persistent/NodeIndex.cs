@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Chatlyst.Runtime.Util;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Chatlyst.Runtime
@@ -17,6 +18,11 @@ namespace Chatlyst.Runtime
             _id = Guid.NewGuid().ToString();
         }
 
+        /// <summary>
+        ///     Add a node to nodes list
+        /// </summary>
+        /// <param name="node">A node</param>
+        /// <exception cref="ArgumentOutOfRangeException">Unknown Node type</exception>
         public void AutoAddNode(BasicNode node)
         {
             switch (node.NodeType)
@@ -52,6 +58,17 @@ namespace Chatlyst.Runtime
         public string ToJson()
         {
             return JsonConvert.SerializeObject(this);
+        }
+
+        /// <summary>
+        ///     Deserialize data from Json
+        /// </summary>
+        /// <param name="json">Enter Json</param>
+        /// <returns>Instance</returns>
+        [CanBeNull]
+        public static NodeIndex DeserializeFromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<NodeIndex>(json);
         }
 
         private bool NodeListEquals(NodeIndex other)

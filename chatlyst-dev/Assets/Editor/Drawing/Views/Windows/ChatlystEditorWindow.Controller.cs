@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Linq;
+using Chatlyst.Runtime;
 using UnityEditor;
-using static Chatlyst.Editor.Serialization.NexusJsonInternal;
 
 namespace Chatlyst.Editor
 {
@@ -17,17 +16,23 @@ namespace Chatlyst.Editor
             DataToView();
         }
 
+
         private bool DataToView()
         {
-            var entityIEnumerable = Deserialize(_jsonData);
-            if (entityIEnumerable == null) throw new Exception("Deserialize failed!");
-            var entityList = entityIEnumerable.ToList();
-            return GraphView.BuildFromEntries(entityList);
+            var nodeDataIndex = NodeIndex.DeserializeFromJson(_jsonData);
+            if (nodeDataIndex == null) throw new Exception("Deserialize failed!");
+            return GraphView.BuildFromNodeIndex(nodeDataIndex);
         }
 
 
-        public void Update()    => _onUpdate?.Invoke();
-        public void OnDestroy() => _onDestroy?.Invoke();
+        public void Update()
+        {
+            _onUpdate?.Invoke();
+        }
 
+        public void OnDestroy()
+        {
+            _onDestroy?.Invoke();
+        }
     }
 }

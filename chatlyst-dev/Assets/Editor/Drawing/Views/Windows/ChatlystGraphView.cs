@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Chatlyst.Editor.Serialization;
+using Chatlyst.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -14,9 +16,10 @@ namespace Chatlyst.Editor
         {
         }
 
-        private const    KeyCode             MenuKey = KeyCode.Space;
-        private readonly InspectorBlackboard _inspector;
-        private          EditorWindow        _window;
+        private const    KeyCode                  MenuKey = KeyCode.Space;
+        private readonly InspectorBlackboard      _inspector;
+        private          EditorWindow             _window;
+        private readonly NodeSearchWindowProvider _searchWindowProvider;
 
         public ChatlystGraphView()
         {
@@ -25,7 +28,9 @@ namespace Chatlyst.Editor
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
-            _inspector = new InspectorBlackboard();
+            _inspector            = new InspectorBlackboard();
+            _searchWindowProvider = ScriptableObject.CreateInstance<NodeSearchWindowProvider>();
+            _searchWindowProvider.Init(this, _window);
             Add(_inspector);
         }
 
@@ -35,26 +40,28 @@ namespace Chatlyst.Editor
             RegisterCallback<KeyDownEvent>(SearchTreeBuild);
         }
 
-        public void InspectorNode()
+        /// <summary>
+        ///     Use C# Reflection to creat the node
+        /// </summary>
+        /// <param name="nodeRect">Node location</param>
+        /// <param name="typeName">The name of the node type</param>
+        /// <param name="creatMethodName">The name of the method that created the node</param>
+        /// <returns>Whether the node was successfully generated</returns>
+        public bool CreatNode(Rect nodeRect, string typeName, string creatMethodName = "CreateNewInstance")
         {
-            _inspector.Inspector(selection.Count > 0 ? selection[0] : null);
+            var method = typeof(IVisible).GetMethod(creatMethodName, new[] { typeof(Rect) });
+            if (method == null) throw new Exception("No corresponding method could be found!");
+            var    editorAssembly = typeof(NodeView).Assembly;
+            object instance       = editorAssembly.CreateInstance(typeName);
+            if (instance is not NodeView newNode) throw new Exception("Instance type error!");
+            method.Invoke(newNode, new object[] { nodeRect });
+            AddElement(newNode);
+            return true;
         }
 
-
-        private void SearchTreeBuild(KeyDownEvent keyDownEvent)
+        public bool BuildFromNodeIndex(NodeIndex index)
         {
-            if (keyDownEvent.keyCode != MenuKey) return;
-            //create a search windows under the cursor
-            var worldMousePosition   = _window.position.position + keyDownEvent.originalMousePosition;
-            var searchWindowContext  = new SearchWindowContext(worldMousePosition);
-            var searchWindowProvider = ScriptableObject.CreateInstance<NodeSearchWindowProvider>();
-            searchWindowProvider.Init(this, _window);
-            SearchWindow.Open(searchWindowContext, searchWindowProvider);
-        }
-
-        public bool BuildFromEntries(List<NexusJsonEntity> list)
-        {
-            foreach (var entity in list)
+            foreach (var entity in index.BeginNodes)
             {
                 string viewTypeName  = typeof(NodeView).Name; //entity.userData;
                 var    assembly      = typeof(NodeView).Assembly;
@@ -65,6 +72,10 @@ namespace Chatlyst.Editor
             }
 
             return true;
+        }
+
+        private void RebuildInstanceList()
+        {
         }
 
         public IEnumerable<NexusJsonEntity> NodeEntity()
@@ -80,7 +91,18 @@ namespace Chatlyst.Editor
             return list;
         }
 
-        #region Override
+        /// <summary>
+        ///     Create a search windows under the cursor
+        /// </summary>
+        /// <param name="keyDownEvent">Trigger event</param>
+        private void SearchTreeBuild(KeyDownEvent keyDownEvent)
+        {
+            if (keyDownEvent.keyCode != MenuKey) return;
+            var worldMousePosition  = _window.position.position + keyDownEvent.originalMousePosition;
+            var searchWindowContext = new SearchWindowContext(worldMousePosition);
+            SearchWindow.Open(searchWindowContext, _searchWindowProvider);
+        }
+
         public override Blackboard GetBlackboard()
         {
             return _inspector;
@@ -89,14 +111,15 @@ namespace Chatlyst.Editor
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             var compatiblePorts = new List<Port>();
-            ports.ForEach(port =>
-            {
-                if (startPort != port && startPort.node != port.node)
-                    compatiblePorts.Add(port);
-            });
-
+            ports.ForEach
+                (
+                 port =>
+                 {
+                     if (startPort != port && startPort.node != port.node)
+                         compatiblePorts.Add(port);
+                 }
+                );
             return compatiblePorts;
         }
-        #endregion
     }
 }
