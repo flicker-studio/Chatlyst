@@ -20,6 +20,7 @@ namespace Chatlyst.Editor
         private readonly InspectorBlackboard      _inspector;
         private          EditorWindow             _window;
         private readonly NodeSearchWindowProvider _searchWindowProvider;
+        private          NodeIndex                _nodeIndex;
 
         public ChatlystGraphView()
         {
@@ -37,7 +38,7 @@ namespace Chatlyst.Editor
         public void GraphInitialize(EditorWindow window)
         {
             _window = window;
-            RegisterCallback<KeyDownEvent>(SearchTreeBuild);
+            // RegisterCallback<KeyDownEvent>(SearchTreeBuild);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Chatlyst.Editor
         }
 
         public bool BuildFromNodeIndex(NodeIndex index)
-        {
+        { /*
             foreach (var entity in index.BeginNodes)
             {
                 string viewTypeName  = typeof(NodeView).Name; //entity.userData;
@@ -70,12 +71,34 @@ namespace Chatlyst.Editor
                 if (instancedView is not NodeView nodeView || method == null) return false;
                 method.Invoke(nodeView, new object[] { entity });
             }
-
+            */
+            foreach (var node in index.BeginNodes)
+            {
+                var startNodeView = new StartNodeView();
+                startNodeView.RebuildInstance(node);
+                AddElement(startNodeView);
+            }
+            _nodeIndex = index;
             return true;
         }
 
         private void RebuildInstanceList()
         {
+        }
+
+        /// <summary>
+        ///     Get the current node index data
+        /// </summary>
+        /// <returns>Current node index</returns>
+        public NodeIndex GetNodeIndex()
+        {
+            var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
+            var tempIndex    = new NodeIndex();
+            foreach (var nodeView in nodeViewList)
+            {
+                tempIndex.AutoAddNode(nodeView.userData as BasicNode);
+            }
+            return tempIndex;
         }
 
         public IEnumerable<NexusJsonEntity> NodeEntity()
@@ -89,6 +112,15 @@ namespace Chatlyst.Editor
             }
 
             return list;
+        }
+
+        private void NodeIndexDataSync()
+        {
+            var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
+            foreach (var nodeView in nodeViewList)
+            {
+                _nodeIndex.AutoAddNode(nodeView.userData as BasicNode);
+            }
         }
 
         /// <summary>

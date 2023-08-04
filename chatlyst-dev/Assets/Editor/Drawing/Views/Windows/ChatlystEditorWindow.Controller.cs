@@ -4,7 +4,7 @@ using UnityEditor;
 
 namespace Chatlyst.Editor
 {
-    partial class ChatlystEditorWindow : EditorWindow
+    public partial class ChatlystEditorWindow : EditorWindow
     {
         private Action _onUpdate;
         private Action _onDestroy;

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Chatlyst.Editor;
 using Chatlyst.Runtime;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
 
 public class NodeIndexTest
@@ -20,5 +22,29 @@ public class NodeIndexTest
         Debug.Log(json);
         var deserialize = NodeIndex.DeserializeFromJson(json);
         Assert.AreEqual(index, deserialize);
+    }
+}
+public class WindowsTest
+{
+    [Test]
+    public void UserDataTypeConversion()
+    {
+        var begins =
+            new List<BasicNode>
+            {
+                new BeginNode("Start Label", 2),
+                new BeginNode("Start Label", 3)
+            };
+        var index = new NodeIndex();
+        index.AutoAddNodes(begins);
+
+        ChatlystEditorWindow.EditorWindow = (ChatlystEditorWindow)EditorWindow.GetWindow(typeof(ChatlystEditorWindow));
+        ChatlystGraphView view = new ChatlystGraphView();
+        view.GraphInitialize(ChatlystEditorWindow.EditorWindow);
+
+        view.BuildFromNodeIndex(index);
+        var newIndex = view.GetNodeIndex();
+        ChatlystEditorWindow.EditorWindow.Close();
+        Assert.AreEqual(index, newIndex);
     }
 }

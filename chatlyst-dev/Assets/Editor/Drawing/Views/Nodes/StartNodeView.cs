@@ -22,7 +22,8 @@ namespace Chatlyst.Editor
 
         public void CreateNewInstance(Rect pos)
         {
-            _node = new BeginNode();
+            _node    = new BeginNode();
+            userData = _node;
         }
 
         public void RebuildInstance(BasicNode nodeData)
@@ -31,9 +32,9 @@ namespace Chatlyst.Editor
             {
                 throw new Exception("Incorrect input！");
             }
-            _node = data;
-
-            Type = _node.NodeType;
+            _node    = data;
+            userData = _node;
+            Type     = _node.NodeType;
         }
     }
 }

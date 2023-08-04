@@ -9,17 +9,17 @@ namespace Chatlyst.Editor
 {
     public abstract class NodeView : Node
     {
-        protected NodeType Type;
+        protected NodeType  Type;
+        public    BasicNode Data;
 
         protected void Construction(string uxmlPath)
         {
             Visualization(uxmlPath);
             PortCreate();
-            ChatlystEditorWindow.GraphView.AddElement(this);
         }
 
         /// <summary>
-        /// Get node uxml file
+        ///     Get node uxml file
         /// </summary>
         private void Visualization(string uxmlPath)
         {
