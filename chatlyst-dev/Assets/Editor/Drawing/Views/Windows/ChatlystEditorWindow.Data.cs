@@ -50,8 +50,8 @@ namespace Chatlyst.Editor
         public override void SaveChanges()
         {
             base.SaveChanges();
-            var    entityList  = GraphView.NodeEntity().ToList();
-            string writeString = NexusJsonInternal.Serialize(entityList);
+            var    nodeIndex   = GraphView.GetNodeIndex();
+            string writeString = nodeIndex.Serialize();
             FileUtilities.WriteToDisk(_assetFullPath, writeString);
         }
     }

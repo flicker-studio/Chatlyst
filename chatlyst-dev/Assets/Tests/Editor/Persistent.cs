@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Chatlyst.Editor;
+using Chatlyst.Editor.Serialization;
 using Chatlyst.Runtime;
 using NUnit.Framework;
 using UnityEditor;
@@ -20,7 +22,7 @@ public class NodeIndexTest
         index.AutoAddNodes(begins);
         string json = index.ToJson();
         Debug.Log(json);
-        var deserialize = NodeIndex.DeserializeFromJson(json);
+        var deserialize = IndexJsonInternal.Deserialize(json);
         Assert.AreEqual(index, deserialize);
     }
 }
@@ -39,7 +41,7 @@ public class WindowsTest
         index.AutoAddNodes(begins);
 
         ChatlystEditorWindow.EditorWindow = (ChatlystEditorWindow)EditorWindow.GetWindow(typeof(ChatlystEditorWindow));
-        ChatlystGraphView view = new ChatlystGraphView();
+        var view = new ChatlystGraphView();
         view.GraphInitialize(ChatlystEditorWindow.EditorWindow);
 
         view.BuildFromNodeIndex(index);

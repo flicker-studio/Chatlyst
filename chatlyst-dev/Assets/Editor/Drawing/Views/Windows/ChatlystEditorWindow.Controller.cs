@@ -1,4 +1,5 @@
 ﻿using System;
+using Chatlyst.Editor.Serialization;
 using Chatlyst.Runtime;
 using UnityEditor;
 
@@ -19,7 +20,7 @@ namespace Chatlyst.Editor
 
         private bool DataToView()
         {
-            var nodeDataIndex = NodeIndex.DeserializeFromJson(_jsonData);
+            var nodeDataIndex = IndexJsonInternal.Deserialize(_jsonData);
             if (nodeDataIndex == null) throw new Exception("Deserialize failed!");
             return GraphView.BuildFromNodeIndex(nodeDataIndex);
         }

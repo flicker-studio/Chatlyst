@@ -9,14 +9,9 @@ namespace Chatlyst.Runtime
     public class NodeIndex
     {
         [JsonProperty]
-        private readonly string _id;
+        private readonly string _id = Guid.NewGuid().ToString();
 
         public List<BeginNode> BeginNodes = new List<BeginNode>();
-
-        public NodeIndex()
-        {
-            _id = Guid.NewGuid().ToString();
-        }
 
         /// <summary>
         ///     Add a node to nodes list
@@ -60,17 +55,7 @@ namespace Chatlyst.Runtime
             return JsonConvert.SerializeObject(this);
         }
 
-        /// <summary>
-        ///     Deserialize data from Json
-        /// </summary>
-        /// <param name="json">Enter Json</param>
-        /// <returns>Instance</returns>
-        [CanBeNull]
-        public static NodeIndex DeserializeFromJson(string json)
-        {
-            return JsonConvert.DeserializeObject<NodeIndex>(json);
-        }
-
+    
         private bool NodeListEquals(NodeIndex other)
         {
             return other.BeginNodes.AreSimilar(BeginNodes);
