@@ -20,7 +20,7 @@ public class NodeIndexTest
             };
         var index = new NodeIndex();
         index.AutoAddNodes(begins);
-        string json = index.ToJson();
+        string json = index.ToString();
         Debug.Log(json);
         var deserialize = IndexJsonInternal.Deserialize(json);
         Assert.AreEqual(index, deserialize);

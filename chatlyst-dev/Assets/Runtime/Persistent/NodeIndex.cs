@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Chatlyst.Runtime.Util;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Chatlyst.Runtime
@@ -50,20 +49,33 @@ namespace Chatlyst.Runtime
             }
         }
 
-        public string ToJson()
+        /// <summary>
+        ///     Refresh the index information for the current nodes
+        /// </summary>
+        /// <param name="basicNodeList">Current node list</param>
+        public void Refresh(List<BasicNode> basicNodeList)
         {
-            return JsonConvert.SerializeObject(this);
+            BeginNodes.Clear();
+            AutoAddNodes(basicNodeList);
         }
 
-    
         private bool NodeListEquals(NodeIndex other)
         {
             return other.BeginNodes.AreSimilar(BeginNodes);
         }
 
+        /// <summary>
+        ///     Returns the serialized field
+        /// </summary>
+        /// <returns>Json string</returns>
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
+
         public override bool Equals(object obj)
         {
-            return obj is NodeIndex index && NodeListEquals(index);
+            return obj is NodeIndex index && _id == index._id && NodeListEquals(index);
         }
 
         public override int GetHashCode()

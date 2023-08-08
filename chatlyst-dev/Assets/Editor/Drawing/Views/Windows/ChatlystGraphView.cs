@@ -93,34 +93,9 @@ namespace Chatlyst.Editor
         public NodeIndex GetNodeIndex()
         {
             var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
-            var tempIndex    = new NodeIndex();
-            foreach (var nodeView in nodeViewList)
-            {
-                tempIndex.AutoAddNode(nodeView.userData as BasicNode);
-            }
-            return tempIndex;
-        }
-
-        public IEnumerable<NexusJsonEntity> NodeEntity()
-        {
-            var list         = new List<NexusJsonEntity>();
-            var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
-            foreach (var view in nodeViewList)
-            {
-                /*view.DataRefresh();
-                list.Add(view.dataEntity);*/
-            }
-
-            return list;
-        }
-
-        private void NodeIndexDataSync()
-        {
-            var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
-            foreach (var nodeView in nodeViewList)
-            {
-                _nodeIndex.AutoAddNode(nodeView.userData as BasicNode);
-            }
+            var nodeDataList = nodeViewList.Select(nodeView => nodeView.userData as BasicNode).ToList();
+            _nodeIndex.Refresh(nodeDataList);
+            return _nodeIndex;
         }
 
         /// <summary>

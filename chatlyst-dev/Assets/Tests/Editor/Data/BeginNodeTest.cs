@@ -25,7 +25,7 @@ namespace Tests.Editor.Data
         public void Serialization()
         {
             var begin = new BeginNode("Start Label", 2);
-            string ser = begin.ToJson();
+            string ser = begin.ToString();
             var ans = JsonConvert.DeserializeObject<BeginNode>(ser);
             Debug.Log(ser);
             Assert.AreEqual(begin, ans);

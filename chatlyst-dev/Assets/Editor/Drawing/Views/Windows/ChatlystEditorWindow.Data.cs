@@ -1,7 +1,5 @@
 using System.IO;
-using System.Linq;
 using Chatlyst.Editor.Serialization;
-using Chatlyst.Runtime;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,11 +38,6 @@ namespace Chatlyst.Editor
         {
             GetAsset(assetGuid);
             _jsonData = File.ReadAllText(_assetFullPath);
-        }
-
-        private string DataToJson(NodeIndex index)
-        {
-            return index.ToJson();
         }
 
         public override void SaveChanges()
