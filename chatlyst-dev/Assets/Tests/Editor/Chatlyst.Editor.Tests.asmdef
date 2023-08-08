@@ -1,12 +1,12 @@
 {
-    "name": "Editor",
-    "rootNamespace": "Tests",
+    "name": "Chatlyst.Editor.Tests",
+    "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Chatlyst.Editor",
         "Chatlyst.Runtime",
-        "Tests.Utill"
+        "Chatlyst.Utility.Tests"
     ],
     "includePlatforms": [
         "Editor"

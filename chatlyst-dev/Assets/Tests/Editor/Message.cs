@@ -1,19 +1,20 @@
 ﻿using Chatlyst.Runtime;
 using NUnit.Framework;
-namespace Tests.Editor.Data
+using Tests.Utility;
+
+namespace Tests.Editor
 {
     /// <summary>
-    ///Unit tests for message
+    ///     Unit tests for message
     /// </summary>
-    public class MessageTest
+    public class Message
     {
         [Test]
         public void Serialize()
         {
-            var message = new Message(Utilities.RandomString(5), Utilities.RandomString(8), Utilities.RandomString(2));
+            var message        = new Chatlyst.Runtime.Message(Utilities.RandomString(5), Utilities.RandomString(8), Utilities.RandomString(2));
             var afterSerialize = message.Serialize().DeserializeToMessage();
             Assert.AreEqual(message, afterSerialize);
         }
     }
 }
-
