@@ -27,5 +27,10 @@ namespace Chatlyst.Editor
         {
             
         }
+
+        public override void RefreshData()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

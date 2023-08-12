@@ -1,4 +1,27 @@
 {
   "_id": "113bd04a-e740-4d57-9b97-8b439bd4b244",
-  "BeginNodes": []
+  "BeginNodes": [
+    {
+      "StartLabel": "Default Label",
+      "Number": -1,
+      "Guid": "1a68d5ed-5428-4dcd-8ca6-68ebe0fc4fe8",
+      "NodeType": 4,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 435.0,
+        "Y": 224.0
+      }
+    },
+    {
+      "StartLabel": "Default Label",
+      "Number": -1,
+      "Guid": "7811f114-8be6-4bf1-a6fa-ac4f67d57510",
+      "NodeType": 4,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 802.0,
+        "Y": 354.0
+      }
+    }
+  ]
 }

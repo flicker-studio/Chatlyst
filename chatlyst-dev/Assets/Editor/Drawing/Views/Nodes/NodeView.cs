@@ -18,6 +18,8 @@ namespace Chatlyst.Editor
             PortCreate();
         }
 
+        public abstract void RefreshData();
+        
         /// <summary>
         ///     Get node uxml file
         /// </summary>

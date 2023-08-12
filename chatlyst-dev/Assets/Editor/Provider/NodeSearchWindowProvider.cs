@@ -9,10 +9,10 @@ namespace Chatlyst.Editor
 {
     public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider
     {
-        private ChatlystGraphView _graph;
-        private EditorWindow      _window;
+        private ChatlystGraphView    _graph;
+        private ChatlystEditorWindow _window;
 
-        public void Init(ChatlystGraphView graphView, EditorWindow window)
+        public void Init(ChatlystGraphView graphView, ChatlystEditorWindow window)
         {
             _graph  = graphView;
             _window = window;

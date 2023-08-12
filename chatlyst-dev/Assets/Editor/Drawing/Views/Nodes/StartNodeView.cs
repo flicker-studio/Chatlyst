@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using Chatlyst.Runtime;
 using UnityEngine;
 
@@ -24,6 +25,15 @@ namespace Chatlyst.Editor
         {
             _node    = new BeginNode();
             userData = _node;
+            SetPosition(pos);
+        }
+
+        public override void RefreshData()
+        {
+            _node.NodePos.X = GetPosition().position.x;
+            _node.NodePos.Y = GetPosition().position.y;
+
+            userData = _node;
         }
 
         public void RebuildInstance(BasicNode nodeData)
@@ -35,6 +45,7 @@ namespace Chatlyst.Editor
             _node    = data;
             userData = _node;
             Type     = _node.NodeType;
+            SetPosition(new Rect(data.NodePos.X, data.NodePos.Y, 1, 1));
         }
     }
 }

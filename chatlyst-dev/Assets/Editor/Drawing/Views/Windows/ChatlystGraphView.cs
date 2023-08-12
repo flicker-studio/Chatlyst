@@ -18,7 +18,7 @@ namespace Chatlyst.Editor
 
         private const    KeyCode                  MenuKey = KeyCode.Space;
         private readonly InspectorBlackboard      _inspector;
-        private          EditorWindow             _window;
+        private          ChatlystEditorWindow     _window;
         private readonly NodeSearchWindowProvider _searchWindowProvider;
         private          NodeIndex                _nodeIndex;
 
@@ -31,14 +31,14 @@ namespace Chatlyst.Editor
             this.AddManipulator(new RectangleSelector());
             _inspector            = new InspectorBlackboard();
             _searchWindowProvider = ScriptableObject.CreateInstance<NodeSearchWindowProvider>();
-            _searchWindowProvider.Init(this, _window);
+            RegisterCallback<KeyDownEvent>(SearchTreeBuild);
             Add(_inspector);
         }
 
-        public void GraphInitialize(EditorWindow window)
+        public void GraphInitialize(ChatlystEditorWindow window)
         {
             _window = window;
-            // RegisterCallback<KeyDownEvent>(SearchTreeBuild);
+            _searchWindowProvider.Init(this, _window);
         }
 
         /// <summary>
@@ -93,6 +93,10 @@ namespace Chatlyst.Editor
         public NodeIndex GetNodeIndex()
         {
             var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
+            foreach (var view in nodeViewList)
+            {
+                view.RefreshData();
+            }
             var nodeDataList = nodeViewList.Select(nodeView => nodeView.userData as BasicNode).ToList();
             _nodeIndex.Refresh(nodeDataList);
             return _nodeIndex;
