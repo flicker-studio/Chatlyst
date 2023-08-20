@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Chatlyst.Editor.Serialization;
 using Chatlyst.Runtime;
+using Chatlyst.Runtime.Data;
 using NUnit.Framework;
 using UnityEngine;
 

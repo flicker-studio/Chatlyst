@@ -1,4 +1,6 @@
-﻿namespace Chatlyst.Runtime
+﻿using Chatlyst.Runtime.Data;
+
+namespace Chatlyst.Runtime
 {
     public class BeginNode : BasicNode
     {

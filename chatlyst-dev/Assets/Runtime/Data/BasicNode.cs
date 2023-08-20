@@ -2,7 +2,7 @@
 using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
-namespace Chatlyst.Runtime
+namespace Chatlyst.Runtime.Data
 {
     public abstract class BasicNode
     {
@@ -20,10 +20,15 @@ namespace Chatlyst.Runtime
             NodePos  = Vector2.Zero;
         }
 
-        public void StoresLocation(Rect rect)
+        public void SetRect(Rect rect)
         {
             NodePos.X = rect.position.x;
             NodePos.Y = rect.position.y;
+        }
+
+        public Rect GetRect()
+        {
+            return new Rect(NodePos.X, NodePos.Y, 1, 1);
         }
 
         public override string ToString()

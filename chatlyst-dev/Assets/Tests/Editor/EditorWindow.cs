@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Chatlyst.Editor;
 using Chatlyst.Runtime;
+using Chatlyst.Runtime.Data;
 using NUnit.Framework;
 using TheEditorWindow = UnityEditor.EditorWindow;
 

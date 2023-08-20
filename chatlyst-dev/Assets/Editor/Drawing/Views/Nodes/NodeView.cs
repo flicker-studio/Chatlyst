@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Chatlyst.Runtime;
+using Chatlyst.Runtime.Data;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;

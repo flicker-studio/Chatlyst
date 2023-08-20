@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Chatlyst.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace Chatlyst.Editor
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
             var assemblyTypes  = typeof(NodeView).Assembly.GetTypes();
-            var nodeTypesArray = assemblyTypes.Where(a => a.GetInterfaces().Contains(typeof(IVisible))).ToArray();
+            var nodeTypesArray = assemblyTypes.Where(a => a.GetInterfaces().Contains(typeof(INodeView))).ToArray();
 
             var tree =
                 new List<SearchTreeEntry>
@@ -31,7 +32,7 @@ namespace Chatlyst.Editor
                 };
 
             if (nodeTypesArray is not { Length: > 0 }) return tree;
-            //Create corresponding buttons based on all classes that inherit IVisible interface
+            //Create corresponding buttons based on all classes that inherit INodeView interface
             tree.AddRange
                 (
                  from type in nodeTypesArray
@@ -51,12 +52,13 @@ namespace Chatlyst.Editor
         {
             var    nodeRect = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
             string typeName = (string)searchTreeEntry.userData;
-            return _graph.CreatNode(nodeRect, typeName);
+            return _graph.CreatNodeViewFromFactory(nodeRect, NodeType.BEG);
+            //return _graph.CreatNode(nodeRect, typeName);
 
             var editorAssembly = typeof(NodeView).Assembly;
             //Use C# Reflection to creat the node 
             object instance = editorAssembly.CreateInstance(typeName);
-            var    method   = typeof(IVisible).GetMethod("CreateInstance", new[] { typeof(Rect) });
+            var    method   = typeof(INodeView).GetMethod("CreateInstance", new[] { typeof(Rect) });
             if (method == null || instance is not NodeView newNode) return false;
             method.Invoke(newNode, new object[] { nodeRect });
             _graph.AddElement(newNode);

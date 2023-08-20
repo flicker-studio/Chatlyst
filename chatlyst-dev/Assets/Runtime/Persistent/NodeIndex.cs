@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Chatlyst.Runtime.Data;
 using Chatlyst.Runtime.Util;
 using Newtonsoft.Json;
 

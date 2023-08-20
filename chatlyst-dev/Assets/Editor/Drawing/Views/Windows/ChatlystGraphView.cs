@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Chatlyst.Editor.Serialization;
 using Chatlyst.Runtime;
+using Chatlyst.Runtime.Data;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -48,14 +49,22 @@ namespace Chatlyst.Editor
         /// <param name="typeName">The name of the node type</param>
         /// <param name="creatMethodName">The name of the method that created the node</param>
         /// <returns>Whether the node was successfully generated</returns>
-        public bool CreatNode(Rect nodeRect, string typeName, string creatMethodName = "CreateNewInstance")
+        public bool CreatNode(Rect nodeRect, string typeName, string creatMethodName = "BuildNewInstance")
         {
-            var method = typeof(IVisible).GetMethod(creatMethodName, new[] { typeof(Rect) });
+            var method = typeof(INodeView).GetMethod(creatMethodName, new[] { typeof(Rect) });
             if (method == null) throw new Exception("No corresponding method could be found!");
             var    editorAssembly = typeof(NodeView).Assembly;
             object instance       = editorAssembly.CreateInstance(typeName);
             if (instance is not NodeView newNode) throw new Exception("Instance type error!");
             method.Invoke(newNode, new object[] { nodeRect });
+            AddElement(newNode);
+            return true;
+        }
+
+        public bool CreatNodeViewFromFactory(Rect nodeRect, NodeType nodeType)
+        {
+            var newNode = NodeViewFactory.CreatNewNodeView(nodeType, null, nodeRect);
+            if (newNode == null) return false;
             AddElement(newNode);
             return true;
         }
@@ -67,14 +76,14 @@ namespace Chatlyst.Editor
                 string viewTypeName  = typeof(NodeView).Name; //entity.userData;
                 var    assembly      = typeof(NodeView).Assembly;
                 object instancedView = assembly.CreateInstance(viewTypeName);
-                var    method        = typeof(IVisible).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
+                var    method        = typeof(INodeView).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
                 if (instancedView is not NodeView nodeView || method == null) return false;
                 method.Invoke(nodeView, new object[] { entity });
             }
             */
             foreach (var node in index.BeginNodes)
             {
-                var startNodeView = new StartNodeView();
+                var startNodeView = new BeginNodeView();
                 startNodeView.RebuildInstance(node);
                 AddElement(startNodeView);
             }

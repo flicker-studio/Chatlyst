@@ -7,7 +7,7 @@ namespace Chatlyst.Editor
 {
     public sealed class InspectorBlackboard : Blackboard
     {
-        private          DialogueNodeView _currentNode;
+        private          DialogueNodeView _currentNodeView;
         private readonly ListView         _inspector = new ListView();
 
         public InspectorBlackboard()
@@ -36,8 +36,8 @@ namespace Chatlyst.Editor
             }
 
             _inspector.visible = true;
-            _currentNode       = node;
-            _inspector.BindProperty(_currentNode._node.getListProperty);
+            _currentNodeView       = node;
+            _inspector.BindProperty(_currentNodeView._node.getListProperty);
         }
     }
 }
