@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using Chatlyst.Runtime;
 using Chatlyst.Runtime.Data;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -8,28 +7,18 @@ using UnityEngine.UIElements;
 
 namespace Chatlyst.Editor
 {
-    public abstract class NodeView : Node
+    public interface INodeView
     {
-        protected NodeType  Type;
-        public    BasicNode Data;
-
-        protected void Construction(string uxmlPath)
-        {
-            Visualization(uxmlPath);
-            PortCreate();
-        }
-
-        public abstract void RefreshData();
-        
-        /// <summary>
-        ///     Get node uxml file
-        /// </summary>
-        private void Visualization(string uxmlPath)
+    }
+    public abstract class NodeView : Node, INodeView
+    {
+        protected NodeView(string uxmlPath)
         {
             var visualTree = Resources.Load<VisualTreeAsset>(uxmlPath);
             if (visualTree == null)
                 throw new NullReferenceException($"Can't find the {visualTree}");
             visualTree.CloneTree(mainContainer);
+            PortCreate();
         }
 
         private void PortCreate()
@@ -48,5 +37,19 @@ namespace Chatlyst.Editor
                 outputContainer.Add(outputPort);
             }
         }
+
+        public abstract void RefreshData();
+
+        /// <summary>
+        ///     Build a new node instance.
+        /// </summary>
+        /// <param name="pos">The position of the node.</param>
+        public abstract void BuildNewInstance(Rect pos);
+
+        /// <summary>
+        ///     Rebuild a node instance from old data.
+        /// </summary>
+        /// <param name="nodeData">Old data.</param>
+        public abstract void RebuildInstance(BasicNode nodeData);
     }
 }

@@ -4,7 +4,6 @@ using System.Linq;
 using Chatlyst.Editor.Serialization;
 using Chatlyst.Runtime;
 using Chatlyst.Runtime.Data;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -19,9 +18,27 @@ namespace Chatlyst.Editor
 
         private const    KeyCode                  MenuKey = KeyCode.Space;
         private readonly InspectorBlackboard      _inspector;
-        private          ChatlystEditorWindow     _window;
+        private readonly ChatlystEditorWindow     _window;
         private readonly NodeSearchWindowProvider _searchWindowProvider;
         private          NodeIndex                _nodeIndex;
+
+        /// <summary>
+        ///     Get the current node index data
+        /// </summary>
+        public NodeIndex nodeIndex
+        {
+            get
+            {
+                var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
+                foreach (var view in nodeViewList)
+                {
+                    view.RefreshData();
+                }
+                var nodeDataList = nodeViewList.Select(nodeView => nodeView.userData as BasicNode).ToList();
+                _nodeIndex.Refresh(nodeDataList);
+                return _nodeIndex;
+            }
+        }
 
         public ChatlystGraphView()
         {
@@ -34,81 +51,26 @@ namespace Chatlyst.Editor
             _searchWindowProvider = ScriptableObject.CreateInstance<NodeSearchWindowProvider>();
             RegisterCallback<KeyDownEvent>(SearchTreeBuild);
             Add(_inspector);
+            _window = ChatlystEditorWindow.EditorWindow;
         }
 
-        public void GraphInitialize(ChatlystEditorWindow window)
+        public void Initialize(string jsonData)
         {
-            _window = window;
             _searchWindowProvider.Init(this, _window);
+            var nodeDataIndex = IndexJsonInternal.Deserialize(jsonData);
+            if (nodeDataIndex == null) throw new Exception("Deserialize failed!");
+            RebuildNodeViews(nodeDataIndex);
         }
 
-        /// <summary>
-        ///     Use C# Reflection to creat the node
-        /// </summary>
-        /// <param name="nodeRect">Node location</param>
-        /// <param name="typeName">The name of the node type</param>
-        /// <param name="creatMethodName">The name of the method that created the node</param>
-        /// <returns>Whether the node was successfully generated</returns>
-        public bool CreatNode(Rect nodeRect, string typeName, string creatMethodName = "BuildNewInstance")
+        private bool RebuildNodeViews(NodeIndex index)
         {
-            var method = typeof(INodeView).GetMethod(creatMethodName, new[] { typeof(Rect) });
-            if (method == null) throw new Exception("No corresponding method could be found!");
-            var    editorAssembly = typeof(NodeView).Assembly;
-            object instance       = editorAssembly.CreateInstance(typeName);
-            if (instance is not NodeView newNode) throw new Exception("Instance type error!");
-            method.Invoke(newNode, new object[] { nodeRect });
-            AddElement(newNode);
-            return true;
-        }
-
-        public bool CreatNodeViewFromFactory(Rect nodeRect, NodeType nodeType)
-        {
-            var newNode = NodeViewFactory.CreatNewNodeView(nodeType, null, nodeRect);
-            if (newNode == null) return false;
-            AddElement(newNode);
-            return true;
-        }
-
-        public bool BuildFromNodeIndex(NodeIndex index)
-        { /*
-            foreach (var entity in index.BeginNodes)
+            foreach (var startNodeView in index.BeginNodes.Select
+                (node => NodeViewFactory.RebuildOldNodeView(node, typeof(BeginNodeView).FullName)))
             {
-                string viewTypeName  = typeof(NodeView).Name; //entity.userData;
-                var    assembly      = typeof(NodeView).Assembly;
-                object instancedView = assembly.CreateInstance(viewTypeName);
-                var    method        = typeof(INodeView).GetMethod("RebuildInstance", new[] { typeof(NexusJsonEntity) });
-                if (instancedView is not NodeView nodeView || method == null) return false;
-                method.Invoke(nodeView, new object[] { entity });
-            }
-            */
-            foreach (var node in index.BeginNodes)
-            {
-                var startNodeView = new BeginNodeView();
-                startNodeView.RebuildInstance(node);
                 AddElement(startNodeView);
             }
             _nodeIndex = index;
             return true;
-        }
-
-        private void RebuildInstanceList()
-        {
-        }
-
-        /// <summary>
-        ///     Get the current node index data
-        /// </summary>
-        /// <returns>Current node index</returns>
-        public NodeIndex GetNodeIndex()
-        {
-            var nodeViewList = graphElements.Where(a => a is NodeView).Cast<NodeView>().ToList();
-            foreach (var view in nodeViewList)
-            {
-                view.RefreshData();
-            }
-            var nodeDataList = nodeViewList.Select(nodeView => nodeView.userData as BasicNode).ToList();
-            _nodeIndex.Refresh(nodeDataList);
-            return _nodeIndex;
         }
 
         /// <summary>

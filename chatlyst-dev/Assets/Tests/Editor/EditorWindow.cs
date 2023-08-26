@@ -25,10 +25,9 @@ namespace Tests.Editor
 
             ChatlystEditorWindow.EditorWindow = (ChatlystEditorWindow)TheEditorWindow.GetWindow(typeof(ChatlystEditorWindow));
             var view = new ChatlystGraphView();
-            view.GraphInitialize(ChatlystEditorWindow.EditorWindow);
-
-            view.BuildFromNodeIndex(index);
-            var newIndex = view.GetNodeIndex();
+            view.Initialize(index.ToString());
+           
+            var newIndex = view.nodeIndex;
             ChatlystEditorWindow.EditorWindow.Close();
             Assert.AreEqual(index, newIndex);
         }

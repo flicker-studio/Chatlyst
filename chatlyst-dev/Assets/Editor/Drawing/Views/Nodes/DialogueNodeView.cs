@@ -1,37 +1,27 @@
-﻿using Chatlyst.Editor.Data;
-using Chatlyst.Editor.Serialization;
-using Chatlyst.Runtime;
+﻿using System;
+using Chatlyst.Editor.Data;
 using Chatlyst.Runtime.Data;
 using UnityEngine;
 
 namespace Chatlyst.Editor
 {
-    [SearchTreeName("对话节点"), NodePort(1, 1)]
-    public class DialogueNodeView : NodeView, INodeView
+    [SearchTreeName("对话节点")] [NodePort(1, 1)]
+    public class DialogueNodeView : NodeView
     {
-        private const string UxmlPath = "UXML/Start";
+        public DialogueNodeView() : base("UXML/Start") { }
 
-        public DialoguesNode _node;
-
-        public void CreateInstance(Rect pos)
+        public override void BuildNewInstance(Rect pos)
         {
-            _node = new DialoguesNode();
-            SetPosition(pos);
         }
 
-        public void BuildNewInstance(Rect pos)
+        public override
+            void RebuildInstance(BasicNode nodeData)
         {
-           
-        }
-
-        public void RebuildInstance(BasicNode nodeData)
-        {
-            
         }
 
         public override void RefreshData()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

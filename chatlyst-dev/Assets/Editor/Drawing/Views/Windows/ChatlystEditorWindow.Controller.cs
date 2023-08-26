@@ -14,17 +14,7 @@ namespace Chatlyst.Editor
         {
             DataLoader(id);
             ViewLoader();
-            DataToView();
         }
-
-
-        private bool DataToView()
-        {
-            var nodeDataIndex = IndexJsonInternal.Deserialize(_jsonData);
-            if (nodeDataIndex == null) throw new Exception("Deserialize failed!");
-            return GraphView.BuildFromNodeIndex(nodeDataIndex);
-        }
-
 
         public void Update()
         {

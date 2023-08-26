@@ -43,7 +43,7 @@ namespace Chatlyst.Editor
         public override void SaveChanges()
         {
             base.SaveChanges();
-            var    nodeIndex   = GraphView.GetNodeIndex();
+            var    nodeIndex   = GraphView.nodeIndex;
             string writeString = nodeIndex.Serialize();
             FileUtilities.WriteToDisk(_assetFullPath, writeString);
         }

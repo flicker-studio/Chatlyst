@@ -52,7 +52,7 @@ namespace Chatlyst.Editor
         {
             saveChangesMessage = "Unsaved changes!\nDo you want to save?";
             titleContent.text  = _assetName;
-            GraphView.GraphInitialize(EditorWindow);
+            GraphView.Initialize(_jsonData);
             VisualElementMethodRegistration();
 
             //Reset the save flag

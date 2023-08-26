@@ -6,16 +6,11 @@ using UnityEngine;
 namespace Chatlyst.Editor
 {
     [SearchTreeName("开始节点")] [NodePort(0, 1)]
-    public sealed class BeginNodeView : NodeView, INodeView
+    public sealed class BeginNodeView : NodeView
     {
-        public BeginNodeView()
-        {
-            Construction("UXML/Start");
-            Type = NodeType.BEG;
-        }
+        public BeginNodeView() : base("UXML/Start") { }
 
-        #region Interface
-        public void BuildNewInstance(Rect pos)
+        public override void BuildNewInstance(Rect pos)
         {
             var node = new BeginNode();
             SetPosition(pos);
@@ -23,15 +18,13 @@ namespace Chatlyst.Editor
             userData = node;
         }
 
-        public void RebuildInstance(BasicNode nodeData)
+        public override void RebuildInstance(BasicNode nodeData)
         {
             if (nodeData is not BeginNode data)
                 throw new Exception("Incorrect input！");
             userData = data;
-            Type     = data.NodeType;
             SetPosition(data.GetRect());
         }
-        #endregion
 
         public override void RefreshData()
         {

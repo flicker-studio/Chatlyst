@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Chatlyst.Runtime;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -52,15 +50,8 @@ namespace Chatlyst.Editor
         {
             var    nodeRect = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
             string typeName = (string)searchTreeEntry.userData;
-            return _graph.CreatNodeViewFromFactory(nodeRect, NodeType.BEG);
-            //return _graph.CreatNode(nodeRect, typeName);
-
-            var editorAssembly = typeof(NodeView).Assembly;
-            //Use C# Reflection to creat the node 
-            object instance = editorAssembly.CreateInstance(typeName);
-            var    method   = typeof(INodeView).GetMethod("CreateInstance", new[] { typeof(Rect) });
-            if (method == null || instance is not NodeView newNode) return false;
-            method.Invoke(newNode, new object[] { nodeRect });
+            var    newNode  = NodeViewFactory.CreatNewNodeView(nodeRect, typeName);
+            if (newNode == null) return false;
             _graph.AddElement(newNode);
             return true;
         }

@@ -36,8 +36,8 @@ namespace Chatlyst.Editor
             }
 
             _inspector.visible = true;
-            _currentNodeView       = node;
-            _inspector.BindProperty(_currentNodeView._node.getListProperty);
+            _currentNodeView   = node;
+            //  _inspector.BindProperty(_currentNodeView._node.getListProperty);
         }
     }
 }
