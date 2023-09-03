@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Chatlyst.Editor.Attribute;
 using Chatlyst.Runtime.Data;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -7,11 +8,21 @@ using UnityEngine.UIElements;
 
 namespace Chatlyst.Editor
 {
+    /// <summary>
+    ///     Flag interface that can be displayed in graph.
+    /// </summary>
     public interface INodeView
     {
     }
+    /// <summary>
+    /// </summary>
     public abstract class NodeView : Node, INodeView
     {
+        /// <summary>
+        ///     Use uxml to create the visual item.
+        /// </summary>
+        /// <param name="uxmlPath">Relative path of Uxml file.</param>
+        /// <exception cref="NullReferenceException">The file in <paramref name="uxmlPath" /> is not exist.</exception>
         protected NodeView(string uxmlPath)
         {
             var visualTree = Resources.Load<VisualTreeAsset>(uxmlPath);
@@ -21,6 +32,13 @@ namespace Chatlyst.Editor
             PortCreate();
         }
 
+        /// <summary>
+        ///     Ports will be automatically generated on the view.
+        /// </summary>
+        /// <remarks>
+        ///     It can be configured using the <see cref="NodePortAttribute" />
+        /// </remarks>
+        /// <exception cref="Exception"></exception>
         private void PortCreate()
         {
             var portNumAttr = GetType().GetCustomAttribute<NodePortAttribute>();
@@ -38,6 +56,9 @@ namespace Chatlyst.Editor
             }
         }
 
+        /// <summary>
+        ///     Synchronize the stored data with the current data
+        /// </summary>
         public abstract void RefreshData();
 
         /// <summary>

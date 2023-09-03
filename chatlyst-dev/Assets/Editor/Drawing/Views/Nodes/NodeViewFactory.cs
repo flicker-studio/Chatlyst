@@ -10,12 +10,12 @@ namespace Chatlyst.Editor
         private static readonly Assembly NodeViewAssembly = typeof(NodeView).Assembly;
 
         /// <summary>
-        /// 
+        ///     Create a new node view.
         /// </summary>
-        /// <param name="nodeRect"></param>
-        /// <param name="typeName"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="nodeRect">The rect of view</param>
+        /// <param name="typeName">View Type</param>
+        /// <returns>Instanced view</returns>
+        /// <exception cref="Exception">Input type is not a node view.</exception>
         public static NodeView CreatNewNodeView(Rect nodeRect, string typeName)
         {
             object instance = NodeViewAssembly.CreateInstance(typeName);
@@ -25,12 +25,12 @@ namespace Chatlyst.Editor
         }
 
         /// <summary>
-        /// 
+        ///     Create a node view stored in file.
         /// </summary>
-        /// <param name="nodeData"></param>
-        /// <param name="typeName"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="nodeData">Data in file</param>
+        /// <param name="typeName">View type</param>
+        /// <returns>Instanced view</returns>
+        /// <exception cref="Exception">Input type is not a node view.</exception>
         public static NodeView RebuildOldNodeView(BasicNode nodeData, string typeName)
         {
             object instance = NodeViewAssembly.CreateInstance(typeName);

@@ -1,5 +1,5 @@
 ﻿using System;
-using Chatlyst.Editor.Data;
+using Chatlyst.Editor.Attribute;
 using Chatlyst.Runtime.Data;
 using UnityEngine;
 

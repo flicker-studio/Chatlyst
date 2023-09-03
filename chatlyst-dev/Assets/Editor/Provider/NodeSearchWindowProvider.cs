@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Chatlyst.Editor.Attribute;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -10,12 +11,6 @@ namespace Chatlyst.Editor
     {
         private ChatlystGraphView    _graph;
         private ChatlystEditorWindow _window;
-
-        public void Init(ChatlystGraphView graphView, ChatlystEditorWindow window)
-        {
-            _graph  = graphView;
-            _window = window;
-        }
 
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
@@ -54,6 +49,12 @@ namespace Chatlyst.Editor
             if (newNode == null) return false;
             _graph.AddElement(newNode);
             return true;
+        }
+
+        public void Init(ChatlystGraphView graphView, ChatlystEditorWindow window)
+        {
+            _graph  = graphView;
+            _window = window;
         }
     }
 }
