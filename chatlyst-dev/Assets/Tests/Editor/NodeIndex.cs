@@ -1,29 +1,24 @@
 ﻿using System.Collections.Generic;
 using Chatlyst.Editor.Serialization;
-using Chatlyst.Runtime;
 using Chatlyst.Runtime.Data;
 using NUnit.Framework;
-using UnityEngine;
+using Tests.Utility;
 
 namespace Tests.Editor
 {
     public class NodeIndex
     {
         [Test]
-        public void AutoAddNodeFunction()
+        public void AutoAddNodeMethod()
         {
-            var begins =
-                new List<BasicNode>
-                {
-                    new Chatlyst.Runtime.BeginNode("Start Label", 2),
-                    new Chatlyst.Runtime.BeginNode("Start Label", 3)
-                };
-            var index = new Chatlyst.Runtime.NodeIndex();
-            index.AutoAddNodes(begins);
-            string json = index.ToString();
-            Debug.Log(json);
-            var deserialize = IndexJsonInternal.Deserialize(json);
-            Assert.AreEqual(index, deserialize);
+            var beginNodeList = DataNode.GetBeginNodeList(3);
+            var basicNodeList = new List<BasicNode>();
+            var nodeIndex     = new Chatlyst.Runtime.NodeIndex();
+            basicNodeList.AddRange(beginNodeList);
+            nodeIndex.AutoAddNodes(basicNodeList);
+            string json                  = nodeIndex.ToString();
+            var    deserializedNodeIndex = IndexJsonInternal.Deserialize(json);
+            Assert.AreEqual(nodeIndex, deserializedNodeIndex);
         }
     }
 }

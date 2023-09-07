@@ -1,17 +1,33 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Newtonsoft.Json;
-using Random = System.Random;
 
 namespace Tests.Utility
 {
+    /// <summary>
+    ///     Some of the utilities used within unit tests
+    /// </summary>
     public static class Utilities
     {
         private static readonly Random Random = new Random();
 
         internal static JsonSerializerSettings DefaultSerializerSettings = new JsonSerializerSettings
                                                                            {
-                                                                               Formatting = Formatting.Indented,
+                                                                               Formatting = Formatting.Indented
                                                                            };
+
+        /// <summary>
+        ///     Get a random <see langword="int" />
+        /// </summary>
+        public static int RandomInt()
+        {
+            return Random.Next();
+        }
+
+        /// <summary>
+        ///     Gets a random <see langword="string" />
+        /// </summary>
+        /// <param name="length">String length</param>
         public static string RandomString(int length)
         {
             const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
