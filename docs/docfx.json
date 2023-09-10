@@ -1,0 +1,88 @@
+{
+    "metadata": [
+        {
+            "references": [
+                {
+                    "src": "../chatlyst-dev",
+                    "files": [
+                        "Assets/Plugins/**"
+                    ]
+                }
+            ],
+            "src": [
+                {
+                    "src": "../chatlyst-dev",
+                    "files": [
+                        "Assets/**.cs"
+                    ]
+                }
+            ],
+            "dest": "api",
+            "disableGitFeatures": false,
+            "globalNamespaceId": "Global",
+            "filter": "filter.yml"
+        }
+    ],
+    "build": {
+        "globalMetadata": {
+            "_appTitle": "Chatlyst API Documentation",
+            "_appFooter": "Chatlyst API Documentation",
+            "_enableSearch": true
+        },
+        "content": [
+            {
+                "files": [
+                    "toc.yml",
+                    "index.md"
+                ]
+            },
+            {
+                "src": "api",
+                "files": [
+                    "*.yml"
+                ],
+                "dest": "api"
+            },
+            {
+                "src": "manual",
+                "files": [
+                    "toc.yml",
+                    "*.md"
+                ],
+                "dest": "manual"
+            }
+        ],
+        "overwrite": [
+            {
+                "src": "..",
+                "files": [
+                    "Assets/Scripts/**/*.md"
+                ]
+            }
+        ],
+        "resource": [
+            {
+                "files": [
+                    "resources/**/*"
+                ]
+            }
+        ],
+        "sitemap": {
+            "baseUrl": "https://normanderwan.github.io/DocFxForUnity",
+            "changefreq": "weekly",
+            "fileOptions": {
+                "api/*": {
+                    "changefreq": "daily"
+                }
+            }
+        },
+        "xref": [
+            "https://normanderwan.github.io/UnityXrefMaps/xrefmap.yml",
+            "https://nicoco007.github.io/UnityXRefMap/2022.3/xrefmap.yml"
+        ],
+        "xrefService": [
+            "https://xref.docs.microsoft.com/query?uid={uid}"
+        ],
+        "dest": "_site"
+    }
+}
