@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: CustomSetting
   m_EditorClassIdentifier: 
   nodeSetting: {fileID: 11400000, guid: b7112725367c22a4f9f26a446ca0cfc9, type: 2}
+  list:
+  - 
+  - 

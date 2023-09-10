@@ -1,0 +1,14 @@
+{
+  "name": "Chatlyst.Tests.Utility",
+  "rootNamespace": " ",
+  "references": ["GUID:4561d980200f6df40b8ca516392c66e0"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

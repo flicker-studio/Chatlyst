@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Chatlyst.Editor.Views;
-using UnityEditor;
+using Chatlyst.Editor.Attribute;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -10,55 +9,52 @@ namespace Chatlyst.Editor
 {
     public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider
     {
-        private GraphView _graph;
-        private EditorWindow _window;
-
-        public void Init(GraphView graphView, EditorWindow window)
-        {
-            _graph = graphView;
-            _window = window;
-        }
+        private ChatlystGraphView    _graph;
+        private ChatlystEditorWindow _window;
 
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
-            var types = typeof(NexusNodeView).Assembly.GetTypes();
-            var nodeTypes = types.Where(a => a.GetInterfaces().Contains(typeof(IVisible))).ToArray();
+            var assemblyTypes  = typeof(NodeView).Assembly.GetTypes();
+            var nodeTypesArray = assemblyTypes.Where(a => a.GetInterfaces().Contains(typeof(INodeView))).ToArray();
 
-            var tree = new List<SearchTreeEntry>
-            {
-                new SearchTreeGroupEntry(new GUIContent("Create Node")),
-                new SearchTreeGroupEntry(new GUIContent("Nodes"), 1),
-            };
-
-            if (nodeTypes is not { Length: > 0 }) return tree;
-            //Create corresponding buttons based on all classes that inherit IVisible interface
-            foreach (var type in nodeTypes)
-            {
-                var displayAttribute = type.GetCustomAttribute<SearchTreeNameAttribute>();
-                if (displayAttribute == null) continue;
-                var entry = new SearchTreeEntry(new GUIContent(displayAttribute.Name))
+            var tree =
+                new List<SearchTreeEntry>
                 {
-                    level = 2,
-                    userData = type.FullName
+                    new SearchTreeGroupEntry(new GUIContent("Create Node")),
+                    new SearchTreeGroupEntry(new GUIContent("Nodes"), 1)
                 };
-                tree.Add(entry);
-            }
+
+            if (nodeTypesArray is not { Length: > 0 }) return tree;
+            //Create corresponding buttons based on all classes that inherit INodeView interface
+            tree.AddRange
+                (
+                 from type in nodeTypesArray
+                 let nameAttribute = type.GetCustomAttribute<SearchTreeNameAttribute>()
+                 where nameAttribute != null
+                 select new SearchTreeEntry(new GUIContent(nameAttribute.Name))
+                        {
+                            level    = 2,
+                            userData = type.FullName
+                        }
+                );
 
             return tree;
         }
 
         public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)
         {
-            var nodeRect = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
-            var editorAssembly = typeof(NexusNodeView).Assembly;
-            var typeName = (string)searchTreeEntry.userData;
-            //Use C# Reflection to creat the node 
-            var instance = editorAssembly.CreateInstance(typeName);
-            var method = typeof(IVisible).GetMethod("CreateInstance", new[] { typeof(Rect) });
-            if (method == null || instance is not NexusNodeView newNode) return false;
-            method.Invoke(newNode, new object[] { nodeRect });
+            var    nodeRect = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
+            string typeName = (string)searchTreeEntry.userData;
+            var    newNode  = NodeViewFactory.CreatNewNodeView(nodeRect, typeName);
+            if (newNode == null) return false;
             _graph.AddElement(newNode);
             return true;
+        }
+
+        public void Init(ChatlystGraphView graphView, ChatlystEditorWindow window)
+        {
+            _graph  = graphView;
+            _window = window;
         }
     }
 }

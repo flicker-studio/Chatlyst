@@ -1,44 +1,27 @@
-﻿using Chatlyst.Editor.Data;
-using Chatlyst.Editor.Serialization;
+﻿using System;
+using Chatlyst.Editor.Attribute;
+using Chatlyst.Runtime.Data;
 using UnityEngine;
 
-namespace Chatlyst.Editor.Views
+namespace Chatlyst.Editor
 {
-    [SearchTreeName("对话节点"), NodePort(1, 1)]
-    public class DialogueNodeView : NexusNodeView, IVisible
+    [SearchTreeName("对话节点")] [NodePort(1, 1)]
+    public class DialogueNodeView : NodeView
     {
-        private const string UxmlPath = "UXML/Start";
-        public override NexusJsonEntity dataEntity
-        {
-            get
-            {
-                var entity = _node.ConvertToEntity();
-                // entity.userData = GetType().FullName;
-                return entity;
-            }
-        }
-        public DialoguesNode _node;
+        public DialogueNodeView() : base("UXML/Start") { }
 
-        public override void DataRefresh()
+        public override void BuildNewInstance(Rect pos)
         {
-            _node.NodePos = GetPosition();
         }
 
-        public void CreateInstance(Rect pos)
+        public override
+            void RebuildInstance(BasicNode nodeData)
         {
-            _node = new DialoguesNode();
-            SetPosition(pos);
-            DataRefresh();
-            var entity = _node.ConvertToEntity();
-            //  entity.userData = GetType().FullName;
-            Construction(UxmlPath, entity);
         }
 
-        public void RebuildInstance(NexusJsonEntity entity)
+        public override void RefreshData()
         {
-            _node = entity.ConvertToOrigin<DialoguesNode>();
-            Construction(UxmlPath, entity);
-            SetPosition(_node.NodePos);
+            throw new NotImplementedException();
         }
     }
 }

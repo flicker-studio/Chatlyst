@@ -6,6 +6,6 @@
         <uie:ToolbarMenu display-tooltip-when-elided="false" name="Menu" view-data-key="Menu" style="-unity-text-align: middle-center;" />
     </uie:Toolbar>
     <ui:VisualElement style="width: 100%; height: 100%;">
-        <NexusVisual.Editor.Views.NexusGraphView focusable="true" name="GraphView" style="width: 100%; height: 100%;"/>
+        <Chatlyst.Editor.ChatlystGraphView focusable="true" name="GraphView" style="width: 100%; height: 100%;"/>
     </ui:VisualElement>
 </ui:UXML>
