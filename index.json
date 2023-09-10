@@ -1,8 +1,43 @@
 {
+  "api/Chatlyst.Editor.Attribute.html": {
+    "href": "api/Chatlyst.Editor.Attribute.html",
+    "title": "Namespace Chatlyst.Editor.Attribute | Chatlyst API Documentation",
+    "keywords": "Namespace Chatlyst.Editor.Attribute Classes NodePortAttribute Simple configuration of the number of ports SearchTreeNameAttribute Simple configuration name of SearchTree item."
+  },
+  "api/Chatlyst.Editor.Attribute.NodePortAttribute.html": {
+    "href": "api/Chatlyst.Editor.Attribute.NodePortAttribute.html",
+    "title": "Class NodePortAttribute | Chatlyst API Documentation",
+    "keywords": "Class NodePortAttribute Simple configuration of the number of ports Inheritance Object Attribute NodePortAttribute Namespace : Chatlyst.Editor.Attribute Assembly : cs.temp.dll.dll Syntax public class NodePortAttribute : Attribute, _Attribute Examples For example, there are three input ports and two out ports by using [NodePort(3, 2)] . Constructors NodePortAttribute(Int32, Int32) NodePortAttribute Declaration public NodePortAttribute(int inNum, int outNum) Parameters Type Name Description Int32 inNum Number of input ports. Int32 outNum Number of out ports. Fields InputPortNum Number of input ports. Declaration public readonly int InputPortNum Field Value Type Description Int32 OutputPortNum Number of out ports. Declaration public readonly int OutputPortNum Field Value Type Description Int32"
+  },
+  "api/Chatlyst.Editor.Attribute.SearchTreeNameAttribute.html": {
+    "href": "api/Chatlyst.Editor.Attribute.SearchTreeNameAttribute.html",
+    "title": "Class SearchTreeNameAttribute | Chatlyst API Documentation",
+    "keywords": "Class SearchTreeNameAttribute Simple configuration name of SearchTree item. Inheritance Object Attribute SearchTreeNameAttribute Namespace : Chatlyst.Editor.Attribute Assembly : cs.temp.dll.dll Syntax public class SearchTreeNameAttribute : Attribute, _Attribute Examples For example, item will show \"Start\" by using [SearchTreeName(\"Start\")] . Constructors SearchTreeNameAttribute(String) SearchTreeNameAttribute Declaration public SearchTreeNameAttribute(string name) Parameters Type Name Description String name The name will be showed. Fields Name The name will be showed. Declaration public readonly string Name Field Value Type Description String"
+  },
+  "api/Chatlyst.Editor.BeginNodeView.html": {
+    "href": "api/Chatlyst.Editor.BeginNodeView.html",
+    "title": "Class BeginNodeView | Chatlyst API Documentation",
+    "keywords": "Class BeginNodeView Begin Node View Inheritance Object NodeView BeginNodeView Implements INodeView Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public sealed class BeginNodeView : NodeView, INodeView Constructors BeginNodeView() Declaration public BeginNodeView() Methods BuildNewInstance(Rect) Build a new node instance. Declaration public override void BuildNewInstance(Rect pos) Parameters Type Name Description Rect pos The position of the node. Overrides NodeView.BuildNewInstance(Rect) RebuildInstance(BasicNode) Rebuild a node instance from old data. Declaration public override void RebuildInstance(BasicNode nodeData) Parameters Type Name Description BasicNode nodeData Old data. Overrides NodeView.RebuildInstance(BasicNode) RefreshData() Synchronize the stored data with the current data Declaration public override void RefreshData() Overrides NodeView.RefreshData() Implements INodeView"
+  },
+  "api/Chatlyst.Editor.ChatlystEditorWindow.html": {
+    "href": "api/Chatlyst.Editor.ChatlystEditorWindow.html",
+    "title": "Class ChatlystEditorWindow | Chatlyst API Documentation",
+    "keywords": "Class ChatlystEditorWindow Inheritance Object ChatlystEditorWindow Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class ChatlystEditorWindow : EditorWindow Fields EditorWindow Declaration public static ChatlystEditorWindow EditorWindow Field Value Type Description ChatlystEditorWindow GraphView Declaration public static ChatlystGraphView GraphView Field Value Type Description ChatlystGraphView Methods Initialize(String) Declaration public void Initialize(in string id) Parameters Type Name Description String id OnDestroy() Declaration public void OnDestroy() SaveChanges() Declaration public override void SaveChanges() Update() Declaration public void Update()"
+  },
+  "api/Chatlyst.Editor.ChatlystGraphView.Factory.html": {
+    "href": "api/Chatlyst.Editor.ChatlystGraphView.Factory.html",
+    "title": "Class ChatlystGraphView.Factory | Chatlyst API Documentation",
+    "keywords": "Class ChatlystGraphView.Factory Inheritance Object ChatlystGraphView.Factory Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class Factory : UxmlFactory<ChatlystGraphView, UxmlTraits>"
+  },
+  "api/Chatlyst.Editor.ChatlystGraphView.html": {
+    "href": "api/Chatlyst.Editor.ChatlystGraphView.html",
+    "title": "Class ChatlystGraphView | Chatlyst API Documentation",
+    "keywords": "Class ChatlystGraphView Inheritance Object ChatlystGraphView Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class ChatlystGraphView : GraphView Constructors ChatlystGraphView() Declaration public ChatlystGraphView() Properties nodeIndex Get the current node index data Declaration public NodeIndex nodeIndex { get; } Property Value Type Description NodeIndex Methods GetBlackboard() Declaration public override Blackboard GetBlackboard() Returns Type Description Blackboard GetCompatiblePorts(Port, NodeAdapter) Declaration public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) Parameters Type Name Description Port startPort NodeAdapter nodeAdapter Returns Type Description List < Port > Initialize(String) Declaration public void Initialize(string jsonData) Parameters Type Name Description String jsonData"
+  },
   "api/Chatlyst.Editor.CustomSetting.html": {
     "href": "api/Chatlyst.Editor.CustomSetting.html",
     "title": "Class CustomSetting | Chatlyst API Documentation",
-    "keywords": "Class CustomSetting Inheritance Object CustomSetting Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class CustomSetting : ScriptableObject Fields nodeSetting Declaration public NodeSetting nodeSetting Field Value Type Description NodeSetting"
+    "keywords": "Class CustomSetting Inheritance Object CustomSetting Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class CustomSetting : ScriptableObject Fields list Declaration public List<string> list Field Value Type Description List < String > nodeSetting Declaration public NodeSetting nodeSetting Field Value Type Description NodeSetting"
   },
   "api/Chatlyst.Editor.CustomSettingProvider.html": {
     "href": "api/Chatlyst.Editor.CustomSettingProvider.html",
@@ -34,6 +69,11 @@
     "title": "Class StartNode | Chatlyst API Documentation",
     "keywords": "Class StartNode Inheritance Object NexusNode StartNode Inherited Members NexusNode.Guid NexusNode.NextGuid NexusNode.NodePos NexusNode.Equals(Object) NexusNode.GetHashCode() Namespace : Chatlyst.Editor.Data Assembly : cs.temp.dll.dll Syntax public class StartNode : NexusNode Constructors StartNode(String) Declaration public StartNode(string label) Parameters Type Name Description String label Fields StartLabel Declaration public string StartLabel Field Value Type Description String"
   },
+  "api/Chatlyst.Editor.DialogueNodeView.html": {
+    "href": "api/Chatlyst.Editor.DialogueNodeView.html",
+    "title": "Class DialogueNodeView | Chatlyst API Documentation",
+    "keywords": "Class DialogueNodeView Inheritance Object NodeView DialogueNodeView Implements INodeView Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class DialogueNodeView : NodeView, INodeView Constructors DialogueNodeView() Declaration public DialogueNodeView() Methods BuildNewInstance(Rect) Declaration public override void BuildNewInstance(Rect pos) Parameters Type Name Description Rect pos Overrides NodeView.BuildNewInstance(Rect) RebuildInstance(BasicNode) Declaration public override void RebuildInstance(BasicNode nodeData) Parameters Type Name Description BasicNode nodeData Overrides NodeView.RebuildInstance(BasicNode) RefreshData() Declaration public override void RefreshData() Overrides NodeView.RefreshData() Implements INodeView"
+  },
   "api/Chatlyst.Editor.DisplayOnlyAttribute.html": {
     "href": "api/Chatlyst.Editor.DisplayOnlyAttribute.html",
     "title": "Class DisplayOnlyAttribute | Chatlyst API Documentation",
@@ -47,27 +87,37 @@
   "api/Chatlyst.Editor.FileUtilities.html": {
     "href": "api/Chatlyst.Editor.FileUtilities.html",
     "title": "Class FileUtilities | Chatlyst API Documentation",
-    "keywords": "Class FileUtilities Inheritance Object FileUtilities Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public static class FileUtilities Methods AssetCreate() Declaration public static void AssetCreate() PathValidCheck(String) Declaration public static bool PathValidCheck(string path) Parameters Type Name Description String path Returns Type Description Boolean WriteToDisk(String, String) Declaration public static bool WriteToDisk(string path, string text) Parameters Type Name Description String path String text Returns Type Description Boolean"
+    "keywords": "Class FileUtilities Inheritance Object FileUtilities Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public static class FileUtilities Methods PathValidCheck(String) Declaration public static bool PathValidCheck(string path) Parameters Type Name Description String path Returns Type Description Boolean WriteToDisk(String, String) Declaration public static bool WriteToDisk(string path, string text) Parameters Type Name Description String path String text Returns Type Description Boolean"
   },
   "api/Chatlyst.Editor.html": {
     "href": "api/Chatlyst.Editor.html",
     "title": "Namespace Chatlyst.Editor | Chatlyst API Documentation",
-    "keywords": "Namespace Chatlyst.Editor Classes CustomSetting CustomSettingProvider DisplayOnlyAttribute DisplayOnlyDrawer FileUtilities NexusPlotImporter NodePortAttribute NodeSearchWindowProvider NodeSetting NodeSettingProvider ObjectExtensions SearchTreeNameAttribute ViewExtensions"
+    "keywords": "Namespace Chatlyst.Editor Classes BeginNodeView Begin Node View ChatlystEditorWindow ChatlystGraphView ChatlystGraphView.Factory CustomSetting CustomSettingProvider DialogueNodeView DisplayOnlyAttribute DisplayOnlyDrawer FileUtilities InspectorBlackboard NexusFileImporter NexusFileImporterEditor NodeSearchWindowProvider NodeSetting NodeSettingProvider NodeView NodeViewFactory Interfaces INodeView Flag interface that can be displayed in graph."
   },
-  "api/Chatlyst.Editor.NexusPlotImporter.html": {
-    "href": "api/Chatlyst.Editor.NexusPlotImporter.html",
-    "title": "Class NexusPlotImporter | Chatlyst API Documentation",
-    "keywords": "Class NexusPlotImporter Inheritance Object NexusPlotImporter Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class NexusPlotImporter : ScriptedImporter Fields Extension Declaration public const string Extension = \"nvp\" Field Value Type Description String Methods OnImportAsset(AssetImportContext) Declaration public override void OnImportAsset(AssetImportContext ctx) Parameters Type Name Description AssetImportContext ctx"
+  "api/Chatlyst.Editor.INodeView.html": {
+    "href": "api/Chatlyst.Editor.INodeView.html",
+    "title": "Interface INodeView | Chatlyst API Documentation",
+    "keywords": "Interface INodeView Flag interface that can be displayed in graph. Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public interface INodeView"
   },
-  "api/Chatlyst.Editor.NodePortAttribute.html": {
-    "href": "api/Chatlyst.Editor.NodePortAttribute.html",
-    "title": "Class NodePortAttribute | Chatlyst API Documentation",
-    "keywords": "Class NodePortAttribute Inheritance Object NodePortAttribute Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class NodePortAttribute : Attribute Constructors NodePortAttribute(Int32, Int32) Declaration public NodePortAttribute(int inNum, int outNum) Parameters Type Name Description Int32 inNum Int32 outNum Fields InputPortNum Declaration public readonly int InputPortNum Field Value Type Description Int32 OutputPortNum Declaration public readonly int OutputPortNum Field Value Type Description Int32"
+  "api/Chatlyst.Editor.InspectorBlackboard.html": {
+    "href": "api/Chatlyst.Editor.InspectorBlackboard.html",
+    "title": "Class InspectorBlackboard | Chatlyst API Documentation",
+    "keywords": "Class InspectorBlackboard Inheritance Object InspectorBlackboard Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public sealed class InspectorBlackboard : Blackboard Constructors InspectorBlackboard() Declaration public InspectorBlackboard() Methods Inspector(ISelectable) Declaration public void Inspector(ISelectable target) Parameters Type Name Description ISelectable target"
+  },
+  "api/Chatlyst.Editor.NexusFileImporter.html": {
+    "href": "api/Chatlyst.Editor.NexusFileImporter.html",
+    "title": "Class NexusFileImporter | Chatlyst API Documentation",
+    "keywords": "Class NexusFileImporter Inheritance Object NexusFileImporter Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class NexusFileImporter : ScriptedImporter Methods OnImportAsset(AssetImportContext) Declaration public override void OnImportAsset(AssetImportContext ctx) Parameters Type Name Description AssetImportContext ctx"
+  },
+  "api/Chatlyst.Editor.NexusFileImporterEditor.html": {
+    "href": "api/Chatlyst.Editor.NexusFileImporterEditor.html",
+    "title": "Class NexusFileImporterEditor | Chatlyst API Documentation",
+    "keywords": "Class NexusFileImporterEditor Inheritance Object NexusFileImporterEditor Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class NexusFileImporterEditor : ScriptedImporterEditor Methods OnInspectorGUI() Declaration public override void OnInspectorGUI()"
   },
   "api/Chatlyst.Editor.NodeSearchWindowProvider.html": {
     "href": "api/Chatlyst.Editor.NodeSearchWindowProvider.html",
     "title": "Class NodeSearchWindowProvider | Chatlyst API Documentation",
-    "keywords": "Class NodeSearchWindowProvider Inheritance Object NodeSearchWindowProvider Implements ISearchWindowProvider Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider Methods CreateSearchTree(SearchWindowContext) Declaration public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context) Parameters Type Name Description SearchWindowContext context Returns Type Description List < SearchTreeEntry > Init(GraphView, EditorWindow) Declaration public void Init(GraphView graphView, EditorWindow window) Parameters Type Name Description GraphView graphView EditorWindow window OnSelectEntry(SearchTreeEntry, SearchWindowContext) Declaration public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context) Parameters Type Name Description SearchTreeEntry searchTreeEntry SearchWindowContext context Returns Type Description Boolean Implements ISearchWindowProvider"
+    "keywords": "Class NodeSearchWindowProvider Inheritance Object NodeSearchWindowProvider Implements ISearchWindowProvider Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider Methods CreateSearchTree(SearchWindowContext) Declaration public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context) Parameters Type Name Description SearchWindowContext context Returns Type Description List < SearchTreeEntry > Init(ChatlystGraphView, ChatlystEditorWindow) Declaration public void Init(ChatlystGraphView graphView, ChatlystEditorWindow window) Parameters Type Name Description ChatlystGraphView graphView ChatlystEditorWindow window OnSelectEntry(SearchTreeEntry, SearchWindowContext) Declaration public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context) Parameters Type Name Description SearchTreeEntry searchTreeEntry SearchWindowContext context Returns Type Description Boolean Implements ISearchWindowProvider"
   },
   "api/Chatlyst.Editor.NodeSetting.html": {
     "href": "api/Chatlyst.Editor.NodeSetting.html",
@@ -79,20 +129,25 @@
     "title": "Class NodeSettingProvider | Chatlyst API Documentation",
     "keywords": "Class NodeSettingProvider Inheritance Object NodeSettingProvider Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class NodeSettingProvider : SettingsProvider Methods CreateSettingsProvider() Declaration public static SettingsProvider CreateSettingsProvider() Returns Type Description SettingsProvider OnActivate(String, VisualElement) Declaration public override void OnActivate(string searchContext, VisualElement rootElement) Parameters Type Name Description String searchContext VisualElement rootElement OnGUI(String) Declaration public override void OnGUI(string searchContext) Parameters Type Name Description String searchContext"
   },
-  "api/Chatlyst.Editor.ObjectExtensions.html": {
-    "href": "api/Chatlyst.Editor.ObjectExtensions.html",
-    "title": "Class ObjectExtensions | Chatlyst API Documentation",
-    "keywords": "Class ObjectExtensions Inheritance Object ObjectExtensions Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public static class ObjectExtensions Methods ConvertToEntity(Object) Declaration public static NexusJsonEntity ConvertToEntity(this object target) Parameters Type Name Description Object target Returns Type Description NexusJsonEntity"
+  "api/Chatlyst.Editor.NodeView.html": {
+    "href": "api/Chatlyst.Editor.NodeView.html",
+    "title": "Class NodeView | Chatlyst API Documentation",
+    "keywords": "Class NodeView Inheritance Object NodeView BeginNodeView DialogueNodeView Implements INodeView Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public abstract class NodeView : Node, INodeView Constructors NodeView(String) Use uxml to create the visual item. Declaration protected NodeView(string uxmlPath) Parameters Type Name Description String uxmlPath Relative path of Uxml file. Methods BuildNewInstance(Rect) Build a new node instance. Declaration public abstract void BuildNewInstance(Rect pos) Parameters Type Name Description Rect pos The position of the node. RebuildInstance(BasicNode) Rebuild a node instance from old data. Declaration public abstract void RebuildInstance(BasicNode nodeData) Parameters Type Name Description BasicNode nodeData Old data. RefreshData() Synchronize the stored data with the current data Declaration public abstract void RefreshData() Implements INodeView"
   },
-  "api/Chatlyst.Editor.SearchTreeNameAttribute.html": {
-    "href": "api/Chatlyst.Editor.SearchTreeNameAttribute.html",
-    "title": "Class SearchTreeNameAttribute | Chatlyst API Documentation",
-    "keywords": "Class SearchTreeNameAttribute Inheritance Object SearchTreeNameAttribute Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public class SearchTreeNameAttribute : Attribute Constructors SearchTreeNameAttribute(String) Declaration public SearchTreeNameAttribute(string name) Parameters Type Name Description String name Fields Name Declaration public readonly string Name Field Value Type Description String"
+  "api/Chatlyst.Editor.NodeViewFactory.html": {
+    "href": "api/Chatlyst.Editor.NodeViewFactory.html",
+    "title": "Class NodeViewFactory | Chatlyst API Documentation",
+    "keywords": "Class NodeViewFactory Inheritance Object NodeViewFactory Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public static class NodeViewFactory Methods CreatNewNodeView(Rect, String) Create a new node view. Declaration public static NodeView CreatNewNodeView(Rect nodeRect, string typeName) Parameters Type Name Description Rect nodeRect The rect of view String typeName View Type Returns Type Description NodeView Instanced view RebuildOldNodeView(BasicNode, String) Create a node view stored in file. Declaration public static NodeView RebuildOldNodeView(BasicNode nodeData, string typeName) Parameters Type Name Description BasicNode nodeData Data in file String typeName View type Returns Type Description NodeView Instanced view"
   },
   "api/Chatlyst.Editor.Serialization.html": {
     "href": "api/Chatlyst.Editor.Serialization.html",
     "title": "Namespace Chatlyst.Editor.Serialization | Chatlyst API Documentation",
-    "keywords": "Namespace Chatlyst.Editor.Serialization Classes NexusJsonUtility Structs NexusJsonEntity"
+    "keywords": "Namespace Chatlyst.Editor.Serialization Classes IndexJsonInternal NexusJsonUtility Structs NexusJsonEntity"
+  },
+  "api/Chatlyst.Editor.Serialization.IndexJsonInternal.html": {
+    "href": "api/Chatlyst.Editor.Serialization.IndexJsonInternal.html",
+    "title": "Class IndexJsonInternal | Chatlyst API Documentation",
+    "keywords": "Class IndexJsonInternal Inheritance Object IndexJsonInternal Namespace : Chatlyst.Editor.Serialization Assembly : cs.temp.dll.dll Syntax public static class IndexJsonInternal Methods Deserialize(String) Deserialize data from Json Declaration public static NodeIndex Deserialize(string jsonText) Parameters Type Name Description String jsonText Enter Json Returns Type Description NodeIndex Instance Serialize(NodeIndex) Covert the node_index to json Declaration public static string Serialize(this NodeIndex index) Parameters Type Name Description NodeIndex index The node_index data Returns Type Description String Json string"
   },
   "api/Chatlyst.Editor.Serialization.NexusJsonEntity.html": {
     "href": "api/Chatlyst.Editor.Serialization.NexusJsonEntity.html",
@@ -104,50 +159,25 @@
     "title": "Class NexusJsonUtility | Chatlyst API Documentation",
     "keywords": "Class NexusJsonUtility Inheritance Object NexusJsonUtility Namespace : Chatlyst.Editor.Serialization Assembly : cs.temp.dll.dll Syntax public static class NexusJsonUtility Fields IgnoreLoopSetting Declaration public static readonly JsonSerializerSettings IgnoreLoopSetting Field Value Type Description JsonSerializerSettings Methods DeserializeIEnumerable<T>(String) Declaration public static IEnumerable<T> DeserializeIEnumerable<T>(string text) Parameters Type Name Description String text Returns Type Description IEnumerable <T> Type Parameters Name Description T SerializeIEnumerable(IEnumerable<Object>, JsonSerializerSettings) Declaration public static string SerializeIEnumerable(IEnumerable<object> objects, JsonSerializerSettings settings = null) Parameters Type Name Description IEnumerable < Object > objects JsonSerializerSettings settings Returns Type Description String"
   },
-  "api/Chatlyst.Editor.ViewExtensions.html": {
-    "href": "api/Chatlyst.Editor.ViewExtensions.html",
-    "title": "Class ViewExtensions | Chatlyst API Documentation",
-    "keywords": "Class ViewExtensions Inheritance Object ViewExtensions Namespace : Chatlyst.Editor Assembly : cs.temp.dll.dll Syntax public static class ViewExtensions Methods ViewToEntity(NexusNodeView) Declaration public static NexusJsonEntity ViewToEntity(this NexusNodeView target) Parameters Type Name Description NexusNodeView target Returns Type Description NexusJsonEntity"
-  },
-  "api/Chatlyst.Editor.Views.DialogueNodeView.html": {
-    "href": "api/Chatlyst.Editor.Views.DialogueNodeView.html",
-    "title": "Class DialogueNodeView | Chatlyst API Documentation",
-    "keywords": "Class DialogueNodeView Inheritance Object NexusNodeView DialogueNodeView Inherited Members NexusNodeView.Construction(String, NexusJsonEntity) Namespace : Chatlyst.Editor.Views Assembly : cs.temp.dll.dll Syntax public class DialogueNodeView : NexusNodeView, IVisible Fields _node Declaration public DialoguesNode _node Field Value Type Description DialoguesNode Properties dataEntity Declaration public override NexusJsonEntity dataEntity { get; } Property Value Type Description NexusJsonEntity Overrides NexusNodeView.dataEntity Methods CreateInstance(Rect) Declaration public void CreateInstance(Rect pos) Parameters Type Name Description Rect pos DataRefresh() Declaration public override void DataRefresh() Overrides NexusNodeView.DataRefresh() RebuildInstance(NexusJsonEntity) Declaration public void RebuildInstance(NexusJsonEntity entity) Parameters Type Name Description NexusJsonEntity entity"
-  },
-  "api/Chatlyst.Editor.Views.html": {
-    "href": "api/Chatlyst.Editor.Views.html",
-    "title": "Namespace Chatlyst.Editor.Views | Chatlyst API Documentation",
-    "keywords": "Namespace Chatlyst.Editor.Views Classes DialogueNodeView InspectorBlackboard NexusGraphView NexusGraphView.Factory NexusNodeView StartNodeView"
-  },
-  "api/Chatlyst.Editor.Views.InspectorBlackboard.html": {
-    "href": "api/Chatlyst.Editor.Views.InspectorBlackboard.html",
-    "title": "Class InspectorBlackboard | Chatlyst API Documentation",
-    "keywords": "Class InspectorBlackboard Inheritance Object InspectorBlackboard Namespace : Chatlyst.Editor.Views Assembly : cs.temp.dll.dll Syntax public sealed class InspectorBlackboard : Blackboard Constructors InspectorBlackboard() Declaration public InspectorBlackboard() Methods Inspector(ISelectable) Declaration public void Inspector(ISelectable target) Parameters Type Name Description ISelectable target"
-  },
-  "api/Chatlyst.Editor.Views.NexusGraphView.Factory.html": {
-    "href": "api/Chatlyst.Editor.Views.NexusGraphView.Factory.html",
-    "title": "Class NexusGraphView.Factory | Chatlyst API Documentation",
-    "keywords": "Class NexusGraphView.Factory Inheritance Object NexusGraphView.Factory Namespace : Chatlyst.Editor.Views Assembly : cs.temp.dll.dll Syntax public class Factory : UxmlFactory<NexusGraphView, UxmlTraits>"
-  },
-  "api/Chatlyst.Editor.Views.NexusGraphView.html": {
-    "href": "api/Chatlyst.Editor.Views.NexusGraphView.html",
-    "title": "Class NexusGraphView | Chatlyst API Documentation",
-    "keywords": "Class NexusGraphView Inheritance Object NexusGraphView Namespace : Chatlyst.Editor.Views Assembly : cs.temp.dll.dll Syntax public class NexusGraphView : GraphView Constructors NexusGraphView() Declaration public NexusGraphView() Methods BuildFromEntries(List<NexusJsonEntity>) Declaration public bool BuildFromEntries(List<NexusJsonEntity> list) Parameters Type Name Description List < NexusJsonEntity > list Returns Type Description Boolean GetBlackboard() Declaration public override Blackboard GetBlackboard() Returns Type Description Blackboard GetCompatiblePorts(Port, NodeAdapter) Declaration public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) Parameters Type Name Description Port startPort NodeAdapter nodeAdapter Returns Type Description List < Port > GraphInitialize(EditorWindow) Declaration public void GraphInitialize(EditorWindow window) Parameters Type Name Description EditorWindow window InspectorNode() Declaration public void InspectorNode() NodeEntity() Declaration public IEnumerable<NexusJsonEntity> NodeEntity() Returns Type Description IEnumerable < NexusJsonEntity >"
-  },
-  "api/Chatlyst.Editor.Views.NexusNodeView.html": {
-    "href": "api/Chatlyst.Editor.Views.NexusNodeView.html",
-    "title": "Class NexusNodeView | Chatlyst API Documentation",
-    "keywords": "Class NexusNodeView Inheritance Object NexusNodeView DialogueNodeView StartNodeView Namespace : Chatlyst.Editor.Views Assembly : cs.temp.dll.dll Syntax public abstract class NexusNodeView : Node Properties dataEntity Declaration public virtual NexusJsonEntity dataEntity { get; } Property Value Type Description NexusJsonEntity Methods Construction(String, NexusJsonEntity) Declaration protected void Construction(string uxmlPath, NexusJsonEntity nodeEntity) Parameters Type Name Description String uxmlPath NexusJsonEntity nodeEntity DataRefresh() Declaration public abstract void DataRefresh()"
-  },
-  "api/Chatlyst.Editor.Views.StartNodeView.html": {
-    "href": "api/Chatlyst.Editor.Views.StartNodeView.html",
-    "title": "Class StartNodeView | Chatlyst API Documentation",
-    "keywords": "Class StartNodeView Inheritance Object NexusNodeView StartNodeView Inherited Members NexusNodeView.Construction(String, NexusJsonEntity) Namespace : Chatlyst.Editor.Views Assembly : cs.temp.dll.dll Syntax public sealed class StartNodeView : NexusNodeView, IVisible Constructors StartNodeView() Declaration public StartNodeView() Properties dataEntity Declaration public override NexusJsonEntity dataEntity { get; } Property Value Type Description NexusJsonEntity Overrides NexusNodeView.dataEntity Methods CreateInstance(Rect) Declaration public void CreateInstance(Rect pos) Parameters Type Name Description Rect pos DataRefresh() Declaration public override void DataRefresh() Overrides NexusNodeView.DataRefresh() RebuildInstance(NexusJsonEntity) Declaration public void RebuildInstance(NexusJsonEntity entity) Parameters Type Name Description NexusJsonEntity entity"
+  "api/Chatlyst.Runtime.BeginNode.html": {
+    "href": "api/Chatlyst.Runtime.BeginNode.html",
+    "title": "Class BeginNode | Chatlyst API Documentation",
+    "keywords": "Class BeginNode Inheritance Object BeginNode Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public class BeginNode : BasicNode Constructors BeginNode(String, Int32) Declaration public BeginNode(string label = \"Default Label\", int number = -1) Parameters Type Name Description String label Int32 number Fields Number Declaration public int Number Field Value Type Description Int32 StartLabel Declaration public string StartLabel Field Value Type Description String"
   },
   "api/Chatlyst.Runtime.CharacterName.html": {
     "href": "api/Chatlyst.Runtime.CharacterName.html",
     "title": "Enum CharacterName | Chatlyst API Documentation",
     "keywords": "Enum CharacterName Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public enum CharacterName Fields Name Description Ava Bella Carol Diana Eileen Unknown"
+  },
+  "api/Chatlyst.Runtime.Data.BasicNode.html": {
+    "href": "api/Chatlyst.Runtime.Data.BasicNode.html",
+    "title": "Class BasicNode | Chatlyst API Documentation",
+    "keywords": "Class BasicNode Inheritance Object BasicNode Namespace : Chatlyst.Runtime.Data Assembly : cs.temp.dll.dll Syntax public abstract class BasicNode Constructors BasicNode() Declaration protected BasicNode() Fields Guid Declaration public readonly string Guid Field Value Type Description String NextGuid Declaration public string NextGuid Field Value Type Description String NodePos Declaration public Vector2 NodePos Field Value Type Description Vector2 NodeType Declaration public NodeType NodeType Field Value Type Description NodeType Methods Equals(Object) Declaration public override bool Equals(object obj) Parameters Type Name Description Object obj Returns Type Description Boolean Overrides Object.Equals(Object) GetHashCode() Declaration public override int GetHashCode() Returns Type Description Int32 Overrides Object.GetHashCode() GetRect() Declaration public Rect GetRect() Returns Type Description Rect SetRect(Rect) Declaration public void SetRect(Rect rect) Parameters Type Name Description Rect rect ToString() Declaration public override string ToString() Returns Type Description String Overrides Object.ToString()"
+  },
+  "api/Chatlyst.Runtime.Data.html": {
+    "href": "api/Chatlyst.Runtime.Data.html",
+    "title": "Namespace Chatlyst.Runtime.Data | Chatlyst API Documentation",
+    "keywords": "Namespace Chatlyst.Runtime.Data Classes BasicNode"
   },
   "api/Chatlyst.Runtime.ElementType.html": {
     "href": "api/Chatlyst.Runtime.ElementType.html",
@@ -157,22 +187,92 @@
   "api/Chatlyst.Runtime.html": {
     "href": "api/Chatlyst.Runtime.html",
     "title": "Namespace Chatlyst.Runtime | Chatlyst API Documentation",
-    "keywords": "Namespace Chatlyst.Runtime Enums CharacterName ElementType"
+    "keywords": "Namespace Chatlyst.Runtime Classes BeginNode MessageExtend NodeIndex Structs Message Enums CharacterName ElementType NodeType"
   },
-  "api/Global.html": {
-    "href": "api/Global.html",
-    "title": "Namespace Global | Chatlyst API Documentation",
-    "keywords": "Namespace Global Classes Serialization"
+  "api/Chatlyst.Runtime.Message.html": {
+    "href": "api/Chatlyst.Runtime.Message.html",
+    "title": "Struct Message | Chatlyst API Documentation",
+    "keywords": "Struct Message Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public struct Message Constructors Message(String, String, String) Declaration public Message(string name, string talk, string emotion) Parameters Type Name Description String name String talk String emotion Fields emotion Declaration public string emotion Field Value Type Description String name Declaration public string name Field Value Type Description String talk Declaration public string talk Field Value Type Description String"
   },
-  "api/Global.Serialization.html": {
-    "href": "api/Global.Serialization.html",
-    "title": "Class Serialization | Chatlyst API Documentation",
-    "keywords": "Class Serialization Inheritance Object Serialization Namespace : Global Assembly : cs.temp.dll.dll Syntax public class Serialization Methods A() Declaration public void A()"
+  "api/Chatlyst.Runtime.MessageExtend.html": {
+    "href": "api/Chatlyst.Runtime.MessageExtend.html",
+    "title": "Class MessageExtend | Chatlyst API Documentation",
+    "keywords": "Class MessageExtend Inheritance Object MessageExtend Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public static class MessageExtend Methods DeserializeToMessage(String) Declaration public static Message DeserializeToMessage(this string message) Parameters Type Name Description String message Returns Type Description Message Serialize(Message) Declaration public static string Serialize(this Message message) Parameters Type Name Description Message message Returns Type Description String"
+  },
+  "api/Chatlyst.Runtime.NodeIndex.html": {
+    "href": "api/Chatlyst.Runtime.NodeIndex.html",
+    "title": "Class NodeIndex | Chatlyst API Documentation",
+    "keywords": "Class NodeIndex Inheritance Object NodeIndex Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public class NodeIndex Fields BeginNodes Declaration public List<BeginNode> BeginNodes Field Value Type Description List < BeginNode > Methods AutoAddNode(BasicNode) Add a node to nodes list Declaration public void AutoAddNode(BasicNode node) Parameters Type Name Description BasicNode node A node AutoAddNodes(List<BasicNode>) Declaration public void AutoAddNodes(List<BasicNode> nodes) Parameters Type Name Description List < BasicNode > nodes Equals(Object) Declaration public override bool Equals(object obj) Parameters Type Name Description Object obj Returns Type Description Boolean Overrides Object.Equals(Object) GetHashCode() Declaration public override int GetHashCode() Returns Type Description Int32 Overrides Object.GetHashCode() Refresh(List<BasicNode>) Refresh the index information for the current nodes Declaration public void Refresh(List<BasicNode> basicNodeList) Parameters Type Name Description List < BasicNode > basicNodeList Current node list ToString() Returns the serialized field Declaration public override string ToString() Returns Type Description String Json string Overrides Object.ToString()"
+  },
+  "api/Chatlyst.Runtime.NodeType.html": {
+    "href": "api/Chatlyst.Runtime.NodeType.html",
+    "title": "Enum NodeType | Chatlyst API Documentation",
+    "keywords": "Enum NodeType Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public enum NodeType Fields Name Description BEG BRA CUT DIA END NDEF VFX"
+  },
+  "api/Chatlyst.Runtime.Util.html": {
+    "href": "api/Chatlyst.Runtime.Util.html",
+    "title": "Namespace Chatlyst.Runtime.Util | Chatlyst API Documentation",
+    "keywords": "Namespace Chatlyst.Runtime.Util Classes ListExtend"
+  },
+  "api/Chatlyst.Runtime.Util.ListExtend.html": {
+    "href": "api/Chatlyst.Runtime.Util.ListExtend.html",
+    "title": "Class ListExtend | Chatlyst API Documentation",
+    "keywords": "Class ListExtend Inheritance Object ListExtend Namespace : Chatlyst.Runtime.Util Assembly : cs.temp.dll.dll Syntax public static class ListExtend Methods AreSimilar<T>(List<T>, List<T>) Declaration public static bool AreSimilar<T>(this List<T> expected, List<T> actual) Parameters Type Name Description List <T> expected List <T> actual Returns Type Description Boolean Type Parameters Name Description T"
+  },
+  "api/Tests.Editor.BeginNode.html": {
+    "href": "api/Tests.Editor.BeginNode.html",
+    "title": "Class BeginNode | Chatlyst API Documentation",
+    "keywords": "Class BeginNode Unit tests for BeginNode Inheritance Object BeginNode Namespace : Tests.Editor Assembly : cs.temp.dll.dll Syntax public class BeginNode Methods ClassDeserialize() Declaration public void ClassDeserialize() ListDeserialize() Declaration public void ListDeserialize()"
+  },
+  "api/Tests.Editor.EditorWindow.html": {
+    "href": "api/Tests.Editor.EditorWindow.html",
+    "title": "Class EditorWindow | Chatlyst API Documentation",
+    "keywords": "Class EditorWindow Inheritance Object EditorWindow Namespace : Tests.Editor Assembly : cs.temp.dll.dll Syntax public class EditorWindow Methods UserDataTypeConversion() Declaration public void UserDataTypeConversion()"
+  },
+  "api/Tests.Editor.html": {
+    "href": "api/Tests.Editor.html",
+    "title": "Namespace Tests.Editor | Chatlyst API Documentation",
+    "keywords": "Namespace Tests.Editor Classes BeginNode Unit tests for BeginNode EditorWindow Message Unit tests for message NodeIndex"
+  },
+  "api/Tests.Editor.Message.html": {
+    "href": "api/Tests.Editor.Message.html",
+    "title": "Class Message | Chatlyst API Documentation",
+    "keywords": "Class Message Unit tests for message Inheritance Object Message Namespace : Tests.Editor Assembly : cs.temp.dll.dll Syntax public class Message Methods Serialize() Declaration public void Serialize()"
+  },
+  "api/Tests.Editor.NodeIndex.html": {
+    "href": "api/Tests.Editor.NodeIndex.html",
+    "title": "Class NodeIndex | Chatlyst API Documentation",
+    "keywords": "Class NodeIndex Inheritance Object NodeIndex Namespace : Tests.Editor Assembly : cs.temp.dll.dll Syntax public class NodeIndex Methods AutoAddNodeMethod() Declaration public void AutoAddNodeMethod()"
+  },
+  "api/Tests.Runtime.html": {
+    "href": "api/Tests.Runtime.html",
+    "title": "Namespace Tests.Runtime | Chatlyst API Documentation",
+    "keywords": "Namespace Tests.Runtime Classes Sample"
+  },
+  "api/Tests.Runtime.Sample.html": {
+    "href": "api/Tests.Runtime.Sample.html",
+    "title": "Class Sample | Chatlyst API Documentation",
+    "keywords": "Class Sample Inheritance Object Sample Namespace : Tests.Runtime Assembly : cs.temp.dll.dll Syntax public class Sample Methods SampleWithEnumeratorPasses() Declaration public IEnumerator SampleWithEnumeratorPasses() Returns Type Description IEnumerator"
+  },
+  "api/Tests.Utility.DataNode.html": {
+    "href": "api/Tests.Utility.DataNode.html",
+    "title": "Class DataNode | Chatlyst API Documentation",
+    "keywords": "Class DataNode Used to quickly get a variety of DataNode Inheritance Object DataNode Namespace : Tests.Utility Assembly : cs.temp.dll.dll Syntax public static class DataNode Methods GetBeginNode() Gets a randomly generated Declaration public static BeginNode GetBeginNode() Returns Type Description BeginNode A with random label and number. GetBeginNodeList(Int32) Gets a randomly generated List of Declaration public static List<BeginNode> GetBeginNodeList(int length) Parameters Type Name Description Int32 length The length of desired List Returns Type Description List < BeginNode > A List"
+  },
+  "api/Tests.Utility.html": {
+    "href": "api/Tests.Utility.html",
+    "title": "Namespace Tests.Utility | Chatlyst API Documentation",
+    "keywords": "Namespace Tests.Utility Classes DataNode Used to quickly get a variety of DataNode Utilities Some of the utilities used within unit tests"
+  },
+  "api/Tests.Utility.Utilities.html": {
+    "href": "api/Tests.Utility.Utilities.html",
+    "title": "Class Utilities | Chatlyst API Documentation",
+    "keywords": "Class Utilities Some of the utilities used within unit tests Inheritance Object Utilities Namespace : Tests.Utility Assembly : cs.temp.dll.dll Syntax public static class Utilities Methods RandomInt() Get a random langword_csharp_int Declaration public static int RandomInt() Returns Type Description Int32 RandomString(Int32) Gets a random langword_csharp_string Declaration public static string RandomString(int length) Parameters Type Name Description Int32 length String length Returns Type Description String"
   },
   "index.html": {
     "href": "index.html",
     "title": "Chatlyst | Chatlyst API Documentation",
-    "keywords": "Chatlyst Note This project is refactoring now! You can check the progress of the refactoring work here . Chatlyst is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development. Developed based on UIToolkit which has good scalability Table of Contents <!--ts--> Chatlyst Table of Contents Getting started Installation Install via git URL Contribution Special thanks License <!--te--> Getting started This part will be completed in no time. Installation Install via git URL You can add use git url in Unity Package Manager,we'll update the hyperlink after the first release. If you want to set a target version,we use the *.*.* release tag so you can specify a version like #0.2.0 . Contribution If you are interested in contributing, you can create a new issue or discussion and we will respond within 36 hours.If you don't need to contact us, then once you're ready to make changes, just send a pull request. We will be very happy to see your contribution. Special thanks YOU License This library is under the MIT License."
+    "keywords": "Chatlyst Note This project is developing now!I would appreciate it if you could join. Chatlyst is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development. Developed based on UIToolkit which has good scalability Table of Contents <!--ts--> Chatlyst Table of Contents Getting started Installation Install via git URL Contribution Special thanks License <!--te--> Getting started This part will be completed in no time. Installation Install via git URL You can add use git url in Unity Package Manager,we'll update the hyperlink after the first release. If you want to set a target version,we use the *.*.* release tag so you can specify a version like #0.2.0 . Contribution If you are interested in contributing, you can create a new issue or discussion and we will respond within 36 hours.If you don't need to contact us, then once you're ready to make changes, just send a pull request. We will be very happy to see your contribution. Special thanks YOU License This library is under the MIT License."
   },
   "manual/coniunctis.html": {
     "href": "manual/coniunctis.html",

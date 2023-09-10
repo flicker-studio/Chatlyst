@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class StartNodeView
+    <title>Class DialogueNodeView
    | Chatlyst API Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class StartNodeView
+    <meta name="title" content="Class DialogueNodeView
    | Chatlyst API Documentation ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -78,83 +78,52 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.Views.StartNodeView">
+            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.DialogueNodeView">
   
   
-  <h1 id="Chatlyst_Editor_Views_StartNodeView" data-uid="Chatlyst.Editor.Views.StartNodeView" class="text-break">Class StartNodeView
+  <h1 id="Chatlyst_Editor_DialogueNodeView" data-uid="Chatlyst.Editor.DialogueNodeView" class="text-break">Class DialogueNodeView
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><a class="xref" href="Chatlyst.Editor.Views.NexusNodeView.html">NexusNodeView</a></div>
-    <div class="level2"><span class="xref">StartNodeView</span></div>
+    <div class="level1"><a class="xref" href="Chatlyst.Editor.NodeView.html">NodeView</a></div>
+    <div class="level2"><span class="xref">DialogueNodeView</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="Chatlyst.Editor.Views.NexusNodeView.html#Chatlyst_Editor_Views_NexusNodeView_Construction_System_String_NexusJsonEntity_">NexusNodeView.Construction(String, NexusJsonEntity)</a>
-    </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Chatlyst.Editor.INodeView.html">INodeView</a></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Editor.Views.html">Chatlyst.Editor.Views</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Editor.html">Chatlyst.Editor</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Chatlyst_Editor_Views_StartNodeView_syntax">Syntax</h5>
+  <h5 id="Chatlyst_Editor_DialogueNodeView_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class StartNodeView : NexusNodeView, IVisible</code></pre>
+    <pre><code class="lang-csharp hljs">public class DialogueNodeView : NodeView, INodeView</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="Chatlyst_Editor_Views_StartNodeView__ctor_" data-uid="Chatlyst.Editor.Views.StartNodeView.#ctor*"></a>
-  <h4 id="Chatlyst_Editor_Views_StartNodeView__ctor" data-uid="Chatlyst.Editor.Views.StartNodeView.#ctor">StartNodeView()</h4>
+  <a id="Chatlyst_Editor_DialogueNodeView__ctor_" data-uid="Chatlyst.Editor.DialogueNodeView.#ctor*"></a>
+  <h4 id="Chatlyst_Editor_DialogueNodeView__ctor" data-uid="Chatlyst.Editor.DialogueNodeView.#ctor">DialogueNodeView()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public StartNodeView()</code></pre>
+    <pre><code class="lang-csharp hljs">public DialogueNodeView()</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  
-  
-  <a id="Chatlyst_Editor_Views_StartNodeView_dataEntity_" data-uid="Chatlyst.Editor.Views.StartNodeView.dataEntity*"></a>
-  <h4 id="Chatlyst_Editor_Views_StartNodeView_dataEntity" data-uid="Chatlyst.Editor.Views.StartNodeView.dataEntity">dataEntity</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override NexusJsonEntity dataEntity { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">NexusJsonEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Chatlyst.Editor.Views.NexusNodeView.html#Chatlyst_Editor_Views_NexusNodeView_dataEntity">NexusNodeView.dataEntity</a></div>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="Chatlyst_Editor_Views_StartNodeView_CreateInstance_" data-uid="Chatlyst.Editor.Views.StartNodeView.CreateInstance*"></a>
-  <h4 id="Chatlyst_Editor_Views_StartNodeView_CreateInstance_Rect_" data-uid="Chatlyst.Editor.Views.StartNodeView.CreateInstance(Rect)">CreateInstance(Rect)</h4>
+  <a id="Chatlyst_Editor_DialogueNodeView_BuildNewInstance_" data-uid="Chatlyst.Editor.DialogueNodeView.BuildNewInstance*"></a>
+  <h4 id="Chatlyst_Editor_DialogueNodeView_BuildNewInstance_Rect_" data-uid="Chatlyst.Editor.DialogueNodeView.BuildNewInstance(Rect)">BuildNewInstance(Rect)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void CreateInstance(Rect pos)</code></pre>
+    <pre><code class="lang-csharp hljs">public override void BuildNewInstance(Rect pos)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,27 +142,17 @@
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Chatlyst_Editor_Views_StartNodeView_DataRefresh_" data-uid="Chatlyst.Editor.Views.StartNodeView.DataRefresh*"></a>
-  <h4 id="Chatlyst_Editor_Views_StartNodeView_DataRefresh" data-uid="Chatlyst.Editor.Views.StartNodeView.DataRefresh">DataRefresh()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void DataRefresh()</code></pre>
-  </div>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Chatlyst.Editor.Views.NexusNodeView.html#Chatlyst_Editor_Views_NexusNodeView_DataRefresh">NexusNodeView.DataRefresh()</a></div>
+  <div><a class="xref" href="Chatlyst.Editor.NodeView.html#Chatlyst_Editor_NodeView_BuildNewInstance_Rect_">NodeView.BuildNewInstance(Rect)</a></div>
   
   
-  <a id="Chatlyst_Editor_Views_StartNodeView_RebuildInstance_" data-uid="Chatlyst.Editor.Views.StartNodeView.RebuildInstance*"></a>
-  <h4 id="Chatlyst_Editor_Views_StartNodeView_RebuildInstance_NexusJsonEntity_" data-uid="Chatlyst.Editor.Views.StartNodeView.RebuildInstance(NexusJsonEntity)">RebuildInstance(NexusJsonEntity)</h4>
+  <a id="Chatlyst_Editor_DialogueNodeView_RebuildInstance_" data-uid="Chatlyst.Editor.DialogueNodeView.RebuildInstance*"></a>
+  <h4 id="Chatlyst_Editor_DialogueNodeView_RebuildInstance_BasicNode_" data-uid="Chatlyst.Editor.DialogueNodeView.RebuildInstance(BasicNode)">RebuildInstance(BasicNode)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void RebuildInstance(NexusJsonEntity entity)</code></pre>
+    <pre><code class="lang-csharp hljs">public override void RebuildInstance(BasicNode nodeData)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -206,12 +165,30 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NexusJsonEntity</span></td>
-        <td><span class="parametername">entity</span></td>
+        <td><span class="xref">BasicNode</span></td>
+        <td><span class="parametername">nodeData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Chatlyst.Editor.NodeView.html#Chatlyst_Editor_NodeView_RebuildInstance_BasicNode_">NodeView.RebuildInstance(BasicNode)</a></div>
+  
+  
+  <a id="Chatlyst_Editor_DialogueNodeView_RefreshData_" data-uid="Chatlyst.Editor.DialogueNodeView.RefreshData*"></a>
+  <h4 id="Chatlyst_Editor_DialogueNodeView_RefreshData" data-uid="Chatlyst.Editor.DialogueNodeView.RefreshData">RefreshData()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void RefreshData()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Chatlyst.Editor.NodeView.html#Chatlyst_Editor_NodeView_RefreshData">NodeView.RefreshData()</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Chatlyst.Editor.INodeView.html">INodeView</a>
+  </div>
 </article>
           </div>
           

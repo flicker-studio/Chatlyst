@@ -78,31 +78,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.NodePortAttribute">
+            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.Attribute.NodePortAttribute">
   
   
-  <h1 id="Chatlyst_Editor_NodePortAttribute" data-uid="Chatlyst.Editor.NodePortAttribute" class="text-break">Class NodePortAttribute
+  <h1 id="Chatlyst_Editor_Attribute_NodePortAttribute" data-uid="Chatlyst.Editor.Attribute.NodePortAttribute" class="text-break">Class NodePortAttribute
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Simple configuration of the number of ports</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">NodePortAttribute</span></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.attribute">Attribute</a></div>
+    <div class="level2"><span class="xref">NodePortAttribute</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Editor.html">Chatlyst.Editor</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Editor.Attribute.html">Chatlyst.Editor.Attribute</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Chatlyst_Editor_NodePortAttribute_syntax">Syntax</h5>
+  <h5 id="Chatlyst_Editor_Attribute_NodePortAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NodePortAttribute : Attribute</code></pre>
+    <pre><code class="lang-csharp hljs">public class NodePortAttribute : Attribute, _Attribute</code></pre>
   </div>
+  <h5 id="Chatlyst_Editor_Attribute_NodePortAttribute_examples"><strong>Examples</strong></h5>
+  <p>For example, there are three input ports and two out ports by using <code>[NodePort(3, 2)]</code>.</p>
+
   <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="Chatlyst_Editor_NodePortAttribute__ctor_" data-uid="Chatlyst.Editor.NodePortAttribute.#ctor*"></a>
-  <h4 id="Chatlyst_Editor_NodePortAttribute__ctor_System_Int32_System_Int32_" data-uid="Chatlyst.Editor.NodePortAttribute.#ctor(System.Int32,System.Int32)">NodePortAttribute(Int32, Int32)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Chatlyst_Editor_Attribute_NodePortAttribute__ctor_" data-uid="Chatlyst.Editor.Attribute.NodePortAttribute.#ctor*"></a>
+  <h4 id="Chatlyst_Editor_Attribute_NodePortAttribute__ctor_System_Int32_System_Int32_" data-uid="Chatlyst.Editor.Attribute.NodePortAttribute.#ctor(System.Int32,System.Int32)">NodePortAttribute(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><a class="xref" href="Chatlyst.Editor.Attribute.NodePortAttribute.html">NodePortAttribute</a>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -121,12 +127,14 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">inNum</span></td>
-        <td></td>
+        <td><p>Number of input ports.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">outNum</span></td>
-        <td></td>
+        <td><p>Number of out ports.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -134,8 +142,9 @@
   </h3>
   
   
-  <h4 id="Chatlyst_Editor_NodePortAttribute_InputPortNum" data-uid="Chatlyst.Editor.NodePortAttribute.InputPortNum">InputPortNum</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Chatlyst_Editor_Attribute_NodePortAttribute_InputPortNum" data-uid="Chatlyst.Editor.Attribute.NodePortAttribute.InputPortNum">InputPortNum</h4>
+  <div class="markdown level1 summary"><p>Number of input ports.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -158,8 +167,9 @@
   </table>
   
   
-  <h4 id="Chatlyst_Editor_NodePortAttribute_OutputPortNum" data-uid="Chatlyst.Editor.NodePortAttribute.OutputPortNum">OutputPortNum</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Chatlyst_Editor_Attribute_NodePortAttribute_OutputPortNum" data-uid="Chatlyst.Editor.Attribute.NodePortAttribute.OutputPortNum">OutputPortNum</h4>
+  <div class="markdown level1 summary"><p>Number of out ports.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">

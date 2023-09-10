@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NodeSearchWindowProvider
+    <title>Class ChatlystEditorWindow
    | Chatlyst API Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NodeSearchWindowProvider
+    <meta name="title" content="Class ChatlystEditorWindow
    | Chatlyst API Documentation ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -78,58 +78,36 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.NodeSearchWindowProvider">
+            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.ChatlystEditorWindow">
   
   
-  <h1 id="Chatlyst_Editor_NodeSearchWindowProvider" data-uid="Chatlyst.Editor.NodeSearchWindowProvider" class="text-break">Class NodeSearchWindowProvider
+  <h1 id="Chatlyst_Editor_ChatlystEditorWindow" data-uid="Chatlyst.Editor.ChatlystEditorWindow" class="text-break">Class ChatlystEditorWindow
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">NodeSearchWindowProvider</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><span class="xref">ISearchWindowProvider</span></div>
+    <div class="level1"><span class="xref">ChatlystEditorWindow</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Editor.html">Chatlyst.Editor</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Chatlyst_Editor_NodeSearchWindowProvider_syntax">Syntax</h5>
+  <h5 id="Chatlyst_Editor_ChatlystEditorWindow_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider</code></pre>
+    <pre><code class="lang-csharp hljs">public class ChatlystEditorWindow : EditorWindow</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h3 id="fields">Fields
   </h3>
   
   
-  <a id="Chatlyst_Editor_NodeSearchWindowProvider_CreateSearchTree_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.CreateSearchTree*"></a>
-  <h4 id="Chatlyst_Editor_NodeSearchWindowProvider_CreateSearchTree_SearchWindowContext_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.CreateSearchTree(SearchWindowContext)">CreateSearchTree(SearchWindowContext)</h4>
+  <h4 id="Chatlyst_Editor_ChatlystEditorWindow_EditorWindow" data-uid="Chatlyst.Editor.ChatlystEditorWindow.EditorWindow">EditorWindow</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;SearchTreeEntry&gt; CreateSearchTree(SearchWindowContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ChatlystEditorWindow EditorWindow</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">SearchWindowContext</span></td>
-        <td><span class="parametername">context</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -139,52 +117,46 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">SearchTreeEntry</span>&gt;</td>
+        <td><a class="xref" href="Chatlyst.Editor.ChatlystEditorWindow.html">ChatlystEditorWindow</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Chatlyst_Editor_NodeSearchWindowProvider_Init_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.Init*"></a>
-  <h4 id="Chatlyst_Editor_NodeSearchWindowProvider_Init_Chatlyst_Editor_ChatlystGraphView_Chatlyst_Editor_ChatlystEditorWindow_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.Init(Chatlyst.Editor.ChatlystGraphView,Chatlyst.Editor.ChatlystEditorWindow)">Init(ChatlystGraphView, ChatlystEditorWindow)</h4>
+  <h4 id="Chatlyst_Editor_ChatlystEditorWindow_GraphView" data-uid="Chatlyst.Editor.ChatlystEditorWindow.GraphView">GraphView</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Init(ChatlystGraphView graphView, ChatlystEditorWindow window)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ChatlystGraphView GraphView</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><a class="xref" href="Chatlyst.Editor.ChatlystGraphView.html">ChatlystGraphView</a></td>
-        <td><span class="parametername">graphView</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Chatlyst.Editor.ChatlystEditorWindow.html">ChatlystEditorWindow</a></td>
-        <td><span class="parametername">window</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
   
   
-  <a id="Chatlyst_Editor_NodeSearchWindowProvider_OnSelectEntry_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.OnSelectEntry*"></a>
-  <h4 id="Chatlyst_Editor_NodeSearchWindowProvider_OnSelectEntry_SearchTreeEntry_SearchWindowContext_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.OnSelectEntry(SearchTreeEntry,SearchWindowContext)">OnSelectEntry(SearchTreeEntry, SearchWindowContext)</h4>
+  <a id="Chatlyst_Editor_ChatlystEditorWindow_Initialize_" data-uid="Chatlyst.Editor.ChatlystEditorWindow.Initialize*"></a>
+  <h4 id="Chatlyst_Editor_ChatlystEditorWindow_Initialize_System_String__" data-uid="Chatlyst.Editor.ChatlystEditorWindow.Initialize(System.String@)">Initialize(String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Initialize(in string id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -197,35 +169,41 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SearchTreeEntry</span></td>
-        <td><span class="parametername">searchTreeEntry</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">SearchWindowContext</span></td>
-        <td><span class="parametername">context</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">id</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <span class="xref">ISearchWindowProvider</span>
+  
+  
+  <a id="Chatlyst_Editor_ChatlystEditorWindow_OnDestroy_" data-uid="Chatlyst.Editor.ChatlystEditorWindow.OnDestroy*"></a>
+  <h4 id="Chatlyst_Editor_ChatlystEditorWindow_OnDestroy" data-uid="Chatlyst.Editor.ChatlystEditorWindow.OnDestroy">OnDestroy()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnDestroy()</code></pre>
+  </div>
+  
+  
+  <a id="Chatlyst_Editor_ChatlystEditorWindow_SaveChanges_" data-uid="Chatlyst.Editor.ChatlystEditorWindow.SaveChanges*"></a>
+  <h4 id="Chatlyst_Editor_ChatlystEditorWindow_SaveChanges" data-uid="Chatlyst.Editor.ChatlystEditorWindow.SaveChanges">SaveChanges()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void SaveChanges()</code></pre>
+  </div>
+  
+  
+  <a id="Chatlyst_Editor_ChatlystEditorWindow_Update_" data-uid="Chatlyst.Editor.ChatlystEditorWindow.Update*"></a>
+  <h4 id="Chatlyst_Editor_ChatlystEditorWindow_Update" data-uid="Chatlyst.Editor.ChatlystEditorWindow.Update">Update()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Update()</code></pre>
   </div>
 </article>
           </div>

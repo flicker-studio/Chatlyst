@@ -24,11 +24,95 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.Attribute.NodePortAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.Attribute.NodePortAttribute.html",
+          "hash": "St9oWi9W7cW5lxX1HCCBUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.Attribute.SearchTreeNameAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.Attribute.SearchTreeNameAttribute.html",
+          "hash": "WifIO1Wi33/91bT8+HeX9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.Attribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.Attribute.html",
+          "hash": "lXuaJcQVuJlwWUUpjWwIgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.BeginNodeView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.BeginNodeView.html",
+          "hash": "fK+9/xBNzl6wbgPMiHUCyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.ChatlystEditorWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.ChatlystEditorWindow.html",
+          "hash": "VaCC1cM0GitN5M6KdLy7CA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.ChatlystGraphView.Factory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.ChatlystGraphView.Factory.html",
+          "hash": "UUMUAiwZt9GNV65XvG4ngA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.ChatlystGraphView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.ChatlystGraphView.html",
+          "hash": "y3QBuR1/dalskvuSjI52aQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Chatlyst.Editor.CustomSetting.yml",
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.CustomSetting.html",
-          "hash": "HWbtBZrVxn6Le0v1rpD7Kg=="
+          "hash": "YNimPGuMqlmiS74Gu9Oeuw=="
         }
       },
       "is_incremental": false,
@@ -108,6 +192,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.DialogueNodeView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.DialogueNodeView.html",
+          "hash": "818RK0MceHnIKY8Epv61NQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Chatlyst.Editor.DisplayOnlyAttribute.yml",
       "output": {
         ".html": {
@@ -136,7 +232,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.FileUtilities.html",
-          "hash": "uhTrdJQ1GxNdrN9i/UeBqw=="
+          "hash": "tuMp/fWt9kic+nTqfPCFbg=="
         }
       },
       "is_incremental": false,
@@ -144,11 +240,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.NexusPlotImporter.yml",
+      "source_relative_path": "api/Chatlyst.Editor.INodeView.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Chatlyst.Editor.NexusPlotImporter.html",
-          "hash": "GYKIaDqHysKEb9SpxGCUug=="
+          "relative_path": "api/Chatlyst.Editor.INodeView.html",
+          "hash": "5ycfYGy8KLwl5LPCRCJCVg=="
         }
       },
       "is_incremental": false,
@@ -156,11 +252,35 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.NodePortAttribute.yml",
+      "source_relative_path": "api/Chatlyst.Editor.InspectorBlackboard.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Chatlyst.Editor.NodePortAttribute.html",
-          "hash": "eH/Yr6gi0uTLOXHHvu0rzQ=="
+          "relative_path": "api/Chatlyst.Editor.InspectorBlackboard.html",
+          "hash": "4H794KbpBF/qDPQNqjQgZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.NexusFileImporter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.NexusFileImporter.html",
+          "hash": "655Ev3e2VdtmqLmqLWgxlA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.NexusFileImporterEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.NexusFileImporterEditor.html",
+          "hash": "q8QD6tDipIBW3kdbAuvA4Q=="
         }
       },
       "is_incremental": false,
@@ -172,7 +292,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NodeSearchWindowProvider.html",
-          "hash": "3KW3v5Yh/E365pBxyWtFow=="
+          "hash": "SDiSD/dXgtnOzTLKwPRasw=="
         }
       },
       "is_incremental": false,
@@ -204,11 +324,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.ObjectExtensions.yml",
+      "source_relative_path": "api/Chatlyst.Editor.NodeView.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Chatlyst.Editor.ObjectExtensions.html",
-          "hash": "T7LPHDKBpOf7VdsFDOJQAw=="
+          "relative_path": "api/Chatlyst.Editor.NodeView.html",
+          "hash": "yHmreffr20agOFp8UtGdCA=="
         }
       },
       "is_incremental": false,
@@ -216,11 +336,23 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.SearchTreeNameAttribute.yml",
+      "source_relative_path": "api/Chatlyst.Editor.NodeViewFactory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Chatlyst.Editor.SearchTreeNameAttribute.html",
-          "hash": "Hb4CAKDH1jsX/4LzjWCJsg=="
+          "relative_path": "api/Chatlyst.Editor.NodeViewFactory.html",
+          "hash": "44KCChcVx6mjfkAS4Ipeww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Editor.Serialization.IndexJsonInternal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Editor.Serialization.IndexJsonInternal.html",
+          "hash": "spbMvlWa+Jgn+QdCsPzedw=="
         }
       },
       "is_incremental": false,
@@ -256,103 +388,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Serialization.html",
-          "hash": "gcoNyEu6lCP0IC8n/FoHsw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.ViewExtensions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.ViewExtensions.html",
-          "hash": "SAblvA8gIp9aygGae3N48w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.Views.DialogueNodeView.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.Views.DialogueNodeView.html",
-          "hash": "4vqMnhs7v25KzhJ5E+MYXg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.Views.InspectorBlackboard.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.Views.InspectorBlackboard.html",
-          "hash": "/b7G9JR32cV31/FyKuQdtA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.Views.NexusGraphView.Factory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.Views.NexusGraphView.Factory.html",
-          "hash": "bIFkVG4oh2IQ+5GevT30og=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.Views.NexusGraphView.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.Views.NexusGraphView.html",
-          "hash": "p9bjb48+XYBIpSbQyqoRwA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.Views.NexusNodeView.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.Views.NexusNodeView.html",
-          "hash": "rHmkT11nSYAiLTLmsc9/RA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.Views.StartNodeView.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.Views.StartNodeView.html",
-          "hash": "JIyaaZCPLi9b4+OkCx68+A=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Editor.Views.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Editor.Views.html",
-          "hash": "VYLKhnScKAAZN9KKAc6TWg=="
+          "hash": "V/bO7dMveuuKxgQrMr+cjg=="
         }
       },
       "is_incremental": false,
@@ -364,7 +400,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.html",
-          "hash": "iopwPNRrMRP8E8CQ+kD6Ag=="
+          "hash": "xSBOMh1LMPk9cxr6JD67yQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.BeginNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.BeginNode.html",
+          "hash": "as9lOlmwhPUiHu/x7lkfGw=="
         }
       },
       "is_incremental": false,
@@ -384,6 +432,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.Data.BasicNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.Data.BasicNode.html",
+          "hash": "zy+JKGZwy3QwgV6DGikcAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.Data.html",
+          "hash": "QpbOn417teMddMor5UXanQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Chatlyst.Runtime.ElementType.yml",
       "output": {
         ".html": {
@@ -396,11 +468,83 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.Message.html",
+          "hash": "Z3WAaz7sJJ3Xrjakbqx9dA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.MessageExtend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.MessageExtend.html",
+          "hash": "qGaq0j7x1ZR/RBkDBqcaRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.NodeIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.NodeIndex.html",
+          "hash": "lQ4p1n8TwnfmtOkkzBmKkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.NodeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.NodeType.html",
+          "hash": "UWKyregKEm9LIGPTLi9oVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.Util.ListExtend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.Util.ListExtend.html",
+          "hash": "Uexgm4O6FjkEbQtK8aEG7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Chatlyst.Runtime.Util.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Chatlyst.Runtime.Util.html",
+          "hash": "xfdpHqXDdoPIMrEm54XT7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Chatlyst.Runtime.yml",
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.html",
-          "hash": "5n1Mfn6ere+/NRe2GYo23Q=="
+          "hash": "b+GQIsQ7Oo3fXxeKiGb7IQ=="
         }
       },
       "is_incremental": false,
@@ -408,11 +552,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Global.Serialization.yml",
+      "source_relative_path": "api/Tests.Editor.BeginNode.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Global.Serialization.html",
-          "hash": "Tsg5uJG/upHMOJYsrskH/A=="
+          "relative_path": "api/Tests.Editor.BeginNode.html",
+          "hash": "gdMm3j59LejaHWkTiJkOJg=="
         }
       },
       "is_incremental": false,
@@ -420,11 +564,107 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Global.yml",
+      "source_relative_path": "api/Tests.Editor.EditorWindow.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Global.html",
-          "hash": "uvg9dNfEdCko8JLzBeLxeg=="
+          "relative_path": "api/Tests.Editor.EditorWindow.html",
+          "hash": "cMeqvQXaoMo17V3LfM+UZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Editor.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Editor.Message.html",
+          "hash": "mrgwB18Zgi2DjRf4zKj6xg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Editor.NodeIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Editor.NodeIndex.html",
+          "hash": "u2dqQ9eUhZQvZKqKDZBudA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Editor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Editor.html",
+          "hash": "pNxSjqpEe1oM7S+9Aft6cw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Runtime.Sample.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Runtime.Sample.html",
+          "hash": "ZeBXhzsO1riYfsfZgDMRwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Runtime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Runtime.html",
+          "hash": "HPLWnkU8qfXw+jvL+C5MWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Utility.DataNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Utility.DataNode.html",
+          "hash": "aBLWY9tUBWMIIItmI4fwzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Utility.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Utility.Utilities.html",
+          "hash": "/bF4GDfKW6rzlEDj6jwNbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tests.Utility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tests.Utility.html",
+          "hash": "mmZvWNUKiJapAUyloJdp/Q=="
         }
       },
       "is_incremental": false,
@@ -436,7 +676,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "ccuWPZzEd+QnzzR3nGqrog=="
+          "hash": "B8h4AVCX98TRuOB+9J6bvQ=="
         }
       },
       "is_incremental": false,
@@ -448,7 +688,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "1NL8EyKPRzOTmobYpgDApw=="
+          "hash": "WUX7k4W797LY2XyWc2dqFw=="
         }
       },
       "is_incremental": false,
@@ -523,7 +763,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 34,
+          "total_file_count": 54,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

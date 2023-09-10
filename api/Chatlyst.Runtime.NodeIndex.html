@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NexusGraphView
+    <title>Class NodeIndex
    | Chatlyst API Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NexusGraphView
+    <meta name="title" content="Class NodeIndex
    | Chatlyst API Documentation ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -78,47 +78,62 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.Views.NexusGraphView">
+            <article class="content wrap" id="_content" data-uid="Chatlyst.Runtime.NodeIndex">
   
   
-  <h1 id="Chatlyst_Editor_Views_NexusGraphView" data-uid="Chatlyst.Editor.Views.NexusGraphView" class="text-break">Class NexusGraphView
+  <h1 id="Chatlyst_Runtime_NodeIndex" data-uid="Chatlyst.Runtime.NodeIndex" class="text-break">Class NodeIndex
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">NexusGraphView</span></div>
+    <div class="level1"><span class="xref">NodeIndex</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Editor.Views.html">Chatlyst.Editor.Views</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Runtime.html">Chatlyst.Runtime</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Chatlyst_Editor_Views_NexusGraphView_syntax">Syntax</h5>
+  <h5 id="Chatlyst_Runtime_NodeIndex_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NexusGraphView : GraphView</code></pre>
+    <pre><code class="lang-csharp hljs">public class NodeIndex</code></pre>
   </div>
-  <h3 id="constructors">Constructors
+  <h3 id="fields">Fields
   </h3>
   
   
-  <a id="Chatlyst_Editor_Views_NexusGraphView__ctor_" data-uid="Chatlyst.Editor.Views.NexusGraphView.#ctor*"></a>
-  <h4 id="Chatlyst_Editor_Views_NexusGraphView__ctor" data-uid="Chatlyst.Editor.Views.NexusGraphView.#ctor">NexusGraphView()</h4>
+  <h4 id="Chatlyst_Runtime_NodeIndex_BeginNodes" data-uid="Chatlyst.Runtime.NodeIndex.BeginNodes">BeginNodes</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NexusGraphView()</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;BeginNode&gt; BeginNodes</code></pre>
   </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Chatlyst.Runtime.BeginNode.html">BeginNode</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="Chatlyst_Editor_Views_NexusGraphView_BuildFromEntries_" data-uid="Chatlyst.Editor.Views.NexusGraphView.BuildFromEntries*"></a>
-  <h4 id="Chatlyst_Editor_Views_NexusGraphView_BuildFromEntries_List_NexusJsonEntity__" data-uid="Chatlyst.Editor.Views.NexusGraphView.BuildFromEntries(List{NexusJsonEntity})">BuildFromEntries(List&lt;NexusJsonEntity&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Chatlyst_Runtime_NodeIndex_AutoAddNode_" data-uid="Chatlyst.Runtime.NodeIndex.AutoAddNode*"></a>
+  <h4 id="Chatlyst_Runtime_NodeIndex_AutoAddNode_BasicNode_" data-uid="Chatlyst.Runtime.NodeIndex.AutoAddNode(BasicNode)">AutoAddNode(BasicNode)</h4>
+  <div class="markdown level1 summary"><p>Add a node to nodes list</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool BuildFromEntries(List&lt;NexusJsonEntity&gt; list)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AutoAddNode(BasicNode node)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -131,8 +146,63 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">NexusJsonEntity</span>&gt;</td>
-        <td><span class="parametername">list</span></td>
+        <td><span class="xref">BasicNode</span></td>
+        <td><span class="parametername">node</span></td>
+        <td><p>A node</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Chatlyst_Runtime_NodeIndex_AutoAddNodes_" data-uid="Chatlyst.Runtime.NodeIndex.AutoAddNodes*"></a>
+  <h4 id="Chatlyst_Runtime_NodeIndex_AutoAddNodes_List_BasicNode__" data-uid="Chatlyst.Runtime.NodeIndex.AutoAddNodes(List{BasicNode})">AutoAddNodes(List&lt;BasicNode&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AutoAddNodes(List&lt;BasicNode&gt; nodes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">BasicNode</span>&gt;</td>
+        <td><span class="parametername">nodes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Chatlyst_Runtime_NodeIndex_Equals_" data-uid="Chatlyst.Runtime.NodeIndex.Equals*"></a>
+  <h4 id="Chatlyst_Runtime_NodeIndex_Equals_System_Object_" data-uid="Chatlyst.Runtime.NodeIndex.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">obj</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -152,15 +222,17 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a></div>
   
   
-  <a id="Chatlyst_Editor_Views_NexusGraphView_GetBlackboard_" data-uid="Chatlyst.Editor.Views.NexusGraphView.GetBlackboard*"></a>
-  <h4 id="Chatlyst_Editor_Views_NexusGraphView_GetBlackboard" data-uid="Chatlyst.Editor.Views.NexusGraphView.GetBlackboard">GetBlackboard()</h4>
+  <a id="Chatlyst_Runtime_NodeIndex_GetHashCode_" data-uid="Chatlyst.Runtime.NodeIndex.GetHashCode*"></a>
+  <h4 id="Chatlyst_Runtime_NodeIndex_GetHashCode" data-uid="Chatlyst.Runtime.NodeIndex.GetHashCode">GetHashCode()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Blackboard GetBlackboard()</code></pre>
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -172,20 +244,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Blackboard</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a></div>
   
   
-  <a id="Chatlyst_Editor_Views_NexusGraphView_GetCompatiblePorts_" data-uid="Chatlyst.Editor.Views.NexusGraphView.GetCompatiblePorts*"></a>
-  <h4 id="Chatlyst_Editor_Views_NexusGraphView_GetCompatiblePorts_Port_NodeAdapter_" data-uid="Chatlyst.Editor.Views.NexusGraphView.GetCompatiblePorts(Port,NodeAdapter)">GetCompatiblePorts(Port, NodeAdapter)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Chatlyst_Runtime_NodeIndex_Refresh_" data-uid="Chatlyst.Runtime.NodeIndex.Refresh*"></a>
+  <h4 id="Chatlyst_Runtime_NodeIndex_Refresh_List_BasicNode__" data-uid="Chatlyst.Runtime.NodeIndex.Refresh(List{BasicNode})">Refresh(List&lt;BasicNode&gt;)</h4>
+  <div class="markdown level1 summary"><p>Refresh the index information for the current nodes</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override List&lt;Port&gt; GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Refresh(List&lt;BasicNode&gt; basicNodeList)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,78 +273,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Port</span></td>
-        <td><span class="parametername">startPort</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">NodeAdapter</span></td>
-        <td><span class="parametername">nodeAdapter</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">Port</span>&gt;</td>
-        <td></td>
+        <td><span class="xref">List</span>&lt;<span class="xref">BasicNode</span>&gt;</td>
+        <td><span class="parametername">basicNodeList</span></td>
+        <td><p>Current node list</p>
+</td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Chatlyst_Editor_Views_NexusGraphView_GraphInitialize_" data-uid="Chatlyst.Editor.Views.NexusGraphView.GraphInitialize*"></a>
-  <h4 id="Chatlyst_Editor_Views_NexusGraphView_GraphInitialize_EditorWindow_" data-uid="Chatlyst.Editor.Views.NexusGraphView.GraphInitialize(EditorWindow)">GraphInitialize(EditorWindow)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Chatlyst_Runtime_NodeIndex_ToString_" data-uid="Chatlyst.Runtime.NodeIndex.ToString*"></a>
+  <h4 id="Chatlyst_Runtime_NodeIndex_ToString" data-uid="Chatlyst.Runtime.NodeIndex.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Returns the serialized field</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void GraphInitialize(EditorWindow window)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">EditorWindow</span></td>
-        <td><span class="parametername">window</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Chatlyst_Editor_Views_NexusGraphView_InspectorNode_" data-uid="Chatlyst.Editor.Views.NexusGraphView.InspectorNode*"></a>
-  <h4 id="Chatlyst_Editor_Views_NexusGraphView_InspectorNode" data-uid="Chatlyst.Editor.Views.NexusGraphView.InspectorNode">InspectorNode()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void InspectorNode()</code></pre>
-  </div>
-  
-  
-  <a id="Chatlyst_Editor_Views_NexusGraphView_NodeEntity_" data-uid="Chatlyst.Editor.Views.NexusGraphView.NodeEntity*"></a>
-  <h4 id="Chatlyst_Editor_Views_NexusGraphView_NodeEntity" data-uid="Chatlyst.Editor.Views.NexusGraphView.NodeEntity">NodeEntity()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;NexusJsonEntity&gt; NodeEntity()</code></pre>
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -281,11 +301,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">NexusJsonEntity</span>&gt;</td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>Json string</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a></div>
 </article>
           </div>
           

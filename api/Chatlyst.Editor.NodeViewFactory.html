@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NodeSearchWindowProvider
+    <title>Class NodeViewFactory
    | Chatlyst API Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NodeSearchWindowProvider
+    <meta name="title" content="Class NodeViewFactory
    | Chatlyst API Documentation ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -78,39 +78,36 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.NodeSearchWindowProvider">
+            <article class="content wrap" id="_content" data-uid="Chatlyst.Editor.NodeViewFactory">
   
   
-  <h1 id="Chatlyst_Editor_NodeSearchWindowProvider" data-uid="Chatlyst.Editor.NodeSearchWindowProvider" class="text-break">Class NodeSearchWindowProvider
+  <h1 id="Chatlyst_Editor_NodeViewFactory" data-uid="Chatlyst.Editor.NodeViewFactory" class="text-break">Class NodeViewFactory
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">NodeSearchWindowProvider</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><span class="xref">ISearchWindowProvider</span></div>
+    <div class="level1"><span class="xref">NodeViewFactory</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Chatlyst.Editor.html">Chatlyst.Editor</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Chatlyst_Editor_NodeSearchWindowProvider_syntax">Syntax</h5>
+  <h5 id="Chatlyst_Editor_NodeViewFactory_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NodeSearchWindowProvider : ScriptableObject, ISearchWindowProvider</code></pre>
+    <pre><code class="lang-csharp hljs">public static class NodeViewFactory</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="Chatlyst_Editor_NodeSearchWindowProvider_CreateSearchTree_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.CreateSearchTree*"></a>
-  <h4 id="Chatlyst_Editor_NodeSearchWindowProvider_CreateSearchTree_SearchWindowContext_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.CreateSearchTree(SearchWindowContext)">CreateSearchTree(SearchWindowContext)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Chatlyst_Editor_NodeViewFactory_CreatNewNodeView_" data-uid="Chatlyst.Editor.NodeViewFactory.CreatNewNodeView*"></a>
+  <h4 id="Chatlyst_Editor_NodeViewFactory_CreatNewNodeView_Rect_System_String_" data-uid="Chatlyst.Editor.NodeViewFactory.CreatNewNodeView(Rect,System.String)">CreatNewNodeView(Rect, String)</h4>
+  <div class="markdown level1 summary"><p>Create a new node view.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;SearchTreeEntry&gt; CreateSearchTree(SearchWindowContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public static NodeView CreatNewNodeView(Rect nodeRect, string typeName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -123,9 +120,16 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SearchWindowContext</span></td>
-        <td><span class="parametername">context</span></td>
-        <td></td>
+        <td><span class="xref">Rect</span></td>
+        <td><span class="parametername">nodeRect</span></td>
+        <td><p>The rect of view</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">typeName</span></td>
+        <td><p>View Type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -139,20 +143,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">SearchTreeEntry</span>&gt;</td>
-        <td></td>
+        <td><a class="xref" href="Chatlyst.Editor.NodeView.html">NodeView</a></td>
+        <td><p>Instanced view</p>
+</td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Chatlyst_Editor_NodeSearchWindowProvider_Init_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.Init*"></a>
-  <h4 id="Chatlyst_Editor_NodeSearchWindowProvider_Init_Chatlyst_Editor_ChatlystGraphView_Chatlyst_Editor_ChatlystEditorWindow_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.Init(Chatlyst.Editor.ChatlystGraphView,Chatlyst.Editor.ChatlystEditorWindow)">Init(ChatlystGraphView, ChatlystEditorWindow)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Chatlyst_Editor_NodeViewFactory_RebuildOldNodeView_" data-uid="Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView*"></a>
+  <h4 id="Chatlyst_Editor_NodeViewFactory_RebuildOldNodeView_BasicNode_System_String_" data-uid="Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView(BasicNode,System.String)">RebuildOldNodeView(BasicNode, String)</h4>
+  <div class="markdown level1 summary"><p>Create a node view stored in file.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Init(ChatlystGraphView graphView, ChatlystEditorWindow window)</code></pre>
+    <pre><code class="lang-csharp hljs">public static NodeView RebuildOldNodeView(BasicNode nodeData, string typeName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,46 +171,16 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Chatlyst.Editor.ChatlystGraphView.html">ChatlystGraphView</a></td>
-        <td><span class="parametername">graphView</span></td>
-        <td></td>
+        <td><span class="xref">BasicNode</span></td>
+        <td><span class="parametername">nodeData</span></td>
+        <td><p>Data in file</p>
+</td>
       </tr>
       <tr>
-        <td><a class="xref" href="Chatlyst.Editor.ChatlystEditorWindow.html">ChatlystEditorWindow</a></td>
-        <td><span class="parametername">window</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Chatlyst_Editor_NodeSearchWindowProvider_OnSelectEntry_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.OnSelectEntry*"></a>
-  <h4 id="Chatlyst_Editor_NodeSearchWindowProvider_OnSelectEntry_SearchTreeEntry_SearchWindowContext_" data-uid="Chatlyst.Editor.NodeSearchWindowProvider.OnSelectEntry(SearchTreeEntry,SearchWindowContext)">OnSelectEntry(SearchTreeEntry, SearchWindowContext)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">SearchTreeEntry</span></td>
-        <td><span class="parametername">searchTreeEntry</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">SearchWindowContext</span></td>
-        <td><span class="parametername">context</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">typeName</span></td>
+        <td><p>View type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -218,15 +194,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><a class="xref" href="Chatlyst.Editor.NodeView.html">NodeView</a></td>
+        <td><p>Instanced view</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <span class="xref">ISearchWindowProvider</span>
-  </div>
 </article>
           </div>
           
