@@ -1,10 +1,9 @@
 # Chatlyst
 
-[![Qodana](https://github.com/A-DreamSoul/Chatlyst/actions/workflows/code_quality.yml/badge.svg)](https://github.com/A-DreamSoul/Chatlyst/actions/workflows/code_quality.yml)
+[![Validate](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/Validate.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/Validate.yml)
 
 > [!NOTE]
-> 
-> This project is refactoring now! You can check the progress of the refactoring work [here](https://github.com/A-DreamSoul/Chatlyst/tree/refactor).
+> This project is developing now!I would appreciate it if you could join.
 
 *Chatlyst* is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development.
 
@@ -13,14 +12,14 @@
 ## Table of Contents
 
 <!--ts-->
-* [Chatlyst](#chatlyst)
-   * [Table of Contents](#table-of-contents)
-   * [Getting started](#getting-started)
-   * [Installation](#installation)
-      * [Install via git URL](#install-via-git-url)
-   * [Contribution](#contribution)
-   * [Special thanks](#special-thanks)
-   * [License](#license)
+- [Chatlyst](#chatlyst)
+  - [Table of Contents](#table-of-contents)
+  - [Getting started](#getting-started)
+  - [Installation](#installation)
+    - [Install via git URL](#install-via-git-url)
+  - [Contribution](#contribution)
+  - [Special thanks](#special-thanks)
+  - [License](#license)
 <!--te-->
 
 ## Getting started
