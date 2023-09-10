@@ -14,6 +14,7 @@
 
 <!--ts-->
 * [Chatlyst](#chatlyst)
+   * [Table of Contents](#table-of-contents)
    * [Getting started](#getting-started)
    * [Installation](#installation)
       * [Install via git URL](#install-via-git-url)
