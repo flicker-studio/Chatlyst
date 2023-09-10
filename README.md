@@ -1,12 +1,16 @@
 # Chatlyst
 
-> **Warning!**
-> 
-> This project is refactoring now!
+[![Qodana](https://github.com/A-DreamSoul/Chatlyst/actions/workflows/code_quality.yml/badge.svg)](https://github.com/A-DreamSoul/Chatlyst/actions/workflows/code_quality.yml)
 
-A simple and powerful chat editor in Unity
+> [!NOTE]
+> 
+> This project is refactoring now! You can check the progress of the refactoring work [here](https://github.com/A-DreamSoul/Chatlyst/tree/refactor).
+
+*Chatlyst* is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development.
 
 - Developed based on UIToolkit which has good scalability
+
+## Table of Contents
 
 <!--ts-->
 * [Chatlyst](#chatlyst)
@@ -31,7 +35,7 @@ If you want to set a target version,we use the `*.*.*`release tag so you can spe
 
 ## Contribution
 
-If you are going to contribute to this project, please contact us first, we need to make sure we are not doing the same thing.
+If you are interested in contributing, you can create a new issue or discussion and we will respond within 36 hours.If you don't need to contact us, then once you're ready to make changes, just send a pull request. We will be very happy to see your contribution.
 
 ## Special thanks
 
@@ -40,6 +44,3 @@ YOU
 ## License
 
 This library is under the MIT License.
-
-##Bug test
-

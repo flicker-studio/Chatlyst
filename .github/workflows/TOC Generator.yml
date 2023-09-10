@@ -27,7 +27,6 @@ jobs:
           git_tag_gpgsign: true
       - name: Sign commit and push changes
         run: |
-          echo foo > bar.txt
           git add .
-          git commit -s -S -m "docs: auto update markdown TOC"
+          git commit -s -S -m "docs: auto update markdown toc"
           git push
