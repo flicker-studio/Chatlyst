@@ -28,5 +28,5 @@ jobs:
       - name: Sign commit and push changes
         run: |
           git add .
-          git commit -s -S -m "docs: auto update markdown TOC"
+          git commit -s -S -m "docs: auto update markdown toc"
           git push

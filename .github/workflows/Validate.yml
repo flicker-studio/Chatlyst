@@ -5,30 +5,19 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      #max-parallel: 2 # Use this if you're activating pro license with matrix
-      matrix:
-        include:
-          - os: windows-latest
-            build-targets: StandaloneWindows64
+    runs-on: ubuntu-latest
 
     steps:
       - name: checkout self
         uses: actions/checkout@v3
 
-        # Installs the Unity Editor based on your project version text file
-        # sets -> env.UNITY_EDITOR_PATH
-        # sets -> env.UNITY_PROJECT_PATH
-        # https://github.com/XRTK/unity-setup
-      - uses: xrtk/unity-setup@v6
-
-        # Activates the installation with the provided credentials
-      - uses: xrtk/activate-unity-license@v2
+      - uses: game-ci/unity-test-runner@v3
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
-          # Required
-          username: ${{ secrets.UNITY_USERNAME }}
-          password: ${{ secrets.UNITY_PASSWORD }}
-          # Optional
-          serial: ${{ secrets.UNITY_SERIAL }} # Required for pro/plus activations
-          license-type: 'Personal' # Chooses license type to use [ Personal, Professional ]
+          projectPath: chatlyst-dev/
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          ls
