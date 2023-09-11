@@ -1,25 +1,22 @@
 # Chatlyst
 
-[![Validate](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/Validate.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/Validate.yml)
+[![Validate](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml)
 
 > [!NOTE]
-> This project is developing now!I would appreciate it if you could join.
+> This project is developing now! I would appreciate it if you could join.
 
 *Chatlyst* is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development.
 
-- Developed based on UIToolkit which has good scalability
-
 ## Table of Contents
-
 <!--ts-->
-- [Chatlyst](#chatlyst)
-  - [Table of Contents](#table-of-contents)
-  - [Getting started](#getting-started)
-  - [Installation](#installation)
-    - [Install via git URL](#install-via-git-url)
-  - [Contribution](#contribution)
-  - [Special thanks](#special-thanks)
-  - [License](#license)
+* [Chatlyst](#chatlyst)
+  * [Table of Contents](#table-of-contents)
+  * [Getting started](#getting-started)
+  * [Installation](#installation)
+    * [Install via git URL](#install-via-git-url)
+  * [Contribution](#contribution)
+  * [Special thanks](#special-thanks)
+  * [License](#license)
 <!--te-->
 
 ## Getting started
