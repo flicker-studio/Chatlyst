@@ -1,6 +1,6 @@
 # Chatlyst
 
-[![Validate](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml)
+[![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml)
 
 > [!NOTE]
 > This project is developing now! I would appreciate it if you could join.
@@ -10,13 +10,13 @@
 ## Table of Contents
 <!--ts-->
 * [Chatlyst](#chatlyst)
-   * [Table of Contents](#table-of-contents)
-   * [Getting started](#getting-started)
-   * [Installation](#installation)
-      * [Install via git URL](#install-via-git-url)
-   * [Contribution](#contribution)
-   * [Special thanks](#special-thanks)
-   * [License](#license)
+  * [Table of Contents](#table-of-contents)
+  * [Getting started](#getting-started)
+  * [Installation](#installation)
+    * [Install via git URL](#install-via-git-url)
+  * [Contribution](#contribution)
+  * [Special thanks](#special-thanks)
+  * [License](#license)
 <!--te-->
 
 ## Getting started
