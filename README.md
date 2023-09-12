@@ -10,13 +10,13 @@
 ## Table of Contents
 <!--ts-->
 * [Chatlyst](#chatlyst)
-  * [Table of Contents](#table-of-contents)
-  * [Getting started](#getting-started)
-  * [Installation](#installation)
-    * [Install via git URL](#install-via-git-url)
-  * [Contribution](#contribution)
-  * [Special thanks](#special-thanks)
-  * [License](#license)
+   * [Table of Contents](#table-of-contents)
+   * [Getting started](#getting-started)
+   * [Installation](#installation)
+      * [Install via git URL](#install-via-git-url)
+   * [Contribution](#contribution)
+   * [Special thanks](#special-thanks)
+   * [License](#license)
 <!--te-->
 
 ## Getting started
