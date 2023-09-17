@@ -96,7 +96,8 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Chatlyst_Editor_Attribute_SearchTreeNameAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SearchTreeNameAttribute : Attribute, _Attribute</code></pre>
+    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Class, Inherited = false)]
+public class SearchTreeNameAttribute : Attribute, _Attribute</code></pre>
   </div>
   <h5 id="Chatlyst_Editor_Attribute_SearchTreeNameAttribute_examples"><strong>Examples</strong></h5>
   <p>For example, item will show &quot;Start&quot; by using <code>[SearchTreeName(&quot;Start&quot;)]</code>.</p>
