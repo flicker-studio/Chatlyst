@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Unity:
+  Test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Self
