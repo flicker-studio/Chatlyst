@@ -4,22 +4,10 @@
 
 [![Docs](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml)
 
-[!NOTE]
-This project is developing now!
+> [!NOTE]
+> This project is developing!
 
 *Chatlyst* is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development.
-
-## Table of Contents
-<!--ts-->
-* [Chatlyst](#chatlyst)
-   * [Table of Contents](#table-of-contents)
-   * [Getting started](#getting-started)
-   * [Installation](#installation)
-      * [Install via git URL](#install-via-git-url)
-   * [Contribution](#contribution)
-   * [Special thanks](#special-thanks)
-   * [License](#license)
-<!--te-->
 
 ## Getting started
 
