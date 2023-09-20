@@ -21,7 +21,7 @@ jobs:
       - name: Build site
         uses: nikeee/docfx-action@v1.0.0
         with:
-          args: docs/docfx.json -t modern 
+          args: docs/docfx.json -t default,modern,templates/material
 
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
