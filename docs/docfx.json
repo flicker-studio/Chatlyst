@@ -19,8 +19,7 @@
             ],
             "dest": "api",
             "disableGitFeatures": false,
-            "globalNamespaceId": "Global",
-            "filter": "filter.yml"
+            "globalNamespaceId": "Global"
         }
     ],
     "build": {
@@ -44,7 +43,7 @@
             {
                 "src": "api",
                 "files": [
-                    "*.yml"
+                    "**.yml"
                 ],
                 "dest": "api"
             },
@@ -52,24 +51,9 @@
                 "src": "manual",
                 "files": [
                     "toc.yml",
-                    "*.md"
+                    "**.md"
                 ],
                 "dest": "manual"
-            }
-        ],
-        "overwrite": [
-            {
-                "src": "..",
-                "files": [
-                    "Assets/Scripts/**/*.md"
-                ]
-            }
-        ],
-        "resource": [
-            {
-                "files": [
-                    "resources/**/*"
-                ]
             }
         ],
         "template": [

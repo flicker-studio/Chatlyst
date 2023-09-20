@@ -1,7 +1,7 @@
 # Chatlyst
 
-[![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml)
-[![Docs Deploy](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml)
+![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml/badge.svg)
+[![Docs](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://morsiusiurandum.github.io/Chatlyst/)
 
 > [!NOTE]
 > This project is developing!
