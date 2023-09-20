@@ -1,14 +1,4 @@
 {
-  "sitemap": {
-    "fileOptions": {
-      "api/*": {
-        "baseUrl": "https://normanderwan.github.io/DocFxForUnity/",
-        "changefreq": "daily"
-      }
-    },
-    "baseUrl": "https://normanderwan.github.io/DocFxForUnity/",
-    "changefreq": "weekly"
-  },
   "homepages": [],
   "source_base_path": "/github/workspace/docs",
   "xrefmap": "xrefmap.yml",
@@ -28,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Attribute.NodePortAttribute.html",
-          "hash": "3v/catQM8Vh5lcpVCueFEQ=="
+          "hash": "mNPhZYpg60bpUyG/+P71FQ=="
         }
       },
       "is_incremental": false,
@@ -40,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Attribute.SearchTreeNameAttribute.html",
-          "hash": "oDIYtSBV7XRlh2xPNhQVWA=="
+          "hash": "j/fXZ2Xf9iD7bKMjQR6YrA=="
         }
       },
       "is_incremental": false,
@@ -52,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Attribute.html",
-          "hash": "lXuaJcQVuJlwWUUpjWwIgQ=="
+          "hash": "61XkJgBw6QnI8w8iRMFxxA=="
         }
       },
       "is_incremental": false,
@@ -64,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.BeginNodeView.html",
-          "hash": "VSwh7rf8mVCzVoousTdC5g=="
+          "hash": "WG7altvyB3/WIb7s++NWBQ=="
         }
       },
       "is_incremental": false,
@@ -76,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.ChatlystEditorWindow.html",
-          "hash": "VaCC1cM0GitN5M6KdLy7CA=="
+          "hash": "XmspPCukueLqjYoSoKyBNQ=="
         }
       },
       "is_incremental": false,
@@ -88,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.ChatlystGraphView.Factory.html",
-          "hash": "UUMUAiwZt9GNV65XvG4ngA=="
+          "hash": "St4E4Bw3DNsn02jK+KL73A=="
         }
       },
       "is_incremental": false,
@@ -100,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.ChatlystGraphView.html",
-          "hash": "y3QBuR1/dalskvuSjI52aQ=="
+          "hash": "GuPhKdjPuHCUeXchnAkydQ=="
         }
       },
       "is_incremental": false,
@@ -112,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.CustomSetting.html",
-          "hash": "YNimPGuMqlmiS74Gu9Oeuw=="
+          "hash": "kgCjEZsObBQTVBQVyIfEbQ=="
         }
       },
       "is_incremental": false,
@@ -124,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.CustomSettingProvider.html",
-          "hash": "6vj8Q9ZQCNYr6q3o/3iVoQ=="
+          "hash": "lSRwuHAGlfpqx1QvGmVPOg=="
         }
       },
       "is_incremental": false,
@@ -136,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Data.Dialogue.html",
-          "hash": "1BuaMXTKNMnBvDaYCUrM5Q=="
+          "hash": "E4mELmVr+jNACaOpSbXQvw=="
         }
       },
       "is_incremental": false,
@@ -148,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Data.DialoguesNode.html",
-          "hash": "wwIS9tUQtWGN7PMzSr1cAA=="
+          "hash": "SKGIlYiiASQ7I+jh/+aP0g=="
         }
       },
       "is_incremental": false,
@@ -160,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Data.NexusNode.html",
-          "hash": "g7UO/Kam/uXBoHBMSw4oBw=="
+          "hash": "N6y1f9bdqPC5ANYUz8kgSQ=="
         }
       },
       "is_incremental": false,
@@ -172,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Data.StartNode.html",
-          "hash": "pzP4mmbBhyeGownISxBbxQ=="
+          "hash": "BpSa+Q7MYOmXPc8iQon/mA=="
         }
       },
       "is_incremental": false,
@@ -184,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Data.html",
-          "hash": "gcvYulLzH6+v4/riqa5ADg=="
+          "hash": "yQH9Um4Wvtpe69Uh6JEE3Q=="
         }
       },
       "is_incremental": false,
@@ -196,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.DialogueNodeView.html",
-          "hash": "818RK0MceHnIKY8Epv61NQ=="
+          "hash": "6dkW3xunwf5mZ2FQnUt8Gw=="
         }
       },
       "is_incremental": false,
@@ -208,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.DisplayOnlyAttribute.html",
-          "hash": "Yu4BLlkfQe+1avGDCBFJvg=="
+          "hash": "Xig5zd8ZNcgedv7LL3l4bQ=="
         }
       },
       "is_incremental": false,
@@ -220,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.DisplayOnlyDrawer.html",
-          "hash": "L4VIfcQz3NZe6jqY0j7xYg=="
+          "hash": "n3etzX+4oRyUmyqpptjFbg=="
         }
       },
       "is_incremental": false,
@@ -232,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.FileUtilities.html",
-          "hash": "tuMp/fWt9kic+nTqfPCFbg=="
+          "hash": "K4lhgMs95zqpaJ/Hl6BvBA=="
         }
       },
       "is_incremental": false,
@@ -244,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.INodeView.html",
-          "hash": "5ycfYGy8KLwl5LPCRCJCVg=="
+          "hash": "sIzah3VqXJNJ/9wyNvt+hA=="
         }
       },
       "is_incremental": false,
@@ -256,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.InspectorBlackboard.html",
-          "hash": "4H794KbpBF/qDPQNqjQgZA=="
+          "hash": "CGMzl2kTp+/0f2HqHuIB8g=="
         }
       },
       "is_incremental": false,
@@ -268,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NexusFileImporter.html",
-          "hash": "655Ev3e2VdtmqLmqLWgxlA=="
+          "hash": "zSN9l8OsnaSyqz7WtuIGcw=="
         }
       },
       "is_incremental": false,
@@ -280,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NexusFileImporterEditor.html",
-          "hash": "q8QD6tDipIBW3kdbAuvA4Q=="
+          "hash": "8y7PVUJ5CvBFdCWOX6UTWA=="
         }
       },
       "is_incremental": false,
@@ -292,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NodeSearchWindowProvider.html",
-          "hash": "SDiSD/dXgtnOzTLKwPRasw=="
+          "hash": "EDWiC1H2m04wjHPo0WxoLQ=="
         }
       },
       "is_incremental": false,
@@ -304,7 +294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NodeSetting.html",
-          "hash": "K0CgeXI+6ktPOe5njg0irQ=="
+          "hash": "iSnRjTA+A2OuGj1FvnNtPA=="
         }
       },
       "is_incremental": false,
@@ -316,7 +306,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NodeSettingProvider.html",
-          "hash": "sz2Ma3UNEp1D0LyNou4lTw=="
+          "hash": "VnKm6AjdIMfT9JHrirp5RQ=="
         }
       },
       "is_incremental": false,
@@ -328,7 +318,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NodeView.html",
-          "hash": "sBbm+XniWxgo+i3ikkRTtA=="
+          "hash": "2MDRqyYE5LxQAe20l9fK9g=="
         }
       },
       "is_incremental": false,
@@ -340,7 +330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.NodeViewFactory.html",
-          "hash": "c3y6f0ZnVKViGYRICiXnRA=="
+          "hash": "yosPU9KrIv5g+0afffwmQg=="
         }
       },
       "is_incremental": false,
@@ -352,7 +342,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Serialization.IndexJsonInternal.html",
-          "hash": "uHTp2m4HanXH2RDdpNeIJw=="
+          "hash": "2bp3no1czLacaLUst33m8A=="
         }
       },
       "is_incremental": false,
@@ -364,7 +354,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Serialization.NexusJsonEntity.html",
-          "hash": "gOt9AAHh0jhF8TZ14TqaFA=="
+          "hash": "bzBYkQ04RJi7+fYTvXhv2g=="
         }
       },
       "is_incremental": false,
@@ -376,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Serialization.NexusJsonUtility.html",
-          "hash": "BtglHNZ5vpqwmYcp6xCH4Q=="
+          "hash": "YVFefrMhaGNAOO534fd24Q=="
         }
       },
       "is_incremental": false,
@@ -388,7 +378,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.Serialization.html",
-          "hash": "V/bO7dMveuuKxgQrMr+cjg=="
+          "hash": "zFDJea8aX8g42Vn124GZag=="
         }
       },
       "is_incremental": false,
@@ -400,7 +390,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Editor.html",
-          "hash": "xSBOMh1LMPk9cxr6JD67yQ=="
+          "hash": "neOQJgBF4PD1Bc3NPDi+Lw=="
         }
       },
       "is_incremental": false,
@@ -412,7 +402,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.BeginNode.html",
-          "hash": "as9lOlmwhPUiHu/x7lkfGw=="
+          "hash": "gVtHgWM+ap9SGjVc5g2/Kg=="
         }
       },
       "is_incremental": false,
@@ -424,7 +414,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.CharacterName.html",
-          "hash": "efX4LfxrUJdfxNuWY/dTAQ=="
+          "hash": "4PgzL9tNkC990zMNNr1Fsg=="
         }
       },
       "is_incremental": false,
@@ -436,7 +426,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.Data.BasicNode.html",
-          "hash": "zy+JKGZwy3QwgV6DGikcAQ=="
+          "hash": "Z/j7kZf2oGJZZkd6VVkWXg=="
         }
       },
       "is_incremental": false,
@@ -448,7 +438,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.Data.html",
-          "hash": "QpbOn417teMddMor5UXanQ=="
+          "hash": "o7xEX6lAoxnDd99E7J1FrQ=="
         }
       },
       "is_incremental": false,
@@ -460,7 +450,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.ElementType.html",
-          "hash": "thpFx+gsBQeoadN45HwPxg=="
+          "hash": "pqtAmLlYVErYyQNc0e6xNA=="
         }
       },
       "is_incremental": false,
@@ -472,7 +462,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.Message.html",
-          "hash": "LHQ3gQbO15K1X1SJDniliA=="
+          "hash": "14Smq5Dt4iy9j3RVnV5X4A=="
         }
       },
       "is_incremental": false,
@@ -484,7 +474,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.MessageExtend.html",
-          "hash": "qGaq0j7x1ZR/RBkDBqcaRA=="
+          "hash": "duNQL6lRlyP9TPuWyQknPg=="
         }
       },
       "is_incremental": false,
@@ -496,7 +486,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.NodeIndex.html",
-          "hash": "OOa7nIk5utIUroo55KHMXQ=="
+          "hash": "FstJo9U1a3YgUIht9x/yuw=="
         }
       },
       "is_incremental": false,
@@ -508,7 +498,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.NodeType.html",
-          "hash": "UWKyregKEm9LIGPTLi9oVw=="
+          "hash": "o199bZB/fxRGfUPFAOvMow=="
         }
       },
       "is_incremental": false,
@@ -520,7 +510,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.Util.ListExtend.html",
-          "hash": "Uexgm4O6FjkEbQtK8aEG7g=="
+          "hash": "nlgadUNMgaPrAlpAjDp9cw=="
         }
       },
       "is_incremental": false,
@@ -532,7 +522,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.Util.html",
-          "hash": "xfdpHqXDdoPIMrEm54XT7g=="
+          "hash": "ANpvDpbGSeCop8ovClSeNw=="
         }
       },
       "is_incremental": false,
@@ -544,7 +534,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.html",
-          "hash": "b+GQIsQ7Oo3fXxeKiGb7IQ=="
+          "hash": "CmzX2Ca7SiYtuY1QpuEHOA=="
         }
       },
       "is_incremental": false,
@@ -556,7 +546,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Editor.BeginNode.html",
-          "hash": "gdMm3j59LejaHWkTiJkOJg=="
+          "hash": "2/rQrCkLmTqEk4/zYfzBTw=="
         }
       },
       "is_incremental": false,
@@ -568,7 +558,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Editor.EditorWindow.html",
-          "hash": "cMeqvQXaoMo17V3LfM+UZQ=="
+          "hash": "AlG6730cVSh4tRiF2EWkzA=="
         }
       },
       "is_incremental": false,
@@ -580,7 +570,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Editor.Message.html",
-          "hash": "mrgwB18Zgi2DjRf4zKj6xg=="
+          "hash": "QUWekkxSag5bC5qbaeYW0g=="
         }
       },
       "is_incremental": false,
@@ -592,7 +582,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Editor.NodeIndex.html",
-          "hash": "u2dqQ9eUhZQvZKqKDZBudA=="
+          "hash": "cKnh8XhVz93oeGpHKJdKhQ=="
         }
       },
       "is_incremental": false,
@@ -604,7 +594,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Editor.html",
-          "hash": "pNxSjqpEe1oM7S+9Aft6cw=="
+          "hash": "d6obxpvcND0KGzQZlK+bBg=="
         }
       },
       "is_incremental": false,
@@ -616,7 +606,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Runtime.Sample.html",
-          "hash": "ZeBXhzsO1riYfsfZgDMRwg=="
+          "hash": "CdJOWtje3wyJKqQhuCVI5w=="
         }
       },
       "is_incremental": false,
@@ -628,7 +618,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Runtime.html",
-          "hash": "HPLWnkU8qfXw+jvL+C5MWQ=="
+          "hash": "3UZqdP4rcmPz8mNYfLjGnw=="
         }
       },
       "is_incremental": false,
@@ -640,7 +630,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Utility.DataNode.html",
-          "hash": "aBLWY9tUBWMIIItmI4fwzw=="
+          "hash": "KOuSV/MxqHoz9rB62rD7fw=="
         }
       },
       "is_incremental": false,
@@ -652,7 +642,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Utility.Utilities.html",
-          "hash": "/bF4GDfKW6rzlEDj6jwNbA=="
+          "hash": "DD1OW/w8U4vspzgpwHmaQw=="
         }
       },
       "is_incremental": false,
@@ -664,7 +654,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Tests.Utility.html",
-          "hash": "mmZvWNUKiJapAUyloJdp/Q=="
+          "hash": "H7CYUSN1efvDoOqLCIrlQQ=="
         }
       },
       "is_incremental": false,
@@ -676,7 +666,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "B8h4AVCX98TRuOB+9J6bvQ=="
+          "hash": "B7m97zFTonsot2xd9GTOFA=="
         }
       },
       "is_incremental": false,
@@ -688,7 +678,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "qx/rNxyvpUdg3yntSoMDjw=="
+          "hash": "2lrBYdHissetgX+3sAmv4g=="
         }
       },
       "is_incremental": false,
@@ -700,7 +690,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/coniunctis.html",
-          "hash": "0gtI3Zbb3M8WGhYDFg+lAw=="
+          "hash": "3DCHM+gqE7mN39+foP+ynA=="
         }
       },
       "is_incremental": false,
@@ -712,7 +702,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/etiam.html",
-          "hash": "HHz2XgrKlJ3VTomRtDFmzw=="
+          "hash": "Ofc8RBgOY1GadGrNbgIR2Q=="
         }
       },
       "is_incremental": false,
@@ -724,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/toc.html",
-          "hash": "2q0qq03gpYNjYV8lSAAcVw=="
+          "hash": "KYoRXNGWxeFGbcQSO65zZw=="
         }
       },
       "is_incremental": false,
@@ -736,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "HJSkhYwYoqsFXFfSLFrlTw=="
+          "hash": "mIaHbRJleCvtGL+Pf3LSrQ=="
         }
       },
       "is_incremental": false,
