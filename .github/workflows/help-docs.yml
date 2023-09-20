@@ -18,10 +18,18 @@ jobs:
       - name: Use README.md as index.md
         run: cp README.md docs/index.md
 
-      - name: Build site
-        uses: nikeee/docfx-action@v1.0.0
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v3
         with:
-          args: docs/docfx.json
+         dotnet-version: 7.x
+    
+      - name: Dotnet Update
+        shell: bash
+        run: dotnet tool update -g docfx
+
+      - name: Build
+        shell: bash
+        run: docfx docs/docfx.json
 
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
