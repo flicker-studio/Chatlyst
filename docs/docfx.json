@@ -25,10 +25,15 @@
     ],
     "build": {
         "globalMetadata": {
-            "_appTitle": "Chatlyst API Documentation",
-            "_appFooter": "Chatlyst API Documentation",
+            "_appTitle": "Chatlyst Documentation",
+            "_appFooter": "Copyright © Morsiusiurandum",
+            "_disableContribution": true,
+            "_disableAffix": false,
             "_enableSearch": true
         },
+        "postProcessors": [
+            "ExtractSearchIndex"
+        ],
         "content": [
             {
                 "files": [
@@ -67,17 +72,11 @@
                 ]
             }
         ],
-        "sitemap": {
-            "baseUrl": "https://normanderwan.github.io/DocFxForUnity",
-            "changefreq": "weekly",
-            "fileOptions": {
-                "api/*": {
-                    "changefreq": "daily"
-                }
-            }
-        },
+        "template": [
+            "default",
+            "templates/singulinkfx"
+        ],
         "xref": [
-            "https://normanderwan.github.io/UnityXrefMaps/xrefmap.yml",
             "https://nicoco007.github.io/UnityXRefMap/2022.3/xrefmap.yml"
         ],
         "xrefService": [
