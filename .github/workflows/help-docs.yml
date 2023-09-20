@@ -16,7 +16,7 @@ jobs:
 
       # Use the Readme.md as the first page
       - name: Set first page
-        run: cp README.md docs/
+        run: cp README.md docs/index.md
       
       - name: Build site
         uses: nikeee/docfx-action@v1.0.0
