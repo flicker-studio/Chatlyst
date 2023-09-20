@@ -1,0 +1,26 @@
+name: Unit Test
+
+on:
+  push:
+    branches: [develop]
+    paths: ['chatlyst-dev/**']
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  Unity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Self
+        uses: actions/checkout@v3
+
+      - name: Unit test
+        uses: game-ci/unity-test-runner@v3
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        with:
+          projectPath: chatlyst-dev/
+          githubToken: ${{ secrets.GITHUB_TOKEN }}

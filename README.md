@@ -2,8 +2,8 @@
 
 [![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml/badge.svg)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unity-unit-test.yml)
 
-> [!NOTE]
-> This project is developing now! I would appreciate it if you could join.
+[!NOTE]
+This project is developing now!
 
 *Chatlyst* is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development.
 
