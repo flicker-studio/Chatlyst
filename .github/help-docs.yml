@@ -1,6 +1,8 @@
-name: Unit Test
+name: Docs
 
 on:
+  push:
+   paths: ['chatlyst-dev/**','docs/**','README.md']
   schedule:
     - cron: '0 0 * * 0'
   workflow_dispatch:
@@ -11,21 +13,6 @@ jobs:
     steps:
       - name: Checkout Self
         uses: actions/checkout@v3
-
-      - name: Unity unit test
-        uses: game-ci/unity-test-runner@v3
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-        with:
-          projectPath: chatlyst-dev/
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-
-      # Return License
-      - name: Return license
-        uses: game-ci/unity-return-license@v2
-        if: always()    
 
       # Use the Readme.md as the first page
       - name: Use README.md as index.md

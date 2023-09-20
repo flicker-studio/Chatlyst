@@ -2,9 +2,6 @@ name: README TOC Generator
 
 on:
   workflow_dispatch:
-  push:
-    branches: [develop]
-    paths: ['README.md']
 
 jobs:
   generate:
