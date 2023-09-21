@@ -1,7 +1,7 @@
 # Chatlyst
 
 ![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml/badge.svg)
-[![Docs](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://morsiusiurandum.github.io/Chatlyst/)
+[![Help Docs](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://morsiusiurandum.github.io/Chatlyst/)
 
 > [!NOTE]
 > This project is developing!
@@ -19,7 +19,7 @@ This part will be completed in no time.
 You can add use git url in Unity Package Manager,we'll update the hyperlink after the first release.
 If you want to set a target version,we use the `*.*.*`release tag so you can specify a version like `#0.2.0`.
 
-## Contribution
+## Contribute
 
 If you are interested in contributing, you can create a new issue or discussion and we will respond within 36 hours.If you don't need to contact us, then once you're ready to make changes, just send a pull request. We will be very happy to see your contribution.
 
