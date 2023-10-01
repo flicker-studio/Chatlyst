@@ -101,11 +101,11 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Editor.BeginNodeView.BuildNewInstance
   nameWithType: BeginNodeView.BuildNewInstance
-- uid: Chatlyst.Editor.BeginNodeView.RebuildInstance(BasicNode)
+- uid: Chatlyst.Editor.BeginNodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
   name: RebuildInstance(BasicNode)
-  href: api/Chatlyst.Editor.BeginNodeView.html#Chatlyst_Editor_BeginNodeView_RebuildInstance_BasicNode_
-  commentId: M:Chatlyst.Editor.BeginNodeView.RebuildInstance(BasicNode)
-  fullName: Chatlyst.Editor.BeginNodeView.RebuildInstance(BasicNode)
+  href: api/Chatlyst.Editor.BeginNodeView.html#Chatlyst_Editor_BeginNodeView_RebuildInstance_Chatlyst_Runtime_Data_BasicNode_
+  commentId: M:Chatlyst.Editor.BeginNodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
+  fullName: Chatlyst.Editor.BeginNodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
   nameWithType: BeginNodeView.RebuildInstance(BasicNode)
 - uid: Chatlyst.Editor.BeginNodeView.RebuildInstance*
   name: RebuildInstance
@@ -581,11 +581,11 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Editor.DialogueNodeView.BuildNewInstance
   nameWithType: DialogueNodeView.BuildNewInstance
-- uid: Chatlyst.Editor.DialogueNodeView.RebuildInstance(BasicNode)
+- uid: Chatlyst.Editor.DialogueNodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
   name: RebuildInstance(BasicNode)
-  href: api/Chatlyst.Editor.DialogueNodeView.html#Chatlyst_Editor_DialogueNodeView_RebuildInstance_BasicNode_
-  commentId: M:Chatlyst.Editor.DialogueNodeView.RebuildInstance(BasicNode)
-  fullName: Chatlyst.Editor.DialogueNodeView.RebuildInstance(BasicNode)
+  href: api/Chatlyst.Editor.DialogueNodeView.html#Chatlyst_Editor_DialogueNodeView_RebuildInstance_Chatlyst_Runtime_Data_BasicNode_
+  commentId: M:Chatlyst.Editor.DialogueNodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
+  fullName: Chatlyst.Editor.DialogueNodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
   nameWithType: DialogueNodeView.RebuildInstance(BasicNode)
 - uid: Chatlyst.Editor.DialogueNodeView.RebuildInstance*
   name: RebuildInstance
@@ -905,11 +905,11 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Editor.NodeView.BuildNewInstance
   nameWithType: NodeView.BuildNewInstance
-- uid: Chatlyst.Editor.NodeView.RebuildInstance(BasicNode)
+- uid: Chatlyst.Editor.NodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
   name: RebuildInstance(BasicNode)
-  href: api/Chatlyst.Editor.NodeView.html#Chatlyst_Editor_NodeView_RebuildInstance_BasicNode_
-  commentId: M:Chatlyst.Editor.NodeView.RebuildInstance(BasicNode)
-  fullName: Chatlyst.Editor.NodeView.RebuildInstance(BasicNode)
+  href: api/Chatlyst.Editor.NodeView.html#Chatlyst_Editor_NodeView_RebuildInstance_Chatlyst_Runtime_Data_BasicNode_
+  commentId: M:Chatlyst.Editor.NodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
+  fullName: Chatlyst.Editor.NodeView.RebuildInstance(Chatlyst.Runtime.Data.BasicNode)
   nameWithType: NodeView.RebuildInstance(BasicNode)
 - uid: Chatlyst.Editor.NodeView.RebuildInstance*
   name: RebuildInstance
@@ -950,11 +950,11 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Editor.NodeViewFactory.CreatNewNodeView
   nameWithType: NodeViewFactory.CreatNewNodeView
-- uid: Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView(BasicNode,System.String)
+- uid: Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView(Chatlyst.Runtime.Data.BasicNode,System.String)
   name: RebuildOldNodeView(BasicNode, String)
-  href: api/Chatlyst.Editor.NodeViewFactory.html#Chatlyst_Editor_NodeViewFactory_RebuildOldNodeView_BasicNode_System_String_
-  commentId: M:Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView(BasicNode,System.String)
-  fullName: Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView(BasicNode, System.String)
+  href: api/Chatlyst.Editor.NodeViewFactory.html#Chatlyst_Editor_NodeViewFactory_RebuildOldNodeView_Chatlyst_Runtime_Data_BasicNode_System_String_
+  commentId: M:Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView(Chatlyst.Runtime.Data.BasicNode,System.String)
+  fullName: Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView(Chatlyst.Runtime.Data.BasicNode, System.String)
   nameWithType: NodeViewFactory.RebuildOldNodeView(BasicNode, String)
 - uid: Chatlyst.Editor.NodeViewFactory.RebuildOldNodeView*
   name: RebuildOldNodeView
@@ -988,11 +988,11 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Editor.Serialization.IndexJsonInternal.Deserialize
   nameWithType: IndexJsonInternal.Deserialize
-- uid: Chatlyst.Editor.Serialization.IndexJsonInternal.Serialize(NodeIndex)
+- uid: Chatlyst.Editor.Serialization.IndexJsonInternal.Serialize(Chatlyst.Runtime.NodeIndex)
   name: Serialize(NodeIndex)
-  href: api/Chatlyst.Editor.Serialization.IndexJsonInternal.html#Chatlyst_Editor_Serialization_IndexJsonInternal_Serialize_NodeIndex_
-  commentId: M:Chatlyst.Editor.Serialization.IndexJsonInternal.Serialize(NodeIndex)
-  fullName: Chatlyst.Editor.Serialization.IndexJsonInternal.Serialize(NodeIndex)
+  href: api/Chatlyst.Editor.Serialization.IndexJsonInternal.html#Chatlyst_Editor_Serialization_IndexJsonInternal_Serialize_Chatlyst_Runtime_NodeIndex_
+  commentId: M:Chatlyst.Editor.Serialization.IndexJsonInternal.Serialize(Chatlyst.Runtime.NodeIndex)
+  fullName: Chatlyst.Editor.Serialization.IndexJsonInternal.Serialize(Chatlyst.Runtime.NodeIndex)
   nameWithType: IndexJsonInternal.Serialize(NodeIndex)
 - uid: Chatlyst.Editor.Serialization.IndexJsonInternal.Serialize*
   name: Serialize
@@ -1051,13 +1051,13 @@ references:
   commentId: F:Chatlyst.Editor.Serialization.NexusJsonUtility.IgnoreLoopSetting
   fullName: Chatlyst.Editor.Serialization.NexusJsonUtility.IgnoreLoopSetting
   nameWithType: NexusJsonUtility.IgnoreLoopSetting
-- uid: Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(IEnumerable{System.Object},JsonSerializerSettings)
+- uid: Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(System.Collections.Generic.IEnumerable{System.Object},JsonSerializerSettings)
   name: SerializeIEnumerable(IEnumerable<Object>, JsonSerializerSettings)
-  href: api/Chatlyst.Editor.Serialization.NexusJsonUtility.html#Chatlyst_Editor_Serialization_NexusJsonUtility_SerializeIEnumerable_IEnumerable_System_Object__JsonSerializerSettings_
-  commentId: M:Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(IEnumerable{System.Object},JsonSerializerSettings)
+  href: api/Chatlyst.Editor.Serialization.NexusJsonUtility.html#Chatlyst_Editor_Serialization_NexusJsonUtility_SerializeIEnumerable_System_Collections_Generic_IEnumerable_System_Object__JsonSerializerSettings_
+  commentId: M:Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(System.Collections.Generic.IEnumerable{System.Object},JsonSerializerSettings)
   name.vb: SerializeIEnumerable(IEnumerable(Of Object), JsonSerializerSettings)
-  fullName: Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(IEnumerable<System.Object>, JsonSerializerSettings)
-  fullName.vb: Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(IEnumerable(Of System.Object), JsonSerializerSettings)
+  fullName: Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(System.Collections.Generic.IEnumerable<System.Object>, JsonSerializerSettings)
+  fullName.vb: Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable(System.Collections.Generic.IEnumerable(Of System.Object), JsonSerializerSettings)
   nameWithType: NexusJsonUtility.SerializeIEnumerable(IEnumerable<Object>, JsonSerializerSettings)
   nameWithType.vb: NexusJsonUtility.SerializeIEnumerable(IEnumerable(Of Object), JsonSerializerSettings)
 - uid: Chatlyst.Editor.Serialization.NexusJsonUtility.SerializeIEnumerable*
@@ -1359,11 +1359,11 @@ references:
   commentId: T:Chatlyst.Runtime.NodeIndex
   fullName: Chatlyst.Runtime.NodeIndex
   nameWithType: NodeIndex
-- uid: Chatlyst.Runtime.NodeIndex.AutoAddNode(BasicNode)
+- uid: Chatlyst.Runtime.NodeIndex.AutoAddNode(Chatlyst.Runtime.Data.BasicNode)
   name: AutoAddNode(BasicNode)
-  href: api/Chatlyst.Runtime.NodeIndex.html#Chatlyst_Runtime_NodeIndex_AutoAddNode_BasicNode_
-  commentId: M:Chatlyst.Runtime.NodeIndex.AutoAddNode(BasicNode)
-  fullName: Chatlyst.Runtime.NodeIndex.AutoAddNode(BasicNode)
+  href: api/Chatlyst.Runtime.NodeIndex.html#Chatlyst_Runtime_NodeIndex_AutoAddNode_Chatlyst_Runtime_Data_BasicNode_
+  commentId: M:Chatlyst.Runtime.NodeIndex.AutoAddNode(Chatlyst.Runtime.Data.BasicNode)
+  fullName: Chatlyst.Runtime.NodeIndex.AutoAddNode(Chatlyst.Runtime.Data.BasicNode)
   nameWithType: NodeIndex.AutoAddNode(BasicNode)
 - uid: Chatlyst.Runtime.NodeIndex.AutoAddNode*
   name: AutoAddNode
@@ -1372,13 +1372,13 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Runtime.NodeIndex.AutoAddNode
   nameWithType: NodeIndex.AutoAddNode
-- uid: Chatlyst.Runtime.NodeIndex.AutoAddNodes(List{BasicNode})
+- uid: Chatlyst.Runtime.NodeIndex.AutoAddNodes(System.Collections.Generic.List{Chatlyst.Runtime.Data.BasicNode})
   name: AutoAddNodes(List<BasicNode>)
-  href: api/Chatlyst.Runtime.NodeIndex.html#Chatlyst_Runtime_NodeIndex_AutoAddNodes_List_BasicNode__
-  commentId: M:Chatlyst.Runtime.NodeIndex.AutoAddNodes(List{BasicNode})
+  href: api/Chatlyst.Runtime.NodeIndex.html#Chatlyst_Runtime_NodeIndex_AutoAddNodes_System_Collections_Generic_List_Chatlyst_Runtime_Data_BasicNode__
+  commentId: M:Chatlyst.Runtime.NodeIndex.AutoAddNodes(System.Collections.Generic.List{Chatlyst.Runtime.Data.BasicNode})
   name.vb: AutoAddNodes(List(Of BasicNode))
-  fullName: Chatlyst.Runtime.NodeIndex.AutoAddNodes(List<BasicNode>)
-  fullName.vb: Chatlyst.Runtime.NodeIndex.AutoAddNodes(List(Of BasicNode))
+  fullName: Chatlyst.Runtime.NodeIndex.AutoAddNodes(System.Collections.Generic.List<Chatlyst.Runtime.Data.BasicNode>)
+  fullName.vb: Chatlyst.Runtime.NodeIndex.AutoAddNodes(System.Collections.Generic.List(Of Chatlyst.Runtime.Data.BasicNode))
   nameWithType: NodeIndex.AutoAddNodes(List<BasicNode>)
   nameWithType.vb: NodeIndex.AutoAddNodes(List(Of BasicNode))
 - uid: Chatlyst.Runtime.NodeIndex.AutoAddNodes*
@@ -1420,13 +1420,13 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Runtime.NodeIndex.GetHashCode
   nameWithType: NodeIndex.GetHashCode
-- uid: Chatlyst.Runtime.NodeIndex.Refresh(List{BasicNode})
+- uid: Chatlyst.Runtime.NodeIndex.Refresh(System.Collections.Generic.List{Chatlyst.Runtime.Data.BasicNode})
   name: Refresh(List<BasicNode>)
-  href: api/Chatlyst.Runtime.NodeIndex.html#Chatlyst_Runtime_NodeIndex_Refresh_List_BasicNode__
-  commentId: M:Chatlyst.Runtime.NodeIndex.Refresh(List{BasicNode})
+  href: api/Chatlyst.Runtime.NodeIndex.html#Chatlyst_Runtime_NodeIndex_Refresh_System_Collections_Generic_List_Chatlyst_Runtime_Data_BasicNode__
+  commentId: M:Chatlyst.Runtime.NodeIndex.Refresh(System.Collections.Generic.List{Chatlyst.Runtime.Data.BasicNode})
   name.vb: Refresh(List(Of BasicNode))
-  fullName: Chatlyst.Runtime.NodeIndex.Refresh(List<BasicNode>)
-  fullName.vb: Chatlyst.Runtime.NodeIndex.Refresh(List(Of BasicNode))
+  fullName: Chatlyst.Runtime.NodeIndex.Refresh(System.Collections.Generic.List<Chatlyst.Runtime.Data.BasicNode>)
+  fullName.vb: Chatlyst.Runtime.NodeIndex.Refresh(System.Collections.Generic.List(Of Chatlyst.Runtime.Data.BasicNode))
   nameWithType: NodeIndex.Refresh(List<BasicNode>)
   nameWithType.vb: NodeIndex.Refresh(List(Of BasicNode))
 - uid: Chatlyst.Runtime.NodeIndex.Refresh*
@@ -1516,13 +1516,13 @@ references:
   isSpec: "True"
   fullName: Chatlyst.Runtime.Util.ListExtend.AreSimilar
   nameWithType: ListExtend.AreSimilar
-- uid: Chatlyst.Runtime.Util.ListExtend.AreSimilar``1(List{``0},List{``0})
+- uid: Chatlyst.Runtime.Util.ListExtend.AreSimilar``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})
   name: AreSimilar<T>(List<T>, List<T>)
-  href: api/Chatlyst.Runtime.Util.ListExtend.html#Chatlyst_Runtime_Util_ListExtend_AreSimilar__1_List___0__List___0__
-  commentId: M:Chatlyst.Runtime.Util.ListExtend.AreSimilar``1(List{``0},List{``0})
+  href: api/Chatlyst.Runtime.Util.ListExtend.html#Chatlyst_Runtime_Util_ListExtend_AreSimilar__1_System_Collections_Generic_List___0__System_Collections_Generic_List___0__
+  commentId: M:Chatlyst.Runtime.Util.ListExtend.AreSimilar``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})
   name.vb: AreSimilar(Of T)(List(Of T), List(Of T))
-  fullName: Chatlyst.Runtime.Util.ListExtend.AreSimilar<T>(List<T>, List<T>)
-  fullName.vb: Chatlyst.Runtime.Util.ListExtend.AreSimilar(Of T)(List(Of T), List(Of T))
+  fullName: Chatlyst.Runtime.Util.ListExtend.AreSimilar<T>(System.Collections.Generic.List<T>, System.Collections.Generic.List<T>)
+  fullName.vb: Chatlyst.Runtime.Util.ListExtend.AreSimilar(Of T)(System.Collections.Generic.List(Of T), System.Collections.Generic.List(Of T))
   nameWithType: ListExtend.AreSimilar<T>(List<T>, List<T>)
   nameWithType.vb: ListExtend.AreSimilar(Of T)(List(Of T), List(Of T))
 - uid: Tests.Editor
