@@ -1,8 +1,9 @@
-# title
+# <title>
 
-> [!NOTE]
+> [!NOTE]  
 > Note comments
-> [!Warning]
+
+> [!Warning]  
 > Warning comments
 
 > [!IMPORTANT]  
@@ -22,6 +23,6 @@
 - [x] #1
 - [ ] #2  
 
-## Comments
+## Appendix
 
 You can add some irrelevant words here
