@@ -2,7 +2,8 @@ name: Help Docs
 
 on:
   push:
-   paths: ['chatlyst-dev/**','docs/**','README.md']
+    branches: [develop]
+    paths: ['chatlyst-dev/**','docs/**','README.md']
   schedule:
     - cron: '0 0 * * 0'
   workflow_dispatch:
