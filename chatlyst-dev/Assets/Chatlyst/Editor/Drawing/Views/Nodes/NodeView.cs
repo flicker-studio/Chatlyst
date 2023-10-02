@@ -2,6 +2,7 @@
 using System.Reflection;
 using Chatlyst.Editor.Attribute;
 using Chatlyst.Runtime.Data;
+using JetBrains.Annotations;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -23,7 +24,7 @@ namespace Chatlyst.Editor
         /// </summary>
         /// <param name="uxmlPath">Relative path of Uxml file.</param>
         /// <exception cref="NullReferenceException">The file in <paramref name="uxmlPath" /> is not exist.</exception>
-        protected NodeView(string uxmlPath)
+        protected NodeView([NotNull]string uxmlPath)
         {
             var visualTree = Resources.Load<VisualTreeAsset>(uxmlPath);
             if (visualTree == null)
