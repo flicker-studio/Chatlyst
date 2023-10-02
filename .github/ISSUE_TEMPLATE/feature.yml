@@ -1,0 +1,26 @@
+name: Feature
+description: Use this template to request and track new features.
+title: "[Feature]: <title> "
+labels: ["enhancement"]
+projects: ["Chatlyst"]
+assignees:
+  - Morsiusiurandum
+body:
+  - type: input
+    id: short-description
+    attributes:
+      label: Description
+      description: Brief description of new features
+      placeholder: Add turning logic to the character
+    validations:
+      required: true
+  - type: textarea
+    id: long-description
+    attributes:
+      label: Appendix
+      description: Write more description here
+      placeholder: |
+        Hardcoding rotation using quaternions.
+      value: None
+    validations:
+      required: false
