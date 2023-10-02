@@ -172,7 +172,7 @@
   "api/Chatlyst.Runtime.Data.BasicNode.html": {
     "href": "api/Chatlyst.Runtime.Data.BasicNode.html",
     "title": "Class BasicNode | Chatlyst Documentation",
-    "keywords": "Class BasicNode Inheritance Object BasicNode BeginNode Inherited Members Object.Equals(Object, Object) Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Namespace : Chatlyst.Runtime.Data Assembly : cs.temp.dll.dll Syntax public abstract class BasicNode Constructors BasicNode() Declaration protected BasicNode() Fields Guid Declaration public readonly string Guid Field Value Type Description String NextGuid Declaration public string NextGuid Field Value Type Description String NodePos Declaration public Vector2 NodePos Field Value Type Description Vector2 NodeType Declaration public NodeType NodeType Field Value Type Description NodeType Methods Equals(Object) Declaration public override bool Equals(object obj) Parameters Type Name Description Object obj Returns Type Description Boolean Overrides Object.Equals(Object) GetHashCode() Declaration public override int GetHashCode() Returns Type Description Int32 Overrides Object.GetHashCode() GetRect() Declaration public Rect GetRect() Returns Type Description Rect SetRect(Rect) Declaration public void SetRect(Rect rect) Parameters Type Name Description Rect rect ToString() Declaration public override string ToString() Returns Type Description String Overrides Object.ToString()"
+    "keywords": "Class BasicNode Inheritance Object BasicNode BeginNode EndNode Inherited Members Object.Equals(Object, Object) Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Namespace : Chatlyst.Runtime.Data Assembly : cs.temp.dll.dll Syntax public abstract class BasicNode Constructors BasicNode() Declaration protected BasicNode() Fields Guid Declaration public readonly string Guid Field Value Type Description String NextGuid Declaration public string NextGuid Field Value Type Description String NodePos Declaration public Vector2 NodePos Field Value Type Description Vector2 NodeType Declaration public NodeType NodeType Field Value Type Description NodeType Methods Equals(Object) Declaration public override bool Equals(object obj) Parameters Type Name Description Object obj Returns Type Description Boolean Overrides Object.Equals(Object) GetHashCode() Declaration public override int GetHashCode() Returns Type Description Int32 Overrides Object.GetHashCode() GetRect() Declaration public Rect GetRect() Returns Type Description Rect SetRect(Rect) Declaration public void SetRect(Rect rect) Parameters Type Name Description Rect rect ToString() Declaration public override string ToString() Returns Type Description String Overrides Object.ToString()"
   },
   "api/Chatlyst.Runtime.Data.html": {
     "href": "api/Chatlyst.Runtime.Data.html",
@@ -184,10 +184,15 @@
     "title": "Enum ElementType | Chatlyst Documentation",
     "keywords": "Enum ElementType Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public enum ElementType Fields Name Description Avatar Text View"
   },
+  "api/Chatlyst.Runtime.EndNode.html": {
+    "href": "api/Chatlyst.Runtime.EndNode.html",
+    "title": "Class EndNode | Chatlyst Documentation",
+    "keywords": "Class EndNode Inheritance Object BasicNode EndNode Inherited Members BasicNode.Guid BasicNode.NodeType BasicNode.NextGuid BasicNode.NodePos BasicNode.SetRect(Rect) BasicNode.GetRect() BasicNode.ToString() BasicNode.Equals(Object) BasicNode.GetHashCode() Object.Equals(Object, Object) Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Namespace : Chatlyst.Runtime Assembly : cs.temp.dll.dll Syntax public class EndNode : BasicNode Constructors EndNode(String, Int32) Declaration public EndNode(string label = \"Default End Label\", int number = -1) Parameters Type Name Description String label Int32 number Fields Number Declaration public int Number Field Value Type Description Int32 StartLabel Declaration public string StartLabel Field Value Type Description String"
+  },
   "api/Chatlyst.Runtime.html": {
     "href": "api/Chatlyst.Runtime.html",
     "title": "Namespace Chatlyst.Runtime | Chatlyst Documentation",
-    "keywords": "Namespace Chatlyst.Runtime Classes BeginNode MessageExtend NodeIndex Structs Message Enums CharacterName ElementType NodeType"
+    "keywords": "Namespace Chatlyst.Runtime Classes BeginNode EndNode MessageExtend NodeIndex Structs Message Enums CharacterName ElementType NodeType"
   },
   "api/Chatlyst.Runtime.Message.html": {
     "href": "api/Chatlyst.Runtime.Message.html",
