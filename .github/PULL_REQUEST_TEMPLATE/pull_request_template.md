@@ -9,14 +9,14 @@
 > [!IMPORTANT]  
 > Important comments
 
-## Change the list
+## Change List
 >
 > List the changes
 
 - Just like one
 - And this
 
-## List of issues
+## Issue List
 >
 > Use the following syntax and issue sequence number to close and link issues
 
