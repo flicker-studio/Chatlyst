@@ -20,8 +20,7 @@
 >
 > Use the following syntax and issue sequence number to close and link issues
 
-- [x] #1
-- [ ] #2  
+Closed #1
 
 ## Appendix
 
