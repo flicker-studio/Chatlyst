@@ -4,6 +4,7 @@ using System.Reflection;
 using Chatlyst.Editor.Attribute;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Chatlyst.Editor
 {
@@ -43,9 +44,14 @@ namespace Chatlyst.Editor
 
         public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)
         {
-            var    nodeRect = new Rect(context.screenMousePosition - _window.position.position, Vector2.one);
+            var windowRoot          = _window.rootVisualElement;
+            var windowMousePosition = windowRoot.ChangeCoordinatesTo(windowRoot.parent, context.screenMousePosition - _window.position.position);
+            var graphMousePosition  = _graph.contentViewContainer.WorldToLocal(windowMousePosition);
+
+            var    nodeRect = new Rect(graphMousePosition, Vector2.one);
             string typeName = (string)searchTreeEntry.userData;
-            var    newNode  = NodeViewFactory.CreatNewNodeView(nodeRect, typeName);
+
+            var newNode = NodeViewFactory.CreatNewNodeView(nodeRect, typeName);
             if (newNode == null) return false;
             _graph.AddElement(newNode);
             return true;
