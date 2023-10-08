@@ -426,7 +426,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.Data.BasicNode.html",
-          "hash": "KKw1fUZeRCKJ2jno0CVJOg=="
+          "hash": "kuDAlV/tCp/NHeO1CCm2xw=="
         }
       },
       "is_incremental": false,
@@ -451,18 +451,6 @@
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.ElementType.html",
           "hash": "pqtAmLlYVErYyQNc0e6xNA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Chatlyst.Runtime.EndNode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Chatlyst.Runtime.EndNode.html",
-          "hash": "iQ1pN9YxR8z9zkeGv5Wdwg=="
         }
       },
       "is_incremental": false,
@@ -546,7 +534,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Chatlyst.Runtime.html",
-          "hash": "cWccGPSgrhJIkIrgQz/4Hw=="
+          "hash": "CmzX2Ca7SiYtuY1QpuEHOA=="
         }
       },
       "is_incremental": false,
@@ -678,7 +666,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "oCGrxH4qbUtNGQFn144T4g=="
+          "hash": "B7m97zFTonsot2xd9GTOFA=="
         }
       },
       "is_incremental": false,
@@ -765,7 +753,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 55,
+          "total_file_count": 54,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

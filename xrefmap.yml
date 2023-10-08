@@ -1284,37 +1284,6 @@ references:
   commentId: F:Chatlyst.Runtime.ElementType.View
   fullName: Chatlyst.Runtime.ElementType.View
   nameWithType: ElementType.View
-- uid: Chatlyst.Runtime.EndNode
-  name: EndNode
-  href: api/Chatlyst.Runtime.EndNode.html
-  commentId: T:Chatlyst.Runtime.EndNode
-  fullName: Chatlyst.Runtime.EndNode
-  nameWithType: EndNode
-- uid: Chatlyst.Runtime.EndNode.#ctor(System.String,System.Int32)
-  name: EndNode(String, Int32)
-  href: api/Chatlyst.Runtime.EndNode.html#Chatlyst_Runtime_EndNode__ctor_System_String_System_Int32_
-  commentId: M:Chatlyst.Runtime.EndNode.#ctor(System.String,System.Int32)
-  fullName: Chatlyst.Runtime.EndNode.EndNode(System.String, System.Int32)
-  nameWithType: EndNode.EndNode(String, Int32)
-- uid: Chatlyst.Runtime.EndNode.#ctor*
-  name: EndNode
-  href: api/Chatlyst.Runtime.EndNode.html#Chatlyst_Runtime_EndNode__ctor_
-  commentId: Overload:Chatlyst.Runtime.EndNode.#ctor
-  isSpec: "True"
-  fullName: Chatlyst.Runtime.EndNode.EndNode
-  nameWithType: EndNode.EndNode
-- uid: Chatlyst.Runtime.EndNode.Number
-  name: Number
-  href: api/Chatlyst.Runtime.EndNode.html#Chatlyst_Runtime_EndNode_Number
-  commentId: F:Chatlyst.Runtime.EndNode.Number
-  fullName: Chatlyst.Runtime.EndNode.Number
-  nameWithType: EndNode.Number
-- uid: Chatlyst.Runtime.EndNode.StartLabel
-  name: StartLabel
-  href: api/Chatlyst.Runtime.EndNode.html#Chatlyst_Runtime_EndNode_StartLabel
-  commentId: F:Chatlyst.Runtime.EndNode.StartLabel
-  fullName: Chatlyst.Runtime.EndNode.StartLabel
-  nameWithType: EndNode.StartLabel
 - uid: Chatlyst.Runtime.Message
   name: Message
   href: api/Chatlyst.Runtime.Message.html
