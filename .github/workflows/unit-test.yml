@@ -28,7 +28,7 @@ jobs:
         with:
           projectPath: chatlyst-dev/
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:Chatlyst.*'
 
       - name: Upload Results
         uses: actions/upload-artifact@v2
