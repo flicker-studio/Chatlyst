@@ -28,7 +28,7 @@ jobs:
         with:
           projectPath: chatlyst-dev/
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          coverageOptions: 'generateAdditionalMetrics;assemblyFilters:Chatlyst.*'
+          coverageOptions: 'generateAdditionalMetrics'
 
       - name: Upload XML report to Codecov
         uses: codecov/codecov-action@v2
