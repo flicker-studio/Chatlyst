@@ -2,6 +2,7 @@
 
 ![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml/badge.svg)
 [![Help Docs](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://morsiusiurandum.github.io/Chatlyst/)
+[![codecov](https://codecov.io/gh/Morsiusiurandum/Chatlyst/graph/badge.svg?token=MGT2KMB8BA)](https://codecov.io/gh/Morsiusiurandum/Chatlyst)
 
 > [!NOTE]
 > This project is developing!
