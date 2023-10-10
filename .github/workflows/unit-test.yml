@@ -28,11 +28,12 @@ jobs:
         with:
           projectPath: chatlyst-dev/
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:Chatlyst.*'
+          coverageOptions: 'generateAdditionalMetrics;assemblyFilters:Chatlyst.*'
 
-      - name: Upload Results
-        uses: actions/upload-artifact@v2
-        if: always()
+      - name: Upload XML report to Codecov
+        uses: codecov/codecov-action@v2
         with:
-          name: Coverage results
-          path: ${{ steps.Tests.outputs.coveragePath }}
+          name: Results
+          flags: automated
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ steps.Tests.outputs.coveragePath }}/**/*.xml
