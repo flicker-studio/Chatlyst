@@ -20,7 +20,7 @@ jobs:
         run: cp README.md docs/index.md
       
       - name: Build site
-        uses: nikeee/docfx-action@v1.0.0
+        uses: nunit/docfx-action@v2.10.0
         with:
           args: docs/docfx.json
 
