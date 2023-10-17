@@ -146,13 +146,13 @@ references:
   fullName: Chatlyst.Editor.ChatlystEditorWindow.GraphView
   nameWithType: ChatlystEditorWindow.GraphView
 - uid: Chatlyst.Editor.ChatlystEditorWindow.Initialize(System.String@)
-  name: Initialize(String)
+  name: Initialize(in String)
   href: api/Chatlyst.Editor.ChatlystEditorWindow.html#Chatlyst_Editor_ChatlystEditorWindow_Initialize_System_String__
   commentId: M:Chatlyst.Editor.ChatlystEditorWindow.Initialize(System.String@)
   name.vb: Initialize(ByRef String)
-  fullName: Chatlyst.Editor.ChatlystEditorWindow.Initialize(System.String)
+  fullName: Chatlyst.Editor.ChatlystEditorWindow.Initialize(in System.String)
   fullName.vb: Chatlyst.Editor.ChatlystEditorWindow.Initialize(ByRef System.String)
-  nameWithType: ChatlystEditorWindow.Initialize(String)
+  nameWithType: ChatlystEditorWindow.Initialize(in String)
   nameWithType.vb: ChatlystEditorWindow.Initialize(ByRef String)
 - uid: Chatlyst.Editor.ChatlystEditorWindow.Initialize*
   name: Initialize
