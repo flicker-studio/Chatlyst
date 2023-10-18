@@ -10,7 +10,7 @@ on:
 
 jobs:
   Docs:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout Self
         uses: actions/checkout@v3
@@ -19,6 +19,19 @@ jobs:
       - name: Set first page
         run: cp README.md docs/index.md
       
+      - name: Setup Unity
+        uses: kuler90/setup-unity@v1
+        with:
+          project-path: chatlyst-dev/
+       
+
+      - name: Activate Unity
+        uses: Morsiusiurandum/activate-unity@v1.2.1
+        with:
+          unity-username: ${{ secrets.UNITY_EMAIL }}
+          unity-password: ${{ secrets.UNITY_PASSWORD }}
+          unity-serial: ${{ secrets.UNITY_SERIAL}}
+
       - name: Build site
         uses: nunit/docfx-action@v1.12.0
         with:
