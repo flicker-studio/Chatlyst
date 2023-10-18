@@ -32,7 +32,7 @@ jobs:
           unity-username: ${{ secrets.UNITY_EMAIL }}
           unity-password: ${{ secrets.UNITY_PASSWORD }}
           unity-serial: ${{ secrets.UNITY_SERIAL}}
-          unity-path: ${{setup.output.unity-path}}
+          unity-path: ${{steps.setup.output.unity-path}}
 
 #      - # name: Unit test
         #id: Tests
