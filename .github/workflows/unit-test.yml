@@ -13,7 +13,7 @@ on:
 
 jobs:
   Test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout Self
         uses: actions/checkout@v3
