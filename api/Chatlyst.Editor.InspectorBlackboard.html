@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class InspectorBlackboard
+ | Chatlyst Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class InspectorBlackboard
+ | Chatlyst Documentation ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Morsiusiurandum/Chatlyst/new/new-web-site/apiSpec/new?filename=Chatlyst_Editor_InspectorBlackboard.md&amp;value=---%0Auid%3A%20Chatlyst.Editor.InspectorBlackboard%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Chatlyst.Editor.InspectorBlackboard">
+
+
+
+  <h1 id="Chatlyst_Editor_InspectorBlackboard" data-uid="Chatlyst.Editor.InspectorBlackboard" class="text-break">
+    Class InspectorBlackboard
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Morsiusiurandum/Chatlyst/blob/new-web-site/chatlyst-dev/Assets/Chatlyst/Editor/Drawing/Views/Windows/InspectorBlackboard.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Chatlyst.html">Chatlyst</a>.<a class="xref" href="Chatlyst.Editor.html">Editor</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Chatlyst.Editor.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class InspectorBlackboard : Blackboard, IEventHandler, IResolvedStyle, ITransform, ITransitionAnimations, IExperimentalFeatures, IVisualElementScheduler, ISelectable, ISelection</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.html">CallbackEventHandler</a></div>
+      <div><span class="xref">Focusable</span></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.html">VisualElement</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.GraphElement.html">GraphElement</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard.html">Blackboard</a></div>
+      <div><span class="xref">InspectorBlackboard</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.IEventHandler.html">IEventHandler</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.IResolvedStyle.html">IResolvedStyle</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.ITransform.html">ITransform</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.Experimental.ITransitionAnimations.html">ITransitionAnimations</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.IExperimentalFeatures.html">IExperimentalFeatures</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.IVisualElementScheduler.html">IVisualElementScheduler</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.ISelectable.html">ISelectable</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.ISelection.html">ISelection</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard.AddToSelection.html">Blackboard.AddToSelection(ISelectable)</a>
+    </div>
+    <div>
+      <span class="xref">Blackboard.RemoveFromSelection(ISelectable)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard.ClearSelection.html">Blackboard.ClearSelection()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-graphView.html">Blackboard.graphView</a>
+    </div>
+    <div>
+      <span class="xref">Blackboard.addItemRequested</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-moveItemRequested.html">Blackboard.moveItemRequested</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-editTextRequested.html">Blackboard.editTextRequested</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-selection.html">Blackboard.selection</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-title.html">Blackboard.title</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-subTitle.html">Blackboard.subTitle</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-windowed.html">Blackboard.windowed</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-contentContainer.html">Blackboard.contentContainer</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.Blackboard-scrollable.html">Blackboard.scrollable</a>
+    </div>
+    <div>
+      <span class="xref">GraphElement.ResetLayer()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsSelectable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsMovable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsResizable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsDroppable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsAscendable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsRenamable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsCopiable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsSnappable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsGroupable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsStackable()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.GetGlobalCenter()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.UpdatePresenterPosition()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.GetPosition()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.SetPosition(Rect)</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.OnSelected()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.OnUnselected()</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.HitTest(Vector2)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GraphElement.Select(VisualElement, bool)</a>
+    </div>
+    <div>
+      <span class="xref">GraphElement.Unselect(VisualElement)</span>
+    </div>
+    <div>
+      <span class="xref">GraphElement.IsSelected(VisualElement)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.GraphElement-elementTypeColor.html">GraphElement.elementTypeColor</a>
+    </div>
+    <div>
+      <span class="xref">GraphElement.layer</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.GraphElement-showInMiniMap.html">GraphElement.showInMiniMap</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.GraphElement-capabilities.html">GraphElement.capabilities</a>
+    </div>
+    <div>
+      <span class="xref">GraphElement.selected</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.disabledUssClassName</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.Focus.html">VisualElement.Focus()</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.SendEvent(EventBase)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">VisualElement.SetEnabled(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.MarkDirtyRepaint.html">VisualElement.MarkDirtyRepaint()</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.ContainsPoint(Vector2)</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.Overlaps(Rect)</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.ToString()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.GetClasses.html">VisualElement.GetClasses()</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.ClearClassList()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">VisualElement.AddToClassList(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">VisualElement.RemoveFromClassList(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">VisualElement.ToggleInClassList(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">VisualElement.EnableInClassList(string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">VisualElement.ClassListContains(string)</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.FindAncestorUserData()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.Add.html">VisualElement.Add(VisualElement)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">VisualElement.Insert(int, VisualElement)</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.Remove(VisualElement)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">VisualElement.RemoveAt(int)</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.Clear()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">VisualElement.ElementAt(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.IndexOf.html">VisualElement.IndexOf(VisualElement)</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.Children()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.comparison-1">VisualElement.Sort(Comparison&lt;VisualElement&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.BringToFront.html">VisualElement.BringToFront()</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.SendToBack()</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.PlaceBehind(VisualElement)</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.PlaceInFront(VisualElement)</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.RemoveFromHierarchy()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.GetFirstOfType.html">VisualElement.GetFirstOfType&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.GetFirstAncestorOfType.html">VisualElement.GetFirstAncestorOfType&lt;T&gt;()</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.Contains(VisualElement)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement.FindCommonAncestor.html">VisualElement.FindCommonAncestor(VisualElement)</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.resolvedStyle</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement-viewDataKey.html">VisualElement.viewDataKey</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.userData</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.canGrabFocus</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.focusController</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.usageHints</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.transform</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.layout</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.contentRect</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement-worldBound.html">VisualElement.worldBound</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.localBound</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement-worldTransform.html">VisualElement.worldTransform</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.pickingMode</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.name</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.enabledInHierarchy</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.enabledSelf</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.languageDirection</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement-visible.html">VisualElement.visible</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.generateVisualContent</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.experimental</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.hierarchy</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.cacheAsBitmap</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.parent</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.panel</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.VisualElement-visualTreeAssetSource.html">VisualElement.visualTreeAssetSource</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">VisualElement.this[int]</a>
+    </div>
+    <div>
+      <span class="xref">VisualElement.childCount</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.schedule</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.style</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.customStyle</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.styleSheets</span>
+    </div>
+    <div>
+      <span class="xref">VisualElement.tooltip</span>
+    </div>
+    <div>
+      <span class="xref">Focusable.Blur()</span>
+    </div>
+    <div>
+      <span class="xref">Focusable.focusable</span>
+    </div>
+    <div>
+      <span class="xref">Focusable.tabIndex</span>
+    </div>
+    <div>
+      <span class="xref">Focusable.delegatesFocus</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.RegisterCallback.html">CallbackEventHandler.RegisterCallback&lt;TEventType&gt;(EventCallback&lt;TEventType&gt;, TrickleDown)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.RegisterCallback.html">CallbackEventHandler.RegisterCallback&lt;TEventType, TUserArgsType&gt;(EventCallback&lt;TEventType, TUserArgsType&gt;, TUserArgsType, TrickleDown)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.UnregisterCallback.html">CallbackEventHandler.UnregisterCallback&lt;TEventType&gt;(EventCallback&lt;TEventType&gt;, TrickleDown)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.UnregisterCallback.html">CallbackEventHandler.UnregisterCallback&lt;TEventType, TUserArgsType&gt;(EventCallback&lt;TEventType, TUserArgsType&gt;, TrickleDown)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.HandleEvent.html">CallbackEventHandler.HandleEvent(EventBase)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.HasTrickleDownHandlers.html">CallbackEventHandler.HasTrickleDownHandlers()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/UIElements.CallbackEventHandler.HasBubbleUpHandlers.html">CallbackEventHandler.HasBubbleUpHandlers()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Chatlyst_Editor_InspectorBlackboard__ctor_" data-uid="Chatlyst.Editor.InspectorBlackboard.#ctor*"></a>
+
+  <h3 id="Chatlyst_Editor_InspectorBlackboard__ctor" data-uid="Chatlyst.Editor.InspectorBlackboard.#ctor">
+  InspectorBlackboard()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Morsiusiurandum/Chatlyst/blob/new-web-site/chatlyst-dev/Assets/Chatlyst/Editor/Drawing/Views/Windows/InspectorBlackboard.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InspectorBlackboard()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Chatlyst_Editor_InspectorBlackboard_Inspector_" data-uid="Chatlyst.Editor.InspectorBlackboard.Inspector*"></a>
+
+  <h3 id="Chatlyst_Editor_InspectorBlackboard_Inspector_UnityEditor_Experimental_GraphView_ISelectable_" data-uid="Chatlyst.Editor.InspectorBlackboard.Inspector(UnityEditor.Experimental.GraphView.ISelectable)">
+  Inspector(ISelectable)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Morsiusiurandum/Chatlyst/blob/new-web-site/chatlyst-dev/Assets/Chatlyst/Editor/Drawing/Views/Windows/InspectorBlackboard.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Inspector(ISelectable target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>target</code> <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Experimental.GraphView.ISelectable.html">ISelectable</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © Morsiusiurandum
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -29,11 +29,7 @@
       <meta name="loc:copy" content="Copy">
   </head>
 
-  <script type="module">
-    import options from './public/main.js'
-    import { init } from './public/docfx.min.js'
-    init(options)
-  </script>
+  <script type="module" src="./public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -109,11 +105,12 @@ If you want to set a target version,we use the <code>*.*.*</code>release tag so 
 <p>YOU</p>
 <h2 id="license">License</h2>
 <p>This library is under the MIT License.</p>
+
 </article>
 
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
-        
+
       </div>
 
       <div class="affix">
