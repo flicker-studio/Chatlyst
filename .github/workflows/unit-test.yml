@@ -20,6 +20,7 @@ jobs:
 
       
       - name: Setup Unity
+        id: setup
         uses: kuler90/setup-unity@v1
         with:
           project-path: chatlyst-dev/
@@ -31,8 +32,9 @@ jobs:
           unity-username: ${{ secrets.UNITY_EMAIL }}
           unity-password: ${{ secrets.UNITY_PASSWORD }}
           unity-serial: ${{ secrets.UNITY_SERIAL}}
+          unity-path: ${{setup.output.unity-path}}
 
-#      - #name: Unit test
+#      - # name: Unit test
         #id: Tests
         #uses: game-ci/unity-builder@v3
         #env:
