@@ -32,7 +32,7 @@ jobs:
           unity-password: ${{ secrets.UNITY_PASSWORD }}
           unity-serial: ${{ secrets.UNITY_SERIAL}}
 
-      - #name: Unit test
+#      - #name: Unit test
         #id: Tests
         #uses: game-ci/unity-builder@v3
         #env:
