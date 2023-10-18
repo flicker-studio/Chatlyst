@@ -27,7 +27,7 @@ jobs:
        
 
       - name: Activate Unity
-        uses: kuler90/activate-unity@v1.1.3
+        uses: Morsiusiurandum/activate-unity@v1.2.0
         with:
           unity-username: ${{ secrets.UNITY_EMAIL }}
           unity-password: ${{ secrets.UNITY_PASSWORD }}
