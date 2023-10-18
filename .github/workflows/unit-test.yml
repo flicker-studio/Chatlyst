@@ -49,9 +49,7 @@ jobs:
         #  buildMethod: SyncVS_Workaround.SyncSolution
 
       - run: |
-              ls
-              ${{steps.setup.output.unity-path}} -batchmode -nographics -quit -projectPath chatlyst-dev -executeMethod SyncVS_Workaround.SyncSolution  -username ${{ secrets.UNITY_EMAIL }} -password ${{ secrets.UNITY_PASSWORD }} -serial ${{ secrets.UNITY_SERIAL }}
-              
+              C:\"Program Files"\Unity\Hub\Editor\2022.3.10f1\Editor\Unity.exe -batchmode -nographics -quit -projectPath chatlyst-dev -executeMethod SyncVS_Workaround.SyncSolution  -username ${{ secrets.UNITY_EMAIL }} -password ${{ secrets.UNITY_PASSWORD }} -serial ${{ secrets.UNITY_SERIAL }}
               cd chatlyst-dev
               ls
 
