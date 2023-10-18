@@ -24,13 +24,13 @@ jobs:
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
           projectPath: chatlyst-dev/
           targetPlatform: StandaloneWindows64
           
          # coverageOptions: 'generateAdditionalMetrics'
-          buildMethod: SyncVS_Workaround.SyncSolution
+        #  buildMethod: SyncVS_Workaround.SyncSolution
 
       - run: |
               ls
