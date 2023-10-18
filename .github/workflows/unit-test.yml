@@ -27,6 +27,7 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           projectPath: chatlyst-dev/
+          targetPlatform: StandaloneWindows64
           
          # coverageOptions: 'generateAdditionalMetrics'
           buildMethod: SyncVS_Workaround.SyncSolution
