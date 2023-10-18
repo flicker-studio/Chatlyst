@@ -24,7 +24,6 @@ jobs:
         with:
           project-path: chatlyst-dev/
        
-
       - name: Activate Unity
         uses: Morsiusiurandum/activate-unity@v1.2.1
         with:
@@ -32,10 +31,16 @@ jobs:
           unity-password: ${{ secrets.UNITY_PASSWORD }}
           unity-serial: ${{ secrets.UNITY_SERIAL}}
 
-      - name: Build site
-        uses: nunit/docfx-action@v1.12.0
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v3
         with:
-          args: docs/docfx.json
+          dotnet-version: 7.x
+
+      - name: Setup Docfx
+        run: dotnet tool update -g docfx
+
+      - name: Build Site
+        run: docfx docs/docfx.json
 
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
