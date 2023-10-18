@@ -26,13 +26,13 @@ jobs:
           project-path: chatlyst-dev/
        
 
-      - name: Activate Unity
-        uses: Morsiusiurandum/activate-unity@v1.2.0
-        with:
-          unity-username: ${{ secrets.UNITY_EMAIL }}
-          unity-password: ${{ secrets.UNITY_PASSWORD }}
-          unity-serial: ${{ secrets.UNITY_SERIAL}}
-          unity-path: ${{steps.setup.output.unity-path}}
+  #    - name: Activate Unity
+        #uses: Morsiusiurandum/activate-unity@v1.2.0
+        #with:
+          #unity-username: ${{ secrets.UNITY_EMAIL }}
+          #unity-password: ${{ secrets.UNITY_PASSWORD }}
+          #unity-serial: ${{ secrets.UNITY_SERIAL}}
+          #unity-path: ${{steps.setup.output.unity-path}}
 
 #      - # name: Unit test
         #id: Tests
@@ -50,7 +50,7 @@ jobs:
 
       - run: |
               ls
-              echo $evn:UNITY_PATH
+              $evn:UNITY_PATH -batchmode -nographics -quit -projectPath chatlyst-dev -executeMethod SyncVS_Workaround.SyncSolution  -username ${{ secrets.UNITY_EMAIL }} -password ${{ secrets.UNITY_PASSWORD }} -serial ${{ secrets.UNITY_SERIAL }}
               
               cd chatlyst-dev
               ls
