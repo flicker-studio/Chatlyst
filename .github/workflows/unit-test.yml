@@ -27,9 +27,10 @@ jobs:
           projectPath: chatlyst-dev/
           githubToken: ${{ secrets.GITHUB_TOKEN }}
          # coverageOptions: 'generateAdditionalMetrics'
-          customParameters:  -executeMethod UnityEditor.SyncVS_Workaround.SyncSolution
+          customParameters:  -executeMethod SyncVS_Workaround.SyncSolution
 
       - run: |
               ls
+              echo "----------"
               cd chatlyst-dev
               ls
