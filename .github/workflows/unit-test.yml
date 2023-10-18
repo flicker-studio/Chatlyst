@@ -20,14 +20,14 @@ jobs:
 
       - name: Unit test
         id: Tests
-        uses: game-ci/unity-test-runner@v3
+        uses: game-ci/unity-builder@v3
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           projectPath: chatlyst-dev/
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          
          # coverageOptions: 'generateAdditionalMetrics'
-          customParameters:  -executeMethod SyncVS_Workaround.SyncSolution
+          buildMethod: SyncVS_Workaround.SyncSolution
 
       - run: |
               ls
