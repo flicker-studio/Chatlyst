@@ -13,14 +13,6 @@ jobs:
     steps:
       - name: Checkout Self
         uses: actions/checkout@v3
-
-      # Use the Readme.md as the first page
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
       
       - name: Setup Unity
         id: setup-unity
