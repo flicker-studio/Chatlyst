@@ -58,7 +58,8 @@
         ],
         "template": [
             "default",
-            "modern"
+            "modern",
+            "templates/material"
         ],
         "xref": [
             "https://nicoco007.github.io/UnityXRefMap/2022.3/xrefmap.yml"

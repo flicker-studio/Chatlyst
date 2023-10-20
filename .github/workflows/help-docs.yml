@@ -1,9 +1,8 @@
-name: Help Docs
+name: Help Docs -test
 
 on:
   push:
-    branches: [develop]
-    paths: ['chatlyst-dev/**.cs','docs/**','README.md']
+     
   schedule:
     - cron: '0 0 * * 0'
   workflow_dispatch:
@@ -20,31 +19,21 @@ jobs:
         run: cp README.md docs/index.md
       
       - name: Setup Unity
+        id: setup-unity
         uses: kuler90/setup-unity@v1
         with:
           project-path: chatlyst-dev/
        
       - name: Activate Unity
-        uses: Morsiusiurandum/activate-unity@v1.2.1
+        uses: Morsiusiurandum/unity-runner@main
         with:
+          unity-path: ${{steps.setup-unity.outputs.unity-path}}
           unity-username: ${{ secrets.UNITY_EMAIL }}
           unity-password: ${{ secrets.UNITY_PASSWORD }}
-          unity-serial: ${{ secrets.UNITY_SERIAL}}
+          unity-alf: ${{ secrets.UNITY_LICENSE}}
+          project-path: "chatlyst-dev"
+          execute-method: SyncVS_Workaround.SyncSolution
 
-      - name: Dotnet Setup
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 7.x
-
-      - name: Setup Docfx
-        run: dotnet tool update -g docfx
-
-      - name: Build Site
-        run: docfx docs/docfx.json
-
-      - name: Deploy site
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: docs/_site
+      - run: |
+              cd chatlyst-dev
+              ls
