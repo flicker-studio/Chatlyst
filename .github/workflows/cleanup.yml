@@ -1,13 +1,37 @@
-name: Delete old artifacts
+name: Delete old workflow runs
 on:
   schedule: [cron: '30 10 * * *']
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Number of days.'
+        required: true
     
 jobs:
-  delete-artifacts:
+  Auto-Cleanup:
+    if: ${{github.event_name != 'workflow_dispatch'}}
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
-      - uses: kolpav/purge-artifacts-action@v1
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          expire-in: 7days
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 14
+          keep_minimum_runs: 6
+    
+  Manual-Cleanup:
+    if: ${{github.event_name == 'workflow_dispatch'}}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: ${{ github.event.inputs.days }}
+          keep_minimum_runs: 6
