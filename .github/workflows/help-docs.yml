@@ -9,7 +9,7 @@ on:
 
 jobs:
   Docs:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Self
         uses: actions/checkout@v3
