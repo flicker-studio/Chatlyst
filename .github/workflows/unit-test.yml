@@ -1,18 +1,15 @@
 name: Unit Test
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [develop]
+    types: [closed]
     paths: ['chatlyst-dev/**']
-  push:
-    branches: [develop]
-    paths: ['chatlyst-dev/**']
-  schedule:
-    - cron: '0 0 * * 0'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
   Test:
+    if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Self

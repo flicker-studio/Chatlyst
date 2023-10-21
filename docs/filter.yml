@@ -1,9 +1,7 @@
 apiRules:
-- exclude:
-    uidRegex: ^System
-- exclude:
-    uidRegex: ^UnityEngine
-- exclude:
-    uidRegex: ^UnityEditor
-    type: Namespace
- 
+    - exclude:
+          uidRegex: ^System
+    - exclude:
+          uidRegex: ^UnityEngine
+    - exclude:
+          uidRegex: ^UnityEditor

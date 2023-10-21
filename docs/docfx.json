@@ -5,7 +5,7 @@
                 {
                     "src": "../chatlyst-dev",
                     "files": [
-                        "Assets/Plugins/**"
+                        "Assets/Plugins/**.dll"
                     ]
                 }
             ],
@@ -13,7 +13,7 @@
                 {
                     "src": "../chatlyst-dev",
                     "files": [
-                        "Assets/**.cs"
+                        "**.csproj"
                     ]
                 }
             ],
@@ -25,7 +25,7 @@
     "build": {
         "globalMetadata": {
             "_appTitle": "Chatlyst Documentation",
-            "_appFooter": "Copyright © Morsiusiurandum",
+            "_appFooter": "Copyright © 2022-2023 Morsiusiurandum",
             "_disableContribution": true,
             "_disableAffix": false,
             "_enableSearch": true
@@ -58,7 +58,8 @@
         ],
         "template": [
             "default",
-            "templates/singulinkfx"
+            "modern",
+            "templates/material"
         ],
         "xref": [
             "https://nicoco007.github.io/UnityXRefMap/2022.3/xrefmap.yml"
