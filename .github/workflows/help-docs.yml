@@ -1,14 +1,14 @@
-name: Help Docs -test
+name: Help Docs
 
 on:
-  push:
-     
-  schedule:
-    - cron: '0 0 * * 0'
-  workflow_dispatch:
+  workflow_run:
+    workflows: [Unit Test]
+    types: [completed]
+  workflow_dispatch: {}
 
 jobs:
   Docs:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch'}}
     runs-on: windows-latest
     steps:
       - name: Checkout Self
@@ -20,7 +20,7 @@ jobs:
         with:
           project-path: chatlyst-dev/
        
-      - name: Activate Unity
+      - name: Execute Unity
         uses: Morsiusiurandum/unity-runner@main
         with:
           unity-path: ${{steps.setup-unity.outputs.unity-path}}
@@ -30,6 +30,20 @@ jobs:
           project-path: "chatlyst-dev"
           execute-method: SyncVS_Workaround.SyncSolution
 
-      - run: |
-              cd chatlyst-dev
-              ls
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x
+
+      - name: Setup Docfx
+        run: dotnet tool update -g docfx
+
+      - name: Build Site
+        run: docfx docs/docfx.json
+
+      - name: Deploy site
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: docs/_site
