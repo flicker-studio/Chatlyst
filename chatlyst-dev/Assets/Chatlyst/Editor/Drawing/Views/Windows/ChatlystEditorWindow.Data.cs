@@ -7,15 +7,15 @@ namespace Chatlyst.Editor
 {
     partial class ChatlystEditorWindow
     {
-        //Json data
-        private string _jsonData;
-
         //Asset information
         private Object _asset;
-        private string _assetGuid;
-        private string _assetPath;
-        private string _assetName;
         private string _assetFullPath;
+        private string _assetGuid;
+        private string _assetName;
+        private string _assetPath;
+
+        //Json data
+        private string _jsonData;
 
         /// <summary>
         ///     Obtain asset information based on the asset GUID
@@ -43,7 +43,7 @@ namespace Chatlyst.Editor
         public override void SaveChanges()
         {
             base.SaveChanges();
-            var    nodeIndex   = GraphView.nodeIndex;
+            var    nodeIndex   = GraphView.nodeDataIndex;
             string writeString = nodeIndex.Serialize();
             FileUtilities.WriteToDisk(_assetFullPath, writeString);
         }

@@ -2,14 +2,15 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
-namespace Chatlyst.Editor
+
+namespace Chatlyst.Editor.Serialization
 {
     public static class FileUtilities
     {
         public static bool WriteToDisk(string path, string text)
         {
             if (!PathValidCheck(path)) return false;
+
             while (true)
             {
                 try
@@ -25,9 +26,9 @@ namespace Chatlyst.Editor
                         {
                             // make writeable and retry save
                             var fileInfo = new FileInfo(path)
-                            {
-                                IsReadOnly = false
-                            };
+                                           {
+                                               IsReadOnly = false
+                                           };
                             continue;
                         }
                         return false;
@@ -37,6 +38,7 @@ namespace Chatlyst.Editor
 
                     if (EditorUtility.DisplayDialog("Exception While Saving", e.ToString(), "Retry", "Cancel"))
                         continue; // retry save
+
                     return false;
                 }
 
@@ -53,7 +55,5 @@ namespace Chatlyst.Editor
             /*throw new Exception($"{Path.GetExtension(fileName)} is unsupported extension!");
             throw new Exception($"{fullPath} is not exist!");*/
         }
-
-       
     }
 }
