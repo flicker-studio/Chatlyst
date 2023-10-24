@@ -4,17 +4,6 @@
     {
       "StartLabel": "Default Label",
       "Number": -1,
-      "Guid": "1a68d5ed-5428-4dcd-8ca6-68ebe0fc4fe8",
-      "NodeType": 4,
-      "NextGuid": null,
-      "NodePos": {
-        "X": 435.0,
-        "Y": 224.0
-      }
-    },
-    {
-      "StartLabel": "Default Label",
-      "Number": -1,
       "Guid": "7811f114-8be6-4bf1-a6fa-ac4f67d57510",
       "NodeType": 4,
       "NextGuid": null,
@@ -43,17 +32,6 @@
       "NodePos": {
         "X": 950.0,
         "Y": 263.0
-      }
-    },
-    {
-      "StartLabel": "Default Label",
-      "Number": -1,
-      "Guid": "2dcb507c-00a9-433f-93b3-63c0cc560c5e",
-      "NodeType": 4,
-      "NextGuid": null,
-      "NodePos": {
-        "X": 249.0,
-        "Y": 104.0
       }
     },
     {
@@ -114,22 +92,44 @@
     {
       "StartLabel": "Default Label",
       "Number": -1,
-      "Guid": "2f0802df-29cd-4ed1-93ce-805bc8fb18e8",
-      "NodeType": 4,
-      "NextGuid": null,
-      "NodePos": {
-        "X": 273.0,
-        "Y": 205.0
-      }
-    },
-    {
-      "StartLabel": "Default Label",
-      "Number": -1,
       "Guid": "e3ffdb88-187f-4fd9-9d71-b46a621333ba",
       "NodeType": 4,
       "NextGuid": null,
       "NodePos": {
         "X": 489.0,
+        "Y": 296.0
+      }
+    },
+    {
+      "StartLabel": "Default Label",
+      "Number": -1,
+      "Guid": "2dcb507c-00a9-433f-93b3-63c0cc560c5e",
+      "NodeType": 4,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 224.0,
+        "Y": 23.0
+      }
+    },
+    {
+      "StartLabel": "Default Label",
+      "Number": -1,
+      "Guid": "1a68d5ed-5428-4dcd-8ca6-68ebe0fc4fe8",
+      "NodeType": 4,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 224.0,
+        "Y": 159.0
+      }
+    },
+    {
+      "StartLabel": "Default Label",
+      "Number": -1,
+      "Guid": "2f0802df-29cd-4ed1-93ce-805bc8fb18e8",
+      "NodeType": 4,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 382.0,
         "Y": 296.0
       }
     }

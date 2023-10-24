@@ -4,15 +4,29 @@ using Chatlyst.Runtime.Data;
 using Chatlyst.Runtime.Util;
 using Newtonsoft.Json;
 
-namespace Chatlyst.Runtime
+namespace Chatlyst.Runtime.Serialization
 {
-    public class NodeIndex
+    /// <summary>
+    ///     The node data directory, which is serialized to JSON and written directly to a file
+    /// </summary>
+    public class NodeDataIndex
     {
         [JsonProperty]
         private readonly string _id = Guid.NewGuid().ToString();
 
-        public List<BeginNode> BeginNodes = new List<BeginNode>();
+        #region Node Data List
+        /// <summary>
+        ///     The list of Begin Nodes
+        /// </summary>
+        public List<BeginNode> BeginNodesList = new List<BeginNode>();
 
+        /// <summary>
+        ///     The list of End Nodes
+        /// </summary>
+        public List<EndNode> EndNodesList = new List<EndNode>();
+        #endregion
+
+        #region API
         /// <summary>
         ///     Add a node to nodes list
         /// </summary>
@@ -31,17 +45,22 @@ namespace Chatlyst.Runtime
                 case NodeType.CUT:
                     break;
                 case NodeType.BEG:
-                    BeginNodes.Add((BeginNode)node);
+                    BeginNodesList.Add((BeginNode)node);
                     break;
                 case NodeType.BRA:
                     break;
                 case NodeType.END:
+                    EndNodesList.Add((EndNode)node);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
+        /// <summary>
+        ///     Add a node to nodes list
+        /// </summary>
+        /// <inheritdoc cref="AutoAddNode" />
         public void AutoAddNodes(List<BasicNode> nodes)
         {
             foreach (var basicNode in nodes)
@@ -56,13 +75,15 @@ namespace Chatlyst.Runtime
         /// <param name="basicNodeList">Current node list</param>
         public void Refresh(List<BasicNode> basicNodeList)
         {
-            BeginNodes.Clear();
+            BeginNodesList.Clear();
             AutoAddNodes(basicNodeList);
         }
+        #endregion
 
-        private bool NodeListEquals(NodeIndex other)
+        #region Override
+        private bool NodeListEquals(NodeDataIndex other)
         {
-            return other.BeginNodes.AreSimilar(BeginNodes);
+            return other.BeginNodesList.AreSimilar(BeginNodesList);
         }
 
         /// <summary>
@@ -74,14 +95,17 @@ namespace Chatlyst.Runtime
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
+        ///<inheritdoc />
         public override bool Equals(object obj)
         {
-            return obj is NodeIndex index && _id == index._id && NodeListEquals(index);
+            return obj is NodeDataIndex index && _id == index._id && NodeListEquals(index);
         }
 
+        ///<inheritdoc />
         public override int GetHashCode()
         {
             return _id.GetHashCode();
         }
+        #endregion
     }
 }
