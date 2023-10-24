@@ -1,0 +1,29 @@
+name: Meta Check
+
+on:
+  pull_request:
+    branches: [develop]
+    paths: ['chatlyst-dev/**']
+  workflow_dispatch:
+
+jobs:
+  meta-check:
+    name: "Check all .meta"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Check all .meta
+        uses: DeNA/unity-meta-check@v3
+        with:
+          target_path: chatlyst-dev/Assets
+          enable_junit: true
+          junit_xml_path: junit.xml
+
+      - name: Report Error 
+        uses: mikepenz/action-junit-report@v4.0.3
+        with:
+          report_paths: junit.xml
+        if: always()
+

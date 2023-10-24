@@ -79,6 +79,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-#Code Coverage local web files
+# Code Coverage local web files
 /[Cc]odeCoverage
 /[Cc]odeCoverage/*
+
+# Build cache
+/[Bb]in
+
