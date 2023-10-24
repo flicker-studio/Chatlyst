@@ -19,6 +19,11 @@ namespace Chatlyst.Runtime.Serialization
         ///     The list of Begin Nodes
         /// </summary>
         public List<BeginNode> BeginNodesList = new List<BeginNode>();
+
+        /// <summary>
+        ///     The list of End Nodes
+        /// </summary>
+        public List<EndNode> EndNodesList = new List<EndNode>();
         #endregion
 
         #region API
@@ -45,6 +50,7 @@ namespace Chatlyst.Runtime.Serialization
                 case NodeType.BRA:
                     break;
                 case NodeType.END:
+                    EndNodesList.Add((EndNode)node);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

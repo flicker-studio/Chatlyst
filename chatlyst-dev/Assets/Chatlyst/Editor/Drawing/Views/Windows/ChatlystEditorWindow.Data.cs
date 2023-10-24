@@ -40,12 +40,13 @@ namespace Chatlyst.Editor
             _jsonData = File.ReadAllText(_assetFullPath);
         }
 
+        ///<inheritdoc />
         public override void SaveChanges()
         {
             base.SaveChanges();
             var    nodeIndex   = GraphView.nodeDataIndex;
             string writeString = nodeIndex.Serialize();
-            FileUtilities.WriteToDisk(_assetFullPath, writeString);
+            NexusFileUtilities.WriteToDisk(_assetFullPath, writeString);
         }
     }
 }

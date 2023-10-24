@@ -50,12 +50,24 @@ namespace Chatlyst.Editor
         {
             var    objectName = EditorUtility.InstanceIDToObject(id);
             string filePath   = AssetDatabase.GetAssetPath(objectName);
-            if (!FileUtilities.PathValidCheck(filePath)) return false;
+
+            try
+            {
+                NexusFileUtilities.PathValidCheck(filePath);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
             string assetGuid = AssetDatabase.AssetPathToGUID(filePath);
             ChatlystEditorWindow.EditorWindow = (ChatlystEditorWindow)EditorWindow.GetWindow(typeof(ChatlystEditorWindow));
             ChatlystEditorWindow.EditorWindow.Initialize(assetGuid);
-            if (ChatlystEditorWindow.EditorWindow == null) throw new Exception("Can't init the window!");
+
+            if (ChatlystEditorWindow.EditorWindow == null)
+            {
+                throw new Exception("Can't init the window!");
+            }
 
             ChatlystEditorWindow.EditorWindow.Show(true);
             return true;

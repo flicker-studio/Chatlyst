@@ -28,13 +28,17 @@ namespace Chatlyst.Editor
         /// </summary>
         private void RebuildNodeViews()
         {
-            var startNodeDataList = _nodeDataIndex.BeginNodesList;
-
-            foreach (var startNodeData in startNodeDataList)
-
+            foreach (var startNodeData in _nodeDataIndex.BeginNodesList)
             {
                 var startNodeView = NodeViewFactory.RebuildOldNodeView(startNodeData, typeof(BeginNodeView).FullName);
                 AddElement(startNodeView);
+            }
+
+            foreach (var endNodeData in _nodeDataIndex.EndNodesList)
+
+            {
+                var endNodeView = NodeViewFactory.RebuildOldNodeView(endNodeData, typeof(EndNodeView).FullName);
+                AddElement(endNodeView);
             }
         }
 

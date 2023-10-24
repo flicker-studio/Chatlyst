@@ -1,4 +1,40 @@
 {
   "_id": "f2febc45-0bdd-48c8-b873-c008691e2b3e",
-  "BeginNodes": []
+  "BeginNodesList": [
+    {
+      "StartLabel": "Default Label",
+      "Number": -1,
+      "Guid": "17fbe537-fed9-4fc0-983e-bf00892c5b49",
+      "NodeType": 4,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 556.0,
+        "Y": 184.0
+      }
+    }
+  ],
+  "EndNodesList": [
+    {
+      "StartLabel": "Default End Label",
+      "Number": -1,
+      "Guid": "b92c288f-9fd1-4d36-8e1f-d673d4a65305",
+      "NodeType": 6,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 780.0,
+        "Y": 184.0
+      }
+    },
+    {
+      "StartLabel": "Default End Label",
+      "Number": -1,
+      "Guid": "b92c288f-9fd1-4d36-8e1f-d673d4a65305",
+      "NodeType": 6,
+      "NextGuid": null,
+      "NodePos": {
+        "X": 780.0,
+        "Y": 184.0
+      }
+    }
+  ]
 }
