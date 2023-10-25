@@ -4,15 +4,23 @@ on:
 jobs:
   activation:
     name: Request manual activation file 🔑
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       # Request manual activation file
+      - name: Setup Unity
+        id: setup-unity
+        uses: kuler90/setup-unity@v1
+        with:
+          project-path: chatlyst-dev/
+
       - name: Request manual activation file
-        id: getManualLicenseFile
-        uses: game-ci/unity-request-activation-file@v2
+        uses: Morsiusiurandum/unity-runner@beta
+        with:
+           unity-path: ${{steps.setup-unity.outputs.unity-path}}
+           create-manual-activation-file: true
+           
       # Upload artifact (Unity_v20XX.X.XXXX.alf)
       - name: Expose as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
-          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+          path: Unity_v2022.3.10f1.alf
