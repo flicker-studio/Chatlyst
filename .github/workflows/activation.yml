@@ -7,6 +7,9 @@ jobs:
     runs-on: windows-latest
     steps:
       # Request manual activation file
+      - name: Checkout Self
+        uses: actions/checkout@v3
+
       - name: Setup Unity
         id: setup-unity
         uses: kuler90/setup-unity@v1
