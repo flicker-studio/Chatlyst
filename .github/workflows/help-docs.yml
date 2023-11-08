@@ -26,7 +26,7 @@ jobs:
           unity-path: ${{steps.setup-unity.outputs.unity-path}}
           unity-username: ${{ secrets.UNITY_EMAIL_WIN }}
           unity-password: ${{ secrets.UNITY_PASSWORD_WIN }}
-          unity-alf: ${{ secrets.UNITY_LICENSE_WIN }}
+          unity-ulf: ${{ secrets.UNITY_LICENSE_WIN }}
           project-path: "chatlyst-dev"
           execute-method: SyncVS_Workaround.SyncSolution
 
