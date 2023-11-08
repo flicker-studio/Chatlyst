@@ -21,7 +21,7 @@ jobs:
           project-path: chatlyst-dev/
        
       - name: Execute Unity
-        uses: Morsiusiurandum/unity-runner@main
+        uses: Morsiusiurandum/unity-runner@beta
         with:
           unity-path: ${{steps.setup-unity.outputs.unity-path}}
           unity-username: ${{ secrets.UNITY_EMAIL_WIN }}
