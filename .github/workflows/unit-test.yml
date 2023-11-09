@@ -18,7 +18,7 @@ jobs:
       - name: Unit test
         id: Tests-0
         continue-on-error: true
-        uses: game-ci/unity-test-runner@v3
+        uses: game-ci/unity-test-runner@v3.1.0
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
@@ -30,7 +30,7 @@ jobs:
           
       - name: Sleep for Retry
         if: ${{ steps.Tests-0.outcome == 'failure' }}
-        run: Start-Sleep -s 120
+        run: sleep 60
 
       - name: Unit test
         id: Tests-1
