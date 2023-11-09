@@ -16,7 +16,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Unit test
-        id: Tests
+        id: Tests-0
+        continue-on-error: true
         uses: game-ci/unity-test-runner@v3
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -26,11 +27,19 @@ jobs:
           projectPath: chatlyst-dev/
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           coverageOptions: 'generateAdditionalMetrics'
+          
+      - name: Sleep for Retry
+        if: ${{ steps.Tests-0.outcome == 'failure' }}
+        run: Start-Sleep -s 120
 
-      - name: Upload XML report to Codecov
-        uses: codecov/codecov-action@v2
+      - name: Unit test
+        id: Tests-1
+        uses: game-ci/unity-test-runner@v3
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          name: Results
-          flags: automated
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ${{ steps.Tests.outputs.coveragePath }}/**/*.xml
+          projectPath: chatlyst-dev/
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          coverageOptions: 'generateAdditionalMetrics'
