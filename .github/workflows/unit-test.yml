@@ -12,12 +12,11 @@ jobs:
     if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'}}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Self
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Unit test
-        id: Tests-0
-        continue-on-error: true
+        id: Tests
         uses: game-ci/unity-test-runner@v3.1.0
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -27,19 +26,23 @@ jobs:
           projectPath: chatlyst-dev/
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           coverageOptions: 'generateAdditionalMetrics'
-          
-      - name: Sleep for Retry
-        if: ${{ steps.Tests-0.outcome == 'failure' }}
-        run: sleep 60
 
-      - name: Unit test
-        id: Tests-1
-        uses: game-ci/unity-test-runner@v3
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  docs:
+    name: Quality Check
+    runs-on: ubuntu-latest
+    container: unityci/editor:ubuntu-2022.3.10f1-linux-il2cpp-2
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Execute Unity
+        uses: Morsiusiurandum/unity-runner@beta
         with:
-          projectPath: chatlyst-dev/
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          coverageOptions: 'generateAdditionalMetrics'
+          unity-path: unity-editor
+          unity-username: ${{ secrets.UNITY_EMAIL }}
+          unity-password: ${{ secrets.UNITY_PASSWORD }}
+          unity-ulf: ${{ secrets.UNITY_LICENSE }}
+          project-path: "chatlyst-dev"
+          execute-method: Packages.Rider.Editor.RiderScriptEditor.SyncSolution
+
+      - run : ls
