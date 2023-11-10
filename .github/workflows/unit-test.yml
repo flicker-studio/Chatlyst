@@ -9,11 +9,18 @@ on:
 
 jobs:
   test:
-    if: ${{ github.event.pull_request.merged == true || github.event_name != 'workflow_dispatch'}}
+    if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - uses: actions/cache@v2
+        with:
+          path: chatlyst-dev/Library
+          key: Library-Chatlyst
+          restore-keys: |
+            Library-
 
       - name: Unit test
         id: Tests
@@ -37,19 +44,46 @@ jobs:
 
   docs:
     name: Create docs
+    needs: [test]
     runs-on: ubuntu-latest
     container: unityci/editor:ubuntu-2022.3.10f1-linux-il2cpp-2
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Execute Unity
+      - uses: actions/cache@v2
+        with:
+          path: chatlyst-dev/Library
+          key: Library-Chatlyst
+          restore-keys: |
+            Library-
+
+      - name: Create ULF File
         uses: 1arp/create-a-file-action@0.3
         with:
           file: 'act.ulf'
           content: ${{ secrets.UNITY_LICENSE }}
 
-      - run : unity-editor -batchmode -nographics -quit -username ${{ secrets.UNITY_EMAIL }} - password ${{ secrets.UNITY_PASSWORD }} -manualLicenseFile act.ulf -projectPath chatlyst-dev
+      - name: Unity Activation    
+        run : unity-editor -batchmode -nographics -quit -username ${{ secrets.UNITY_EMAIL }} - password ${{ secrets.UNITY_PASSWORD }} -manualLicenseFile act.ulf -projectPath chatlyst-dev
 
-      - run : unity-editor -batchmode -nographics -quit -projectPath chatlyst-dev -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution
-      - run : ls chatlyst-dev
+      - name: Generate .csproj
+        run : unity-editor -batchmode -nographics -quit -projectPath chatlyst-dev -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution
+
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x
+
+      - name: Setup Docfx
+        run: dotnet tool update -g docfx
+
+      - name: Build Site
+        run: docfx docs/docfx.json
+
+      - name: Deploy site
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: docs/_site
