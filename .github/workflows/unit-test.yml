@@ -8,8 +8,8 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  Test:
-    if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'}}
+  test:
+    if: ${{ github.event.pull_request.merged == true || github.event_name != 'workflow_dispatch'}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -26,9 +26,17 @@ jobs:
           projectPath: chatlyst-dev/
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           coverageOptions: 'generateAdditionalMetrics'
+          
+      - name: Upload XML report to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          name: Results
+          flags: automated
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ steps.Tests.outputs.coveragePath }}/**/*.xml
 
   docs:
-    name: Quality Check
+    name: Create docs
     runs-on: ubuntu-latest
     container: unityci/editor:ubuntu-2022.3.10f1-linux-il2cpp-2
     steps:
@@ -36,16 +44,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Execute Unity
-        uses: Morsiusiurandum/unity-runner@beta
-        with:
-          unity-path: unity-editor
-          unity-username: ${{ secrets.UNITY_EMAIL }}
-          unity-password: ${{ secrets.UNITY_PASSWORD }}
-          unity-ulf: ${{ secrets.UNITY_LICENSE }}
-          project-path: "chatlyst-dev"
-          execute-method: Packages.Rider.Editor.RiderScriptEditor.SyncSolution
+        run: echo ${{ secrets.UNITY_LICENSE }} > act.ulf
 
-      - run : unity-editor -batchmode -logFile /dev/stdout -nographics -quit -username ${{ secrets.UNITY_EMAIL }} - password ${{ secrets.UNITY_PASSWORD }} -manualLicenseFile act.ulf -projectPath chatlyst-dev
-      - run : ls chatlyst-dev
-      - run : unity-editor -batchmode -logFile /dev/stdout -nographics -quit -projectPath chatlyst-dev -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution
+      - run : unity-editor -batchmode -nographics -quit -username ${{ secrets.UNITY_EMAIL }} - password ${{ secrets.UNITY_PASSWORD }} -manualLicenseFile act.ulf -projectPath chatlyst-dev
+
+      - run : unity-editor -batchmode -nographics -quit -projectPath chatlyst-dev -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution
       - run : ls chatlyst-dev
