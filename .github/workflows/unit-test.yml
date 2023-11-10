@@ -78,8 +78,10 @@ jobs:
       - name: Setup Docfx
         run: dotnet tool update docfx --tool-path ./
 
+      - run: ls
+      
       - name: Build Site
-        run: docfx docs/docfx.json
+        run: ./docfx docs/docfx.json
 
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
