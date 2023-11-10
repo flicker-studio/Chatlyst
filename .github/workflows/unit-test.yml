@@ -45,4 +45,5 @@ jobs:
           project-path: "chatlyst-dev"
           execute-method: Packages.Rider.Editor.RiderScriptEditor.SyncSolution
 
-      - run : ls
+      - run : unity-editor -logFile /dev/stdout -nographics -quit -username ${{ secrets.UNITY_EMAIL }} - password ${{ secrets.UNITY_PASSWORD }} -manualLicenseFile act.ulf -projectPath chatlyst-dev -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution
+      - run : ls chatlyst-dev
