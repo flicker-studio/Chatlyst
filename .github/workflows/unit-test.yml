@@ -79,7 +79,7 @@ jobs:
         run: dotnet tool update -g docfx
 
       - name: Build Site
-        run: docfx docs/docfx.json
+        run: dotnet docfx docs/docfx.json
 
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
