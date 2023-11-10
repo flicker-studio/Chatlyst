@@ -44,7 +44,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Execute Unity
-        run: echo ${{ secrets.UNITY_LICENSE }} > act.ulf
+        uses: 1arp/create-a-file-action@0.3
+        with:
+          file: 'act.ulf'
+          content: ${{ secrets.UNITY_LICENSE }}
 
       - run : unity-editor -batchmode -nographics -quit -username ${{ secrets.UNITY_EMAIL }} - password ${{ secrets.UNITY_PASSWORD }} -manualLicenseFile act.ulf -projectPath chatlyst-dev
 
