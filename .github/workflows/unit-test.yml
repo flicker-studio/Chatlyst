@@ -1,15 +1,13 @@
-name: Test and docs
-
+name: Unit Test
 on:
   pull_request_target:
     branches: [develop]
     types: [closed]
-    paths: ['chatlyst-dev/**']
   workflow_dispatch: {}
 
 jobs:
   test:
-    if: ${{ github.event.pull_request.merged == true || github.event_name != 'workflow_dispatch'}}
+    if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -44,7 +42,7 @@ jobs:
 
   docs:
     name: Create docs
-    
+    needs: [test]
     runs-on: ubuntu-latest
     container: unityci/editor:ubuntu-2022.3.10f1-linux-il2cpp-2
     steps:
@@ -77,8 +75,6 @@ jobs:
 
       - name: Setup Docfx
         run: dotnet tool update docfx --tool-path ./
-
-      - run: ls
       
       - name: Build Site
         run: ./docfx docs/docfx.json
