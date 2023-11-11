@@ -1,0 +1,539 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class NexusFileImporterEditor
+ | Chatlyst Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NexusFileImporterEditor
+ | Chatlyst Documentation ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Morsiusiurandum/Chatlyst/new/develop/apiSpec/new?filename=Chatlyst_Editor_NexusFileImporterEditor.md&amp;value=---%0Auid%3A%20Chatlyst.Editor.NexusFileImporterEditor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Chatlyst.Editor.NexusFileImporterEditor">
+
+
+
+  <h1 id="Chatlyst_Editor_NexusFileImporterEditor" data-uid="Chatlyst.Editor.NexusFileImporterEditor" class="text-break">
+    Class NexusFileImporterEditor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Morsiusiurandum/Chatlyst/blob/develop/chatlyst-dev/Assets/Chatlyst/Editor/NexusFileImporterEditor.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Chatlyst.html">Chatlyst</a>.<a class="xref" href="Chatlyst.Editor.html">Editor</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Chatlyst.Editor.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[CustomEditor(typeof(NexusFileImporter))]
+public class NexusFileImporterEditor : ScriptedImporterEditor</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.html">Object</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/ScriptableObject.html">ScriptableObject</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.html">Editor</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.html">AssetImporterEditor</a></div>
+      <div><a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.ScriptedImporterEditor.html">ScriptedImporterEditor</a></div>
+      <div><span class="xref">NexusFileImporterEditor</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">AssetImporterEditor.InitializeExtraDataInstance(Object, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.DrawPreview.html">AssetImporterEditor.DrawPreview(Rect)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.Awake.html">AssetImporterEditor.Awake()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.OnEnable.html">AssetImporterEditor.OnEnable()</a>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.OnDisable()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.HasModified.html">AssetImporterEditor.HasModified()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.CanApply.html">AssetImporterEditor.CanApply()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.Apply.html">AssetImporterEditor.Apply()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.SaveChanges.html">AssetImporterEditor.SaveChanges()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.ApplyAndImport.html">AssetImporterEditor.ApplyAndImport()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.DiscardChanges.html">AssetImporterEditor.DiscardChanges()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.ResetValues.html">AssetImporterEditor.ResetValues()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.RevertButton.html">AssetImporterEditor.RevertButton()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.ApplyButton.html">AssetImporterEditor.ApplyButton()</a>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.OnApplyRevertGUI()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor.ApplyRevertGUI.html">AssetImporterEditor.ApplyRevertGUI()</a>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.assetTargets</span>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.assetTarget</span>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.assetSerializedObject</span>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.extraDataTargets</span>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.extraDataTarget</span>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.extraDataSerializedObject</span>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.needsApplyRevert</span>
+    </div>
+    <div>
+      <span class="xref">AssetImporterEditor.extraDataType</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor-useAssetDrawPreview.html">AssetImporterEditor.useAssetDrawPreview</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/AssetImporters.AssetImporterEditor-showImportedObject.html">AssetImporterEditor.showImportedObject</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Editor.CreateEditorWithContext(Object[], Object, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.CreateEditorWithContext.html">Editor.CreateEditorWithContext(Object[], Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Editor.CreateCachedEditorWithContext(Object, Object, Type, ref Editor)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Editor.CreateCachedEditorWithContext(Object[], Object, Type, ref Editor)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Editor.CreateCachedEditor(Object, Type, ref Editor)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Editor.CreateCachedEditor(Object[], Type, ref Editor)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.CreateEditor.html">Editor.CreateEditor(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Editor.CreateEditor(Object, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.CreateEditor.html">Editor.CreateEditor(Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Editor.CreateEditor(Object[], Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Editor.DrawPropertiesExcluding(SerializedObject, params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.DrawDefaultInspector.html">Editor.DrawDefaultInspector()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.Repaint.html">Editor.Repaint()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.CreateInspectorGUI.html">Editor.CreateInspectorGUI()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.RequiresConstantRepaint.html">Editor.RequiresConstantRepaint()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.DrawHeader.html">Editor.DrawHeader()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.OnHeaderGUI.html">Editor.OnHeaderGUI()</a>
+    </div>
+    <div>
+      <span class="xref">Editor.ShouldHideOpenButton()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.DrawFoldoutInspector.html">Editor.DrawFoldoutInspector(Object, ref Editor)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.HasPreviewGUI.html">Editor.HasPreviewGUI()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.GetPreviewTitle.html">Editor.GetPreviewTitle()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Editor.RenderStaticPreview(string, Object[], int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.OnPreviewGUI.html">Editor.OnPreviewGUI(Rect, GUIStyle)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.OnInteractivePreviewGUI.html">Editor.OnInteractivePreviewGUI(Rect, GUIStyle)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.OnPreviewSettings.html">Editor.OnPreviewSettings()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.GetInfoString.html">Editor.GetInfoString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.ReloadPreviewInstances.html">Editor.ReloadPreviewInstances()</a>
+    </div>
+    <div>
+      <span class="xref">Editor.UseDefaultMargins()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.MoveNextTarget.html">Editor.MoveNextTarget()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor.ResetTarget.html">Editor.ResetTarget()</a>
+    </div>
+    <div>
+      <span class="xref">Editor.hasUnsavedChanges</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor-saveChangesMessage.html">Editor.saveChangesMessage</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor-target.html">Editor.target</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor-targets.html">Editor.targets</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Editor-serializedObject.html">Editor.serializedObject</a>
+    </div>
+    <div>
+      <span class="xref">Editor.finishedDefaultHeaderGUI</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/ScriptableObject.SetDirty.html">ScriptableObject.SetDirty()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">ScriptableObject.CreateInstance(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">ScriptableObject.CreateInstance(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/ScriptableObject.CreateInstance.html">ScriptableObject.CreateInstance&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.GetInstanceID.html">Object.GetInstanceID()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.GetHashCode.html">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate(Object, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate(Object, Vector3, Quaternion, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate(Object, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate(Object, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate&lt;T&gt;(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Instantiate.html">Object.Instantiate&lt;T&gt;(T, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate&lt;T&gt;(T, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.Destroy(Object, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.Destroy.html">Object.Destroy(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.DestroyImmediate(Object, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.DestroyImmediate.html">Object.DestroyImmediate(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.DontDestroyOnLoad.html">Object.DontDestroyOnLoad(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DestroyObject(Object, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.DestroyObject.html">Object.DestroyObject(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindSceneObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeIncludingAssets(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindObjectsOfType.html">Object.FindObjectsOfType&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindObjectsByType.html">Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectsOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindObjectsByType.html">Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindObjectOfType.html">Object.FindObjectOfType&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindFirstObjectByType.html">Object.FindFirstObjectByType&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindAnyObjectByType.html">Object.FindAnyObjectByType&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindFirstObjectByType.html">Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object.FindAnyObjectByType.html">Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeAll(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ToString()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.unity3d.com/Documentation/ScriptReference/Object-name.html">Object.name</a>
+    </div>
+    <div>
+      <span class="xref">Object.hideFlags</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Chatlyst_Editor_NexusFileImporterEditor_OnInspectorGUI_" data-uid="Chatlyst.Editor.NexusFileImporterEditor.OnInspectorGUI*"></a>
+
+  <h3 id="Chatlyst_Editor_NexusFileImporterEditor_OnInspectorGUI" data-uid="Chatlyst.Editor.NexusFileImporterEditor.OnInspectorGUI">
+  OnInspectorGUI()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Morsiusiurandum/Chatlyst/blob/develop/chatlyst-dev/Assets/Chatlyst/Editor/NexusFileImporterEditor.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Override this method to create your own Inpsector GUI for a ScriptedImporter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnInspectorGUI()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2022-2023 Morsiusiurandum
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
