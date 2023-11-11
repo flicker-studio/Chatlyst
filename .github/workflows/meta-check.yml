@@ -3,8 +3,7 @@ name: Meta Check
 on:
   pull_request:
     branches: [develop]
-    paths: ['chatlyst-dev/**']
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
   meta-check:
