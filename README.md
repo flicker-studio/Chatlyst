@@ -3,7 +3,7 @@
 # Chatlyst
 
 [![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml/badge.svg?event=pull_request_target)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml)
-[![Help Docs](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://morsiusiurandum.github.io/Chatlyst/)
+[![pages-build-deployment](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/pages/pages-build-deployment/badge.svg)](https://morsiusiurandum.github.io/Chatlyst/)
 [![codecov](https://codecov.io/gh/Morsiusiurandum/Chatlyst/graph/badge.svg?token=MGT2KMB8BA)](https://codecov.io/gh/Morsiusiurandum/Chatlyst)
 
 </div>
