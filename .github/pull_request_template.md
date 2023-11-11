@@ -1,27 +1,22 @@
 # <title>
 
 > [!NOTE]  
-> Note comments
+<!--Note comments-->
 
 > [!Warning]  
-> Warning comments
+<!--Warning comments-->
 
 > [!IMPORTANT]  
-> Important comments
+<!--Important comments-->
 
 ## Change List
->
-> List the changes
 
-- Just like one
-- And this
+<!--List the changes-->
 
 ## Issue List
->
-> Use the following syntax and issue sequence number to close and link issues
 
-Closed #1
+<!--Use Closed and issue sequence number to close and link issues-->
 
 ## Appendix
 
-You can add some irrelevant words here
+<!--You can add some irrelevant words here-->

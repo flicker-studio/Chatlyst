@@ -1,13 +1,17 @@
+<div align="center">
+
 # Chatlyst
 
-![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml/badge.svg)
+[![Unit Test](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml/badge.svg?event=pull_request_target)](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/unit-test.yml)
 [![Help Docs](https://github.com/Morsiusiurandum/Chatlyst/actions/workflows/help-docs.yml/badge.svg)](https://morsiusiurandum.github.io/Chatlyst/)
 [![codecov](https://codecov.io/gh/Morsiusiurandum/Chatlyst/graph/badge.svg?token=MGT2KMB8BA)](https://codecov.io/gh/Morsiusiurandum/Chatlyst)
 
-> [!NOTE]
-> This project is developing!
+</div>
 
 *Chatlyst* is a simple and powerful chat editor in Unity. This project grew out of a simple visual novel production tool and is currently under active development.
+
+> [!NOTE]
+> This project is developing!
 
 ## Getting started
 
